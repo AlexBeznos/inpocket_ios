@@ -6,8 +6,39 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */; };
+		CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */; };
+		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
+		CAF0912F1D4D3A4C005FAEF4 /* PWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091201D4D3A4C005FAEF4 /* PWAppDelegate.m */; };
+		CAF091301D4D3A4C005FAEF4 /* PWNearSharesViewControllerCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091221D4D3A4C005FAEF4 /* PWNearSharesViewControllerCollectionViewController.m */; };
+		CAF091311D4D3A4C005FAEF4 /* PWRestaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091251D4D3A4C005FAEF4 /* PWRestaurant.m */; };
+		CAF091321D4D3A4C005FAEF4 /* PWRestaurantShare.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091271D4D3A4C005FAEF4 /* PWRestaurantShare.m */; };
+		CAF091331D4D3A4C005FAEF4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091291D4D3A4C005FAEF4 /* main.m */; };
+		CAF091351D4D3A9F005FAEF4 /* PWConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = CAF091341D4D3A9F005FAEF4 /* PWConfig.xcconfig */; };
+		CAF091371D4D3B7B005FAEF4 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF091361D4D3B7B005FAEF4 /* Intro.storyboard */; };
+		CAF0913A1D4D4062005FAEF4 /* PWIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091391D4D4062005FAEF4 /* PWIndicator.m */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		CAF090FD1D4D3938005FAEF4 /* PocketWaiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketWaiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CAF0911A1D4D3A4C005FAEF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		CAF0911F1D4D3A4C005FAEF4 /* PWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWAppDelegate.h; sourceTree = "<group>"; };
+		CAF091201D4D3A4C005FAEF4 /* PWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWAppDelegate.m; sourceTree = "<group>"; };
+		CAF091211D4D3A4C005FAEF4 /* PWNearSharesViewControllerCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWNearSharesViewControllerCollectionViewController.h; sourceTree = "<group>"; };
+		CAF091221D4D3A4C005FAEF4 /* PWNearSharesViewControllerCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWNearSharesViewControllerCollectionViewController.m; sourceTree = "<group>"; };
+		CAF091241D4D3A4C005FAEF4 /* PWRestaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWRestaurant.h; sourceTree = "<group>"; };
+		CAF091251D4D3A4C005FAEF4 /* PWRestaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRestaurant.m; sourceTree = "<group>"; };
+		CAF091261D4D3A4C005FAEF4 /* PWRestaurantShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWRestaurantShare.h; sourceTree = "<group>"; };
+		CAF091271D4D3A4C005FAEF4 /* PWRestaurantShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRestaurantShare.m; sourceTree = "<group>"; };
+		CAF091291D4D3A4C005FAEF4 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CAF091341D4D3A9F005FAEF4 /* PWConfig.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = PWConfig.xcconfig; sourceTree = "<group>"; };
+		CAF091361D4D3B7B005FAEF4 /* Intro.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
+		CAF091381D4D4062005FAEF4 /* PWIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWIndicator.h; sourceTree = "<group>"; };
+		CAF091391D4D4062005FAEF4 /* PWIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWIndicator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,8 +71,81 @@
 		CAF090FF1D4D3938005FAEF4 /* PocketWaiter */ = {
 			isa = PBXGroup;
 			children = (
+				CAF091171D4D3A4C005FAEF4 /* Configuration */,
+				CAF091181D4D3A4C005FAEF4 /* Resources */,
+				CAF0911D1D4D3A4C005FAEF4 /* Sources */,
 			);
 			path = PocketWaiter;
+			sourceTree = "<group>";
+		};
+		CAF091171D4D3A4C005FAEF4 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				CAF091341D4D3A9F005FAEF4 /* PWConfig.xcconfig */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		CAF091181D4D3A4C005FAEF4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */,
+				CAF0911A1D4D3A4C005FAEF4 /* Info.plist */,
+				CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */,
+				CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */,
+				CAF091361D4D3B7B005FAEF4 /* Intro.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CAF0911D1D4D3A4C005FAEF4 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CAF0911E1D4D3A4C005FAEF4 /* Controller */,
+				CAF091231D4D3A4C005FAEF4 /* Model */,
+				CAF091281D4D3A4C005FAEF4 /* SupportingFiles */,
+				CAF0912A1D4D3A4C005FAEF4 /* Views */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		CAF0911E1D4D3A4C005FAEF4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CAF0911F1D4D3A4C005FAEF4 /* PWAppDelegate.h */,
+				CAF091201D4D3A4C005FAEF4 /* PWAppDelegate.m */,
+				CAF091211D4D3A4C005FAEF4 /* PWNearSharesViewControllerCollectionViewController.h */,
+				CAF091221D4D3A4C005FAEF4 /* PWNearSharesViewControllerCollectionViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CAF091231D4D3A4C005FAEF4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CAF091241D4D3A4C005FAEF4 /* PWRestaurant.h */,
+				CAF091251D4D3A4C005FAEF4 /* PWRestaurant.m */,
+				CAF091261D4D3A4C005FAEF4 /* PWRestaurantShare.h */,
+				CAF091271D4D3A4C005FAEF4 /* PWRestaurantShare.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CAF091281D4D3A4C005FAEF4 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				CAF091291D4D3A4C005FAEF4 /* main.m */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		CAF0912A1D4D3A4C005FAEF4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CAF091381D4D4062005FAEF4 /* PWIndicator.h */,
+				CAF091391D4D4062005FAEF4 /* PWIndicator.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,6 +205,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */,
+				CAF091351D4D3A9F005FAEF4 /* PWConfig.xcconfig in Resources */,
+				CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */,
+				CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */,
+				CAF091371D4D3B7B005FAEF4 /* Intro.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +220,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAF091331D4D3A4C005FAEF4 /* main.m in Sources */,
+				CAF091311D4D3A4C005FAEF4 /* PWRestaurant.m in Sources */,
+				CAF091321D4D3A4C005FAEF4 /* PWRestaurantShare.m in Sources */,
+				CAF091301D4D3A4C005FAEF4 /* PWNearSharesViewControllerCollectionViewController.m in Sources */,
+				CAF0913A1D4D4062005FAEF4 /* PWIndicator.m in Sources */,
+				CAF0912F1D4D3A4C005FAEF4 /* PWAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +234,7 @@
 /* Begin XCBuildConfiguration section */
 		CAF091121D4D3938005FAEF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAF091341D4D3A9F005FAEF4 /* PWConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -163,6 +279,7 @@
 		};
 		CAF091131D4D3938005FAEF4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAF091341D4D3A9F005FAEF4 /* PWConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -201,9 +318,10 @@
 		};
 		CAF091151D4D3938005FAEF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAF091341D4D3A9F005FAEF4 /* PWConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = PocketWaiter/Info.plist;
+				INFOPLIST_FILE = PocketWaiter/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pocketWaiter.PocketWaiter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -212,9 +330,10 @@
 		};
 		CAF091161D4D3938005FAEF4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAF091341D4D3A9F005FAEF4 /* PWConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = PocketWaiter/Info.plist;
+				INFOPLIST_FILE = PocketWaiter/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pocketWaiter.PocketWaiter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
