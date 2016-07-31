@@ -12,12 +12,22 @@
 		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
 		CAF0912F1D4D3A4C005FAEF4 /* PWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091201D4D3A4C005FAEF4 /* PWAppDelegate.m */; };
 		CAF091301D4D3A4C005FAEF4 /* PWNearSharesViewControllerCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091221D4D3A4C005FAEF4 /* PWNearSharesViewControllerCollectionViewController.m */; };
-		CAF091311D4D3A4C005FAEF4 /* PWRestaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091251D4D3A4C005FAEF4 /* PWRestaurant.m */; };
-		CAF091321D4D3A4C005FAEF4 /* PWRestaurantShare.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091271D4D3A4C005FAEF4 /* PWRestaurantShare.m */; };
 		CAF091331D4D3A4C005FAEF4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091291D4D3A4C005FAEF4 /* main.m */; };
-		CAF091351D4D3A9F005FAEF4 /* PWConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = CAF091341D4D3A9F005FAEF4 /* PWConfig.xcconfig */; };
 		CAF091371D4D3B7B005FAEF4 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF091361D4D3B7B005FAEF4 /* Intro.storyboard */; };
 		CAF0913A1D4D4062005FAEF4 /* PWIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091391D4D4062005FAEF4 /* PWIndicator.m */; };
+		CAF0916D1D4E904E005FAEF4 /* PWModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0913F1D4E737F005FAEF4 /* PWModelObject.m */; };
+		CAF0916E1D4E9054005FAEF4 /* PWRestaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091251D4D3A4C005FAEF4 /* PWRestaurant.m */; };
+		CAF0916F1D4E9059005FAEF4 /* PWRestaurantShare.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091271D4D3A4C005FAEF4 /* PWRestaurantShare.m */; };
+		CAF091701D4E905E005FAEF4 /* PWPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091421D4E8B3C005FAEF4 /* PWPrice.m */; };
+		CAF091711D4E9061005FAEF4 /* PWProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091451D4E8B5D005FAEF4 /* PWProduct.m */; };
+		CAF091731D4E9099005FAEF4 /* PWPresentProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091481D4E8B99005FAEF4 /* PWPresentProduct.m */; };
+		CAF091841D4E949C005FAEF4 /* PWOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0914B1D4E8BAD005FAEF4 /* PWOrder.m */; };
+		CAF091851D4E94A0005FAEF4 /* PWRestaurantReview.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0914E1D4E8BC6005FAEF4 /* PWRestaurantReview.m */; };
+		CAF091861D4E94AE005FAEF4 /* PWPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091511D4E8BDB005FAEF4 /* PWPurchase.m */; };
+		CAF091871D4E94B0005FAEF4 /* PWUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091541D4E8BF0005FAEF4 /* PWUser.m */; };
+		CAF091881D4E94B3005FAEF4 /* PWUsersRestaurantInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091571D4E8C06005FAEF4 /* PWUsersRestaurantInfo.m */; };
+		CAF091891D4E94B6005FAEF4 /* PWWorkingTime.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0915A1D4E8C38005FAEF4 /* PWWorkingTime.m */; };
+		CAF0918A1D4E94B8005FAEF4 /* PWRestaurantAboutInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0915D1D4E8C4D005FAEF4 /* PWRestaurantAboutInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +49,32 @@
 		CAF091361D4D3B7B005FAEF4 /* Intro.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 		CAF091381D4D4062005FAEF4 /* PWIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWIndicator.h; sourceTree = "<group>"; };
 		CAF091391D4D4062005FAEF4 /* PWIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWIndicator.m; sourceTree = "<group>"; };
+		CAF0913B1D4E7272005FAEF4 /* IPWJSONInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPWJSONInfo.h; sourceTree = "<group>"; };
+		CAF0913E1D4E737F005FAEF4 /* PWModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWModelObject.h; sourceTree = "<group>"; };
+		CAF0913F1D4E737F005FAEF4 /* PWModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWModelObject.m; sourceTree = "<group>"; };
+		CAF091411D4E8B3C005FAEF4 /* PWPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWPrice.h; sourceTree = "<group>"; };
+		CAF091421D4E8B3C005FAEF4 /* PWPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWPrice.m; sourceTree = "<group>"; };
+		CAF091441D4E8B5D005FAEF4 /* PWProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWProduct.h; sourceTree = "<group>"; };
+		CAF091451D4E8B5D005FAEF4 /* PWProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWProduct.m; sourceTree = "<group>"; };
+		CAF091471D4E8B99005FAEF4 /* PWPresentProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWPresentProduct.h; sourceTree = "<group>"; };
+		CAF091481D4E8B99005FAEF4 /* PWPresentProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWPresentProduct.m; sourceTree = "<group>"; };
+		CAF0914A1D4E8BAD005FAEF4 /* PWOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWOrder.h; sourceTree = "<group>"; };
+		CAF0914B1D4E8BAD005FAEF4 /* PWOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWOrder.m; sourceTree = "<group>"; };
+		CAF0914D1D4E8BC6005FAEF4 /* PWRestaurantReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWRestaurantReview.h; sourceTree = "<group>"; };
+		CAF0914E1D4E8BC6005FAEF4 /* PWRestaurantReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRestaurantReview.m; sourceTree = "<group>"; };
+		CAF091501D4E8BDB005FAEF4 /* PWPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWPurchase.h; sourceTree = "<group>"; };
+		CAF091511D4E8BDB005FAEF4 /* PWPurchase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWPurchase.m; sourceTree = "<group>"; };
+		CAF091531D4E8BF0005FAEF4 /* PWUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWUser.h; sourceTree = "<group>"; };
+		CAF091541D4E8BF0005FAEF4 /* PWUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWUser.m; sourceTree = "<group>"; };
+		CAF091561D4E8C06005FAEF4 /* PWUsersRestaurantInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWUsersRestaurantInfo.h; sourceTree = "<group>"; };
+		CAF091571D4E8C06005FAEF4 /* PWUsersRestaurantInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWUsersRestaurantInfo.m; sourceTree = "<group>"; };
+		CAF091591D4E8C38005FAEF4 /* PWWorkingTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWWorkingTime.h; sourceTree = "<group>"; };
+		CAF0915A1D4E8C38005FAEF4 /* PWWorkingTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWWorkingTime.m; sourceTree = "<group>"; };
+		CAF0915C1D4E8C4D005FAEF4 /* PWRestaurantAboutInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWRestaurantAboutInfo.h; sourceTree = "<group>"; };
+		CAF0915D1D4E8C4D005FAEF4 /* PWRestaurantAboutInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRestaurantAboutInfo.m; sourceTree = "<group>"; };
+		CAF0915F1D4E8D19005FAEF4 /* PWPrefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWPrefix.pch; sourceTree = "<group>"; };
+		CAF0917E1D4E9217005FAEF4 /* PWJSONConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWJSONConstants.h; sourceTree = "<group>"; };
+		CAF091811D4E9248005FAEF4 /* PWEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWEnums.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +137,7 @@
 		CAF0911D1D4D3A4C005FAEF4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				CAF0917B1D4E91FE005FAEF4 /* Other */,
 				CAF0911E1D4D3A4C005FAEF4 /* Controller */,
 				CAF091231D4D3A4C005FAEF4 /* Model */,
 				CAF091281D4D3A4C005FAEF4 /* SupportingFiles */,
@@ -127,6 +164,29 @@
 				CAF091251D4D3A4C005FAEF4 /* PWRestaurant.m */,
 				CAF091261D4D3A4C005FAEF4 /* PWRestaurantShare.h */,
 				CAF091271D4D3A4C005FAEF4 /* PWRestaurantShare.m */,
+				CAF0913B1D4E7272005FAEF4 /* IPWJSONInfo.h */,
+				CAF0913E1D4E737F005FAEF4 /* PWModelObject.h */,
+				CAF0913F1D4E737F005FAEF4 /* PWModelObject.m */,
+				CAF091411D4E8B3C005FAEF4 /* PWPrice.h */,
+				CAF091421D4E8B3C005FAEF4 /* PWPrice.m */,
+				CAF091441D4E8B5D005FAEF4 /* PWProduct.h */,
+				CAF091451D4E8B5D005FAEF4 /* PWProduct.m */,
+				CAF091471D4E8B99005FAEF4 /* PWPresentProduct.h */,
+				CAF091481D4E8B99005FAEF4 /* PWPresentProduct.m */,
+				CAF0914A1D4E8BAD005FAEF4 /* PWOrder.h */,
+				CAF0914B1D4E8BAD005FAEF4 /* PWOrder.m */,
+				CAF0914D1D4E8BC6005FAEF4 /* PWRestaurantReview.h */,
+				CAF0914E1D4E8BC6005FAEF4 /* PWRestaurantReview.m */,
+				CAF091501D4E8BDB005FAEF4 /* PWPurchase.h */,
+				CAF091511D4E8BDB005FAEF4 /* PWPurchase.m */,
+				CAF091531D4E8BF0005FAEF4 /* PWUser.h */,
+				CAF091541D4E8BF0005FAEF4 /* PWUser.m */,
+				CAF091561D4E8C06005FAEF4 /* PWUsersRestaurantInfo.h */,
+				CAF091571D4E8C06005FAEF4 /* PWUsersRestaurantInfo.m */,
+				CAF091591D4E8C38005FAEF4 /* PWWorkingTime.h */,
+				CAF0915A1D4E8C38005FAEF4 /* PWWorkingTime.m */,
+				CAF0915C1D4E8C4D005FAEF4 /* PWRestaurantAboutInfo.h */,
+				CAF0915D1D4E8C4D005FAEF4 /* PWRestaurantAboutInfo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -135,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				CAF091291D4D3A4C005FAEF4 /* main.m */,
+				CAF0915F1D4E8D19005FAEF4 /* PWPrefix.pch */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -146,6 +207,31 @@
 				CAF091391D4D4062005FAEF4 /* PWIndicator.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CAF0917B1D4E91FE005FAEF4 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				CAF0917C1D4E91FE005FAEF4 /* Services */,
+				CAF0917D1D4E91FE005FAEF4 /* Types */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		CAF0917C1D4E91FE005FAEF4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CAF0917D1D4E91FE005FAEF4 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				CAF0917E1D4E9217005FAEF4 /* PWJSONConstants.h */,
+				CAF091811D4E9248005FAEF4 /* PWEnums.h */,
+			);
+			path = Types;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,7 +292,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */,
-				CAF091351D4D3A9F005FAEF4 /* PWConfig.xcconfig in Resources */,
 				CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */,
 				CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */,
 				CAF091371D4D3B7B005FAEF4 /* Intro.storyboard in Resources */,
@@ -221,11 +306,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF091331D4D3A4C005FAEF4 /* main.m in Sources */,
-				CAF091311D4D3A4C005FAEF4 /* PWRestaurant.m in Sources */,
-				CAF091321D4D3A4C005FAEF4 /* PWRestaurantShare.m in Sources */,
+				CAF091891D4E94B6005FAEF4 /* PWWorkingTime.m in Sources */,
 				CAF091301D4D3A4C005FAEF4 /* PWNearSharesViewControllerCollectionViewController.m in Sources */,
 				CAF0913A1D4D4062005FAEF4 /* PWIndicator.m in Sources */,
+				CAF0916E1D4E9054005FAEF4 /* PWRestaurant.m in Sources */,
+				CAF0916D1D4E904E005FAEF4 /* PWModelObject.m in Sources */,
 				CAF0912F1D4D3A4C005FAEF4 /* PWAppDelegate.m in Sources */,
+				CAF091881D4E94B3005FAEF4 /* PWUsersRestaurantInfo.m in Sources */,
+				CAF091731D4E9099005FAEF4 /* PWPresentProduct.m in Sources */,
+				CAF091871D4E94B0005FAEF4 /* PWUser.m in Sources */,
+				CAF091861D4E94AE005FAEF4 /* PWPurchase.m in Sources */,
+				CAF0918A1D4E94B8005FAEF4 /* PWRestaurantAboutInfo.m in Sources */,
+				CAF091841D4E949C005FAEF4 /* PWOrder.m in Sources */,
+				CAF091701D4E905E005FAEF4 /* PWPrice.m in Sources */,
+				CAF091851D4E94A0005FAEF4 /* PWRestaurantReview.m in Sources */,
+				CAF0916F1D4E9059005FAEF4 /* PWRestaurantShare.m in Sources */,
+				CAF091711D4E9061005FAEF4 /* PWProduct.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +417,7 @@
 			baseConfigurationReference = CAF091341D4D3A9F005FAEF4 /* PWConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = PocketWaiter/Sources/SupportingFiles/PWPrefix.pch;
 				INFOPLIST_FILE = PocketWaiter/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pocketWaiter.PocketWaiter;
@@ -333,6 +430,7 @@
 			baseConfigurationReference = CAF091341D4D3A9F005FAEF4 /* PWConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = PocketWaiter/Sources/SupportingFiles/PWPrefix.pch;
 				INFOPLIST_FILE = PocketWaiter/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pocketWaiter.PocketWaiter;
@@ -359,6 +457,7 @@
 				CAF091161D4D3938005FAEF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

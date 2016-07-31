@@ -6,13 +6,14 @@
 //  Copyright © 2016 Www Www. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "PWModelObject.h"
 
 @class PWRestaurantShare;
+@class PWRestaurantAboutInfo;
 
-@interface PWRestaurant : NSObject
+@interface PWRestaurant : PWModelObject
 
-@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) PWRestaurantAboutInfo *aboutInfo;
 @property (nonatomic, readonly) NSArray<PWRestaurantShare *> *shares;
 
 @end
