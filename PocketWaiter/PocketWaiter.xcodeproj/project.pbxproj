@@ -310,6 +310,7 @@
 				TargetAttributes = {
 					CAF090FC1D4D3938005FAEF4 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 9N2TNZL54L;
 					};
 				};
 			};
@@ -473,11 +474,14 @@
 			baseConfigurationReference = CAF091341D4D3A9F005FAEF4 /* PWConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = PocketWaiter/Sources/SupportingFiles/PWPrefix.pch;
 				INFOPLIST_FILE = PocketWaiter/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pocketWaiter.PocketWaiter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -486,11 +490,14 @@
 			baseConfigurationReference = CAF091341D4D3A9F005FAEF4 /* PWConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = PocketWaiter/Sources/SupportingFiles/PWPrefix.pch;
 				INFOPLIST_FILE = PocketWaiter/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pocketWaiter.PocketWaiter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

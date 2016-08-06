@@ -69,7 +69,6 @@
 		[self.slidesView scrollToItemAtIndexPath:
 					[NSIndexPath indexPathForRow:currentPage + 1 inSection:0]
 					atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
-		[self handleScrollToPage:currentPage + 1];
 	}
 	else
 	{
@@ -153,17 +152,14 @@
 	return theCell;
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-	CGFloat pageWidth = self.slidesView.frame.size.width;
-	float currentPage = self.slidesView.contentOffset.x / pageWidth;
-	
-	[self handleScrollToPage:currentPage];
-}
-
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView
 {
 	[aScrollView setContentOffset:CGPointMake(aScrollView.contentOffset.x,0)];
+	
+	CGFloat pageWidth = self.slidesView.frame.size.width;
+	float currentPage = self.slidesView.contentOffset.x / pageWidth + 0.5;
+	
+	[self handleScrollToPage:currentPage];
 }
 
 @end
