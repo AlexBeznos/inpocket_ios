@@ -69,6 +69,7 @@
 		[self.slidesView scrollToItemAtIndexPath:
 					[NSIndexPath indexPathForRow:currentPage + 1 inSection:0]
 					atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+		[self handleScrollToPage:currentPage + 1];
 	}
 	else
 	{
@@ -85,6 +86,21 @@
 {
 	self.enterPromoController = [PWEnterPromoViewController new];
 	[self.enterPromoController showWithCompletion:nil];
+}
+
+- (void)handleScrollToPage:(NSUInteger)aPageNumber
+{
+	if (0.0f != fmodf(aPageNumber, 1.0f))
+	{
+		self.indicator.selectedItemIndex = aPageNumber + 1;
+	}
+	else
+	{
+		self.indicator.selectedItemIndex = aPageNumber;
+	}
+	
+	[self.skipButton setTitle:2 == aPageNumber ? @"Начать пользоваться" : @"Далее"
+				forState:UIControlStateNormal];
 }
 
 #pragma mark - data source
@@ -142,17 +158,7 @@
 	CGFloat pageWidth = self.slidesView.frame.size.width;
 	float currentPage = self.slidesView.contentOffset.x / pageWidth;
 	
-	if (0.0f != fmodf(currentPage, 1.0f))
-	{
-		self.indicator.selectedItemIndex = currentPage + 1;
-	}
-	else
-	{
-		self.indicator.selectedItemIndex = currentPage;
-	}
-	
-	[self.skipButton setTitle:2 == currentPage ? @"Начать пользоваться" : @"Далее"
-				forState:UIControlStateNormal];
+	[self handleScrollToPage:currentPage];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView
