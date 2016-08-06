@@ -8,18 +8,19 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 #import "PWIndicator.h"
+#import "UIColorAdditions.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 @interface PWIndicator ()
 
-@property (nonatomic, strong) NSMutableArray<UIImageView *> *indicatorViews;
+@property (nonatomic, strong) NSMutableArray<UIView *> *indicatorViews;
 
 @end
 
 ////////////////////////////////////////////////////////////////////////////////
 @implementation PWIndicator
 
-- (NSMutableArray<UIImageView *> *)indicatorViews
+- (NSMutableArray<UIView *> *)indicatorViews
 {
 	if (nil == _indicatorViews)
 	{
@@ -45,7 +46,7 @@
 		
 		for (NSInteger i = 0; i < countOfViewToDelete; i++)
 		{
-			UIImageView *indicatorView = self.indicatorViews.lastObject;
+			UIView *indicatorView = self.indicatorViews.lastObject;
 			[indicatorView removeFromSuperview];
 			[self.indicatorViews removeObject:indicatorView];
 			
@@ -61,14 +62,37 @@
 		
 		for (NSInteger i = 0; i < countOfViewToAdd; i++)
 		{
-			UIImageView *indicatorView = [[UIImageView alloc]
-						initWithImage:[UIImage imageNamed:@"normal"]];
+			UIView *indicatorView = [[UIView alloc]
+						initWithFrame:CGRectMake(0, 0, 6, 6)];
+			indicatorView.backgroundColor = [UIColor pwColorWithAlpha:0.2];
 			indicatorView.translatesAutoresizingMaskIntoConstraints = NO;
-			[indicatorView sizeToFit];
-			
-			// todo: add constraint layout
+			[indicatorView addConstraint:[NSLayoutConstraint
+						constraintWithItem:indicatorView attribute:NSLayoutAttributeWidth
+						relatedBy:NSLayoutRelationEqual toItem:nil
+						attribute:NSLayoutAttributeNotAnAttribute multiplier:1
+						constant:6]];
+			[indicatorView addConstraint:[NSLayoutConstraint
+						constraintWithItem:indicatorView attribute:NSLayoutAttributeHeight
+						relatedBy:NSLayoutRelationEqual toItem:nil
+						attribute:NSLayoutAttributeNotAnAttribute multiplier:1
+						constant:6]];
 			[self addSubview:indicatorView];
+			
+			NSInteger offset = 5 + i * 16;
+			[self addConstraints:[NSLayoutConstraint
+						constraintsWithVisualFormat:@"H:|-(offset)-[indicatorView]"
+						options:0 metrics:@{@"offset" : @(offset)}
+						views:@{@"indicatorView" : indicatorView}]];
+			[self addConstraint:[NSLayoutConstraint
+						constraintWithItem:indicatorView attribute:NSLayoutAttributeCenterY
+						relatedBy:NSLayoutRelationEqual toItem:self
+						attribute:NSLayoutAttributeCenterY multiplier:1
+						constant:0]];
+			[self.indicatorViews addObject:indicatorView];
 		}
+		
+		[self setNeedsLayout];
+		[self layoutIfNeeded];
 		
 		_itemsCount = itemsCount;
 	}
@@ -78,8 +102,10 @@
 {
 	if (selectedItemIndex < self.indicatorViews.count)
 	{
-		self.indicatorViews[_selectedItemIndex].image = [UIImage imageNamed:@"normal"];
-		self.indicatorViews[selectedItemIndex].image = [UIImage imageNamed:@"selected"];
+		self.indicatorViews[_selectedItemIndex].backgroundColor =
+					[UIColor pwColorWithAlpha:0.2];;
+		self.indicatorViews[selectedItemIndex].backgroundColor =
+					[UIColor pwColorWithAlpha:1];
 	
 		_selectedItemIndex = selectedItemIndex;
 	}

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PWIntroViewController">
+            <connections>
+                <outlet property="indicator" destination="20P-wZ-sPa" id="fvy-jy-Nu4"/>
+                <outlet property="layout" destination="daS-5i-z9z" id="PJt-eM-3jj"/>
+                <outlet property="nextButton" destination="FVy-Rj-4oG" id="7kh-qu-EPA"/>
+                <outlet property="skipButton" destination="Udu-7k-b2D" id="cZg-zy-KFh"/>
+                <outlet property="slidesView" destination="0ed-I2-xzj" id="FZ8-Gl-nKN"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0ed-I2-xzj">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="484"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewLayout key="collectionViewLayout" id="daS-5i-z9z" customClass="PWIntroLayout"/>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYP-n8-8r8">
+                    <rect key="frame" x="0.0" y="540" width="600" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVy-Rj-4oG">
+                            <rect key="frame" x="556" y="18" width="24" height="24"/>
+                            <state key="normal" image="blackBack"/>
+                            <connections>
+                                <action selector="nextPressed:" destination="-1" eventType="touchUpInside" id="qNK-8h-e6l"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Udu-7k-b2D">
+                            <rect key="frame" x="20" y="12" width="60" height="36"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="skipPressed:" destination="-1" eventType="touchUpInside" id="Zkv-mJ-QTv"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="FVy-Rj-4oG" secondAttribute="trailing" constant="20" id="7OP-VD-YqQ"/>
+                        <constraint firstItem="Udu-7k-b2D" firstAttribute="centerY" secondItem="MYP-n8-8r8" secondAttribute="centerY" id="M0q-FR-hKw"/>
+                        <constraint firstItem="Udu-7k-b2D" firstAttribute="leading" secondItem="MYP-n8-8r8" secondAttribute="leading" constant="20" id="Msd-Ce-pFa"/>
+                        <constraint firstAttribute="height" constant="60" id="UCM-2H-11c"/>
+                        <constraint firstItem="FVy-Rj-4oG" firstAttribute="centerY" secondItem="MYP-n8-8r8" secondAttribute="centerY" id="z21-xF-U2I"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="20P-wZ-sPa" customClass="PWIndicator">
+                    <rect key="frame" x="276" y="484" width="48" height="16"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="Nb0-1Y-HrO"/>
+                        <constraint firstAttribute="height" constant="16" id="dmo-F7-ooY"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="20P-wZ-sPa" firstAttribute="top" secondItem="0ed-I2-xzj" secondAttribute="bottom" id="BIm-7F-jHM"/>
+                <constraint firstAttribute="trailing" secondItem="MYP-n8-8r8" secondAttribute="trailing" id="Pez-0d-DeZ"/>
+                <constraint firstItem="0ed-I2-xzj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="PsA-e5-OJi"/>
+                <constraint firstItem="0ed-I2-xzj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Vmq-DV-V6v"/>
+                <constraint firstItem="MYP-n8-8r8" firstAttribute="top" secondItem="20P-wZ-sPa" secondAttribute="bottom" constant="40" id="ZwS-Gr-kGc"/>
+                <constraint firstItem="MYP-n8-8r8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dIk-gB-VL2"/>
+                <constraint firstItem="20P-wZ-sPa" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="iDt-nk-84M"/>
+                <constraint firstAttribute="bottom" secondItem="MYP-n8-8r8" secondAttribute="bottom" id="lRA-0i-cyq"/>
+                <constraint firstAttribute="trailing" secondItem="0ed-I2-xzj" secondAttribute="trailing" id="yoj-hD-7JG"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="blackBack" width="24" height="24"/>
+    </resources>
+</document>
