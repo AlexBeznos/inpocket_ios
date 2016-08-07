@@ -8,11 +8,12 @@
 
 #import "PWMainMenuViewController.h"
 #import "UIViewControllerAdditions.h"
+#import "PWDropShadowView.h"
 
 @interface PWMainMenuViewController ()
 
 @property (nonatomic, copy) PWContentTransitionHandler transitionHandler;
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollview;
 
 @end
 

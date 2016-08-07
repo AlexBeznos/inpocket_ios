@@ -12,7 +12,7 @@
 
 @interface PWOrder : PWModelObject
 
-@property (nonatomic, readonly) PWProduct *product;
+@property (nonatomic, strong) PWProduct *product;
 @property (nonatomic) NSUInteger count;
 
 @end

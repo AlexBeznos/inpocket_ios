@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PWMainMenuViewController">
             <connections>
+                <outlet property="scrollview" destination="imK-Sh-zKm" id="fs5-JN-T0l"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,10 +22,10 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="imK-Sh-zKm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Mkl-c8-Dil"/>
-                <constraint firstAttribute="bottom" secondItem="imK-Sh-zKm" secondAttribute="bottom" id="OZQ-av-jli"/>
-                <constraint firstItem="imK-Sh-zKm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="PiW-xV-fID"/>
-                <constraint firstAttribute="trailing" secondItem="imK-Sh-zKm" secondAttribute="trailing" id="roZ-cX-Qbh"/>
+                <constraint firstItem="imK-Sh-zKm" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="DOc-4e-Bke"/>
+                <constraint firstItem="imK-Sh-zKm" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="EB2-FK-ifD"/>
+                <constraint firstItem="imK-Sh-zKm" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Hqn-Hf-luB"/>
+                <constraint firstItem="imK-Sh-zKm" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="KYH-PS-qaU"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>

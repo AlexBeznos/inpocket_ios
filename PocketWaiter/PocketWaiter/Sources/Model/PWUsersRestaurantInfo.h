@@ -8,11 +8,9 @@
 
 #import "PWModelObject.h"
 
-@class PWRestaurant;
-
 @interface PWUsersRestaurantInfo : PWModelObject
 
-@property (nonatomic, readonly) PWRestaurant *restaurant;
+@property (nonatomic, readonly) NSString *restaurantId;
 @property (nonatomic, readonly) NSDate *lastCommingDate;
 @property (nonatomic, readonly) NSUInteger collectedBonuses;
 @property (nonatomic, readonly) NSString *sessionToken;

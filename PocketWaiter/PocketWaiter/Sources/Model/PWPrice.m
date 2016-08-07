@@ -10,4 +10,9 @@
 
 @implementation PWPrice
 
+- (NSString *)humanReadableValue
+{
+	return [NSString stringWithFormat:@"%f $", self.value];
+}
+
 @end

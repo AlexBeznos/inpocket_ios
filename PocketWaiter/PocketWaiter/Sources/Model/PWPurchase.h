@@ -9,13 +9,12 @@
 #import "PWModelObject.h"
 
 @class PWOrder;
-@class PWRestaurant;
 
 @interface PWPurchase : PWModelObject
 
 @property (nonatomic, readonly) NSDate *date;
 @property (nonatomic, readonly) NSArray<PWOrder *> *orders;
 @property (nonatomic, readonly) NSArray<PWOrder *> *presents;
-@property (nonatomic, readonly) PWRestaurant *restaurant;
+@property (nonatomic, readonly) NSString *restaurantId;
 
 @end

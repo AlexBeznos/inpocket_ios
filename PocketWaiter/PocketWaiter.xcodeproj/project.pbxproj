@@ -44,6 +44,21 @@
 		CAF091B61D57517B005FAEF4 /* PWMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091B41D57517B005FAEF4 /* PWMainMenuViewController.m */; };
 		CAF091B91D575195005FAEF4 /* PWMainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF091B81D575195005FAEF4 /* PWMainMenuViewController.xib */; };
 		CAF091BC1D57559A005FAEF4 /* UIViewControllerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091BB1D57559A005FAEF4 /* UIViewControllerAdditions.m */; };
+		CAF091BF1D576703005FAEF4 /* PWDropShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091BE1D576703005FAEF4 /* PWDropShadowView.m */; };
+		CAF091C21D576B83005FAEF4 /* mohito.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CAF091C11D576B83005FAEF4 /* mohito.jpg */; };
+		CAF091C51D577286005FAEF4 /* PWModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091C41D577286005FAEF4 /* PWModelManager.m */; };
+		CAF091CA1D57962B005FAEF4 /* burger.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CAF091C91D57962B005FAEF4 /* burger.jpg */; };
+		CAF091CC1D57994D005FAEF4 /* vapiano.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CAF091CB1D57994D005FAEF4 /* vapiano.jpeg */; };
+		CAF091CE1D579967005FAEF4 /* coffeetoria.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CAF091CD1D579967005FAEF4 /* coffeetoria.jpg */; };
+		CAF091D51D5799DB005FAEF4 /* vapiano_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CAF091CF1D5799DB005FAEF4 /* vapiano_1.jpg */; };
+		CAF091D61D5799DB005FAEF4 /* vapiano_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CAF091D01D5799DB005FAEF4 /* vapiano_2.jpg */; };
+		CAF091D71D5799DB005FAEF4 /* vapiano_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CAF091D11D5799DB005FAEF4 /* vapiano_3.jpg */; };
+		CAF091D81D5799DB005FAEF4 /* coffeetoria1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CAF091D21D5799DB005FAEF4 /* coffeetoria1.jpg */; };
+		CAF091D91D5799DB005FAEF4 /* coffeetoria2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CAF091D31D5799DB005FAEF4 /* coffeetoria2.jpg */; };
+		CAF091DA1D5799DB005FAEF4 /* coffeetoria3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CAF091D41D5799DB005FAEF4 /* coffeetoria3.jpg */; };
+		CAF091DC1D579EDD005FAEF4 /* juice.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CAF091DB1D579EDD005FAEF4 /* juice.jpg */; };
+		CAF091DF1D57A05F005FAEF4 /* hookah2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CAF091DD1D57A05F005FAEF4 /* hookah2.jpeg */; };
+		CAF091E01D57A05F005FAEF4 /* hookah1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CAF091DE1D57A05F005FAEF4 /* hookah1.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,6 +132,24 @@
 		CAF091B81D575195005FAEF4 /* PWMainMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWMainMenuViewController.xib; sourceTree = "<group>"; };
 		CAF091BA1D57559A005FAEF4 /* UIViewControllerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewControllerAdditions.h; sourceTree = "<group>"; };
 		CAF091BB1D57559A005FAEF4 /* UIViewControllerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewControllerAdditions.m; sourceTree = "<group>"; };
+		CAF091BD1D576703005FAEF4 /* PWDropShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDropShadowView.h; sourceTree = "<group>"; };
+		CAF091BE1D576703005FAEF4 /* PWDropShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDropShadowView.m; sourceTree = "<group>"; };
+		CAF091C11D576B83005FAEF4 /* mohito.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mohito.jpg; sourceTree = "<group>"; };
+		CAF091C31D577286005FAEF4 /* PWModelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWModelManager.h; sourceTree = "<group>"; };
+		CAF091C41D577286005FAEF4 /* PWModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWModelManager.m; sourceTree = "<group>"; };
+		CAF091C61D57739E005FAEF4 /* PWStubModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWStubModel.h; sourceTree = "<group>"; };
+		CAF091C91D57962B005FAEF4 /* burger.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = burger.jpg; sourceTree = "<group>"; };
+		CAF091CB1D57994D005FAEF4 /* vapiano.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vapiano.jpeg; sourceTree = "<group>"; };
+		CAF091CD1D579967005FAEF4 /* coffeetoria.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = coffeetoria.jpg; sourceTree = "<group>"; };
+		CAF091CF1D5799DB005FAEF4 /* vapiano_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vapiano_1.jpg; sourceTree = "<group>"; };
+		CAF091D01D5799DB005FAEF4 /* vapiano_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vapiano_2.jpg; sourceTree = "<group>"; };
+		CAF091D11D5799DB005FAEF4 /* vapiano_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vapiano_3.jpg; sourceTree = "<group>"; };
+		CAF091D21D5799DB005FAEF4 /* coffeetoria1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = coffeetoria1.jpg; sourceTree = "<group>"; };
+		CAF091D31D5799DB005FAEF4 /* coffeetoria2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = coffeetoria2.jpg; sourceTree = "<group>"; };
+		CAF091D41D5799DB005FAEF4 /* coffeetoria3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = coffeetoria3.jpg; sourceTree = "<group>"; };
+		CAF091DB1D579EDD005FAEF4 /* juice.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = juice.jpg; sourceTree = "<group>"; };
+		CAF091DD1D57A05F005FAEF4 /* hookah2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hookah2.jpeg; sourceTree = "<group>"; };
+		CAF091DE1D57A05F005FAEF4 /* hookah1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hookah1.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +182,7 @@
 		CAF090FF1D4D3938005FAEF4 /* PocketWaiter */ = {
 			isa = PBXGroup;
 			children = (
+				CAF091C01D576B7A005FAEF4 /* Temp resources */,
 				CAF091171D4D3A4C005FAEF4 /* Configuration */,
 				CAF091181D4D3A4C005FAEF4 /* Resources */,
 				CAF0911D1D4D3A4C005FAEF4 /* Sources */,
@@ -247,6 +281,8 @@
 				CAF0915D1D4E8C4D005FAEF4 /* PWRestaurantAboutInfo.m */,
 				CAF091B01D566763005FAEF4 /* PWContentSource.h */,
 				CAF091B11D566763005FAEF4 /* PWContentSource.m */,
+				CAF091C31D577286005FAEF4 /* PWModelManager.h */,
+				CAF091C41D577286005FAEF4 /* PWModelManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -267,6 +303,8 @@
 				CAF091391D4D4062005FAEF4 /* PWIndicator.m */,
 				CAF091951D561AF6005FAEF4 /* PWIntroFirstPageCell.h */,
 				CAF091961D561AF6005FAEF4 /* PWIntroFirstPageCell.m */,
+				CAF091BD1D576703005FAEF4 /* PWDropShadowView.h */,
+				CAF091BE1D576703005FAEF4 /* PWDropShadowView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -300,6 +338,27 @@
 				CAF091811D4E9248005FAEF4 /* PWEnums.h */,
 			);
 			path = Types;
+			sourceTree = "<group>";
+		};
+		CAF091C01D576B7A005FAEF4 /* Temp resources */ = {
+			isa = PBXGroup;
+			children = (
+				CAF091DD1D57A05F005FAEF4 /* hookah2.jpeg */,
+				CAF091DE1D57A05F005FAEF4 /* hookah1.jpeg */,
+				CAF091DB1D579EDD005FAEF4 /* juice.jpg */,
+				CAF091CF1D5799DB005FAEF4 /* vapiano_1.jpg */,
+				CAF091D01D5799DB005FAEF4 /* vapiano_2.jpg */,
+				CAF091D11D5799DB005FAEF4 /* vapiano_3.jpg */,
+				CAF091D21D5799DB005FAEF4 /* coffeetoria1.jpg */,
+				CAF091D31D5799DB005FAEF4 /* coffeetoria2.jpg */,
+				CAF091D41D5799DB005FAEF4 /* coffeetoria3.jpg */,
+				CAF091CD1D579967005FAEF4 /* coffeetoria.jpg */,
+				CAF091CB1D57994D005FAEF4 /* vapiano.jpeg */,
+				CAF091C91D57962B005FAEF4 /* burger.jpg */,
+				CAF091C11D576B83005FAEF4 /* mohito.jpg */,
+				CAF091C61D57739E005FAEF4 /* PWStubModel.h */,
+			);
+			path = "Temp resources";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,16 +419,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAF091DA1D5799DB005FAEF4 /* coffeetoria3.jpg in Resources */,
+				CAF091E01D57A05F005FAEF4 /* hookah1.jpeg in Resources */,
 				CAF091A91D564E61005FAEF4 /* PWEnterPromoViewController.xib in Resources */,
 				CAF091911D560B80005FAEF4 /* PWIntroViewController.xib in Resources */,
+				CAF091D81D5799DB005FAEF4 /* coffeetoria1.jpg in Resources */,
 				CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */,
+				CAF091DF1D57A05F005FAEF4 /* hookah2.jpeg in Resources */,
 				CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */,
 				CAF091A11D562471005FAEF4 /* PWIntroSecondPageCell.xib in Resources */,
 				CAF091A21D562471005FAEF4 /* PWIntroThirdPageCell.xib in Resources */,
 				CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */,
 				CAF091371D4D3B7B005FAEF4 /* Intro.storyboard in Resources */,
+				CAF091DC1D579EDD005FAEF4 /* juice.jpg in Resources */,
+				CAF091CC1D57994D005FAEF4 /* vapiano.jpeg in Resources */,
+				CAF091D61D5799DB005FAEF4 /* vapiano_2.jpg in Resources */,
+				CAF091CA1D57962B005FAEF4 /* burger.jpg in Resources */,
+				CAF091C21D576B83005FAEF4 /* mohito.jpg in Resources */,
 				CAF0919B1D561B1E005FAEF4 /* PWIntroFirstPageCell.xib in Resources */,
 				CAF091B91D575195005FAEF4 /* PWMainMenuViewController.xib in Resources */,
+				CAF091D71D5799DB005FAEF4 /* vapiano_3.jpg in Resources */,
+				CAF091D51D5799DB005FAEF4 /* vapiano_1.jpg in Resources */,
+				CAF091CE1D579967005FAEF4 /* coffeetoria.jpg in Resources */,
+				CAF091D91D5799DB005FAEF4 /* coffeetoria2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +454,7 @@
 			files = (
 				CAF091941D56165C005FAEF4 /* PWMainViewController.m in Sources */,
 				CAF091981D561AF6005FAEF4 /* PWIntroFirstPageCell.m in Sources */,
+				CAF091C51D577286005FAEF4 /* PWModelManager.m in Sources */,
 				CAF091A61D564E3F005FAEF4 /* PWEnterPromoViewController.m in Sources */,
 				CAF091B21D566763005FAEF4 /* PWContentSource.m in Sources */,
 				CAF0919E1D561DCB005FAEF4 /* PWIntroLayout.m in Sources */,
@@ -394,6 +467,7 @@
 				CAF0916E1D4E9054005FAEF4 /* PWRestaurant.m in Sources */,
 				CAF0916D1D4E904E005FAEF4 /* PWModelObject.m in Sources */,
 				CAF0912F1D4D3A4C005FAEF4 /* PWAppDelegate.m in Sources */,
+				CAF091BF1D576703005FAEF4 /* PWDropShadowView.m in Sources */,
 				CAF091AC1D5657C9005FAEF4 /* UIColorAdditions.m in Sources */,
 				CAF091881D4E94B3005FAEF4 /* PWUsersRestaurantInfo.m in Sources */,
 				CAF091731D4E9099005FAEF4 /* PWPresentProduct.m in Sources */,
