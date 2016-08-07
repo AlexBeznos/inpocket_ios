@@ -41,6 +41,9 @@
 		CAF091AC1D5657C9005FAEF4 /* UIColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091AB1D5657C9005FAEF4 /* UIColorAdditions.m */; };
 		CAF091AF1D56672F005FAEF4 /* PWRootMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091AE1D56672F005FAEF4 /* PWRootMenuTableViewController.m */; };
 		CAF091B21D566763005FAEF4 /* PWContentSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091B11D566763005FAEF4 /* PWContentSource.m */; };
+		CAF091B61D57517B005FAEF4 /* PWMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091B41D57517B005FAEF4 /* PWMainMenuViewController.m */; };
+		CAF091B91D575195005FAEF4 /* PWMainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF091B81D575195005FAEF4 /* PWMainMenuViewController.xib */; };
+		CAF091BC1D57559A005FAEF4 /* UIViewControllerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091BB1D57559A005FAEF4 /* UIViewControllerAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +112,11 @@
 		CAF091AE1D56672F005FAEF4 /* PWRootMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRootMenuTableViewController.m; sourceTree = "<group>"; };
 		CAF091B01D566763005FAEF4 /* PWContentSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWContentSource.h; sourceTree = "<group>"; };
 		CAF091B11D566763005FAEF4 /* PWContentSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWContentSource.m; sourceTree = "<group>"; };
+		CAF091B31D57517B005FAEF4 /* PWMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWMainMenuViewController.h; sourceTree = "<group>"; };
+		CAF091B41D57517B005FAEF4 /* PWMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWMainMenuViewController.m; sourceTree = "<group>"; };
+		CAF091B81D575195005FAEF4 /* PWMainMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWMainMenuViewController.xib; sourceTree = "<group>"; };
+		CAF091BA1D57559A005FAEF4 /* UIViewControllerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewControllerAdditions.h; sourceTree = "<group>"; };
+		CAF091BB1D57559A005FAEF4 /* UIViewControllerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewControllerAdditions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +167,7 @@
 		CAF091181D4D3A4C005FAEF4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CAF091B81D575195005FAEF4 /* PWMainMenuViewController.xib */,
 				CAF091A81D564E61005FAEF4 /* PWEnterPromoViewController.xib */,
 				CAF0919F1D562471005FAEF4 /* PWIntroSecondPageCell.xib */,
 				CAF091A01D562471005FAEF4 /* PWIntroThirdPageCell.xib */,
@@ -200,6 +209,8 @@
 				CAF091A41D564E3F005FAEF4 /* PWEnterPromoViewController.m */,
 				CAF091AD1D56672F005FAEF4 /* PWRootMenuTableViewController.h */,
 				CAF091AE1D56672F005FAEF4 /* PWRootMenuTableViewController.m */,
+				CAF091B31D57517B005FAEF4 /* PWMainMenuViewController.h */,
+				CAF091B41D57517B005FAEF4 /* PWMainMenuViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -269,6 +280,8 @@
 				CAF0919D1D561DCB005FAEF4 /* PWIntroLayout.m */,
 				CAF091AA1D5657C9005FAEF4 /* UIColorAdditions.h */,
 				CAF091AB1D5657C9005FAEF4 /* UIColorAdditions.m */,
+				CAF091BA1D57559A005FAEF4 /* UIViewControllerAdditions.h */,
+				CAF091BB1D57559A005FAEF4 /* UIViewControllerAdditions.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -356,6 +369,7 @@
 				CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */,
 				CAF091371D4D3B7B005FAEF4 /* Intro.storyboard in Resources */,
 				CAF0919B1D561B1E005FAEF4 /* PWIntroFirstPageCell.xib in Resources */,
+				CAF091B91D575195005FAEF4 /* PWMainMenuViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +385,7 @@
 				CAF091A61D564E3F005FAEF4 /* PWEnterPromoViewController.m in Sources */,
 				CAF091B21D566763005FAEF4 /* PWContentSource.m in Sources */,
 				CAF0919E1D561DCB005FAEF4 /* PWIntroLayout.m in Sources */,
+				CAF091B61D57517B005FAEF4 /* PWMainMenuViewController.m in Sources */,
 				CAF091331D4D3A4C005FAEF4 /* main.m in Sources */,
 				CAF091891D4E94B6005FAEF4 /* PWWorkingTime.m in Sources */,
 				CAF091301D4D3A4C005FAEF4 /* PWNearSharesViewControllerCollectionViewController.m in Sources */,
@@ -391,6 +406,7 @@
 				CAF091AF1D56672F005FAEF4 /* PWRootMenuTableViewController.m in Sources */,
 				CAF0916F1D4E9059005FAEF4 /* PWRestaurantShare.m in Sources */,
 				CAF091711D4E9061005FAEF4 /* PWProduct.m in Sources */,
+				CAF091BC1D57559A005FAEF4 /* UIViewControllerAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,8 @@
 #import "PWUser.h"
 #import "PWRestaurant.h"
 #import "PWRestaurantAboutInfo.h"
+#import "PWMainMenuViewController.h"
+#import "UIViewControllerAdditions.h"
 
 @interface PWRootMenuTableViewController ()
 
@@ -18,6 +20,8 @@
 @property (nonatomic, strong) PWUser *user;
 @property (nonatomic, strong) PWRestaurant *restaurant;
 @property (nonatomic, strong) UIView *headerView;
+@property (nonatomic, strong) NSLayoutConstraint *transitionConstrain;
+@property (nonatomic, strong) UIViewController *selectedController;
 
 @end
 
@@ -41,30 +45,51 @@
 {
 	if (nil == _sources)
 	{
+		__weak __typeof(self) theWeakSelf = self;
 		PWContentSource *mainSource = [[PWContentSource alloc]
 					initWithTitle:@"Главная" details:self.restaurant.aboutInfo.name
 					icon:[UIImage imageNamed:@"whiteBonus"]
-					contentViewController:nil];
+					contentViewController:[[PWMainMenuViewController alloc]
+					initWithTransitionHandler:
+		^{
+			[theWeakSelf performBackTransition];
+		}]];
 		
 		PWContentSource *restaurantsSource = [[PWContentSource alloc]
 					initWithTitle:@"Заведения" details:nil
 					icon:[UIImage imageNamed:@"whiteRestaurants"]
-					contentViewController:nil];
+					contentViewController:[[PWMainMenuViewController alloc]
+					initWithTransitionHandler:
+		^{
+			[theWeakSelf performBackTransition];
+		}]];
 		
 		PWContentSource *shareSource = [[PWContentSource alloc]
 					initWithTitle:@"Поделиться" details:nil
 					icon:[UIImage imageNamed:@"whiteShare"]
-					contentViewController:nil];
+					contentViewController:[[PWMainMenuViewController alloc]
+					initWithTransitionHandler:
+		^{
+			[theWeakSelf performBackTransition];
+		}]];
 		
 		PWContentSource *aboutSource = [[PWContentSource alloc]
 					initWithTitle:@"О приложении" details:nil
 					icon:[UIImage imageNamed:@"whiteAbout"]
-					contentViewController:nil];
+					contentViewController:[[PWMainMenuViewController alloc]
+					initWithTransitionHandler:
+		^{
+			[theWeakSelf performBackTransition];
+		}]];
 		
 		PWContentSource *profileSource = [[PWContentSource alloc]
 					initWithTitle:@"Профиль" details:self.user.userName
 					icon:[UIImage imageNamed:@"whiteProfile"]
-					contentViewController:nil];
+					contentViewController:[[PWMainMenuViewController alloc]
+					initWithTransitionHandler:
+		^{
+			[theWeakSelf performBackTransition];
+		}]];
 		
 		_sources = @[mainSource, restaurantsSource, shareSource,
 					aboutSource, profileSource];
@@ -121,6 +146,17 @@
 	}
 	
 	return _headerView;
+}
+
+- (void)performBackTransition
+{
+	self.selectedController.view.userInteractionEnabled = NO;
+	[UIView animateWithDuration:0.25 animations:
+	^{
+		self.transitionConstrain.constant = -300;
+		[self.view setNeedsLayout];
+		[self.view layoutIfNeeded];
+	}];
 }
 
 #pragma mark - Table view data source
@@ -189,8 +225,27 @@
 	
 	if (nil != contentController)
 	{
-		[self.navigationController pushViewController:contentController
-					animated:YES];
+		if (contentController != self.selectedController)
+		{
+			self.selectedController = contentController;
+			UINavigationController *navigation = [[UINavigationController alloc]
+						initWithRootViewController:contentController];
+			navigation.navigationBar.translucent = NO;
+			// TODO customize navigarion bar
+			
+			self.transitionConstrain = [self navigateViewController:navigation];
+		}
+		else
+		{
+			[UIView animateWithDuration:0.25 animations:
+			^{
+				self.transitionConstrain.constant = 0;
+				[self.view setNeedsLayout];
+				[self.view layoutIfNeeded];
+			}];
+		}
+		
+		self.selectedController.view.userInteractionEnabled = NO;
 	}
 }
 

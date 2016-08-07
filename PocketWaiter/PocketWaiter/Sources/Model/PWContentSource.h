@@ -8,14 +8,24 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^PWContentTransitionHandler)();
+
+@protocol IPWContentTransitionControler <NSObject>
+
+- (instancetype)initWithTransitionHandler:(PWContentTransitionHandler)aHandler;
+
+@end
+
 @interface PWContentSource : NSObject
 
 - (instancetype)initWithTitle:(NSString *)title details:(NSString *)details
-			icon:(UIImage *)icon contentViewController:(UIViewController *)controller;
+			icon:(UIImage *)icon contentViewController:
+			(UIViewController<IPWContentTransitionControler> *)controller;
 
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) NSString *details;
 @property (nonatomic, readonly) UIImage *icon;
-@property (nonatomic, readonly) UIViewController *contentViewController;
+@property (nonatomic, readonly)
+			UIViewController<IPWContentTransitionControler> *contentViewController;
 
 @end

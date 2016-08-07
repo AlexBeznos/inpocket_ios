@@ -11,7 +11,8 @@
 @implementation PWContentSource
 
 - (instancetype)initWithTitle:(NSString *)title details:(NSString *)details
-			icon:(UIImage *)icon contentViewController:(UIViewController *)controller
+			icon:(UIImage *)icon contentViewController:
+			(UIViewController<IPWContentTransitionControler> *)controller
 {
 	self = [super init];
 	

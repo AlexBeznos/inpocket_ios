@@ -10,6 +10,7 @@
 #import "PWIntroViewController.h"
 
 #import "PWRootMenuTableViewController.h"
+#import "UIViewControllerAdditions.h"
 
 @interface PWMainViewController ()
 
@@ -31,8 +32,7 @@
 				initWithCompletionHandler:
 	^{
 		theWeakSelf.rootMenuController = [PWRootMenuTableViewController new];
-		[theWeakSelf.navigationController
-					pushViewController:theWeakSelf.rootMenuController animated:YES];
+		[theWeakSelf navigateViewController:theWeakSelf.rootMenuController];
 	}];
 	
 	[self setupChildController:self.introController];
