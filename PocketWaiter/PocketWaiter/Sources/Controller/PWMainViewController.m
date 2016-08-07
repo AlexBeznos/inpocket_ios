@@ -9,7 +9,12 @@
 #import "PWMainViewController.h"
 #import "PWIntroViewController.h"
 
+#import "PWRootMenuTableViewController.h"
+
 @interface PWMainViewController ()
+
+@property (nonatomic, strong) PWIntroViewController *introController;
+@property (nonatomic, strong) PWRootMenuTableViewController *rootMenuController;
 
 @end
 
@@ -17,23 +22,36 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+	[super viewDidLoad];
 	
-	 self.navigationController.navigationBarHidden = YES;
+	self.navigationController.navigationBarHidden = YES;
+
+	__weak __typeof(self) theWeakSelf = self;
+	self.introController = [[PWIntroViewController alloc]
+				initWithCompletionHandler:
+	^{
+		theWeakSelf.rootMenuController = [PWRootMenuTableViewController new];
+		[theWeakSelf.navigationController
+					pushViewController:theWeakSelf.rootMenuController animated:YES];
+	}];
 	
-	 PWIntroViewController *introController = [PWIntroViewController new];
-	 [self addChildViewController:introController];
-	 [self.view addSubview:introController.view];
-	 [introController didMoveToParentViewController:self];
-	 introController.view.translatesAutoresizingMaskIntoConstraints = NO;
-	 [self.view addConstraints:[NSLayoutConstraint
-					constraintsWithVisualFormat:@"V:|[view]|"
-					options:0 metrics:nil
-					views:@{@"view" : introController.view}]];
+	[self setupChildController:self.introController];
+}
+
+- (void)setupChildController:(UIViewController *)controller
+{
+	[self addChildViewController:controller];
+	[self.view addSubview:controller.view];
+	[controller didMoveToParentViewController:self];
+	controller.view.translatesAutoresizingMaskIntoConstraints = NO;
 	[self.view addConstraints:[NSLayoutConstraint
-					constraintsWithVisualFormat:@"H:|[view]|"
-					options:0 metrics:nil
-					views:@{@"view" : introController.view}]];
+				constraintsWithVisualFormat:@"V:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : controller.view}]];
+	[self.view addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"H:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : controller.view}]];
 }
 
 @end

@@ -39,6 +39,8 @@
 		CAF091A61D564E3F005FAEF4 /* PWEnterPromoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091A41D564E3F005FAEF4 /* PWEnterPromoViewController.m */; };
 		CAF091A91D564E61005FAEF4 /* PWEnterPromoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF091A81D564E61005FAEF4 /* PWEnterPromoViewController.xib */; };
 		CAF091AC1D5657C9005FAEF4 /* UIColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091AB1D5657C9005FAEF4 /* UIColorAdditions.m */; };
+		CAF091AF1D56672F005FAEF4 /* PWRootMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091AE1D56672F005FAEF4 /* PWRootMenuTableViewController.m */; };
+		CAF091B21D566763005FAEF4 /* PWContentSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091B11D566763005FAEF4 /* PWContentSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +105,10 @@
 		CAF091A81D564E61005FAEF4 /* PWEnterPromoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWEnterPromoViewController.xib; sourceTree = "<group>"; };
 		CAF091AA1D5657C9005FAEF4 /* UIColorAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColorAdditions.h; sourceTree = "<group>"; };
 		CAF091AB1D5657C9005FAEF4 /* UIColorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColorAdditions.m; sourceTree = "<group>"; };
+		CAF091AD1D56672F005FAEF4 /* PWRootMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWRootMenuTableViewController.h; sourceTree = "<group>"; };
+		CAF091AE1D56672F005FAEF4 /* PWRootMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRootMenuTableViewController.m; sourceTree = "<group>"; };
+		CAF091B01D566763005FAEF4 /* PWContentSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWContentSource.h; sourceTree = "<group>"; };
+		CAF091B11D566763005FAEF4 /* PWContentSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWContentSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +198,8 @@
 				CAF091931D56165C005FAEF4 /* PWMainViewController.m */,
 				CAF091A31D564E3F005FAEF4 /* PWEnterPromoViewController.h */,
 				CAF091A41D564E3F005FAEF4 /* PWEnterPromoViewController.m */,
+				CAF091AD1D56672F005FAEF4 /* PWRootMenuTableViewController.h */,
+				CAF091AE1D56672F005FAEF4 /* PWRootMenuTableViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -226,6 +234,8 @@
 				CAF0915A1D4E8C38005FAEF4 /* PWWorkingTime.m */,
 				CAF0915C1D4E8C4D005FAEF4 /* PWRestaurantAboutInfo.h */,
 				CAF0915D1D4E8C4D005FAEF4 /* PWRestaurantAboutInfo.m */,
+				CAF091B01D566763005FAEF4 /* PWContentSource.h */,
+				CAF091B11D566763005FAEF4 /* PWContentSource.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -359,6 +369,7 @@
 				CAF091941D56165C005FAEF4 /* PWMainViewController.m in Sources */,
 				CAF091981D561AF6005FAEF4 /* PWIntroFirstPageCell.m in Sources */,
 				CAF091A61D564E3F005FAEF4 /* PWEnterPromoViewController.m in Sources */,
+				CAF091B21D566763005FAEF4 /* PWContentSource.m in Sources */,
 				CAF0919E1D561DCB005FAEF4 /* PWIntroLayout.m in Sources */,
 				CAF091331D4D3A4C005FAEF4 /* main.m in Sources */,
 				CAF091891D4E94B6005FAEF4 /* PWWorkingTime.m in Sources */,
@@ -377,6 +388,7 @@
 				CAF091841D4E949C005FAEF4 /* PWOrder.m in Sources */,
 				CAF091701D4E905E005FAEF4 /* PWPrice.m in Sources */,
 				CAF091851D4E94A0005FAEF4 /* PWRestaurantReview.m in Sources */,
+				CAF091AF1D56672F005FAEF4 /* PWRootMenuTableViewController.m in Sources */,
 				CAF0916F1D4E9059005FAEF4 /* PWRestaurantShare.m in Sources */,
 				CAF091711D4E9061005FAEF4 /* PWProduct.m in Sources */,
 			);

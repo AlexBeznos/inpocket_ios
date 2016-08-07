@@ -23,9 +23,23 @@
 
 @property (nonatomic, strong) PWEnterPromoViewController *enterPromoController;
 
+@property (nonatomic, copy) void (^completion)();
+
 @end
 
 @implementation PWIntroViewController
+
+- (instancetype)initWithCompletionHandler:(void (^)())aCompletion
+{
+	self = [super init];
+	
+	if (nil != self)
+	{
+		self.completion = aCompletion;
+	}
+	
+	return self;
+}
 
 - (void)viewDidLoad
 {
@@ -78,7 +92,11 @@
 
 - (IBAction)skipPressed:(id)sender
 {
-
+	if (nil != self.completion)
+	{
+		self.completion();
+		self.completion = nil;
+	}
 }
 
 - (void)showPromo

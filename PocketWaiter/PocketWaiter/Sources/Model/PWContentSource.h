@@ -1,0 +1,21 @@
+//
+//  PWContentSource.h
+//  PocketWaiter
+//
+//  Created by Www Www on 8/6/16.
+//  Copyright © 2016 inPocket. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface PWContentSource : NSObject
+
+- (instancetype)initWithTitle:(NSString *)title details:(NSString *)details
+			icon:(UIImage *)icon contentViewController:(UIViewController *)controller;
+
+@property (nonatomic, readonly) NSString *title;
+@property (nonatomic, readonly) NSString *details;
+@property (nonatomic, readonly) UIImage *icon;
+@property (nonatomic, readonly) UIViewController *contentViewController;
+
+@end

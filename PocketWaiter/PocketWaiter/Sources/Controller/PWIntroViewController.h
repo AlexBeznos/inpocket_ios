@@ -10,4 +10,6 @@
 
 @interface PWIntroViewController : UIViewController
 
+- (instancetype)initWithCompletionHandler:(void (^)())aCompletion;
+
 @end
