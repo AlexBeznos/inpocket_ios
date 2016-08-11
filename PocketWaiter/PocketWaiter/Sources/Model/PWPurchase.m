@@ -8,6 +8,15 @@
 
 #import "PWPurchase.h"
 
+@interface PWPurchase ()
+
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) NSArray<PWOrder *> *orders;
+@property (nonatomic, strong) NSArray<PWOrder *> *presents;
+@property (nonatomic, strong) NSString *restaurantId;
+
+@end
+
 @implementation PWPurchase
 
 @end

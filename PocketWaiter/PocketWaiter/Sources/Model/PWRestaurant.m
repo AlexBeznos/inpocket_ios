@@ -9,6 +9,15 @@
 #import "PWRestaurant.h"
 #import "PWProduct.h"
 
+@interface PWRestaurant ()
+
+@property (nonatomic, strong) PWRestaurantAboutInfo *aboutInfo;
+@property (nonatomic, strong) NSArray<PWRestaurantShare *> *shares;
+@property (nonatomic, strong) NSArray<PWProduct *> *products;
+@property (nonatomic, strong) NSArray<PWPresentProduct *> *presents;
+
+@end
+
 @implementation PWRestaurant
 
 - (NSArray<PWProduct *> *)firstPresents

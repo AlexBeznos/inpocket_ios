@@ -8,8 +8,7 @@
 
 #import "PWRootMenuTableViewController.h"
 #import "PWContentSource.h"
-#import "PWUser.h"
-#import "PWRestaurant.h"
+#import "PWModelManager.h"
 #import "PWRestaurantAboutInfo.h"
 #import "PWMainMenuViewController.h"
 #import "UIViewControllerAdditions.h"
@@ -17,7 +16,6 @@
 @interface PWRootMenuTableViewController ()
 
 @property (nonatomic, readonly) NSArray<PWContentSource *> *sources;
-@property (nonatomic, strong) PWUser *user;
 @property (nonatomic, strong) PWRestaurant *restaurant;
 @property (nonatomic, strong) UIView *headerView;
 @property (nonatomic, strong) NSLayoutConstraint *transitionConstrain;
@@ -83,7 +81,8 @@
 		}]];
 		
 		PWContentSource *profileSource = [[PWContentSource alloc]
-					initWithTitle:@"Профиль" details:self.user.userName
+					initWithTitle:@"Профиль" details:[[PWModelManager sharedManager]
+					registeredUser].humanReadableName
 					icon:[UIImage imageNamed:@"whiteProfile"]
 					contentViewController:[[PWMainMenuViewController alloc]
 					initWithTransitionHandler:
@@ -245,7 +244,7 @@
 			}];
 		}
 		
-		self.selectedController.view.userInteractionEnabled = NO;
+		self.selectedController.view.userInteractionEnabled = YES;
 	}
 }
 

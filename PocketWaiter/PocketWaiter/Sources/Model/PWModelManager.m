@@ -34,6 +34,11 @@
 	return sharedManager;
 }
 
+- (PWUser *)registeredUser
+{
+	return self.user;
+}
+
 - (NSArray<PWRestaurant *> *)nearRestaurants
 {
 	return self.cachedRestaurants;

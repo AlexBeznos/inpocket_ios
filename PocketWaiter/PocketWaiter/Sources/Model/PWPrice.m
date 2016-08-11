@@ -8,6 +8,14 @@
 
 #import "PWPrice.h"
 
+@interface PWPrice ()
+
+@property (nonatomic) PWPriceCurrency currency;
+@property (nonatomic) CGFloat value;
+@property (nonatomic, strong) NSString *humanReadableValue;
+
+@end
+
 @implementation PWPrice
 
 - (NSString *)humanReadableValue

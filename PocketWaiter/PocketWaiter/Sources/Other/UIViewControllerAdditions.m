@@ -56,6 +56,12 @@
 				relatedBy:NSLayoutRelationEqual toItem:controller.view
 				attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
 	
+	[self.view addConstraint:[NSLayoutConstraint
+				constraintWithItem:self.view attribute:NSLayoutAttributeCenterY
+				relatedBy:NSLayoutRelationEqual toItem:controller.view
+				attribute:NSLayoutAttributeCenterY multiplier:1
+				constant:0]];
+	
 	NSLayoutConstraint *constraint = [NSLayoutConstraint
 				constraintWithItem:self.view attribute:NSLayoutAttributeLeft
 				relatedBy:NSLayoutRelationEqual toItem:controller.view

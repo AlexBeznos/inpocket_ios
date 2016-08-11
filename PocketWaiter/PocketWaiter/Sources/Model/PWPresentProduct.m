@@ -8,6 +8,12 @@
 
 #import "PWPresentProduct.h"
 
+@interface PWPresentProduct ()
+
+@property (nonatomic) NSUInteger bonusesPrice;
+
+@end
+
 @implementation PWPresentProduct
 
 @end

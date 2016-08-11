@@ -8,6 +8,14 @@
 
 #import "PWRestaurantShare.h"
 
+@interface PWRestaurantShare ()
+
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *shareDescription;
+@property (nonatomic, strong) UIImage *image;
+
+@end
+
 @implementation PWRestaurantShare
 
 @end

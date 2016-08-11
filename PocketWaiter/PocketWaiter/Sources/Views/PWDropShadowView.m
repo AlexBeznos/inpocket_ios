@@ -34,19 +34,6 @@
 	return self;
 }
 
-- (void)addSubview:(UIView *)view
-{
-	[super addSubview:view];
-	
-	view.translatesAutoresizingMaskIntoConstraints = NO;
-	[self addConstraints:[NSLayoutConstraint
-				constraintsWithVisualFormat:@"V:|[view]|" options:0
-				metrics:nil views:@{@"view" : view}]];
-	[self addConstraints:[NSLayoutConstraint
-				constraintsWithVisualFormat:@"H:|[view]|" options:0
-				metrics:nil views:@{@"view" : view}]];
-}
-
 - (void)setup
 {
 	self.layer.shadowColor = [[UIColor grayColor] CGColor];

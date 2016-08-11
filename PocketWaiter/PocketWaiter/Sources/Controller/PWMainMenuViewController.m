@@ -8,12 +8,13 @@
 
 #import "PWMainMenuViewController.h"
 #import "UIViewControllerAdditions.h"
-#import "PWDropShadowView.h"
+#import "PWNearPresentsViewController.h"
+#import "PWNearSharesViewController.h"
 
 @interface PWMainMenuViewController ()
 
 @property (nonatomic, copy) PWContentTransitionHandler transitionHandler;
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollview;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -35,8 +36,10 @@
 {
 	[super viewDidLoad];
 	
-	self.view.backgroundColor = [UIColor yellowColor];
+	UIImage *bgImage = [[UIImage imageNamed:@"bgPattern"]
+				resizableImageWithCapInsets:UIEdgeInsetsMake(1, 1, 1, 1)];
 	
+	self.view.backgroundColor = [UIColor colorWithPatternImage:bgImage];
 	[self setupNavigationBar];
 	
 	[self setupMenuItemWithTarget:self action:@selector(transitionBack)];
@@ -58,6 +61,87 @@
 	[theBonusesButton sizeToFit];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
 				initWithCustomView:theBonusesButton];
+	CGFloat aspectRatio = CGRectGetWidth(self.parentViewController.view.frame) / 320.;
+	
+	__weak __typeof(self) theWeakSelf = self;
+	
+	PWNearPresentsViewController *nearPresentsController =
+				[[PWNearPresentsViewController alloc] initWithScrollHandler:
+	^(CGPoint velocity)
+	{
+		[theWeakSelf handleVelocity:velocity];
+	}];
+	
+	[self addChildViewController:nearPresentsController];
+	[self.scrollView addSubview:nearPresentsController.view];
+	
+	[nearPresentsController didMoveToParentViewController:self];
+	nearPresentsController.view.translatesAutoresizingMaskIntoConstraints = NO;
+	
+	[self.scrollView addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"V:|[view]"
+				options:0 metrics:nil
+				views:@{@"view" : nearPresentsController.view}]];
+	[self.scrollView addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"H:|[view]"
+				options:0 metrics:nil
+				views:@{@"view" : nearPresentsController.view}]];
+	
+	nearPresentsController.contentSize =
+				CGSizeMake(320 * aspectRatio, 375 * aspectRatio);
+	
+	PWNearSharesViewController *nearSharesController =
+				[[PWNearSharesViewController alloc] initWithScrollHandler:
+	^(CGPoint velocity)
+	{
+		[theWeakSelf handleVelocity:velocity];
+	}];
+	
+	[self addChildViewController:nearSharesController];
+	[self.scrollView addSubview:nearSharesController.view];
+	
+	[nearPresentsController didMoveToParentViewController:self];
+	nearPresentsController.view.translatesAutoresizingMaskIntoConstraints = NO;
+	
+	[self.scrollView addConstraint:[NSLayoutConstraint
+				constraintWithItem:nearSharesController.view
+				attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual
+				toItem:nearPresentsController.view
+				attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+	
+	[self.scrollView addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"H:|[view]"
+				options:0 metrics:nil
+				views:@{@"view" : nearSharesController.view}]];
+	
+	nearSharesController.contentSize =
+				CGSizeMake(320 * aspectRatio, 375 * aspectRatio);
+	
+	self.scrollView.contentSize = CGSizeMake(320 * aspectRatio,  2 * 375 * aspectRatio);
+}
+
+- (void)handleVelocity:(CGPoint)velocity
+{
+	CGFloat slideFactor = fabs(0.2 * velocity.y / 200);
+	
+	CGFloat yOffset = 0;
+	
+	if (velocity.y > 0)
+	{
+		CGFloat proposedOffset = self.scrollView.contentOffset.y -
+					velocity.y * slideFactor;
+		yOffset = proposedOffset > 0 ? proposedOffset : 0;
+	}
+	else
+	{
+		CGFloat proposedOffset = self.scrollView.contentOffset.y -
+					velocity.y * slideFactor;
+		CGFloat maxOffset = self.scrollView.contentSize.height -
+					CGRectGetHeight(self.scrollView.frame);
+		yOffset = proposedOffset < maxOffset ? proposedOffset : maxOffset;
+	}
+
+	[self.scrollView setContentOffset:CGPointMake(0, yOffset) animated:YES];
 }
 
 - (void)transitionBack

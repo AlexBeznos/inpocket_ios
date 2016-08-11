@@ -8,6 +8,20 @@
 
 #import "PWRestaurantAboutInfo.h"
 
+@interface PWRestaurantAboutInfo ()
+
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong) NSString *phoneNumber;
+@property (nonatomic, strong) CLLocation *location;
+@property (nonatomic, strong) NSString *restaurantDescription;
+@property (nonatomic, strong) UIImage *restaurantImage;
+@property (nonatomic, strong) NSArray<UIImage *> *photos;
+@property (nonatomic, strong) NSArray<PWRestaurantReview *> *reviews;
+@property (nonatomic, strong) NSArray<PWWorkingTime *> *workingPlan;
+
+@end
+
 @implementation PWRestaurantAboutInfo
 
 @end

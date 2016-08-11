@@ -8,6 +8,15 @@
 
 #import "PWUsersRestaurantInfo.h"
 
+@interface PWUsersRestaurantInfo ()
+
+@property (nonatomic, strong) NSString *restaurantId;
+@property (nonatomic, strong) NSDate *lastCommingDate;
+@property (nonatomic) NSUInteger collectedBonuses;
+@property (nonatomic, strong) NSString *sessionToken;
+
+@end
+
 @implementation PWUsersRestaurantInfo
 
 @end
