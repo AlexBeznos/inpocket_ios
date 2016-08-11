@@ -15,4 +15,12 @@
 	return [UIColor colorWithRed:51/255 green:51/255 blue:51/255 alpha:alpha];
 }
 
++ (UIColor *)pwBackgroundColor
+{
+	UIImage *bgImage = [[UIImage imageNamed:@"bgPattern"]
+				resizableImageWithCapInsets:UIEdgeInsetsMake(1, 1, 1, 1)];
+	
+	return [UIColor colorWithPatternImage:bgImage];
+}
+
 @end

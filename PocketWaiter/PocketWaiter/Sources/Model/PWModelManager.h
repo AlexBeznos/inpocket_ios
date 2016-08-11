@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "PWRestaurant.h"
+#import "PWRestaurantAboutInfo.h"
 #import "PWRestaurantShare.h"
 #import "PWPresentProduct.h"
 #import "PWUser.h"

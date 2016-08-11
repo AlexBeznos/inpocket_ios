@@ -10,6 +10,8 @@
 #import "UIViewControllerAdditions.h"
 #import "PWNearPresentsViewController.h"
 #import "PWNearSharesViewController.h"
+#import "UIColorAdditions.h"
+#import "PWNearRestaurantsViewController.h"
 
 @interface PWMainMenuViewController ()
 
@@ -36,10 +38,7 @@
 {
 	[super viewDidLoad];
 	
-	UIImage *bgImage = [[UIImage imageNamed:@"bgPattern"]
-				resizableImageWithCapInsets:UIEdgeInsetsMake(1, 1, 1, 1)];
-	
-	self.view.backgroundColor = [UIColor colorWithPatternImage:bgImage];
+	self.view.backgroundColor = [UIColor pwBackgroundColor];
 	[self setupNavigationBar];
 	
 	[self setupMenuItemWithTarget:self action:@selector(transitionBack)];
@@ -117,12 +116,41 @@
 	nearSharesController.contentSize =
 				CGSizeMake(320 * aspectRatio, 375 * aspectRatio);
 	
-	self.scrollView.contentSize = CGSizeMake(320 * aspectRatio,  2 * 375 * aspectRatio);
+	PWNearRestaurantsViewController *nearRestaurantsController =
+				[[PWNearRestaurantsViewController alloc] initWithScrollHandler:
+	^(CGPoint velocity)
+	{
+		[theWeakSelf handleVelocity:velocity];
+	}];
+	
+	[self addChildViewController:nearRestaurantsController];
+	[self.scrollView addSubview:nearRestaurantsController.view];
+	
+	[nearRestaurantsController didMoveToParentViewController:self];
+	nearRestaurantsController.view.translatesAutoresizingMaskIntoConstraints = NO;
+	
+	[self.scrollView addConstraint:[NSLayoutConstraint
+				constraintWithItem:nearRestaurantsController.view
+				attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual
+				toItem:nearSharesController.view
+				attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+	
+	[self.scrollView addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"H:|[view]"
+				options:0 metrics:nil
+				views:@{@"view" : nearRestaurantsController.view}]];
+	
+	CGFloat estimatedHeight = nearRestaurantsController.fixedContentSpace +
+				aspectRatio * nearRestaurantsController.resizableContentSpace;
+	nearRestaurantsController.contentSize =
+				CGSizeMake(320 * aspectRatio, estimatedHeight);
+	
+	self.scrollView.contentSize = CGSizeMake(320 * aspectRatio,  2 * 375 * aspectRatio + estimatedHeight);
 }
 
 - (void)handleVelocity:(CGPoint)velocity
 {
-	CGFloat slideFactor = fabs(0.2 * velocity.y / 200);
+	CGFloat slideFactor = 0.2 * sqrt(velocity.x * velocity.x + velocity.y * velocity.y) / 5000;
 	
 	CGFloat yOffset = 0;
 	
@@ -140,7 +168,7 @@
 					CGRectGetHeight(self.scrollView.frame);
 		yOffset = proposedOffset < maxOffset ? proposedOffset : maxOffset;
 	}
-
+	NSLog(@"velocity %@ offset %f", NSStringFromCGPoint(velocity), yOffset);
 	[self.scrollView setContentOffset:CGPointMake(0, yOffset) animated:YES];
 }
 

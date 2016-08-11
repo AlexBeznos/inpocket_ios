@@ -57,10 +57,25 @@
 	self.collectionView.delegate = self;
 	self.collectionView.dataSource = self;
 	
+	[self setupIndicator];
+	[self setupLayout];
+	
+	[self setupConstraints];
+	
+	[self registerCell];
+	
+	[self setupGestures];
+}
+
+- (void)setupIndicator
+{
 	self.indicator.itemsCount = self.contentItems.count;
 	self.indicator.selectedItemIndex = 0;
 	self.indicatorWidthConstraint.constant = 16 * self.contentItems.count;
-	
+}
+
+- (void)setupLayout
+{
 	self.layout.countOfSlides = self.contentItems.count;
 	self.layout.minimumLineSpacing = 20;
 	self.layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
@@ -68,7 +83,10 @@
 	 
 	self.layout.itemSize = CGSizeMake(320, 320);
 	self.layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-	
+}
+
+- (void)setupConstraints
+{
 	self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.view
 				attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual
 				toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1
@@ -80,15 +98,21 @@
 	
 	[self.view addConstraint:self.widthConstraint];
 	[self.view addConstraint:self.heightConstraint];
-	
-	[self.collectionView registerNib:[UINib
-				nibWithNibName:@"PWNearItemCollectionViewCell"
-				bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"id"];
-	
+}
+
+- (void)setupGestures
+{
 	self.panRecognizer = [[UIPanGestureRecognizer alloc]
 				initWithTarget:self action:@selector(panAction:)];
 	self.panRecognizer.delegate = self;
 	[self.collectionView addGestureRecognizer:self.panRecognizer];
+}
+
+- (void)registerCell
+{
+	[self.collectionView registerNib:[UINib
+				nibWithNibName:@"PWNearItemCollectionViewCell"
+				bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"id"];
 }
 
 - (NSString *)titleDescription
@@ -114,10 +138,15 @@
 	self.widthConstraint.constant = contentSize.width;
 	self.heightConstraint.constant = contentSize.height;
 	
-	self.layout.itemSize = CGSizeMake(contentSize.width - 20,
-				contentSize.height - 104);
+	[self adjustLayoutWithSize:contentSize];
 	[self.view setNeedsLayout];
 	[self.view layoutIfNeeded];
+}
+
+- (void)adjustLayoutWithSize:(CGSize)contentSize
+{
+	self.layout.itemSize = CGSizeMake(contentSize.width - 20,
+				contentSize.height - 104);
 }
 
 - (void)handleScrollToPage:(NSUInteger)aPageNumber

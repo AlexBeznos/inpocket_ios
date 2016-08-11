@@ -11,5 +11,6 @@
 @interface UIColor (pwAdditions)
 
 + (UIColor *)pwColorWithAlpha:(CGFloat)alpha;
++ (UIColor *)pwBackgroundColor;
 
 @end
