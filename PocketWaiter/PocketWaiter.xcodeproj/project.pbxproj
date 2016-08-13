@@ -78,9 +78,9 @@
 		CAF092201D5F6A9B005FAEF4 /* PWRestaurantsCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0921F1D5F6A9B005FAEF4 /* PWRestaurantsCollectionController.m */; };
 		CAF092221D5F6D3F005FAEF4 /* PWQRCodeScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF092211D5F6D3F005FAEF4 /* PWQRCodeScanViewController.xib */; };
 		CAF092261D5FB9BC005FAEF4 /* PWRestaurantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092241D5FB9BC005FAEF4 /* PWRestaurantsViewController.m */; };
-		CAF092271D5FB9BC005FAEF4 /* PWRestaurantsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF092251D5FB9BC005FAEF4 /* PWRestaurantsViewController.xib */; };
 		CAF0922A1D5FBA5B005FAEF4 /* PWTapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092291D5FBA5B005FAEF4 /* PWTapper.m */; };
 		CAF0922D1D5FC6FC005FAEF4 /* PWMainMenuItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0922C1D5FC6FC005FAEF4 /* PWMainMenuItemViewController.m */; };
+		CAF0922F1D5FDA50005FAEF4 /* PWRestaurantsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF0922E1D5FDA50005FAEF4 /* PWRestaurantsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -205,11 +205,11 @@
 		CAF092211D5F6D3F005FAEF4 /* PWQRCodeScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWQRCodeScanViewController.xib; sourceTree = "<group>"; };
 		CAF092231D5FB9BC005FAEF4 /* PWRestaurantsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWRestaurantsViewController.h; sourceTree = "<group>"; };
 		CAF092241D5FB9BC005FAEF4 /* PWRestaurantsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRestaurantsViewController.m; sourceTree = "<group>"; };
-		CAF092251D5FB9BC005FAEF4 /* PWRestaurantsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWRestaurantsViewController.xib; sourceTree = "<group>"; };
 		CAF092281D5FBA5B005FAEF4 /* PWTapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWTapper.h; sourceTree = "<group>"; };
 		CAF092291D5FBA5B005FAEF4 /* PWTapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWTapper.m; sourceTree = "<group>"; };
 		CAF0922B1D5FC6FC005FAEF4 /* PWMainMenuItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWMainMenuItemViewController.h; sourceTree = "<group>"; };
 		CAF0922C1D5FC6FC005FAEF4 /* PWMainMenuItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWMainMenuItemViewController.m; sourceTree = "<group>"; };
+		CAF0922E1D5FDA50005FAEF4 /* PWRestaurantsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWRestaurantsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +261,7 @@
 		CAF091181D4D3A4C005FAEF4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CAF0922E1D5FDA50005FAEF4 /* PWRestaurantsViewController.xib */,
 				CAF092211D5F6D3F005FAEF4 /* PWQRCodeScanViewController.xib */,
 				CAF092081D5D2011005FAEF4 /* PWNearRestaurantCollectionViewCell.xib */,
 				CAF092011D5D1838005FAEF4 /* PWNearRestaurantsViewController.xib */,
@@ -328,7 +329,6 @@
 				CAF0921F1D5F6A9B005FAEF4 /* PWRestaurantsCollectionController.m */,
 				CAF092231D5FB9BC005FAEF4 /* PWRestaurantsViewController.h */,
 				CAF092241D5FB9BC005FAEF4 /* PWRestaurantsViewController.m */,
-				CAF092251D5FB9BC005FAEF4 /* PWRestaurantsViewController.xib */,
 				CAF0922B1D5FC6FC005FAEF4 /* PWMainMenuItemViewController.h */,
 				CAF0922C1D5FC6FC005FAEF4 /* PWMainMenuItemViewController.m */,
 			);
@@ -539,7 +539,7 @@
 				CAF091D61D5799DB005FAEF4 /* vapiano_2.jpg in Resources */,
 				CAF091CA1D57962B005FAEF4 /* burger.jpg in Resources */,
 				CAF091C21D576B83005FAEF4 /* mohito.jpg in Resources */,
-				CAF092271D5FB9BC005FAEF4 /* PWRestaurantsViewController.xib in Resources */,
+				CAF0922F1D5FDA50005FAEF4 /* PWRestaurantsViewController.xib in Resources */,
 				CAF0919B1D561B1E005FAEF4 /* PWIntroFirstPageCell.xib in Resources */,
 				CAF091B91D575195005FAEF4 /* PWMainMenuViewController.xib in Resources */,
 				CAF091D71D5799DB005FAEF4 /* vapiano_3.jpg in Resources */,
