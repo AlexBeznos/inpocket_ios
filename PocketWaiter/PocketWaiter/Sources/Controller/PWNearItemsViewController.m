@@ -121,6 +121,11 @@
 
 - (IBAction)showAllItems:(id)sender
 {
+	[self presentDetailItems];
+}
+
+- (void)presentDetailItems
+{
 	[self.transiter performForwardTransition:[self allItemsController]];
 }
 

@@ -9,9 +9,12 @@
 #import "PWNearRestaurantsViewController.h"
 #import "PWModelManager.h"
 #import "PWNearRestaurantCollectionViewCell.h"
+#import "PWDetailedNearRestaurantsController.h"
 
 @interface PWNearItemsViewController () <UICollectionViewDataSource,
 			UICollectionViewDelegate>
+
+- (void)presentDetailItems;
 
 @end
 
@@ -93,6 +96,22 @@
 - (CGFloat)resizableContentSpace
 {
 	return 90 * self.restaurants.count;
+}
+
+- (IBAction)showDetailsRestaurants:(id)sender
+{
+	[self presentDetailItems];
+}
+
+- (PWDetailedNearItemsController *)allItemsController
+{
+	PWDetailedNearRestaurantsController *controller =
+				[[PWDetailedNearRestaurantsController alloc]
+				initWithRestaurants:self.restaurants];
+	
+	[controller setContentSize:self.contentSize];
+	
+	return controller;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView

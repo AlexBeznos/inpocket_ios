@@ -37,21 +37,32 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RpM-Yp-gaN">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackLittleArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Saa-jj-SzD">
                     <rect key="frame" x="272" y="17" width="24" height="24"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="24" id="0Ew-sy-emJ"/>
-                        <constraint firstAttribute="height" constant="24" id="1Ij-H4-n3A"/>
+                        <constraint firstAttribute="width" constant="24" id="8RY-7e-QjP"/>
+                        <constraint firstAttribute="height" constant="24" id="xxD-XX-3RJ"/>
                     </constraints>
-                    <state key="normal" image="blackLittleArrow"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nnb-Ev-BF5">
+                    <rect key="frame" x="0.0" y="15" width="320" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Df8-D3-mhd"/>
+                    </constraints>
+                    <connections>
+                        <action selector="showDetailsRestaurants:" destination="-1" eventType="touchUpInside" id="94y-jn-dsG"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="avU-o6-FI0" secondAttribute="bottom" constant="30" id="3No-Dm-qHU"/>
-                <constraint firstAttribute="trailing" secondItem="RpM-Yp-gaN" secondAttribute="trailing" constant="24" id="Ji4-iP-sSW"/>
+                <constraint firstItem="Saa-jj-SzD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="17" id="D0r-fA-hOF"/>
+                <constraint firstItem="Nnb-Ev-BF5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="FZ8-99-mAM"/>
+                <constraint firstItem="Nnb-Ev-BF5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LAv-oF-rvZ"/>
                 <constraint firstItem="avU-o6-FI0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Lw3-GD-acX"/>
-                <constraint firstItem="RpM-Yp-gaN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="17" id="SRj-fR-paM"/>
+                <constraint firstAttribute="trailing" secondItem="Saa-jj-SzD" secondAttribute="trailing" constant="24" id="Z9x-1K-E2I"/>
+                <constraint firstAttribute="trailing" secondItem="Nnb-Ev-BF5" secondAttribute="trailing" id="f9n-IP-9Un"/>
                 <constraint firstItem="avU-o6-FI0" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="fDe-cr-u6o"/>
                 <constraint firstItem="mWs-Ts-rQ8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="g4p-v7-q3e"/>
                 <constraint firstItem="mWs-Ts-rQ8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="gLs-YG-cXj"/>

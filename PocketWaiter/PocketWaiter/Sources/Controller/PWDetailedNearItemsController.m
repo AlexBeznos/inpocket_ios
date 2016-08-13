@@ -11,10 +11,6 @@
 #import "UIColorAdditions.h"
 #import "UIViewControllerAdditions.h"
 
-@interface PWDetailedNearItemsController ()
-
-@end
-
 @implementation PWDetailedNearItemsController
 
 @synthesize transiter;
@@ -28,7 +24,7 @@ static NSString * const reuseIdentifier = @"Cell";
 	layout.sectionInset = UIEdgeInsetsMake(20, 20, 20, 20);
 	layout.minimumInteritemSpacing = 0;
 	 
-	layout.itemSize = CGSizeMake(320, 320);
+	layout.itemSize = CGSizeMake(320, self.initialCellHeight);
 	layout.scrollDirection = UICollectionViewScrollDirectionVertical;
 	
 	return [super initWithCollectionViewLayout:layout];
@@ -43,9 +39,20 @@ static NSString * const reuseIdentifier = @"Cell";
 	self.collectionView.backgroundColor = [UIColor pwBackgroundColor];
 	self.view.translatesAutoresizingMaskIntoConstraints = NO;
 	
+	[self registerCell];
+}
+
+- (CGFloat)initialCellHeight
+{
+	return 320;
+}
+
+- (void)registerCell
+{
 	[self.collectionView registerNib:
 				[UINib nibWithNibName:@"PWNearItemCollectionViewCell"
-				bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:reuseIdentifier];
+				bundle:[NSBundle mainBundle]]
+				forCellWithReuseIdentifier:reuseIdentifier];
 }
 
 - (void)setupWithNavigationItem:(UINavigationItem *)item
