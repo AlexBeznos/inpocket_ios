@@ -8,8 +8,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PWIntroViewController">
             <connections>
                 <outlet property="indicator" destination="20P-wZ-sPa" id="fvy-jy-Nu4"/>
+                <outlet property="label" destination="2p7-F7-mmW" id="EAD-j7-Rcx"/>
                 <outlet property="layout" destination="daS-5i-z9z" id="PJt-eM-3jj"/>
-                <outlet property="nextButton" destination="FVy-Rj-4oG" id="7kh-qu-EPA"/>
                 <outlet property="skipButton" destination="Udu-7k-b2D" id="cZg-zy-KFh"/>
                 <outlet property="slidesView" destination="0ed-I2-xzj" id="FZ8-Gl-nKN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -28,31 +28,40 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYP-n8-8r8">
                     <rect key="frame" x="0.0" y="540" width="600" height="60"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVy-Rj-4oG">
-                            <rect key="frame" x="556" y="18" width="24" height="24"/>
-                            <state key="normal" image="blackBack"/>
-                            <connections>
-                                <action selector="nextPressed:" destination="-1" eventType="touchUpInside" id="qNK-8h-e6l"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Udu-7k-b2D">
-                            <rect key="frame" x="20" y="12" width="60" height="36"/>
+                            <rect key="frame" x="0.0" y="12" width="600" height="36"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                            <state key="normal" title="Button">
+                            <state key="normal">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="skipPressed:" destination="-1" eventType="touchUpInside" id="Zkv-mJ-QTv"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackBack" translatesAutoresizingMaskIntoConstraints="NO" id="jg3-BE-ID5">
+                            <rect key="frame" x="556" y="18" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="24" id="LA0-Mm-Bwv"/>
+                                <constraint firstAttribute="height" constant="24" id="V0S-Pu-LMG"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2p7-F7-mmW">
+                            <rect key="frame" x="20" y="18.5" width="49" height="24"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="FVy-Rj-4oG" secondAttribute="trailing" constant="20" id="7OP-VD-YqQ"/>
                         <constraint firstItem="Udu-7k-b2D" firstAttribute="centerY" secondItem="MYP-n8-8r8" secondAttribute="centerY" id="M0q-FR-hKw"/>
-                        <constraint firstItem="Udu-7k-b2D" firstAttribute="leading" secondItem="MYP-n8-8r8" secondAttribute="leading" constant="20" id="Msd-Ce-pFa"/>
+                        <constraint firstItem="Udu-7k-b2D" firstAttribute="leading" secondItem="MYP-n8-8r8" secondAttribute="leading" id="Msd-Ce-pFa"/>
+                        <constraint firstItem="2p7-F7-mmW" firstAttribute="leading" secondItem="MYP-n8-8r8" secondAttribute="leading" constant="20" id="PuZ-UT-k8Q"/>
+                        <constraint firstItem="2p7-F7-mmW" firstAttribute="centerY" secondItem="MYP-n8-8r8" secondAttribute="centerY" id="SxM-0N-hUS"/>
                         <constraint firstAttribute="height" constant="60" id="UCM-2H-11c"/>
-                        <constraint firstItem="FVy-Rj-4oG" firstAttribute="centerY" secondItem="MYP-n8-8r8" secondAttribute="centerY" id="z21-xF-U2I"/>
+                        <constraint firstAttribute="trailing" secondItem="jg3-BE-ID5" secondAttribute="trailing" constant="20" id="aYX-yn-dut"/>
+                        <constraint firstItem="jg3-BE-ID5" firstAttribute="centerY" secondItem="MYP-n8-8r8" secondAttribute="centerY" id="re2-bF-gd0"/>
+                        <constraint firstAttribute="trailing" secondItem="Udu-7k-b2D" secondAttribute="trailing" id="uMd-zJ-4j9"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="20P-wZ-sPa" customClass="PWIndicator">

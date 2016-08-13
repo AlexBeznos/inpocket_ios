@@ -19,7 +19,7 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *slidesView;
 @property (strong, nonatomic) IBOutlet PWIntroLayout *layout;
 @property (strong, nonatomic) IBOutlet UIButton *skipButton;
-@property (strong, nonatomic) IBOutlet UIButton *nextButton;
+@property (strong, nonatomic) IBOutlet UILabel *label;
 
 @property (nonatomic, strong) PWEnterPromoViewController *enterPromoController;
 
@@ -70,10 +70,10 @@
 	self.slidesView.delegate = self;
 	self.automaticallyAdjustsScrollViewInsets = NO;
 	
-	[self.skipButton setTitle:@"Далее" forState:UIControlStateNormal];
+	self.label.text = @"Далее";
 }
 
-- (IBAction)nextPressed:(id)sender
+- (IBAction)skipPressed:(id)sender
 {
 	CGFloat pageWidth = self.slidesView.frame.size.width;
 	float currentPage = self.slidesView.contentOffset.x / pageWidth;
@@ -86,16 +86,11 @@
 	}
 	else
 	{
-		[self skipPressed:nil];
-	}
-}
-
-- (IBAction)skipPressed:(id)sender
-{
-	if (nil != self.completion)
-	{
-		self.completion();
-		self.completion = nil;
+		if (nil != self.completion)
+		{
+			self.completion();
+			self.completion = nil;
+		}
 	}
 }
 
@@ -116,8 +111,7 @@
 		self.indicator.selectedItemIndex = aPageNumber;
 	}
 	
-	[self.skipButton setTitle:2 == aPageNumber ? @"Начать пользоваться" : @"Далее"
-				forState:UIControlStateNormal];
+	self.label.text = 2 == aPageNumber ? @"Начать пользоваться" : @"Далее";
 }
 
 #pragma mark - data source
