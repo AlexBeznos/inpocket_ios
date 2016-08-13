@@ -25,7 +25,7 @@
 	[self.videoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
 	if (nil != self.videoPreviewLayer)
 	{
-		[self.layer addSublayer:self.videoPreviewLayer];
+		[self.layer insertSublayer:self.videoPreviewLayer atIndex:0];
 	}
 }
 

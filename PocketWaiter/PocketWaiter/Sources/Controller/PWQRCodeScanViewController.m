@@ -14,6 +14,8 @@
 
 @property (strong, nonatomic) IBOutlet PWQRCodeScannerView *streamView;
 @property (strong, nonatomic) IBOutlet UILabel *label;
+@property (strong, nonatomic) IBOutlet UILabel *flashLabel;
+@property (strong, nonatomic) IBOutlet UISwitch *switcher;
 
 @property (nonatomic, strong) AVCaptureSession *captureSession;
 
@@ -42,12 +44,72 @@
 	[super viewDidLoad];
 	
 	self.label.text = @"Сканируйте код прямо за столом вашего любимого ресторана";
-	
+	self.flashLabel.text = @"Вспышка";
 	self.isReading = NO;
 	
 	self.captureSession = nil;
 	
 	[self startStopReading];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+				selector:@selector(didEnterBackground)
+				name:UIApplicationDidEnterBackgroundNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+				selector:@selector(willEnterForeground)
+				name:UIApplicationWillEnterForegroundNotification object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+	[super viewDidDisappear:animated];
+	
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	if (self.switcher.isOn)
+	{
+		[self enableFlash:NO];
+	}
+}
+
+- (void)didEnterBackground
+{
+	if (self.switcher.isOn)
+	{
+		[self enableFlash:NO];
+	}
+}
+
+- (void)willEnterForeground
+{
+	if (self.switcher.isOn)
+	{
+		[self enableFlash:YES];
+	}
+}
+
+- (IBAction)flashSwitch:(id)sender
+{
+	[self enableFlash:self.switcher.isOn];
+}
+
+- (void)enableFlash:(BOOL)enable
+{
+	AVCaptureDevice *device = [AVCaptureDevice
+				defaultDeviceWithMediaType:AVMediaTypeVideo];
+	if ([device hasTorch] && [device hasFlash])
+	{
+		[device lockForConfiguration:nil];
+		if (enable)
+		{
+			[device setTorchMode:AVCaptureTorchModeOn];
+			[device setFlashMode:AVCaptureFlashModeOn];
+		}
+		else
+		{
+			[device setTorchMode:AVCaptureTorchModeOff];
+			[device setFlashMode:AVCaptureFlashModeOff];
+		}
+		[device unlockForConfiguration];
+	}
 }
 
 - (BOOL)startReading
