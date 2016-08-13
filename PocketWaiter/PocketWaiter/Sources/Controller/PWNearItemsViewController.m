@@ -10,6 +10,7 @@
 #import "PWIndicator.h"
 #import "PWNearItemCollectionViewCell.h"
 #import "PWSlidesLayout.h"
+#import "PWDetailedNearItemsController.h"
 
 @interface PWNearItemsViewController ()
 			<UICollectionViewDataSource, UICollectionViewDelegate,
@@ -23,7 +24,8 @@
 @property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *widthConstraint;
 
-@property (nonatomic, copy) void (^handler)(CGPoint velocity);
+@property (nonatomic, copy) void (^handler)(CGPoint);
+@property (nonatomic, strong) id<IPWTransiter> transiter;
 @property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 
 @end
@@ -32,12 +34,14 @@
 
 - (instancetype)initWithScrollHandler:
 			(void (^)(CGPoint velocity))aHandler
+			transiter:(id<IPWTransiter>)transiter
 {
 	self = [super init];
 	
 	if (nil != self)
 	{
 		self.handler = aHandler;
+		self.transiter = transiter;
 	}
 	
 	return self;
@@ -115,6 +119,16 @@
 				bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"id"];
 }
 
+- (IBAction)showAllItems:(id)sender
+{
+	[self.transiter performForwardTransition:[self allItemsController]];
+}
+
+- (PWDetailedNearItemsController *)allItemsController
+{
+	return nil;
+}
+
 - (NSString *)titleDescription
 {
 	return @"";
@@ -141,6 +155,12 @@
 	[self adjustLayoutWithSize:contentSize];
 	[self.view setNeedsLayout];
 	[self.view layoutIfNeeded];
+}
+
+- (CGSize)contentSize
+{
+	return CGSizeMake(self.widthConstraint.constant,
+				self.heightConstraint.constant);
 }
 
 - (void)adjustLayoutWithSize:(CGSize)contentSize

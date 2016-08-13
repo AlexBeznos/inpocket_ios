@@ -16,6 +16,7 @@
 }
 
 - (void)setupMenuItemWithTarget:(id)target action:(SEL)action
+			navigationItem:(UINavigationItem *)item
 {
 	UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	[menuButton setImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
@@ -23,20 +24,21 @@
 				forControlEvents:UIControlEventTouchUpInside];
 	[menuButton sizeToFit];
 	
-	self.navigationItem.leftBarButtonItem =
+	item.leftBarButtonItem =
 				[[UIBarButtonItem alloc] initWithCustomView:menuButton];
 }
 
-- (void)setupBackItem
+- (void)setupBackItemWithTarget:(id)target action:(SEL)action
+			navigationItem:(UINavigationItem *)item
 {
 	UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	[menuButton setImage:[UIImage imageNamed:@"navigationBack"]
 				forState:UIControlStateNormal];
-	[menuButton addTarget:self action:@selector(back)
+	[menuButton addTarget:target action:action
 				forControlEvents:UIControlEventTouchUpInside];
 	[menuButton sizeToFit];
 	
-	self.navigationItem.leftBarButtonItem =
+	item.leftBarButtonItem =
 				[[UIBarButtonItem alloc] initWithCustomView:menuButton];
 }
 
@@ -81,11 +83,6 @@
 	}];
 	
 	return constraint;
-}
-
-- (void)back
-{
-	[self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

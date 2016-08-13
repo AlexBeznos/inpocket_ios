@@ -130,6 +130,7 @@
 				if (nil != self.completion)
 				{
 					self.completion();
+					self.completion = nil;
 				}
 			});
 		}

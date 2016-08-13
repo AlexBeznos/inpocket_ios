@@ -9,6 +9,7 @@
 #import "PWNearPresentsViewController.h"
 #import "PWModelManager.h"
 #import "PWNearItemCollectionViewCell.h"
+#import "PWDetailedNearPresentsController.h"
 
 @interface PWNearPresentsViewController ()
 
@@ -42,9 +43,20 @@
 	return self.presents;
 }
 
+- (PWDetailedNearItemsController *)allItemsController
+{
+	PWDetailedNearPresentsController *controller =
+				[[PWDetailedNearPresentsController alloc]
+				initWithPresents:self.presents];
+	
+	[controller setContentSize:self.contentSize];
+	
+	return controller;
+}
+
 - (NSString *)titleDescription
 {
-	return @"Podarki ryadom";
+	return @"Подарки рядом";
 }
 
 @end

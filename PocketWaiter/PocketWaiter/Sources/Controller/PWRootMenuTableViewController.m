@@ -112,7 +112,6 @@
 		
 		_sources = @[mainSource, restaurantsSource, shareSource,
 					aboutSource, profileSource];
-		
 	}
 	
 	return _sources;

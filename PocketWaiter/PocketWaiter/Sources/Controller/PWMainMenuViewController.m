@@ -14,16 +14,19 @@
 #import "PWNearRestaurantsViewController.h"
 #import "PWTouchView.h"
 
-@interface PWMainMenuViewController ()
+@interface PWMainMenuViewController () <IPWTransiter>
 
 @property (nonatomic, copy) PWContentTransitionHandler transitionHandler;
 @property (nonatomic, copy) PWContentTransitionHandler forwardTransitionHandler;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic) BOOL isTransited;
+@property (nonatomic, strong) NSLayoutConstraint *trasitedConstraint;
 
 @end
 
 @implementation PWMainMenuViewController
+
+@synthesize transitedController;
 
 - (instancetype)initWithTransitionHandler:(PWContentTransitionHandler)aHandler
 			forwardTransitionHandler:(PWContentTransitionHandler)aForwardHandler
@@ -47,25 +50,6 @@
 	self.view.backgroundColor = [UIColor pwBackgroundColor];
 	[self setupNavigationBar];
 	
-	[self setupMenuItemWithTarget:self action:@selector(transitionBack)];
-	
-	UILabel *theTitleLabel = [UILabel new];
-	theTitleLabel.text = @"InPocket";
-	theTitleLabel.font = [UIFont systemFontOfSize:20];
-	[theTitleLabel sizeToFit];
-	
-	self.navigationItem.leftBarButtonItems =
-				@[self.navigationItem.leftBarButtonItem,
-				[[UIBarButtonItem alloc] initWithCustomView:theTitleLabel]];
-	
-	UIButton *theBonusesButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	[theBonusesButton setImage:[UIImage imageNamed:@"collectedBonus"]
-				forState:UIControlStateNormal];
-	[theBonusesButton addTarget:self action:@selector(showBonuses)
-				forControlEvents:UIControlEventTouchUpInside];
-	[theBonusesButton sizeToFit];
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-				initWithCustomView:theBonusesButton];
 	CGFloat aspectRatio = CGRectGetWidth(self.parentViewController.view.frame) / 320.;
 	
 	__weak __typeof(self) theWeakSelf = self;
@@ -75,7 +59,8 @@
 	^(CGPoint velocity)
 	{
 		[theWeakSelf handleVelocity:velocity];
-	}];
+	}
+				transiter:self];
 	
 	[self addChildViewController:nearPresentsController];
 	[self.scrollView addSubview:nearPresentsController.view];
@@ -100,7 +85,8 @@
 	^(CGPoint velocity)
 	{
 		[theWeakSelf handleVelocity:velocity];
-	}];
+	}
+				transiter:self];
 	
 	[self addChildViewController:nearSharesController];
 	[self.scrollView addSubview:nearSharesController.view];
@@ -127,7 +113,8 @@
 	^(CGPoint velocity)
 	{
 		[theWeakSelf handleVelocity:velocity];
-	}];
+	}
+				transiter:self];
 	
 	[self addChildViewController:nearRestaurantsController];
 	[self.scrollView addSubview:nearRestaurantsController.view];
@@ -151,7 +138,39 @@
 	nearRestaurantsController.contentSize =
 				CGSizeMake(320 * aspectRatio, estimatedHeight);
 	
-	self.scrollView.contentSize = CGSizeMake(320 * aspectRatio,  2 * 375 * aspectRatio + estimatedHeight);
+	self.scrollView.contentSize = CGSizeMake(320 * aspectRatio,
+				2 * 375 * aspectRatio + estimatedHeight);
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	[self setupNavigation];
+}
+
+- (void)setupNavigation
+{
+	[self setupMenuItemWithTarget:self action:@selector(transitionBack)
+				navigationItem:self.navigationItem];
+	
+	UILabel *theTitleLabel = [UILabel new];
+	theTitleLabel.text = @"InPocket";
+	theTitleLabel.font = [UIFont systemFontOfSize:20];
+	[theTitleLabel sizeToFit];
+	
+	self.navigationItem.leftBarButtonItems =
+				@[self.navigationItem.leftBarButtonItem,
+				[[UIBarButtonItem alloc] initWithCustomView:theTitleLabel]];
+	
+	UIButton *theBonusesButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[theBonusesButton setImage:[UIImage imageNamed:@"collectedBonus"]
+				forState:UIControlStateNormal];
+	[theBonusesButton addTarget:self action:@selector(showBonuses)
+				forControlEvents:UIControlEventTouchUpInside];
+	[theBonusesButton sizeToFit];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+				initWithCustomView:theBonusesButton];
 }
 
 - (void)handleVelocity:(CGPoint)velocity
@@ -176,6 +195,35 @@
 	}
 	NSLog(@"velocity %@ offset %f", NSStringFromCGPoint(velocity), yOffset);
 	[self.scrollView setContentOffset:CGPointMake(0, yOffset) animated:YES];
+}
+
+- (void)performBackTransitionWithSetupNaigationItem:(BOOL)setup
+{
+	if (setup)
+	{
+		[self setupNavigation];
+	}
+	[UIView animateWithDuration:0.25 animations:
+	^{
+		self.trasitedConstraint.constant = -CGRectGetWidth(self.view.frame);
+		[self.view setNeedsLayout];
+		[self.view layoutIfNeeded];
+	}
+	completion:^(BOOL finished)
+	{
+		[self.transitedController.view removeFromSuperview];
+		[self.transitedController removeFromParentViewController];
+		self.transitedController = nil;
+	}];
+}
+
+- (void)performForwardTransition:
+			(UIViewController<IPWTransitableController> *)controller
+{
+	controller.transiter = self;
+	[controller setupWithNavigationItem:self.navigationItem];
+	self.transitedController = controller;
+	self.trasitedConstraint = [self navigateViewController:controller];
 }
 
 - (void)transitionBack

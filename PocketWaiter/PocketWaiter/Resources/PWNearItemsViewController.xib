@@ -42,27 +42,38 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewLayout key="collectionViewLayout" id="jOU-Yd-gOp" customClass="PWSlidesLayout"/>
                 </collectionView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RpM-Yp-gaN">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oI5-Gu-hmN">
+                    <rect key="frame" x="0.0" y="15" width="320" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="n6A-bf-jan"/>
+                    </constraints>
+                    <connections>
+                        <action selector="showAllItems:" destination="-1" eventType="touchUpInside" id="th3-Jn-P7R"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackLittleArrow" translatesAutoresizingMaskIntoConstraints="NO" id="O6I-9W-lc7">
                     <rect key="frame" x="272" y="17" width="24" height="24"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="24" id="0Ew-sy-emJ"/>
-                        <constraint firstAttribute="height" constant="24" id="1Ij-H4-n3A"/>
+                        <constraint firstAttribute="height" constant="24" id="rLi-uq-l2i"/>
+                        <constraint firstAttribute="width" constant="24" id="u6w-1S-OTT"/>
                     </constraints>
-                    <state key="normal" image="blackLittleArrow"/>
-                </button>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="RpM-Yp-gaN" secondAttribute="trailing" constant="24" id="Ji4-iP-sSW"/>
+                <constraint firstItem="oI5-Gu-hmN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="G6e-hu-Jmc"/>
                 <constraint firstItem="avU-o6-FI0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Lw3-GD-acX"/>
-                <constraint firstItem="RpM-Yp-gaN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="17" id="SRj-fR-paM"/>
+                <constraint firstAttribute="trailing" secondItem="O6I-9W-lc7" secondAttribute="trailing" constant="24" id="MGS-Z0-kz7"/>
+                <constraint firstItem="oI5-Gu-hmN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bkx-yU-Xrf"/>
                 <constraint firstItem="avU-o6-FI0" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="fDe-cr-u6o"/>
                 <constraint firstItem="kc5-de-mY2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="fLI-0u-0Tb"/>
                 <constraint firstItem="mWs-Ts-rQ8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="g4p-v7-q3e"/>
                 <constraint firstItem="mWs-Ts-rQ8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="gLs-YG-cXj"/>
                 <constraint firstItem="kc5-de-mY2" firstAttribute="top" secondItem="avU-o6-FI0" secondAttribute="bottom" id="hLx-3G-GAP"/>
+                <constraint firstItem="O6I-9W-lc7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="17" id="k87-jZ-iOd"/>
                 <constraint firstItem="avU-o6-FI0" firstAttribute="top" secondItem="mWs-Ts-rQ8" secondAttribute="bottom" constant="10" id="mGv-g1-A6a"/>
                 <constraint firstAttribute="bottom" secondItem="kc5-de-mY2" secondAttribute="bottom" id="qf6-U6-UAv"/>
+                <constraint firstAttribute="trailing" secondItem="oI5-Gu-hmN" secondAttribute="trailing" id="sjr-fr-IaA"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>

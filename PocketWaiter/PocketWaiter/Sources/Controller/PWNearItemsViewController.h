@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol IPWTransiter;
 @class PWNearItemCollectionViewCell;
 
 @interface PWNearItemsViewController : UIViewController
@@ -15,7 +16,8 @@
 @property (nonatomic) CGSize contentSize;
 
 - (instancetype)initWithScrollHandler:
-			(void (^)(CGPoint velocity))aHandler;
+			(void (^)(CGPoint velocity))aHandler
+			transiter:(id<IPWTransiter>)transiter;
 
 - (void)setupCell:(PWNearItemCollectionViewCell *)cell
 			forItemAtIndexPath:(NSIndexPath *)indexPath;

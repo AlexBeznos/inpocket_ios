@@ -9,6 +9,7 @@
 #import "PWNearSharesViewController.h"
 #import "PWModelManager.h"
 #import "PWNearItemCollectionViewCell.h"
+#import "PWDetailedNearSharesController.h"
 
 @interface PWNearSharesViewController ()
 
@@ -35,6 +36,17 @@
 	cell.image = share.image;
 	cell.descriptionTitle = share.shareDescription;
 	cell.buttonTitle = @"Podrobnee'";
+}
+
+- (PWDetailedNearItemsController *)allItemsController
+{
+	PWDetailedNearItemsController *controller =
+				[[PWDetailedNearSharesController alloc]
+				initWithShares:self.shares];
+	
+	[controller setContentSize:self.contentSize];
+	
+	return controller;
 }
 
 - (NSArray *)contentItems
