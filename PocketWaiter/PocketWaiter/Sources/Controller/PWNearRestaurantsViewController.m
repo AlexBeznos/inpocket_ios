@@ -9,7 +9,7 @@
 #import "PWNearRestaurantsViewController.h"
 #import "PWModelManager.h"
 #import "PWNearRestaurantCollectionViewCell.h"
-#import "PWDetailedNearRestaurantsController.h"
+#import "PWRestaurantsCollectionController.h"
 
 @interface PWNearItemsViewController () <UICollectionViewDataSource,
 			UICollectionViewDelegate>
@@ -105,8 +105,8 @@
 
 - (PWDetailedNearItemsController *)allItemsController
 {
-	PWDetailedNearRestaurantsController *controller =
-				[[PWDetailedNearRestaurantsController alloc]
+	PWRestaurantsCollectionController *controller =
+				[[PWRestaurantsCollectionController alloc]
 				initWithRestaurants:self.restaurants];
 	
 	[controller setContentSize:self.contentSize];

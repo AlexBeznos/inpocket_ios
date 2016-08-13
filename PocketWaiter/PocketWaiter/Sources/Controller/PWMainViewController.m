@@ -27,7 +27,8 @@
 	[super viewDidLoad];
 	
 	self.navigationController.navigationBarHidden = YES;
-
+	
+	#if 1
 	__weak __typeof(self) theWeakSelf = self;
 	self.introController = [[PWIntroViewController alloc]
 				initWithCompletionHandler:
@@ -45,10 +46,12 @@
 		[theWeakSelf navigateViewController:controller];
 		#endif
 	}];
-	
-	
-	
 	[self setupChildController:self.introController];
+	#else
+	self.rootMenuController = [PWRootMenuTableViewController new];
+	[self navigateViewController:self.rootMenuController];
+
+	#endif
 }
 
 - (void)setupChildController:(UIViewController *)controller

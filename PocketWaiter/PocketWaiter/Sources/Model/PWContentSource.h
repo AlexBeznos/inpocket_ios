@@ -14,6 +14,7 @@ typedef void (^PWContentTransitionHandler)();
 
 - (instancetype)initWithTransitionHandler:(PWContentTransitionHandler)aHandler
 			forwardTransitionHandler:(PWContentTransitionHandler)aFwdHandler;
+- (void)resetTransition;
 
 @end
 

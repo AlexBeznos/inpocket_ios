@@ -7,12 +7,18 @@
 //
 
 #import "UIViewControllerAdditions.h"
+#import "UIColorAdditions.h"
 
 @implementation UIViewController (SetupAdditions)
 
 - (void)setupNavigationBar
 {
-	self.navigationController.navigationBar.backgroundColor = [UIColor greenColor];
+	[self.navigationController.navigationBar
+				setBackgroundImage:[[UIImage imageNamed:@"bgPattern"]
+				resizableImageWithCapInsets:UIEdgeInsetsMake(1, 1, 1, 1)]
+				forBarMetrics:UIBarMetricsDefault];
+	self.navigationController.navigationBar.shadowImage = [UIImage new];
+	self.navigationController.navigationBar.translucent = NO;
 }
 
 - (void)setupMenuItemWithTarget:(id)target action:(SEL)action

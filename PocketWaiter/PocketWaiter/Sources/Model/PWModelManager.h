@@ -24,4 +24,7 @@
 - (NSArray<PWRestaurantShare *> *)nearShares;
 - (NSArray<PWPresentProduct *> *)nearPresents;
 
+- (void)getRestaurantsWithCount:(NSUInteger)count offset:(NSUInteger)offset
+			completion:(void (^)(NSArray<PWRestaurant *> *))completion;
+
 @end

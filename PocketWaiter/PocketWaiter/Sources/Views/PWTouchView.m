@@ -24,19 +24,34 @@
 	{
 		self.backgroundColor = [UIColor clearColor];
 		self.handler = aHandler;
+		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+		button.backgroundColor = [UIColor clearColor];
+		[button addTarget:self action:@selector(tapped)
+					forControlEvents:UIControlEventTouchUpInside];
+		
+		[self addSubview:button];
+		button.translatesAutoresizingMaskIntoConstraints = NO;
+		[self addConstraints:[NSLayoutConstraint
+					constraintsWithVisualFormat:@"V:|[view]|"
+					options:0 metrics:nil
+					views:@{@"view" : button}]];
+		[self addConstraints:[NSLayoutConstraint
+					constraintsWithVisualFormat:@"H:|[view]|"
+					options:0 metrics:nil
+					views:@{@"view" : button}]];
+
 	}
 	
 	return self;
 }
 
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+- (void)tapped
 {
 	if (nil != self.handler)
 	{
 		self.handler();
+		self.handler = nil;
 	}
-	
-	return self;
 }
 
 @end

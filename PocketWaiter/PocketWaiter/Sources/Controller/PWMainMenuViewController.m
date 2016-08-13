@@ -10,16 +10,11 @@
 #import "UIViewControllerAdditions.h"
 #import "PWNearPresentsViewController.h"
 #import "PWNearSharesViewController.h"
-#import "UIColorAdditions.h"
 #import "PWNearRestaurantsViewController.h"
-#import "PWTouchView.h"
 
 @interface PWMainMenuViewController () <IPWTransiter>
 
-@property (nonatomic, copy) PWContentTransitionHandler transitionHandler;
-@property (nonatomic, copy) PWContentTransitionHandler forwardTransitionHandler;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (nonatomic) BOOL isTransited;
 @property (nonatomic, strong) NSLayoutConstraint *trasitedConstraint;
 
 @end
@@ -28,27 +23,9 @@
 
 @synthesize transitedController;
 
-- (instancetype)initWithTransitionHandler:(PWContentTransitionHandler)aHandler
-			forwardTransitionHandler:(PWContentTransitionHandler)aForwardHandler
-{
-	self = [super init];
-	
-	if (nil != self)
-	{
-		self.transitionHandler = aHandler;
-		self.forwardTransitionHandler = aForwardHandler;
-	}
-	
-	return self;
-}
-
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	
-	self.isTransited = NO;
-	self.view.backgroundColor = [UIColor pwBackgroundColor];
-	[self setupNavigationBar];
 	
 	CGFloat aspectRatio = CGRectGetWidth(self.parentViewController.view.frame) / 320.;
 	
@@ -142,26 +119,14 @@
 				2 * 375 * aspectRatio + estimatedHeight);
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (NSString *)name
 {
-	[super viewWillAppear:animated];
-	
-	[self setupNavigation];
+	return @"InPocket";
 }
 
 - (void)setupNavigation
 {
-	[self setupMenuItemWithTarget:self action:@selector(transitionBack)
-				navigationItem:self.navigationItem];
-	
-	UILabel *theTitleLabel = [UILabel new];
-	theTitleLabel.text = @"InPocket";
-	theTitleLabel.font = [UIFont systemFontOfSize:20];
-	[theTitleLabel sizeToFit];
-	
-	self.navigationItem.leftBarButtonItems =
-				@[self.navigationItem.leftBarButtonItem,
-				[[UIBarButtonItem alloc] initWithCustomView:theTitleLabel]];
+	[super setupNavigation];
 	
 	UIButton *theBonusesButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	[theBonusesButton setImage:[UIImage imageNamed:@"collectedBonus"]
@@ -224,45 +189,6 @@
 	[controller setupWithNavigationItem:self.navigationItem];
 	self.transitedController = controller;
 	self.trasitedConstraint = [self navigateViewController:controller];
-}
-
-- (void)transitionBack
-{
-	if (self.isTransited)
-	{
-		if (nil != self.forwardTransitionHandler)
-		{
-			self.forwardTransitionHandler();
-			self.isTransited = NO;
-		}
-	}
-	else
-	{
-		__weak __typeof(self) theWeakSelf = self;
-		PWTouchView *touchView = [[PWTouchView alloc] initWithTouchHandler:
-		^{
-			if (nil != theWeakSelf.forwardTransitionHandler)
-			{
-				theWeakSelf.forwardTransitionHandler();
-				theWeakSelf.isTransited = NO;
-			}
-		}];
-		
-		touchView.translatesAutoresizingMaskIntoConstraints = NO;
-		[self.view addSubview:touchView];
-		[self.view addConstraints:[NSLayoutConstraint
-					constraintsWithVisualFormat:@"H:|[view]|" options:0
-					metrics:nil views:@{@"view" : touchView}]];
-		[self.view addConstraints:[NSLayoutConstraint
-					constraintsWithVisualFormat:@"V:|[view]|" options:0
-					metrics:nil views:@{@"view" : touchView}]];
-		
-		if (nil != self.transitionHandler)
-		{
-			self.transitionHandler();
-			self.isTransited = YES;
-		}
-	}
 }
 
 - (void)showBonuses

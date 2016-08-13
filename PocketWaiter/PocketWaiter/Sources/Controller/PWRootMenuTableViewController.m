@@ -12,6 +12,7 @@
 #import "PWRestaurantAboutInfo.h"
 #import "PWMainMenuViewController.h"
 #import "UIViewControllerAdditions.h"
+#import "PWRestaurantsViewController.h"
 
 @interface PWRootMenuTableViewController ()
 
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) UIView *headerView;
 @property (nonatomic, strong) NSLayoutConstraint *transitionConstrain;
 @property (nonatomic, strong) UIViewController *selectedController;
+@property (nonatomic, strong) PWContentSource *selectedSource;
 
 @end
 
@@ -60,7 +62,7 @@
 		PWContentSource *restaurantsSource = [[PWContentSource alloc]
 					initWithTitle:@"Заведения" details:nil
 					icon:[UIImage imageNamed:@"whiteRestaurants"]
-					contentViewController:[[PWMainMenuViewController alloc]
+					contentViewController:[[PWRestaurantsViewController alloc]
 					initWithTransitionHandler:
 		^{
 			[theWeakSelf performBackTransition];
@@ -194,6 +196,7 @@
 				completion:
 	^(BOOL finished)
 	{
+		[self.selectedSource.contentViewController resetTransition];
 		self.selectedController.view.userInteractionEnabled = YES;
 	}];
 }
@@ -264,14 +267,18 @@
 	
 	if (nil != contentController)
 	{
-		if (contentController != self.selectedController)
+		[self.selectedSource.contentViewController resetTransition];
+		
+		if (currentSource != self.selectedSource)
 		{
-			self.selectedController = contentController;
+			[self.selectedController.view removeFromSuperview];
+			
+			self.selectedSource = currentSource;
 			UINavigationController *navigation = [[UINavigationController alloc]
 						initWithRootViewController:contentController];
 			navigation.navigationBar.translucent = NO;
 			// TODO customize navigarion bar
-			
+			self.selectedController = navigation;
 			self.transitionConstrain = [self navigateViewController:navigation];
 		}
 		else

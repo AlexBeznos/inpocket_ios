@@ -10,7 +10,7 @@
 
 @class PWRestaurant;
 
-@interface PWDetailedNearRestaurantsController : PWDetailedNearItemsController
+@interface PWRestaurantsCollectionController : PWDetailedNearItemsController
 
 - (instancetype)initWithRestaurants:(NSArray<PWRestaurant *> *)restaurants;
 

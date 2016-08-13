@@ -6,18 +6,18 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import "PWDetailedNearRestaurantsController.h"
+#import "PWRestaurantsCollectionController.h"
 #import "PWNearRestaurantCollectionViewCell.h"
 #import "PWRestaurant.h"
 #import "PWRestaurantAboutInfo.h"
 
-@interface PWDetailedNearRestaurantsController ()
+@interface PWRestaurantsCollectionController ()
 
 @property (strong, nonatomic) NSArray<PWRestaurant *> *restaurants;
 
 @end
 
-@implementation PWDetailedNearRestaurantsController
+@implementation PWRestaurantsCollectionController
 
 - (instancetype)initWithRestaurants:(NSArray<PWRestaurant *> *)restaurants
 {
