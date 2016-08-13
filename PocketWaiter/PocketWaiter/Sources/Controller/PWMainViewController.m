@@ -11,6 +11,7 @@
 
 #import "PWRootMenuTableViewController.h"
 #import "UIViewControllerAdditions.h"
+#import "PWQRCodeScanViewController.h"
 
 @interface PWMainViewController ()
 
@@ -31,9 +32,21 @@
 	self.introController = [[PWIntroViewController alloc]
 				initWithCompletionHandler:
 	^{
+		#if 0
 		theWeakSelf.rootMenuController = [PWRootMenuTableViewController new];
 		[theWeakSelf navigateViewController:theWeakSelf.rootMenuController];
+		#else
+		PWQRCodeScanViewController *controller =
+					[[PWQRCodeScanViewController alloc] initWithCompletion:
+		^{
+			theWeakSelf.rootMenuController = [PWRootMenuTableViewController new];
+			[theWeakSelf navigateViewController:theWeakSelf.rootMenuController];
+		}];
+		[theWeakSelf navigateViewController:controller];
+		#endif
 	}];
+	
+	
 	
 	[self setupChildController:self.introController];
 }

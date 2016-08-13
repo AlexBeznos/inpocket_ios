@@ -69,6 +69,9 @@
 		CAF092021D5D1838005FAEF4 /* PWNearRestaurantsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF092011D5D1838005FAEF4 /* PWNearRestaurantsViewController.xib */; };
 		CAF092061D5D1FF7005FAEF4 /* PWNearRestaurantCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092041D5D1FF7005FAEF4 /* PWNearRestaurantCollectionViewCell.m */; };
 		CAF092091D5D2011005FAEF4 /* PWNearRestaurantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF092081D5D2011005FAEF4 /* PWNearRestaurantCollectionViewCell.xib */; };
+		CAF0920D1D5E4316005FAEF4 /* PWQRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0920B1D5E4316005FAEF4 /* PWQRCodeScanViewController.m */; };
+		CAF0920E1D5E4316005FAEF4 /* PWQRCodeScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF0920C1D5E4316005FAEF4 /* PWQRCodeScanViewController.xib */; };
+		CAF092111D5F3A0A005FAEF4 /* PWQRCodeScannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092101D5F3A0A005FAEF4 /* PWQRCodeScannerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -176,6 +179,11 @@
 		CAF092031D5D1FF7005FAEF4 /* PWNearRestaurantCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWNearRestaurantCollectionViewCell.h; sourceTree = "<group>"; };
 		CAF092041D5D1FF7005FAEF4 /* PWNearRestaurantCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWNearRestaurantCollectionViewCell.m; sourceTree = "<group>"; };
 		CAF092081D5D2011005FAEF4 /* PWNearRestaurantCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWNearRestaurantCollectionViewCell.xib; sourceTree = "<group>"; };
+		CAF0920A1D5E4316005FAEF4 /* PWQRCodeScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWQRCodeScanViewController.h; sourceTree = "<group>"; };
+		CAF0920B1D5E4316005FAEF4 /* PWQRCodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWQRCodeScanViewController.m; sourceTree = "<group>"; };
+		CAF0920C1D5E4316005FAEF4 /* PWQRCodeScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWQRCodeScanViewController.xib; sourceTree = "<group>"; };
+		CAF0920F1D5F3A0A005FAEF4 /* PWQRCodeScannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWQRCodeScannerView.h; sourceTree = "<group>"; };
+		CAF092101D5F3A0A005FAEF4 /* PWQRCodeScannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWQRCodeScannerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +289,9 @@
 				CAF091F61D594E90005FAEF4 /* PWNearSharesViewController.m */,
 				CAF091FE1D5D17C2005FAEF4 /* PWNearRestaurantsViewController.h */,
 				CAF091FF1D5D17C2005FAEF4 /* PWNearRestaurantsViewController.m */,
+				CAF0920A1D5E4316005FAEF4 /* PWQRCodeScanViewController.h */,
+				CAF0920B1D5E4316005FAEF4 /* PWQRCodeScanViewController.m */,
+				CAF0920C1D5E4316005FAEF4 /* PWQRCodeScanViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -345,6 +356,8 @@
 				CAF091E71D57AA0C005FAEF4 /* PWNearItemCollectionViewCell.m */,
 				CAF092031D5D1FF7005FAEF4 /* PWNearRestaurantCollectionViewCell.h */,
 				CAF092041D5D1FF7005FAEF4 /* PWNearRestaurantCollectionViewCell.m */,
+				CAF0920F1D5F3A0A005FAEF4 /* PWQRCodeScannerView.h */,
+				CAF092101D5F3A0A005FAEF4 /* PWQRCodeScannerView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -465,6 +478,7 @@
 				CAF091E01D57A05F005FAEF4 /* hookah1.jpeg in Resources */,
 				CAF091A91D564E61005FAEF4 /* PWEnterPromoViewController.xib in Resources */,
 				CAF091EE1D57B271005FAEF4 /* PWNearItemsViewController.xib in Resources */,
+				CAF0920E1D5E4316005FAEF4 /* PWQRCodeScanViewController.xib in Resources */,
 				CAF091EC1D57B239005FAEF4 /* PWNearItemCollectionViewCell.xib in Resources */,
 				CAF091911D560B80005FAEF4 /* PWIntroViewController.xib in Resources */,
 				CAF092021D5D1838005FAEF4 /* PWNearRestaurantsViewController.xib in Resources */,
@@ -506,6 +520,7 @@
 				CAF091B21D566763005FAEF4 /* PWContentSource.m in Sources */,
 				CAF0919E1D561DCB005FAEF4 /* PWIntroLayout.m in Sources */,
 				CAF091B61D57517B005FAEF4 /* PWMainMenuViewController.m in Sources */,
+				CAF0920D1D5E4316005FAEF4 /* PWQRCodeScanViewController.m in Sources */,
 				CAF091331D4D3A4C005FAEF4 /* main.m in Sources */,
 				CAF091891D4E94B6005FAEF4 /* PWWorkingTime.m in Sources */,
 				CAF091F71D594E90005FAEF4 /* PWNearSharesViewController.m in Sources */,
@@ -519,6 +534,7 @@
 				CAF091881D4E94B3005FAEF4 /* PWUsersRestaurantInfo.m in Sources */,
 				CAF091731D4E9099005FAEF4 /* PWPresentProduct.m in Sources */,
 				CAF091871D4E94B0005FAEF4 /* PWUser.m in Sources */,
+				CAF092111D5F3A0A005FAEF4 /* PWQRCodeScannerView.m in Sources */,
 				CAF092001D5D17C2005FAEF4 /* PWNearRestaurantsViewController.m in Sources */,
 				CAF091861D4E94AE005FAEF4 /* PWPurchase.m in Sources */,
 				CAF0918A1D4E94B8005FAEF4 /* PWRestaurantAboutInfo.m in Sources */,
