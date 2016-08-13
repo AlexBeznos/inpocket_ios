@@ -28,7 +28,7 @@
 	
 	self.navigationController.navigationBarHidden = YES;
 	
-	#if 1
+	#if 0
 	__weak __typeof(self) theWeakSelf = self;
 	self.introController = [[PWIntroViewController alloc]
 				initWithCompletionHandler:

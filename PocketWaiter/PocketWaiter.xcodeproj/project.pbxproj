@@ -12,7 +12,6 @@
 		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
 		CAF0912F1D4D3A4C005FAEF4 /* PWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091201D4D3A4C005FAEF4 /* PWAppDelegate.m */; };
 		CAF091331D4D3A4C005FAEF4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091291D4D3A4C005FAEF4 /* main.m */; };
-		CAF091371D4D3B7B005FAEF4 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF091361D4D3B7B005FAEF4 /* Intro.storyboard */; };
 		CAF0913A1D4D4062005FAEF4 /* PWIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091391D4D4062005FAEF4 /* PWIndicator.m */; };
 		CAF0916D1D4E904E005FAEF4 /* PWModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0913F1D4E737F005FAEF4 /* PWModelObject.m */; };
 		CAF0916E1D4E9054005FAEF4 /* PWRestaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF091251D4D3A4C005FAEF4 /* PWRestaurant.m */; };
@@ -97,7 +96,6 @@
 		CAF091271D4D3A4C005FAEF4 /* PWRestaurantShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRestaurantShare.m; sourceTree = "<group>"; };
 		CAF091291D4D3A4C005FAEF4 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CAF091341D4D3A9F005FAEF4 /* PWConfig.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = PWConfig.xcconfig; sourceTree = "<group>"; };
-		CAF091361D4D3B7B005FAEF4 /* Intro.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 		CAF091381D4D4062005FAEF4 /* PWIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWIndicator.h; sourceTree = "<group>"; };
 		CAF091391D4D4062005FAEF4 /* PWIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWIndicator.m; sourceTree = "<group>"; };
 		CAF0913B1D4E7272005FAEF4 /* IPWJSONInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPWJSONInfo.h; sourceTree = "<group>"; };
@@ -277,7 +275,6 @@
 				CAF0911A1D4D3A4C005FAEF4 /* Info.plist */,
 				CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */,
 				CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */,
-				CAF091361D4D3B7B005FAEF4 /* Intro.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -532,7 +529,6 @@
 				CAF091A11D562471005FAEF4 /* PWIntroSecondPageCell.xib in Resources */,
 				CAF091A21D562471005FAEF4 /* PWIntroThirdPageCell.xib in Resources */,
 				CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */,
-				CAF091371D4D3B7B005FAEF4 /* Intro.storyboard in Resources */,
 				CAF091DC1D579EDD005FAEF4 /* juice.jpg in Resources */,
 				CAF091CC1D57994D005FAEF4 /* vapiano.jpeg in Resources */,
 				CAF092091D5D2011005FAEF4 /* PWNearRestaurantCollectionViewCell.xib in Resources */,

@@ -72,12 +72,12 @@
 	{
 		CGFloat aspectRatio = (contentSize.width - 40) / layout.itemSize.width;
 		CGFloat height = 0 != layout.itemSize.height ?
-					layout.itemSize.height * aspectRatio : 90 * aspectRatio;
+					layout.itemSize.height * aspectRatio : 95 * aspectRatio;
 		layout.itemSize = CGSizeMake(layout.itemSize.width * aspectRatio, height);
 	}
 	else
 	{
-		layout.itemSize = CGSizeMake(contentSize.width - 20, 90);
+		layout.itemSize = CGSizeMake(contentSize.width - 20, 95);
 	}
 	
 	[self.view setNeedsLayout];
@@ -86,7 +86,7 @@
 
 - (CGFloat)initialCellHeight
 {
-	return 90;
+	return 95;
 }
 
 @end

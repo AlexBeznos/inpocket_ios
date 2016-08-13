@@ -53,7 +53,7 @@
 	self.layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
 	self.layout.minimumInteritemSpacing = 0;
 	 
-	self.layout.itemSize = CGSizeMake(320, 90);
+	self.layout.itemSize = CGSizeMake(320, 95);
 	self.layout.scrollDirection = UICollectionViewScrollDirectionVertical;
 }
 
@@ -79,12 +79,12 @@
 	if (0 != self.layout.itemSize.width)
 	{
 		CGFloat aspectRatio = (contentSize.width - 20) / self.layout.itemSize.width;
-		CGFloat height = 0 != self.layout.itemSize.height ? self.layout.itemSize.height * aspectRatio : 90;
+		CGFloat height = 0 != self.layout.itemSize.height ? self.layout.itemSize.height * aspectRatio : 95;
 		self.layout.itemSize = CGSizeMake(self.layout.itemSize.width * aspectRatio,height);
 	}
 	else
 	{
-		self.layout.itemSize = CGSizeMake(contentSize.width - 20, 90);
+		self.layout.itemSize = CGSizeMake(contentSize.width - 20, 95);
 	}
 }
 
@@ -95,7 +95,7 @@
 
 - (CGFloat)resizableContentSpace
 {
-	return 90 * self.restaurants.count;
+	return 95 * self.restaurants.count;
 }
 
 - (IBAction)showDetailsRestaurants:(id)sender

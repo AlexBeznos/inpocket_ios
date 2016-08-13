@@ -11,5 +11,6 @@
 @interface PWDropShadowView : UIView
 
 @property (nonatomic) CGSize shadowOffset;
+@property (nonatomic) CGFloat shadowOpacity;
 
 @end
