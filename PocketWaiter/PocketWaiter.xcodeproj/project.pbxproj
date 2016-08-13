@@ -72,6 +72,7 @@
 		CAF0920D1D5E4316005FAEF4 /* PWQRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0920B1D5E4316005FAEF4 /* PWQRCodeScanViewController.m */; };
 		CAF0920E1D5E4316005FAEF4 /* PWQRCodeScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF0920C1D5E4316005FAEF4 /* PWQRCodeScanViewController.xib */; };
 		CAF092111D5F3A0A005FAEF4 /* PWQRCodeScannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092101D5F3A0A005FAEF4 /* PWQRCodeScannerView.m */; };
+		CAF092141D5F420B005FAEF4 /* PWTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092131D5F420B005FAEF4 /* PWTouchView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -184,6 +185,8 @@
 		CAF0920C1D5E4316005FAEF4 /* PWQRCodeScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWQRCodeScanViewController.xib; sourceTree = "<group>"; };
 		CAF0920F1D5F3A0A005FAEF4 /* PWQRCodeScannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWQRCodeScannerView.h; sourceTree = "<group>"; };
 		CAF092101D5F3A0A005FAEF4 /* PWQRCodeScannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWQRCodeScannerView.m; sourceTree = "<group>"; };
+		CAF092121D5F420B005FAEF4 /* PWTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWTouchView.h; sourceTree = "<group>"; };
+		CAF092131D5F420B005FAEF4 /* PWTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWTouchView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -358,6 +361,8 @@
 				CAF092041D5D1FF7005FAEF4 /* PWNearRestaurantCollectionViewCell.m */,
 				CAF0920F1D5F3A0A005FAEF4 /* PWQRCodeScannerView.h */,
 				CAF092101D5F3A0A005FAEF4 /* PWQRCodeScannerView.m */,
+				CAF092121D5F420B005FAEF4 /* PWTouchView.h */,
+				CAF092131D5F420B005FAEF4 /* PWTouchView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -517,6 +522,7 @@
 				CAF091981D561AF6005FAEF4 /* PWIntroFirstPageCell.m in Sources */,
 				CAF091C51D577286005FAEF4 /* PWModelManager.m in Sources */,
 				CAF091A61D564E3F005FAEF4 /* PWEnterPromoViewController.m in Sources */,
+				CAF092141D5F420B005FAEF4 /* PWTouchView.m in Sources */,
 				CAF091B21D566763005FAEF4 /* PWContentSource.m in Sources */,
 				CAF0919E1D561DCB005FAEF4 /* PWIntroLayout.m in Sources */,
 				CAF091B61D57517B005FAEF4 /* PWMainMenuViewController.m in Sources */,

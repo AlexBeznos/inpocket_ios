@@ -12,7 +12,8 @@ typedef void (^PWContentTransitionHandler)();
 
 @protocol IPWContentTransitionControler <NSObject>
 
-- (instancetype)initWithTransitionHandler:(PWContentTransitionHandler)aHandler;
+- (instancetype)initWithTransitionHandler:(PWContentTransitionHandler)aHandler
+			forwardTransitionHandler:(PWContentTransitionHandler)aFwdHandler;
 
 @end
 

@@ -51,6 +51,10 @@
 					initWithTransitionHandler:
 		^{
 			[theWeakSelf performBackTransition];
+		}
+					forwardTransitionHandler:
+		^{
+			[theWeakSelf performForwardTransition];
 		}]];
 		
 		PWContentSource *restaurantsSource = [[PWContentSource alloc]
@@ -60,6 +64,10 @@
 					initWithTransitionHandler:
 		^{
 			[theWeakSelf performBackTransition];
+		}
+					forwardTransitionHandler:
+		^{
+			[theWeakSelf performForwardTransition];
 		}]];
 		
 		PWContentSource *shareSource = [[PWContentSource alloc]
@@ -69,6 +77,10 @@
 					initWithTransitionHandler:
 		^{
 			[theWeakSelf performBackTransition];
+		}
+					forwardTransitionHandler:
+		^{
+			[theWeakSelf performForwardTransition];
 		}]];
 		
 		PWContentSource *aboutSource = [[PWContentSource alloc]
@@ -78,6 +90,10 @@
 					initWithTransitionHandler:
 		^{
 			[theWeakSelf performBackTransition];
+		}
+					forwardTransitionHandler:
+		^{
+			[theWeakSelf performForwardTransition];
 		}]];
 		
 		PWContentSource *profileSource = [[PWContentSource alloc]
@@ -88,6 +104,10 @@
 					initWithTransitionHandler:
 		^{
 			[theWeakSelf performBackTransition];
+		}
+					forwardTransitionHandler:
+		^{
+			[theWeakSelf performForwardTransition];
 		}]];
 		
 		_sources = @[mainSource, restaurantsSource, shareSource,
@@ -155,6 +175,27 @@
 		self.transitionConstrain.constant = -300;
 		[self.view setNeedsLayout];
 		[self.view layoutIfNeeded];
+	}
+				completion:
+	^(BOOL finished)
+	{
+		self.selectedController.view.userInteractionEnabled = YES;
+	}];
+}
+
+- (void)performForwardTransition
+{
+	self.selectedController.view.userInteractionEnabled = NO;
+	[UIView animateWithDuration:0.25 animations:
+	^{
+		self.transitionConstrain.constant = 0;
+		[self.view setNeedsLayout];
+		[self.view layoutIfNeeded];
+	}
+				completion:
+	^(BOOL finished)
+	{
+		self.selectedController.view.userInteractionEnabled = YES;
 	}];
 }
 
@@ -236,15 +277,8 @@
 		}
 		else
 		{
-			[UIView animateWithDuration:0.25 animations:
-			^{
-				self.transitionConstrain.constant = 0;
-				[self.view setNeedsLayout];
-				[self.view layoutIfNeeded];
-			}];
+			[self performForwardTransition];
 		}
-		
-		self.selectedController.view.userInteractionEnabled = YES;
 	}
 }
 

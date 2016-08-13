@@ -12,23 +12,28 @@
 #import "PWNearSharesViewController.h"
 #import "UIColorAdditions.h"
 #import "PWNearRestaurantsViewController.h"
+#import "PWTouchView.h"
 
 @interface PWMainMenuViewController ()
 
 @property (nonatomic, copy) PWContentTransitionHandler transitionHandler;
+@property (nonatomic, copy) PWContentTransitionHandler forwardTransitionHandler;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (nonatomic) BOOL isTransited;
 
 @end
 
 @implementation PWMainMenuViewController
 
 - (instancetype)initWithTransitionHandler:(PWContentTransitionHandler)aHandler
+			forwardTransitionHandler:(PWContentTransitionHandler)aForwardHandler
 {
 	self = [super init];
 	
 	if (nil != self)
 	{
 		self.transitionHandler = aHandler;
+		self.forwardTransitionHandler = aForwardHandler;
 	}
 	
 	return self;
@@ -38,6 +43,7 @@
 {
 	[super viewDidLoad];
 	
+	self.isTransited = NO;
 	self.view.backgroundColor = [UIColor pwBackgroundColor];
 	[self setupNavigationBar];
 	
@@ -174,9 +180,40 @@
 
 - (void)transitionBack
 {
-	if (nil != self.transitionHandler)
+	if (self.isTransited)
 	{
-		self.transitionHandler();
+		if (nil != self.forwardTransitionHandler)
+		{
+			self.forwardTransitionHandler();
+			self.isTransited = NO;
+		}
+	}
+	else
+	{
+		__weak __typeof(self) theWeakSelf = self;
+		PWTouchView *touchView = [[PWTouchView alloc] initWithTouchHandler:
+		^{
+			if (nil != theWeakSelf.forwardTransitionHandler)
+			{
+				theWeakSelf.forwardTransitionHandler();
+				theWeakSelf.isTransited = NO;
+			}
+		}];
+		
+		touchView.translatesAutoresizingMaskIntoConstraints = NO;
+		[self.view addSubview:touchView];
+		[self.view addConstraints:[NSLayoutConstraint
+					constraintsWithVisualFormat:@"H:|[view]|" options:0
+					metrics:nil views:@{@"view" : touchView}]];
+		[self.view addConstraints:[NSLayoutConstraint
+					constraintsWithVisualFormat:@"V:|[view]|" options:0
+					metrics:nil views:@{@"view" : touchView}]];
+		
+		if (nil != self.transitionHandler)
+		{
+			self.transitionHandler();
+			self.isTransited = YES;
+		}
 	}
 }
 
