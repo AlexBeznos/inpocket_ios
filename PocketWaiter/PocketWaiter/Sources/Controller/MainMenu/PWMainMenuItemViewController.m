@@ -17,10 +17,13 @@
 @property (nonatomic, copy) PWContentTransitionHandler forwardTransitionHandler;
 @property (nonatomic) BOOL isTransited;
 @property (nonatomic, strong) PWTouchView *touchView;
+@property (nonatomic, strong) NSLayoutConstraint *trasitedConstraint;
 
 @end
 
 @implementation PWMainMenuItemViewController
+
+@synthesize transitedController;
 
 - (instancetype)initWithTransitionHandler:(PWContentTransitionHandler)aHandler
 			forwardTransitionHandler:(PWContentTransitionHandler)aForwardHandler
@@ -114,5 +117,35 @@
 		}
 	}
 }
+
+- (void)performBackTransitionWithSetupNaigationItem:(BOOL)setup
+{
+	if (setup)
+	{
+		[self setupNavigation];
+	}
+	[UIView animateWithDuration:0.25 animations:
+	^{
+		self.trasitedConstraint.constant = -CGRectGetWidth(self.view.frame);
+		[self.view setNeedsLayout];
+		[self.view layoutIfNeeded];
+	}
+	completion:^(BOOL finished)
+	{
+		[self.transitedController.view removeFromSuperview];
+		[self.transitedController removeFromParentViewController];
+		self.transitedController = nil;
+	}];
+}
+
+- (void)performForwardTransition:
+			(UIViewController<IPWTransitableController> *)controller
+{
+	controller.transiter = self;
+	[controller setupWithNavigationItem:self.navigationItem];
+	self.transitedController = controller;
+	self.trasitedConstraint = [self navigateViewController:controller];
+}
+
 
 @end

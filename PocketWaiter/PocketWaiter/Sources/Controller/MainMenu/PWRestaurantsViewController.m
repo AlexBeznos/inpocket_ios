@@ -12,11 +12,13 @@
 #import "PWModelManager.h"
 #import "UIViewControllerAdditions.h"
 #import "UIColorAdditions.h"
+#import "PWRestaurantFilterController.h"
 
 @interface PWRestaurantsViewController ()
 
 @property (strong, nonatomic) IBOutlet PWTapper *tapper;
 @property (strong, nonatomic) IBOutlet UIView *containerView;
+@property (strong, nonatomic) PWRestaurantFilterController *filterController;
 
 @property (nonatomic) BOOL isCollectionMode;
 
@@ -28,6 +30,8 @@
 {
 	[super viewDidLoad];
 	
+	__weak __typeof(self) weakSelf = self;
+	
 	self.tapper.firstValue = @"СПИСОК";
 	self.tapper.secondValue = @"КАРТА";
 	self.tapper.tapHandler =
@@ -36,7 +40,6 @@
 		
 	};
 	
-	__weak __typeof(self) weakSelf = self;
 	[[PWModelManager sharedManager] getRestaurantsWithCount:10 offset:0
 				completion:^(NSArray<PWRestaurant *> *restaurants)
 	{
@@ -62,9 +65,40 @@
 	}];
 }
 
+- (void)setupNavigation
+{
+	[super setupNavigation];
+	
+	UIButton *theFilterButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[theFilterButton setImage:[UIImage imageNamed:@"blackFilter"]
+				forState:UIControlStateNormal];
+	[theFilterButton addTarget:self action:@selector(showFilter)
+				forControlEvents:UIControlEventTouchUpInside];
+	[theFilterButton sizeToFit];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+				initWithCustomView:theFilterButton];
+}
+
 - (NSString *)name
 {
 	return @"Заведения";
+}
+
+- (void)showFilter
+{
+	__weak __typeof(self) weakSelf = self;
+	self.filterController = [[PWRestaurantFilterController alloc]
+				initWithFilteredTypeHandler:
+	^(PWRestaurantType type)
+	{
+		[weakSelf dismissViewControllerAnimated:YES completion:nil];
+	}
+				cancelHandler:
+	^{
+		[weakSelf dismissViewControllerAnimated:YES completion:nil];
+	}];
+	
+	[self presentViewController:self.filterController animated:YES completion:nil];
 }
 
 @end

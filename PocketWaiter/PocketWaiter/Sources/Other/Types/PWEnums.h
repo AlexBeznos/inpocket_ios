@@ -34,3 +34,16 @@ typedef NS_ENUM(NSUInteger, PWWeekDayName)
 	kPWWeekDaNameSun
 };
 
+typedef NS_OPTIONS(NSUInteger, PWRestaurantType)
+{
+    kPWRestaurantTypeFastFood = 1 << 0,
+    kPWRestaurantTypeCafe = 1 << 1,
+    kPWRestaurantTypeSushi = 1 << 2,
+	 kPWRestaurantTypeHookah = 1 << 3,
+	 kPWRestaurantTypePizza= 1 << 4,
+    kPWRestaurantTypeFood = 1 << 5,
+    kPWRestaurantTypeBar = 1 << 6,
+	 kPWRestaurantTypeAll = 0x1111111,
+};
+
+

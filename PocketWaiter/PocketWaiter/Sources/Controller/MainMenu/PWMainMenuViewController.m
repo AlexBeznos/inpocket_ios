@@ -12,16 +12,13 @@
 #import "PWNearSharesViewController.h"
 #import "PWNearRestaurantsViewController.h"
 
-@interface PWMainMenuViewController () <IPWTransiter>
+@interface PWMainMenuViewController ()
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, strong) NSLayoutConstraint *trasitedConstraint;
 
 @end
 
 @implementation PWMainMenuViewController
-
-@synthesize transitedController;
 
 - (void)viewDidLoad
 {
@@ -160,35 +157,6 @@
 	}
 	NSLog(@"velocity %@ offset %f", NSStringFromCGPoint(velocity), yOffset);
 	[self.scrollView setContentOffset:CGPointMake(0, yOffset) animated:YES];
-}
-
-- (void)performBackTransitionWithSetupNaigationItem:(BOOL)setup
-{
-	if (setup)
-	{
-		[self setupNavigation];
-	}
-	[UIView animateWithDuration:0.25 animations:
-	^{
-		self.trasitedConstraint.constant = -CGRectGetWidth(self.view.frame);
-		[self.view setNeedsLayout];
-		[self.view layoutIfNeeded];
-	}
-	completion:^(BOOL finished)
-	{
-		[self.transitedController.view removeFromSuperview];
-		[self.transitedController removeFromParentViewController];
-		self.transitedController = nil;
-	}];
-}
-
-- (void)performForwardTransition:
-			(UIViewController<IPWTransitableController> *)controller
-{
-	controller.transiter = self;
-	[controller setupWithNavigationItem:self.navigationItem];
-	self.transitedController = controller;
-	self.trasitedConstraint = [self navigateViewController:controller];
 }
 
 - (void)showBonuses

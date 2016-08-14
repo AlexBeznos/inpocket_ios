@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "PWContentSource.h"
+#import "UIViewControllerAdditions.h"
 
 @interface PWMainMenuItemViewController :
-			UIViewController <IPWContentTransitionControler>
+			UIViewController <IPWContentTransitionControler, IPWTransiter>
 
 @property (nonatomic, readonly) NSString *name;
 
