@@ -93,6 +93,7 @@
 	[self.collectionView registerNib:
 				[UINib nibWithNibName:@"PWRestaurantFilterCell"
 				bundle:[NSBundle mainBundle]]forCellWithReuseIdentifier:@"id"];
+	self.collectionView.allowsMultipleSelection = YES;
 }
 
 - (NSArray<PWFilterHolder *> *)filters
@@ -203,7 +204,17 @@
 	PWFilterHolder *holder = self.filters[indexPath.item];
 	cell.title = holder.title;
 	cell.image = holder.icon;
-	cell.selected = [self.selectedFilters containsObject:holder];
+	if ([self.selectedFilters containsObject:holder])
+	{
+		[collectionView selectItemAtIndexPath:indexPath animated:NO
+					scrollPosition:UICollectionViewScrollPositionNone];
+		[cell setSelected:YES];
+	}
+	else
+	{
+		[collectionView deselectItemAtIndexPath:indexPath animated:NO];
+		[cell setSelected:NO];
+	}
 	
 	return cell;
 }
