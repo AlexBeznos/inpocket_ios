@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "PWEnums.h"
+#import "UIViewControllerAdditions.h"
 
 @interface PWRestaurantFilterController : UIViewController
+			<IPWTransitableController>
 
-- (instancetype)initWithFilteredTypeHandler:
-			(void (^)(PWRestaurantType type))aHandler
-			cancelHandler:(void (^)())aCancelHandler;
+- (instancetype)initWithCurrentFilter:(PWRestaurantType)filter typeHandler:
+			(void (^)(PWRestaurantType type))aHandler;
 
 @end

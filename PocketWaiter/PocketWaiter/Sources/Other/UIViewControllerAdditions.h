@@ -15,7 +15,7 @@
 @property (nonatomic, strong)
 			UIViewController<IPWTransitableController> *transitedController;
 
-- (void)performBackTransitionWithSetupNaigationItem:(BOOL)setup;
+- (void)performBackTransitionWithSetupNavigationItem:(BOOL)setup;
 - (void)performForwardTransition:
 			(UIViewController<IPWTransitableController> *)controller;
 

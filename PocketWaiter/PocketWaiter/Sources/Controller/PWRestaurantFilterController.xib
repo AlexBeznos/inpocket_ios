@@ -7,10 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PWRestaurantFilterController">
             <connections>
-                <outlet property="cancelButton" destination="Zz5-mW-N8x" id="Cbc-WG-Lea"/>
+                <outlet property="cancelButton" destination="6ah-ca-gDJ" id="rAo-AR-txr"/>
                 <outlet property="collectionView" destination="G5G-Bv-e7d" id="w96-hR-hHs"/>
                 <outlet property="layout" destination="mun-VF-Yxm" id="tea-dO-yga"/>
-                <outlet property="showButton" destination="6ah-ca-gDJ" id="UAW-hS-ty9"/>
+                <outlet property="showButton" destination="Zz5-mW-N8x" id="50Z-aA-FXQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -35,11 +35,11 @@
                         <constraint firstAttribute="height" constant="50" id="jhm-3Q-grI"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="show">
+                    <state key="normal" title="cancel">
                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="showAction:" destination="-1" eventType="touchUpInside" id="U7G-64-GLI"/>
+                        <action selector="cancelAction:" destination="-1" eventType="touchUpInside" id="ajI-xZ-Big"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zz5-mW-N8x">
@@ -50,9 +50,9 @@
                         <constraint firstAttribute="height" constant="50" id="vK5-Fd-jnM"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="cancel"/>
+                    <state key="normal" title="show"/>
                     <connections>
-                        <action selector="cancelAction:" destination="-1" eventType="touchUpInside" id="ye8-Le-mNR"/>
+                        <action selector="showAction:" destination="-1" eventType="touchUpInside" id="eP1-Ph-5eL"/>
                     </connections>
                 </button>
             </subviews>

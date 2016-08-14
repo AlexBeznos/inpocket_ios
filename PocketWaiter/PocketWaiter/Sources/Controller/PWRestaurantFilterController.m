@@ -30,27 +30,28 @@
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;
 @property (strong, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
 @property (nonatomic, copy) void (^completion)(PWRestaurantType type);
-@property (nonatomic, copy) void (^cancelHandler)();
 @property (nonatomic, strong) NSArray<PWFilterHolder *> *filters;
 @property (nonatomic, strong) NSMutableArray<PWFilterHolder *> *selectedFilters;
 @property (nonatomic, strong) PWFilterHolder *allFilterHolder;
+@property (nonatomic) PWRestaurantType currentType;
 
 @end
 
 @implementation PWRestaurantFilterController
 
-- (instancetype)initWithFilteredTypeHandler:
+@synthesize transiter;
+
+- (instancetype)initWithCurrentFilter:(PWRestaurantType)filter typeHandler:
 			(void (^)(PWRestaurantType type))aHandler
-			cancelHandler:(void (^)())aCancelHandler
 {
 	self = [super init];
 	
 	if (nil != self)
 	{
 		self.completion = aHandler;
-		self.cancelHandler = aCancelHandler;
-		
+
 		self.selectedFilters = [NSMutableArray new];
+		self.currentType = filter;
 	}
 	
 	return self;
@@ -63,7 +64,20 @@
 	self.collectionView.backgroundColor = [UIColor pwBackgroundColor];
 	self.view.backgroundColor = [UIColor pwBackgroundColor];
 	
-	[self.selectedFilters addObject:[self.filters firstObject]];
+	NSMutableArray *initialSelectedFilters = [NSMutableArray new];
+	for (PWFilterHolder *holder in self.filters)
+	{
+		if (holder.filter == (holder.filter & self.currentType))
+		{
+			[initialSelectedFilters addObject:holder];
+			if (holder == self.allFilterHolder)
+			{
+				break;
+			}
+		}
+	}
+	
+	[self.selectedFilters addObjectsFromArray:initialSelectedFilters];
 	
 	[self.showButton setTitle:@"Показать" forState:UIControlStateNormal];
 	[self.cancelButton setTitle:@"Отмена" forState:UIControlStateNormal];
@@ -145,14 +159,34 @@
 		
 		self.completion(result);
 	}
+	
+	[self back];
 }
 
 - (IBAction)cancelAction:(id)sender
 {
-	if (nil != self.cancelHandler)
-	{
-		self.cancelHandler();
-	}
+	[self back];
+}
+
+- (void)back
+{
+	[self.transiter performBackTransitionWithSetupNavigationItem:YES];
+}
+
+- (void)setupWithNavigationItem:(UINavigationItem *)item
+{
+	[self setupBackItemWithTarget:self action:@selector(back)
+				navigationItem:item];
+	
+	UILabel *theTitleLabel = [UILabel new];
+	theTitleLabel.text = @"Типы заведений";
+	theTitleLabel.font = [UIFont systemFontOfSize:20];
+	[theTitleLabel sizeToFit];
+	
+	item.leftBarButtonItems = @[item.leftBarButtonItem,
+				[[UIBarButtonItem alloc] initWithCustomView:theTitleLabel]];
+	item.rightBarButtonItem = nil;
+
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView

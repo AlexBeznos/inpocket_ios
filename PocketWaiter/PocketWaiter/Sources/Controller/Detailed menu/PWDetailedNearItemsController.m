@@ -96,7 +96,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)transitionBack
 {
-	[self.transiter performBackTransitionWithSetupNaigationItem:YES];
+	[self.transiter performBackTransitionWithSetupNavigationItem:YES];
 }
 
 #pragma mark <UICollectionViewDataSource>

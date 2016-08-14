@@ -13,12 +13,14 @@
 #import "UIViewControllerAdditions.h"
 #import "UIColorAdditions.h"
 #import "PWRestaurantFilterController.h"
+#import "PWEnums.h"
 
 @interface PWRestaurantsViewController ()
 
 @property (strong, nonatomic) IBOutlet PWTapper *tapper;
 @property (strong, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) PWRestaurantFilterController *filterController;
+@property (nonatomic) PWRestaurantType filter;
 
 @property (nonatomic) BOOL isCollectionMode;
 
@@ -29,6 +31,8 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	
+	self.filter = kPWRestaurantTypeAll;
 	
 	__weak __typeof(self) weakSelf = self;
 	
@@ -88,17 +92,13 @@
 {
 	__weak __typeof(self) weakSelf = self;
 	self.filterController = [[PWRestaurantFilterController alloc]
-				initWithFilteredTypeHandler:
-	^(PWRestaurantType type)
+				initWithCurrentFilter:self.filter
+				typeHandler:^(PWRestaurantType type)
 	{
-		[weakSelf dismissViewControllerAnimated:YES completion:nil];
-	}
-				cancelHandler:
-	^{
-		[weakSelf dismissViewControllerAnimated:YES completion:nil];
+		weakSelf.filter = type;
 	}];
 	
-	[self presentViewController:self.filterController animated:YES completion:nil];
+	[self performForwardTransition:self.filterController];
 }
 
 @end

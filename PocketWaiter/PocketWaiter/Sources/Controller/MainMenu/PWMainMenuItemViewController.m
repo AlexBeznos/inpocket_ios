@@ -118,7 +118,7 @@
 	}
 }
 
-- (void)performBackTransitionWithSetupNaigationItem:(BOOL)setup
+- (void)performBackTransitionWithSetupNavigationItem:(BOOL)setup
 {
 	if (setup)
 	{
