@@ -9,7 +9,7 @@
 #import "PWNearPresentsViewController.h"
 #import "PWModelManager.h"
 #import "PWNearItemCollectionViewCell.h"
-#import "PWDetailedNearPresentsController.h"
+#import "PWDetailesPresentsViewController.h"
 
 @interface PWNearPresentsViewController ()
 
@@ -43,13 +43,13 @@
 	return self.presents;
 }
 
-- (PWDetailedNearItemsController *)allItemsController
+- (PWDetailesItemsViewController *)allItemsController
 {
-	PWDetailedNearPresentsController *controller =
-				[[PWDetailedNearPresentsController alloc]
+	PWDetailesPresentsViewController *controller =
+				[[PWDetailesPresentsViewController alloc]
 				initWithPresents:self.presents];
-	
-	[controller setContentSize:self.contentSize];
+//	
+//	[controller setContentSize:self.contentSize];
 	
 	return controller;
 }

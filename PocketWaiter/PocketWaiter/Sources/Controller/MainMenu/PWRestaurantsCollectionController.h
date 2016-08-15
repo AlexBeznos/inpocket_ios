@@ -6,11 +6,11 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import "PWDetailedNearItemsController.h"
+#import "PWDetailedNearItemsCollectionController.h"
 
 @class PWRestaurant;
 
-@interface PWRestaurantsCollectionController : PWDetailedNearItemsController
+@interface PWRestaurantsCollectionController : PWDetailedNearItemsCollectionController
 
 - (instancetype)initWithRestaurants:(NSArray<PWRestaurant *> *)restaurants;
 

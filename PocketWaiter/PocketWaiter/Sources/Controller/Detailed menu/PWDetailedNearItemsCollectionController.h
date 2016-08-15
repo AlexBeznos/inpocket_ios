@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UIViewControllerAdditions.h"
 
-@interface PWDetailedNearItemsController : UICollectionViewController
-			<IPWTransitableController>
+@interface PWDetailedNearItemsCollectionController : UICollectionViewController
 
 @property (nonatomic, readonly) NSString *navigationTitle;
 

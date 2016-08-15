@@ -43,6 +43,25 @@
 {
 	[super viewDidLoad];
 	
+#if 1
+	UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+	[button setTitle:@"skip" forState:UIControlStateNormal];
+	button.backgroundColor = [UIColor whiteColor];
+	[button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+	
+	[self.view addSubview:button];
+	[button sizeToFit];
+	button.translatesAutoresizingMaskIntoConstraints = NO;
+	[self.view addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"H:[view]-20-|" options:0 metrics:nil
+				views:@{@"view" : button}]];
+	[self.view addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"V:[view]-20-|" options:0 metrics:nil
+				views:@{@"view" : button}]];
+	[button addTarget:self action:@selector(finish)
+				forControlEvents:UIControlEventTouchUpInside];
+#endif
+	
 	self.label.text = @"Сканируйте код прямо за столом вашего любимого ресторана";
 	self.flashLabel.text = @"Вспышка";
 	self.isReading = NO;
@@ -165,6 +184,18 @@
 	[self.streamView updateWithSession:nil];
 }
 
+- (void)finish
+{
+	[self startStopReading];
+				
+	if (nil != self.completion)
+	{
+		self.completion();
+		self.completion = nil;
+	}
+
+}
+
 - (void)captureOutput:(AVCaptureOutput *)captureOutput
 			didOutputMetadataObjects:(NSArray *)metadataObjects
 			fromConnection:(AVCaptureConnection *)connection
@@ -187,13 +218,7 @@
 				[self.streamView addConstraints:[NSLayoutConstraint
 							constraintsWithVisualFormat:@"V:|[view]|" options:0
 							metrics:nil views:@{@"view" : theSnapshotView}]];
-				[self startStopReading];
-				
-				if (nil != self.completion)
-				{
-					self.completion();
-					self.completion = nil;
-				}
+				[self finish];
 			});
 		}
 	}

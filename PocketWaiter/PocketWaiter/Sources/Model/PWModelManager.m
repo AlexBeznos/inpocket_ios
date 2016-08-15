@@ -52,6 +52,32 @@
 	});
 }
 
+- (void)getSharesWithCount:(NSUInteger)count offset:(NSUInteger)offset
+			completion:(void (^)(NSArray<PWRestaurantShare *> *))completion
+{
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
+				(int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(),
+	^{
+		if (nil != completion)
+		{
+			completion(self.nearShares);
+		}
+	});
+}
+
+- (void)getPresentsWithCount:(NSUInteger)count offset:(NSUInteger)offset
+			completion:(void (^)(NSArray<PWPresentProduct *> *))completion
+{
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
+				(int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(),
+	^{
+		if (nil != completion)
+		{
+			completion(self.nearPresents);
+		}
+	});
+}
+
 - (NSArray<PWRestaurant *> *)nearRestaurants
 {
 	return self.cachedRestaurants;

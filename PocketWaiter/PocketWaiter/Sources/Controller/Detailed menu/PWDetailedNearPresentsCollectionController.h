@@ -1,16 +1,16 @@
 //
-//  PWDetailedNearPresentsController.h
+//  PWDetailedNearPresentsCollectionController.h
 //  PocketWaiter
 //
 //  Created by Www Www on 8/13/16.
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import "PWDetailedNearItemsController.h"
+#import "PWDetailedNearItemsCollectionController.h"
 
 @class PWPresentProduct;
 
-@interface PWDetailedNearPresentsController : PWDetailedNearItemsController
+@interface PWDetailedNearPresentsCollectionController : PWDetailedNearItemsCollectionController
 
 - (instancetype)initWithPresents:(NSArray<PWPresentProduct *> *)presents;
 

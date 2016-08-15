@@ -6,14 +6,12 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import "PWDetailedNearItemsController.h"
+#import "PWDetailedNearItemsCollectionController.h"
 #import "PWNearItemCollectionViewCell.h"
 #import "UIColorAdditions.h"
 #import "UIViewControllerAdditions.h"
 
-@implementation PWDetailedNearItemsController
-
-@synthesize transiter;
+@implementation PWDetailedNearItemsCollectionController
 
 static NSString * const reuseIdentifier = @"Cell";
 
@@ -34,8 +32,6 @@ static NSString * const reuseIdentifier = @"Cell";
 {
 	[super viewDidLoad];
 	
-	[self setupNavigationBar];
-	
 	self.collectionView.backgroundColor = [UIColor pwBackgroundColor];
 	self.view.translatesAutoresizingMaskIntoConstraints = NO;
 	
@@ -55,21 +51,6 @@ static NSString * const reuseIdentifier = @"Cell";
 				forCellWithReuseIdentifier:reuseIdentifier];
 }
 
-- (void)setupWithNavigationItem:(UINavigationItem *)item
-{
-	[self setupBackItemWithTarget:self action:@selector(transitionBack)
-				navigationItem:item];
-	
-	UILabel *theTitleLabel = [UILabel new];
-	theTitleLabel.text = self.navigationTitle;
-	theTitleLabel.font = [UIFont systemFontOfSize:20];
-	[theTitleLabel sizeToFit];
-	
-	item.leftBarButtonItems = @[item.leftBarButtonItem,
-				[[UIBarButtonItem alloc] initWithCustomView:theTitleLabel]];
-	item.rightBarButtonItem = nil;
-}
-
 - (void)setContentSize:(CGSize)contentSize
 {
 	((UICollectionViewFlowLayout *)self.collectionViewLayout).
@@ -87,16 +68,6 @@ static NSString * const reuseIdentifier = @"Cell";
 - (NSArray *)contentItems
 {
 	return nil;
-}
-
-- (NSString *)navigationTitle
-{
-	return nil;
-}
-
-- (void)transitionBack
-{
-	[self.transiter performBackTransitionWithSetupNavigationItem:YES];
 }
 
 #pragma mark <UICollectionViewDataSource>

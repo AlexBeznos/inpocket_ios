@@ -53,11 +53,6 @@
 				bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"id"];
 }
 
-- (NSString *)navigationTitle
-{
-	return @"Заведения рядом";
-}
-
 - (NSArray *)contentItems
 {
 	return self.restaurants;

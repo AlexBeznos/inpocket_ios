@@ -12,6 +12,7 @@
 
 @interface PWRestaurantMapController : PWMapController
 
-- (instancetype)initWithRestaurants:(NSArray<PWRestaurant *> *)restaurants;
+- (instancetype)initWithRestaurants:(NSArray<PWRestaurant *> *)restaurants
+			selectedRestaurant:(PWRestaurant *)restaurant;
 
 @end

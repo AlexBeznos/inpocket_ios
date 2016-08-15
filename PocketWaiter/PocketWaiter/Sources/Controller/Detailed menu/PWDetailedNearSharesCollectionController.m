@@ -1,22 +1,22 @@
 //
-//  PWDetailedNearSharesController.m
+//  PWDetailedNearSharesCollectionController.m
 //  PocketWaiter
 //
 //  Created by Www Www on 8/13/16.
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import "PWDetailedNearSharesController.h"
+#import "PWDetailedNearSharesCollectionController.h"
 #import "PWNearItemCollectionViewCell.h"
 #import "PWRestaurantShare.h"
 
-@interface PWDetailedNearSharesController ()
+@interface PWDetailedNearSharesCollectionController ()
 
 @property (nonatomic, strong) NSArray<PWRestaurantShare *> *shares;
 
 @end
 
-@implementation PWDetailedNearSharesController
+@implementation PWDetailedNearSharesCollectionController
 
 - (instancetype)initWithShares:(NSArray<PWRestaurantShare *> *)shares
 {
@@ -35,21 +35,16 @@
 {
 	PWRestaurantShare *share = self.shares[indexPath.row];
 	
-	cell.placeName = @"Vapiano";
+	cell.placeName = share.restaurant.name;
 	cell.placeDistance = @"2 km";
 	cell.image = share.image;
 	cell.descriptionTitle = share.shareDescription;
-	cell.buttonTitle = @"Podrobnee'";
+	cell.buttonTitle = @"Подробнее";
 }
 
 - (NSArray *)contentItems
 {
 	return self.shares;
-}
-
-- (NSString *)navigationTitle
-{
-	return @"Акции рядом";
 }
 
 @end

@@ -10,7 +10,7 @@
 #import "PWIndicator.h"
 #import "PWNearItemCollectionViewCell.h"
 #import "PWSlidesLayout.h"
-#import "PWDetailedNearItemsController.h"
+#import "PWDetailesItemsViewController.h"
 
 @interface PWNearItemsViewController ()
 			<UICollectionViewDataSource, UICollectionViewDelegate,
@@ -129,7 +129,7 @@
 	[self.transiter performForwardTransition:[self allItemsController]];
 }
 
-- (PWDetailedNearItemsController *)allItemsController
+- (PWDetailesItemsViewController *)allItemsController
 {
 	return nil;
 }

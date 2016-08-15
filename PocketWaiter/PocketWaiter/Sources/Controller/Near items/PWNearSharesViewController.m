@@ -9,7 +9,7 @@
 #import "PWNearSharesViewController.h"
 #import "PWModelManager.h"
 #import "PWNearItemCollectionViewCell.h"
-#import "PWDetailedNearSharesController.h"
+#import "PWDetailesSharesViewController.h"
 
 @interface PWNearSharesViewController ()
 
@@ -38,13 +38,13 @@
 	cell.buttonTitle = @"Podrobnee'";
 }
 
-- (PWDetailedNearItemsController *)allItemsController
+- (PWDetailesItemsViewController *)allItemsController
 {
-	PWDetailedNearItemsController *controller =
-				[[PWDetailedNearSharesController alloc]
+	PWDetailesSharesViewController *controller =
+				[[PWDetailesSharesViewController alloc]
 				initWithShares:self.shares];
 	
-	[controller setContentSize:self.contentSize];
+//	[controller setContentSize:self.contentSize];
 	
 	return controller;
 }
@@ -56,7 +56,7 @@
 
 - (NSString *)titleDescription
 {
-	return @"Actsii ryadom";
+	return @"Акции рядом";
 }
 
 @end

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PWDetailesItemsViewController">
+            <connections>
+                <outlet property="contentHolder" destination="Qp7-j6-X8X" id="Ds3-1t-Y2J"/>
+                <outlet property="tapper" destination="qMs-eR-3G3" id="PL0-9f-Kfl"/>
+                <outlet property="view" destination="JWw-zz-9Hx" id="Aya-l3-21i"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="JWw-zz-9Hx">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qMs-eR-3G3" customClass="PWTapper">
+                    <rect key="frame" x="15" y="14" width="305" height="52"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="52" id="8iU-g7-lbT"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qp7-j6-X8X">
+                    <rect key="frame" x="0.0" y="74" width="320" height="526"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Qp7-j6-X8X" secondAttribute="trailing" id="2Qz-PS-Ezn"/>
+                <constraint firstItem="qMs-eR-3G3" firstAttribute="leading" secondItem="JWw-zz-9Hx" secondAttribute="leading" constant="15" id="2yH-vT-lcP"/>
+                <constraint firstAttribute="bottom" secondItem="Qp7-j6-X8X" secondAttribute="bottom" id="OE4-Nb-zMs"/>
+                <constraint firstItem="Qp7-j6-X8X" firstAttribute="top" secondItem="qMs-eR-3G3" secondAttribute="bottom" constant="8" id="Sae-gV-ye6"/>
+                <constraint firstItem="Qp7-j6-X8X" firstAttribute="leading" secondItem="JWw-zz-9Hx" secondAttribute="leading" id="mCs-bW-G8y"/>
+                <constraint firstItem="qMs-eR-3G3" firstAttribute="top" secondItem="JWw-zz-9Hx" secondAttribute="top" constant="14" id="pWD-j2-0dh"/>
+                <constraint firstAttribute="trailing" secondItem="qMs-eR-3G3" secondAttribute="trailing" id="sk1-rD-lPJ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>

@@ -10,4 +10,6 @@
 
 @interface PWMapController : UIViewController
 
+- (void)setContentSize:(CGSize)contentSize;
+
 @end

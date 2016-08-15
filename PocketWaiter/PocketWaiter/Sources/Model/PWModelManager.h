@@ -27,4 +27,10 @@
 - (void)getRestaurantsWithCount:(NSUInteger)count offset:(NSUInteger)offset
 			completion:(void (^)(NSArray<PWRestaurant *> *))completion;
 
+- (void)getSharesWithCount:(NSUInteger)count offset:(NSUInteger)offset
+			completion:(void (^)(NSArray<PWRestaurantShare *> *))completion;
+
+- (void)getPresentsWithCount:(NSUInteger)count offset:(NSUInteger)offset
+			completion:(void (^)(NSArray<PWPresentProduct *> *))completion;
+
 @end

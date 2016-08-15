@@ -70,15 +70,13 @@
 	{
 		self.listController = [[PWRestaurantsCollectionController alloc]
 					initWithRestaurants:self.filteredRestaurants];
-		CGFloat aspectRatio = CGRectGetWidth(self.parentViewController.
-					view.frame) / 320.;
-		[self.listController setContentSize:CGSizeMake(320 * aspectRatio, 90)];
 		self.currentController = self.listController;
 	}
 	else
 	{
 		self.mapController = [[PWRestaurantMapController alloc]
-					initWithRestaurants:self.filteredRestaurants];
+					initWithRestaurants:self.filteredRestaurants
+					selectedRestaurant:self.filteredRestaurants.firstObject];
 		self.currentController = self.mapController;
 	}
 	
@@ -94,6 +92,18 @@
 				constraintsWithVisualFormat:@"H:|[view]|"
 				options:0 metrics:nil
 				views:@{@"view" : self.currentController.view}]];
+	
+	CGFloat aspectRatio = CGRectGetWidth(self.parentViewController.
+					view.frame) / 320.;
+	if (0 == mode)
+	{
+		[self.listController setContentSize:CGSizeMake(320 * aspectRatio, 90)];
+	}
+	else
+	{
+		[self.mapController setContentSize:CGSizeMake(320 * aspectRatio,
+					95 * aspectRatio)];
+	}
 }
 
 - (void)setupNavigation
