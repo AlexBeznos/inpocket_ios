@@ -8,6 +8,7 @@
 
 #import "PWModelObject.h"
 #import "PWEnums.h"
+#import "IPWRestaurant.h"
 
 @class PWPrice;
 
@@ -20,5 +21,7 @@
 @property (nonatomic, readonly) PWPrice *price;
 @property (nonatomic, readonly) NSUInteger bonusesValue;
 @property (nonatomic, readonly) PWProductType type;
+
+@property (nonatomic, weak) id<IPWRestaurant> restaurant;
 
 @end

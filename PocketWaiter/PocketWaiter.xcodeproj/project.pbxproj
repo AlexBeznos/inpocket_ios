@@ -84,6 +84,20 @@
 		CAF0925E1D607B69005FAEF4 /* PWNearSharesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092531D607B69005FAEF4 /* PWNearSharesViewController.m */; };
 		CAF092631D607BB2005FAEF4 /* PWRestaurantsCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092601D607BB2005FAEF4 /* PWRestaurantsCollectionController.m */; };
 		CAF092641D607BB2005FAEF4 /* PWRestaurantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092621D607BB2005FAEF4 /* PWRestaurantsViewController.m */; };
+		CAF092681D608E77005FAEF4 /* PWMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092661D608E77005FAEF4 /* PWMapController.m */; };
+		CAF092691D608E77005FAEF4 /* PWMapController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF092671D608E77005FAEF4 /* PWMapController.xib */; };
+		CAF0928F1D60BCFF005FAEF4 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF0928E1D60BCFF005FAEF4 /* GoogleMaps.framework */; };
+		CAF092911D60C252005FAEF4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF092901D60C252005FAEF4 /* CoreData.framework */; };
+		CAF092931D60C287005FAEF4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF092921D60C287005FAEF4 /* CoreGraphics.framework */; };
+		CAF092951D60C395005FAEF4 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF092941D60C395005FAEF4 /* libc++.tbd */; };
+		CAF092971D60C3CA005FAEF4 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF092961D60C3CA005FAEF4 /* CoreBluetooth.framework */; };
+		CAF092991D60C3CF005FAEF4 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF092981D60C3CF005FAEF4 /* Accelerate.framework */; };
+		CAF0929D1D60C42F005FAEF4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF0929C1D60C42F005FAEF4 /* SystemConfiguration.framework */; };
+		CAF0929F1D60C43A005FAEF4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF0929E1D60C43A005FAEF4 /* ImageIO.framework */; };
+		CAF092A31D60C464005FAEF4 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF092A21D60C464005FAEF4 /* GLKit.framework */; };
+		CAF092A51D60C52E005FAEF4 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CAF092A41D60C52E005FAEF4 /* GoogleMaps.bundle */; };
+		CAF092A71D60C616005FAEF4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF092A61D60C616005FAEF4 /* libz.tbd */; };
+		CAF092AD1D618EB8005FAEF4 /* PWRestaurantMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092AC1D618EB8005FAEF4 /* PWRestaurantMapController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -218,6 +232,25 @@
 		CAF092601D607BB2005FAEF4 /* PWRestaurantsCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRestaurantsCollectionController.m; sourceTree = "<group>"; };
 		CAF092611D607BB2005FAEF4 /* PWRestaurantsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWRestaurantsViewController.h; sourceTree = "<group>"; };
 		CAF092621D607BB2005FAEF4 /* PWRestaurantsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRestaurantsViewController.m; sourceTree = "<group>"; };
+		CAF092651D608E77005FAEF4 /* PWMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWMapController.h; sourceTree = "<group>"; };
+		CAF092661D608E77005FAEF4 /* PWMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWMapController.m; sourceTree = "<group>"; };
+		CAF092671D608E77005FAEF4 /* PWMapController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWMapController.xib; sourceTree = "<group>"; };
+		CAF0928E1D60BCFF005FAEF4 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		CAF092901D60C252005FAEF4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CAF092921D60C287005FAEF4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CAF092941D60C395005FAEF4 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		CAF092961D60C3CA005FAEF4 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		CAF092981D60C3CF005FAEF4 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		CAF0929A1D60C411005FAEF4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CAF0929C1D60C42F005FAEF4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CAF0929E1D60C43A005FAEF4 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		CAF092A01D60C446005FAEF4 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		CAF092A21D60C464005FAEF4 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		CAF092A41D60C52E005FAEF4 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
+		CAF092A61D60C616005FAEF4 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		CAF092A81D618A5C005FAEF4 /* IPWRestaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPWRestaurant.h; sourceTree = "<group>"; };
+		CAF092AB1D618EB8005FAEF4 /* PWRestaurantMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWRestaurantMapController.h; sourceTree = "<group>"; };
+		CAF092AC1D618EB8005FAEF4 /* PWRestaurantMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRestaurantMapController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +258,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAF092A71D60C616005FAEF4 /* libz.tbd in Frameworks */,
+				CAF092A31D60C464005FAEF4 /* GLKit.framework in Frameworks */,
+				CAF0929F1D60C43A005FAEF4 /* ImageIO.framework in Frameworks */,
+				CAF0929D1D60C42F005FAEF4 /* SystemConfiguration.framework in Frameworks */,
+				CAF092991D60C3CF005FAEF4 /* Accelerate.framework in Frameworks */,
+				CAF092971D60C3CA005FAEF4 /* CoreBluetooth.framework in Frameworks */,
+				CAF092951D60C395005FAEF4 /* libc++.tbd in Frameworks */,
+				CAF092931D60C287005FAEF4 /* CoreGraphics.framework in Frameworks */,
+				CAF092911D60C252005FAEF4 /* CoreData.framework in Frameworks */,
+				CAF0928F1D60BCFF005FAEF4 /* GoogleMaps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +277,7 @@
 		CAF090F41D4D3938005FAEF4 = {
 			isa = PBXGroup;
 			children = (
+				CAF092A61D60C616005FAEF4 /* libz.tbd */,
 				CAF090FF1D4D3938005FAEF4 /* PocketWaiter */,
 				CAF090FE1D4D3938005FAEF4 /* Products */,
 			);
@@ -250,6 +294,7 @@
 		CAF090FF1D4D3938005FAEF4 /* PocketWaiter */ = {
 			isa = PBXGroup;
 			children = (
+				CAF0926A1D60986E005FAEF4 /* Frameworks */,
 				CAF091C01D576B7A005FAEF4 /* Temp resources */,
 				CAF091171D4D3A4C005FAEF4 /* Configuration */,
 				CAF091181D4D3A4C005FAEF4 /* Resources */,
@@ -269,6 +314,7 @@
 		CAF091181D4D3A4C005FAEF4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CAF092A41D60C52E005FAEF4 /* GoogleMaps.bundle */,
 				CAF0922E1D5FDA50005FAEF4 /* PWRestaurantsViewController.xib */,
 				CAF092211D5F6D3F005FAEF4 /* PWQRCodeScanViewController.xib */,
 				CAF092081D5D2011005FAEF4 /* PWNearRestaurantCollectionViewCell.xib */,
@@ -319,6 +365,11 @@
 				CAF092301D5FE08D005FAEF4 /* PWRestaurantFilterController.h */,
 				CAF092311D5FE08D005FAEF4 /* PWRestaurantFilterController.m */,
 				CAF092321D5FE08D005FAEF4 /* PWRestaurantFilterController.xib */,
+				CAF092651D608E77005FAEF4 /* PWMapController.h */,
+				CAF092661D608E77005FAEF4 /* PWMapController.m */,
+				CAF092671D608E77005FAEF4 /* PWMapController.xib */,
+				CAF092AB1D618EB8005FAEF4 /* PWRestaurantMapController.h */,
+				CAF092AC1D618EB8005FAEF4 /* PWRestaurantMapController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -357,6 +408,7 @@
 				CAF091B11D566763005FAEF4 /* PWContentSource.m */,
 				CAF091C31D577286005FAEF4 /* PWModelManager.h */,
 				CAF091C41D577286005FAEF4 /* PWModelManager.m */,
+				CAF092A81D618A5C005FAEF4 /* IPWRestaurant.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -504,6 +556,24 @@
 			path = "Near items";
 			sourceTree = "<group>";
 		};
+		CAF0926A1D60986E005FAEF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CAF092A21D60C464005FAEF4 /* GLKit.framework */,
+				CAF092A01D60C446005FAEF4 /* CoreImage.framework */,
+				CAF0929E1D60C43A005FAEF4 /* ImageIO.framework */,
+				CAF0929C1D60C42F005FAEF4 /* SystemConfiguration.framework */,
+				CAF0929A1D60C411005FAEF4 /* QuartzCore.framework */,
+				CAF092981D60C3CF005FAEF4 /* Accelerate.framework */,
+				CAF092961D60C3CA005FAEF4 /* CoreBluetooth.framework */,
+				CAF092941D60C395005FAEF4 /* libc++.tbd */,
+				CAF092921D60C287005FAEF4 /* CoreGraphics.framework */,
+				CAF092901D60C252005FAEF4 /* CoreData.framework */,
+				CAF0928E1D60BCFF005FAEF4 /* GoogleMaps.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -569,9 +639,11 @@
 				CAF092221D5F6D3F005FAEF4 /* PWQRCodeScanViewController.xib in Resources */,
 				CAF091EC1D57B239005FAEF4 /* PWNearItemCollectionViewCell.xib in Resources */,
 				CAF091911D560B80005FAEF4 /* PWIntroViewController.xib in Resources */,
+				CAF092A51D60C52E005FAEF4 /* GoogleMaps.bundle in Resources */,
 				CAF092021D5D1838005FAEF4 /* PWNearRestaurantsViewController.xib in Resources */,
 				CAF091D81D5799DB005FAEF4 /* coffeetoria1.jpg in Resources */,
 				CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */,
+				CAF092691D608E77005FAEF4 /* PWMapController.xib in Resources */,
 				CAF091DF1D57A05F005FAEF4 /* hookah2.jpeg in Resources */,
 				CAF092391D5FED1F005FAEF4 /* PWRestaurantFilterCell.xib in Resources */,
 				CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */,
@@ -623,6 +695,8 @@
 				CAF0925A1D607B69005FAEF4 /* PWMainMenuViewController.m in Sources */,
 				CAF0922A1D5FBA5B005FAEF4 /* PWTapper.m in Sources */,
 				CAF0912F1D4D3A4C005FAEF4 /* PWAppDelegate.m in Sources */,
+				CAF092AD1D618EB8005FAEF4 /* PWRestaurantMapController.m in Sources */,
+				CAF092681D608E77005FAEF4 /* PWMapController.m in Sources */,
 				CAF092631D607BB2005FAEF4 /* PWRestaurantsCollectionController.m in Sources */,
 				CAF091BF1D576703005FAEF4 /* PWDropShadowView.m in Sources */,
 				CAF092381D5FED1F005FAEF4 /* PWRestaurantFilterCell.m in Sources */,
@@ -744,11 +818,18 @@
 			baseConfigurationReference = CAF091341D4D3A9F005FAEF4 /* PWConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PocketWaiter/Frameworks",
+				);
 				GCC_PREFIX_HEADER = PocketWaiter/Sources/SupportingFiles/PWPrefix.pch;
 				INFOPLIST_FILE = PocketWaiter/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pocketWaiter.PocketWaiter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -760,11 +841,18 @@
 			baseConfigurationReference = CAF091341D4D3A9F005FAEF4 /* PWConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PocketWaiter/Frameworks",
+				);
 				GCC_PREFIX_HEADER = PocketWaiter/Sources/SupportingFiles/PWPrefix.pch;
 				INFOPLIST_FILE = PocketWaiter/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pocketWaiter.PocketWaiter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -14,6 +14,8 @@
 #import "UIColorAdditions.h"
 #import "PWRestaurantFilterController.h"
 #import "PWEnums.h"
+#import "PWMapController.h"
+#import "PWRestaurantMapController.h"
 
 @interface PWRestaurantsViewController ()
 
@@ -21,6 +23,12 @@
 @property (strong, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) PWRestaurantFilterController *filterController;
 @property (nonatomic) PWRestaurantType filter;
+
+@property (nonatomic, strong) PWRestaurantsCollectionController *listController;
+@property (nonatomic, strong) PWRestaurantMapController *mapController;
+@property (nonatomic, strong) UIViewController *currentController;
+
+@property (nonatomic, strong) NSArray<PWRestaurant *> *filteredRestaurants;
 
 @property (nonatomic) BOOL isCollectionMode;
 
@@ -41,32 +49,51 @@
 	self.tapper.tapHandler =
 	^(NSUInteger index)
 	{
-		
+		[weakSelf setupContentWithMode:index];
 	};
 	
 	[[PWModelManager sharedManager] getRestaurantsWithCount:10 offset:0
 				completion:^(NSArray<PWRestaurant *> *restaurants)
 	{
-		PWRestaurantsCollectionController *controller =
-					[[PWRestaurantsCollectionController alloc]
-					initWithRestaurants:restaurants];
-		CGFloat aspectRatio = CGRectGetWidth(weakSelf.parentViewController.
-					view.frame) / 320.;
-		[controller setContentSize:CGSizeMake(320 * aspectRatio, 90)];
+		weakSelf.filteredRestaurants = restaurants;
 		
-		[weakSelf addChildViewController:controller];
-		[weakSelf.containerView addSubview:controller.view];
-		[controller didMoveToParentViewController:weakSelf];
-		controller.view.translatesAutoresizingMaskIntoConstraints = NO;
-		[self.containerView addConstraints:[NSLayoutConstraint
-					constraintsWithVisualFormat:@"V:|[view]|"
-					options:0 metrics:nil
-					views:@{@"view" : controller.view}]];
-		[self.containerView addConstraints:[NSLayoutConstraint
-					constraintsWithVisualFormat:@"H:|[view]|"
-					options:0 metrics:nil
-					views:@{@"view" : controller.view}]];
+		[weakSelf setupContentWithMode:0];
 	}];
+}
+
+- (void)setupContentWithMode:(NSUInteger)mode
+{
+	[self.currentController.view removeFromSuperview];
+	[self.currentController removeFromParentViewController];
+	
+	if (0 == mode)
+	{
+		self.listController = [[PWRestaurantsCollectionController alloc]
+					initWithRestaurants:self.filteredRestaurants];
+		CGFloat aspectRatio = CGRectGetWidth(self.parentViewController.
+					view.frame) / 320.;
+		[self.listController setContentSize:CGSizeMake(320 * aspectRatio, 90)];
+		self.currentController = self.listController;
+	}
+	else
+	{
+		self.mapController = [[PWRestaurantMapController alloc]
+					initWithRestaurants:self.filteredRestaurants];
+		self.currentController = self.mapController;
+	}
+	
+	[self addChildViewController:self.currentController];
+	[self.containerView addSubview:self.currentController.view];
+	[self.currentController didMoveToParentViewController:self];
+	self.currentController.view.translatesAutoresizingMaskIntoConstraints = NO;
+	[self.containerView addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"V:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : self.currentController.view}]];
+	[self.containerView addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"H:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : self.currentController.view}]];
 }
 
 - (void)setupNavigation

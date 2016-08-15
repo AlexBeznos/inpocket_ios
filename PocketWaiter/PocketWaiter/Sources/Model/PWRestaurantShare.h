@@ -7,11 +7,14 @@
 //
 
 #import "PWModelObject.h"
+#import "IPWRestaurant.h"
 
 @interface PWRestaurantShare : PWModelObject
 
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) NSString *shareDescription;
 @property (nonatomic, readonly) UIImage *image;
+
+@property (nonatomic, weak) id<IPWRestaurant> restaurant;
 
 @end

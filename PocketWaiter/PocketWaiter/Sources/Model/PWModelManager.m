@@ -161,7 +161,7 @@
 	about1.name = @"Vapiano";
 	about1.address = @"Kyev, Garmatna street, 5 building";
 	about1.phoneNumber = @"066-12-12-123";
-	about1.location = [[CLLocation alloc] initWithLatitude:123 longitude:12];
+	about1.location = [[CLLocation alloc] initWithLatitude:50.46 longitude:30.51];
 	about1.restaurantDescription = @"Very nice restaurant";
 	about1.restaurantImage = [UIImage imageWithContentsOfFile:
 				[[NSBundle mainBundle] pathForResource:@"vapiano" ofType:@"jpeg"]];
@@ -335,7 +335,7 @@
 	about2.name = @"Coffeetoria";
 	about2.address = @"Kyev, Peremogi ave, 27a";
 	about2.phoneNumber = @"066-12-12-124";
-	about2.location = [[CLLocation alloc] initWithLatitude:123 longitude:122];
+	about2.location = [[CLLocation alloc] initWithLatitude:50.45 longitude:30.44];
 	about2.restaurantDescription = @"Very nice lounge";
 	about2.restaurantImage = [UIImage imageWithContentsOfFile:
 				[[NSBundle mainBundle] pathForResource:@"coffeetoria" ofType:@"jpg"]];
@@ -370,11 +370,15 @@
 	restaurant2.aboutInfo = about2;
 	
 	restaurant2.shares = @[share1, share2];
+	share1.restaurant = restaurant2;
+	share2.restaurant = restaurant2;
 	
 	restaurant2.products = @[restaurantProduct, restaurantProduct1,
 				restaurantProduct2, restaurantProduct3];
 	
 	restaurant2.presents = @[presentProduct1, presentProduct2];
+	presentProduct1.restaurant = restaurant2;
+	presentProduct2.restaurant = restaurant2;
 	
 	self.cachedRestaurants = @[restaurant1, restaurant2];
 }

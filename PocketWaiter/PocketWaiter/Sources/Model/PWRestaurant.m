@@ -8,6 +8,7 @@
 
 #import "PWRestaurant.h"
 #import "PWProduct.h"
+#import "PWRestaurantAboutInfo.h"
 
 @interface PWRestaurant ()
 
@@ -48,6 +49,51 @@
 	}
 	
 	return presents;
+}
+
+- (NSString *)name
+{
+	return self.aboutInfo.name;
+}
+
+- (NSString *)address
+{
+	return self.aboutInfo.address;
+}
+
+- (NSString *)phoneNumber
+{
+	return self.aboutInfo.phoneNumber;
+}
+
+- (CLLocation *)location
+{
+	return self.aboutInfo.location;
+}
+
+- (NSString *)restaurantDescription
+{
+	return self.aboutInfo.restaurantDescription;
+}
+
+- (UIImage *)restaurantImage
+{
+	return self.aboutInfo.restaurantImage;
+}
+
+- (NSArray<UIImage *> *)photos
+{
+	return self.aboutInfo.photos;
+}
+
+- (NSArray<PWRestaurantReview *> *)reviews
+{
+	return self.aboutInfo.reviews;
+}
+
+- (NSArray<PWWorkingTime *> *)workingPlan
+{
+	return self.aboutInfo.workingPlan;
 }
 
 @end

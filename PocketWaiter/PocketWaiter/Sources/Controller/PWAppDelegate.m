@@ -7,6 +7,7 @@
 //
 
 #import "PWAppDelegate.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface PWAppDelegate ()
 
@@ -14,9 +15,12 @@
 
 @implementation PWAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    return YES;
+- (BOOL)application:(UIApplication *)application
+			didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+	[GMSServices provideAPIKey:@"AIzaSyBey584OKFmQxy25R_b_K_av16_wxHdvYY"];
+	
+	return YES;
 }
 
 

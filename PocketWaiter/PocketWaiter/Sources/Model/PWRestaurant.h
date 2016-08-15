@@ -7,13 +7,14 @@
 //
 
 #import "PWModelObject.h"
+#import "IPWRestaurant.h"
 
 @class PWRestaurantShare;
 @class PWRestaurantAboutInfo;
 @class PWProduct;
 @class PWPresentProduct;
 
-@interface PWRestaurant : PWModelObject
+@interface PWRestaurant : PWModelObject <IPWRestaurant>
 
 @property (nonatomic, readonly) PWRestaurantAboutInfo *aboutInfo;
 @property (nonatomic, readonly) NSArray<PWRestaurantShare *> *shares;
