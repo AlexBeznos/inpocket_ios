@@ -78,6 +78,20 @@
 	});
 }
 
+- (void)getPurchasesForUser:(PWUser *)user withCount:(NSUInteger)count
+			offset:(NSUInteger)offset completion:
+			(void (^)(NSArray<PWPurchase *> *))completion
+{
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
+				(int64_t)(3.1 * NSEC_PER_SEC)), dispatch_get_main_queue(),
+	^{
+		if (nil != completion)
+		{
+			completion(self.user.purchases);
+		}
+	});
+}
+
 - (NSArray<PWRestaurant *> *)nearRestaurants
 {
 	return self.cachedRestaurants;

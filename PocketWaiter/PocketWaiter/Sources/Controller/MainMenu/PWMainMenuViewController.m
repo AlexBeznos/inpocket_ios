@@ -11,6 +11,8 @@
 #import "PWNearPresentsViewController.h"
 #import "PWNearSharesViewController.h"
 #import "PWNearRestaurantsViewController.h"
+#import "PWPurchasesViewController.h"
+#import "PWModelManager.h"
 
 @interface PWMainMenuViewController ()
 
@@ -161,7 +163,9 @@
 
 - (void)showBonuses
 {
-
+	PWPurchasesViewController *controller = [[PWPurchasesViewController alloc]
+				initWithUser:[[PWModelManager sharedManager] registeredUser]];
+	[self performForwardTransition:controller];
 }
 
 @end

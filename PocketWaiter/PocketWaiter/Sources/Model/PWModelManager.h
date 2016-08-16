@@ -12,6 +12,7 @@
 #import "PWRestaurantAboutInfo.h"
 #import "PWRestaurantShare.h"
 #import "PWPresentProduct.h"
+#import "PWPurchase.h"
 #import "PWUser.h"
 
 @interface PWModelManager : NSObject
@@ -32,5 +33,9 @@
 
 - (void)getPresentsWithCount:(NSUInteger)count offset:(NSUInteger)offset
 			completion:(void (^)(NSArray<PWPresentProduct *> *))completion;
+
+- (void)getPurchasesForUser:(PWUser *)user withCount:(NSUInteger)count
+			offset:(NSUInteger)offset completion:
+			(void (^)(NSArray<PWPurchase *> *))completion;
 
 @end
