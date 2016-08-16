@@ -10,12 +10,14 @@
 #import "PWModelManager.h"
 #import "PWActivityIndicator.h"
 #import "UIColorAdditions.h"
+#import "PWNoPurchasesViewController.h"
 
 @interface PWPurchasesViewController ()
 
 @property (nonatomic, strong) NSArray<PWPurchase *> *purchases;
 @property (nonatomic, strong) PWUser *user;
 @property (nonatomic, strong) PWActivityIndicator *activity;
+@property (nonatomic, strong) PWNoPurchasesViewController *noPurchasesController;
 
 @end
 
@@ -49,7 +51,28 @@
 	{
 		theWeakSelf.purchases = purchases;
 		[theWeakSelf stopActivity];
+		
+		if (0 == purchases.count)
+		{
+			[theWeakSelf setupController:theWeakSelf.noPurchasesController];
+		}
 	}];
+}
+
+- (void)setupController:(UIViewController *)controller
+{
+	[self addChildViewController:controller];
+	[self.view addSubview:controller.view];
+	[controller didMoveToParentViewController:self];
+	controller.view.translatesAutoresizingMaskIntoConstraints = NO;
+	[self.view addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"V:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : controller.view}]];
+	[self.view addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"H:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : controller.view}]];
 }
 
 - (void)startActivity
@@ -67,6 +90,17 @@
 					attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
 		[self.activity startAnimating];
 	}
+}
+
+- (PWNoPurchasesViewController *)noPurchasesController
+{
+	if (nil == _noPurchasesController)
+	{
+		_noPurchasesController = [PWNoPurchasesViewController new];
+		_noPurchasesController.view.translatesAutoresizingMaskIntoConstraints = NO;
+	}
+	
+	return _noPurchasesController;
 }
 
 - (void)stopActivity

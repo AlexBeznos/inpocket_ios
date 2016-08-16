@@ -109,6 +109,8 @@
 		CAF092CE1D63A54B005FAEF4 /* PWAboutController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF092CD1D63A54B005FAEF4 /* PWAboutController.xib */; };
 		CAF092D21D63A5F1005FAEF4 /* PWPurchasesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092D11D63A5F1005FAEF4 /* PWPurchasesViewController.m */; };
 		CAF092D51D63A770005FAEF4 /* PWActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092D41D63A770005FAEF4 /* PWActivityIndicator.m */; };
+		CAF092D91D63AE60005FAEF4 /* PWNoPurchasesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092D71D63AE60005FAEF4 /* PWNoPurchasesViewController.m */; };
+		CAF092DC1D63B262005FAEF4 /* PWNoPurchasesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF092DB1D63B262005FAEF4 /* PWNoPurchasesViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -282,6 +284,9 @@
 		CAF092D11D63A5F1005FAEF4 /* PWPurchasesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWPurchasesViewController.m; sourceTree = "<group>"; };
 		CAF092D31D63A770005FAEF4 /* PWActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWActivityIndicator.h; sourceTree = "<group>"; };
 		CAF092D41D63A770005FAEF4 /* PWActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWActivityIndicator.m; sourceTree = "<group>"; };
+		CAF092D61D63AE60005FAEF4 /* PWNoPurchasesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWNoPurchasesViewController.h; sourceTree = "<group>"; };
+		CAF092D71D63AE60005FAEF4 /* PWNoPurchasesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWNoPurchasesViewController.m; sourceTree = "<group>"; };
+		CAF092DB1D63B262005FAEF4 /* PWNoPurchasesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWNoPurchasesViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,6 +349,7 @@
 		CAF091181D4D3A4C005FAEF4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CAF092DB1D63B262005FAEF4 /* PWNoPurchasesViewController.xib */,
 				CAF092CD1D63A54B005FAEF4 /* PWAboutController.xib */,
 				CAF092C21D628006005FAEF4 /* PWDetailesItemsViewController.xib */,
 				CAF092C31D628006005FAEF4 /* PWMapController.xib */,
@@ -629,6 +635,8 @@
 			children = (
 				CAF092D01D63A5F1005FAEF4 /* PWPurchasesViewController.h */,
 				CAF092D11D63A5F1005FAEF4 /* PWPurchasesViewController.m */,
+				CAF092D61D63AE60005FAEF4 /* PWNoPurchasesViewController.h */,
+				CAF092D71D63AE60005FAEF4 /* PWNoPurchasesViewController.m */,
 			);
 			path = Purchases;
 			sourceTree = "<group>";
@@ -715,6 +723,7 @@
 				CAF092091D5D2011005FAEF4 /* PWNearRestaurantCollectionViewCell.xib in Resources */,
 				CAF091D61D5799DB005FAEF4 /* vapiano_2.jpg in Resources */,
 				CAF091CA1D57962B005FAEF4 /* burger.jpg in Resources */,
+				CAF092DC1D63B262005FAEF4 /* PWNoPurchasesViewController.xib in Resources */,
 				CAF091C21D576B83005FAEF4 /* mohito.jpg in Resources */,
 				CAF092C71D628006005FAEF4 /* PWRestaurantFilterController.xib in Resources */,
 				CAF0922F1D5FDA50005FAEF4 /* PWRestaurantsViewController.xib in Resources */,
@@ -749,6 +758,7 @@
 				CAF092D21D63A5F1005FAEF4 /* PWPurchasesViewController.m in Sources */,
 				CAF092551D607B69005FAEF4 /* PWDetailedNearPresentsCollectionController.m in Sources */,
 				CAF091891D4E94B6005FAEF4 /* PWWorkingTime.m in Sources */,
+				CAF092D91D63AE60005FAEF4 /* PWNoPurchasesViewController.m in Sources */,
 				CAF0925B1D607B69005FAEF4 /* PWNearItemsViewController.m in Sources */,
 				CAF092D51D63A770005FAEF4 /* PWActivityIndicator.m in Sources */,
 				CAF0913A1D4D4062005FAEF4 /* PWIndicator.m in Sources */,
