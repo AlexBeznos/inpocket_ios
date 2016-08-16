@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong) UIColor *color;
 @property (nonatomic, strong) NSString *phoneNumber;
 @property (nonatomic, strong) CLLocation *location;
 @property (nonatomic, strong) NSString *restaurantDescription;

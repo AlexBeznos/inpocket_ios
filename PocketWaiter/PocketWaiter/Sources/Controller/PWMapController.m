@@ -12,6 +12,7 @@
 #import "UIColorAdditions.h"
 #import "PWNearRestaurantCollectionViewCell.h"
 #import "PWSlidesLayout.h"
+#import "UIImageAdditions.h"
 
 @interface PWRestaurantHolder : NSObject
 
@@ -76,7 +77,8 @@
 		GMSMarker *marker = [GMSMarker new];
 		marker.position = restaurant.location.coordinate;
 		marker.title = restaurant.name;
-//		marker.icon = restaurant.restaurantImage;
+		marker.icon = [UIImage markerImageWithState:NO scheme:restaurant.color
+					logo:restaurant.restaurantImage];
 		marker.map = self.mapView;
 		
 		PWRestaurantHolder *holder = [PWRestaurantHolder new];

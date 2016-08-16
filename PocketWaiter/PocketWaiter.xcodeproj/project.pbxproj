@@ -112,6 +112,7 @@
 		CAF092D91D63AE60005FAEF4 /* PWNoPurchasesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092D71D63AE60005FAEF4 /* PWNoPurchasesViewController.m */; };
 		CAF092DC1D63B262005FAEF4 /* PWNoPurchasesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF092DB1D63B262005FAEF4 /* PWNoPurchasesViewController.xib */; };
 		CAF092DF1D63B35D005FAEF4 /* PWActivityIndicatorOwner.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092DE1D63B35D005FAEF4 /* PWActivityIndicatorOwner.m */; };
+		CAF092E51D63B9BC005FAEF4 /* UIImageAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092E41D63B9BC005FAEF4 /* UIImageAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -290,6 +291,8 @@
 		CAF092DB1D63B262005FAEF4 /* PWNoPurchasesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWNoPurchasesViewController.xib; sourceTree = "<group>"; };
 		CAF092DD1D63B35D005FAEF4 /* PWActivityIndicatorOwner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWActivityIndicatorOwner.h; sourceTree = "<group>"; };
 		CAF092DE1D63B35D005FAEF4 /* PWActivityIndicatorOwner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWActivityIndicatorOwner.m; sourceTree = "<group>"; };
+		CAF092E31D63B9BC005FAEF4 /* UIImageAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageAdditions.h; sourceTree = "<group>"; };
+		CAF092E41D63B9BC005FAEF4 /* UIImageAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageAdditions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -511,6 +514,8 @@
 				CAF091BB1D57559A005FAEF4 /* UIViewControllerAdditions.m */,
 				CAF091EF1D57B6BE005FAEF4 /* PWSlidesLayout.h */,
 				CAF091F01D57B6BE005FAEF4 /* PWSlidesLayout.m */,
+				CAF092E31D63B9BC005FAEF4 /* UIImageAdditions.h */,
+				CAF092E41D63B9BC005FAEF4 /* UIImageAdditions.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -770,6 +775,7 @@
 				CAF092591D607B69005FAEF4 /* PWMainMenuItemViewController.m in Sources */,
 				CAF0916E1D4E9054005FAEF4 /* PWRestaurant.m in Sources */,
 				CAF092C11D627C3C005FAEF4 /* PWDetailesPresentsViewController.m in Sources */,
+				CAF092E51D63B9BC005FAEF4 /* UIImageAdditions.m in Sources */,
 				CAF092581D607B69005FAEF4 /* PWIntroViewController.m in Sources */,
 				CAF092BE1D627AA0005FAEF4 /* PWDetailesSharesViewController.m in Sources */,
 				CAF0916D1D4E904E005FAEF4 /* PWModelObject.m in Sources */,

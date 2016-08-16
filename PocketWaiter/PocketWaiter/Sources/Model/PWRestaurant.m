@@ -96,4 +96,9 @@
 	return self.aboutInfo.workingPlan;
 }
 
+- (UIColor *)color
+{
+	return self.aboutInfo.color;
+}
+
 @end

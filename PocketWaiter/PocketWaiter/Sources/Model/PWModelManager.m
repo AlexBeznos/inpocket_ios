@@ -199,6 +199,7 @@
 	
 	PWRestaurantAboutInfo *about1 = [PWRestaurantAboutInfo new];
 	about1.name = @"Vapiano";
+	about1.color = [UIColor blackColor];
 	about1.address = @"Kyev, Garmatna street, 5 building";
 	about1.phoneNumber = @"066-12-12-123";
 	about1.location = [[CLLocation alloc] initWithLatitude:50.46 longitude:30.51];
@@ -404,6 +405,7 @@
 				[[NSBundle mainBundle] pathForResource:@"coffeetoria2" ofType:@"jpg"]];
 	
 	about2.reviews = @[review1, review2];
+	about2.color = [UIColor greenColor];
 	
 	about2.workingPlan = @[time1, time2, time3, time4, time5, time6, time7];
 	
