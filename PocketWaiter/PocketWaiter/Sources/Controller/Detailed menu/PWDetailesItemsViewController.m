@@ -67,6 +67,7 @@
 	__weak __typeof(self) weakSelf = self;
 	
 	self.view.backgroundColor = [UIColor pwBackgroundColor];
+	self.contentHolder.backgroundColor = [UIColor pwBackgroundColor];
 	
 	self.tapper.firstValue = @"СПИСОК";
 	self.tapper.secondValue = @"КАРТА";
@@ -76,10 +77,15 @@
 		[weakSelf setupContentWithMode:index];
 	};
 	
-	[self retrieveModelAndSetupInitialController];
+	[self startActivity];
+	[self retrieveModelAndSetupInitialControllerWithCompletion:
+	^{
+		[weakSelf stopActivity];
+	}];
 }
 
-- (void)retrieveModelAndSetupInitialController
+- (void)retrieveModelAndSetupInitialControllerWithCompletion:
+			(void (^)())aCompletion
 {
 	// no-op
 }

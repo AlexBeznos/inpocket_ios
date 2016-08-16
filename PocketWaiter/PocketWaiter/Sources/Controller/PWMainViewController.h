@@ -6,8 +6,8 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PWActivityIndicatorOwner.h"
 
-@interface PWMainViewController : UIViewController
+@interface PWMainViewController : PWActivityIndicatorOwner
 
 @end

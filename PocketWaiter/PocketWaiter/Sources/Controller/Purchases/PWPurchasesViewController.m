@@ -8,7 +8,6 @@
 
 #import "PWPurchasesViewController.h"
 #import "PWModelManager.h"
-#import "PWActivityIndicator.h"
 #import "UIColorAdditions.h"
 #import "PWNoPurchasesViewController.h"
 
@@ -16,7 +15,6 @@
 
 @property (nonatomic, strong) NSArray<PWPurchase *> *purchases;
 @property (nonatomic, strong) PWUser *user;
-@property (nonatomic, strong) PWActivityIndicator *activity;
 @property (nonatomic, strong) PWNoPurchasesViewController *noPurchasesController;
 
 @end
@@ -75,23 +73,6 @@
 				views:@{@"view" : controller.view}]];
 }
 
-- (void)startActivity
-{
-	if (!self.activity.animating)
-	{
-		[self.view addSubview:self.activity];
-		[self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view
-					attribute:NSLayoutAttributeCenterX
-					relatedBy:NSLayoutRelationEqual toItem:self.activity
-					attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
-		[self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view
-					attribute:NSLayoutAttributeCenterY
-					relatedBy:NSLayoutRelationEqual toItem:self.activity
-					attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
-		[self.activity startAnimating];
-	}
-}
-
 - (PWNoPurchasesViewController *)noPurchasesController
 {
 	if (nil == _noPurchasesController)
@@ -101,34 +82,6 @@
 	}
 	
 	return _noPurchasesController;
-}
-
-- (void)stopActivity
-{
-	if (self.activity.animating)
-	{
-		[self.activity stopAnimating];
-		[self.activity removeFromSuperview];
-	}
-}
-
-- (PWActivityIndicator *)activity
-{
-	if (nil == _activity)
-	{
-		_activity = [PWActivityIndicator new];
-		_activity.translatesAutoresizingMaskIntoConstraints = NO;
-		[_activity addConstraint:[NSLayoutConstraint constraintWithItem:_activity
-					attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual
-					toItem:nil attribute:NSLayoutAttributeNotAnAttribute
-					multiplier:1.0 constant:40]];
-		[_activity addConstraint:[NSLayoutConstraint constraintWithItem:_activity
-					attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual
-					toItem:nil attribute:NSLayoutAttributeNotAnAttribute
-					multiplier:1.0 constant:40]];
-	}
-	
-	return _activity;
 }
 
 - (void)setupWithNavigationItem:(UINavigationItem *)item

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PWActivityIndicatorOwner.h"
 
-@interface PWMapController : UIViewController
+@interface PWMapController : PWActivityIndicatorOwner
 
 - (void)setContentSize:(CGSize)contentSize;
 

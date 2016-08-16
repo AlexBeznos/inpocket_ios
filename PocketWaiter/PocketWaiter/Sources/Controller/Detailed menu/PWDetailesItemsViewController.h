@@ -7,8 +7,9 @@
 //
 
 #import "UIViewControllerAdditions.h"
+#import "PWActivityIndicatorOwner.h"
 
-@interface PWDetailesItemsViewController : UIViewController
+@interface PWDetailesItemsViewController : PWActivityIndicatorOwner
 			<IPWTransitableController>
 
 @end

@@ -44,6 +44,7 @@
 	
 	__weak __typeof(self) weakSelf = self;
 	
+	self.containerView.backgroundColor = [UIColor pwBackgroundColor];
 	self.tapper.firstValue = @"СПИСОК";
 	self.tapper.secondValue = @"КАРТА";
 	self.tapper.tapHandler =
@@ -52,12 +53,14 @@
 		[weakSelf setupContentWithMode:index];
 	};
 	
+	[self startActivity];
 	[[PWModelManager sharedManager] getRestaurantsWithCount:10 offset:0
 				completion:^(NSArray<PWRestaurant *> *restaurants)
 	{
 		weakSelf.filteredRestaurants = restaurants;
 		
 		[weakSelf setupContentWithMode:0];
+		[weakSelf stopActivity];
 	}];
 }
 

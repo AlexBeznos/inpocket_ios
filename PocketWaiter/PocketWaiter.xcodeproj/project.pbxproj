@@ -111,6 +111,7 @@
 		CAF092D51D63A770005FAEF4 /* PWActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092D41D63A770005FAEF4 /* PWActivityIndicator.m */; };
 		CAF092D91D63AE60005FAEF4 /* PWNoPurchasesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092D71D63AE60005FAEF4 /* PWNoPurchasesViewController.m */; };
 		CAF092DC1D63B262005FAEF4 /* PWNoPurchasesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF092DB1D63B262005FAEF4 /* PWNoPurchasesViewController.xib */; };
+		CAF092DF1D63B35D005FAEF4 /* PWActivityIndicatorOwner.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092DE1D63B35D005FAEF4 /* PWActivityIndicatorOwner.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -287,6 +288,8 @@
 		CAF092D61D63AE60005FAEF4 /* PWNoPurchasesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWNoPurchasesViewController.h; sourceTree = "<group>"; };
 		CAF092D71D63AE60005FAEF4 /* PWNoPurchasesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWNoPurchasesViewController.m; sourceTree = "<group>"; };
 		CAF092DB1D63B262005FAEF4 /* PWNoPurchasesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWNoPurchasesViewController.xib; sourceTree = "<group>"; };
+		CAF092DD1D63B35D005FAEF4 /* PWActivityIndicatorOwner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWActivityIndicatorOwner.h; sourceTree = "<group>"; };
+		CAF092DE1D63B35D005FAEF4 /* PWActivityIndicatorOwner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWActivityIndicatorOwner.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -413,6 +416,8 @@
 				CAF092AF1D627254005FAEF4 /* PWSharesMapController.m */,
 				CAF092B11D627264005FAEF4 /* PWPresentsMapController.h */,
 				CAF092B21D627264005FAEF4 /* PWPresentsMapController.m */,
+				CAF092DD1D63B35D005FAEF4 /* PWActivityIndicatorOwner.h */,
+				CAF092DE1D63B35D005FAEF4 /* PWActivityIndicatorOwner.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -777,6 +782,7 @@
 				CAF091BF1D576703005FAEF4 /* PWDropShadowView.m in Sources */,
 				CAF092381D5FED1F005FAEF4 /* PWRestaurantFilterCell.m in Sources */,
 				CAF091AC1D5657C9005FAEF4 /* UIColorAdditions.m in Sources */,
+				CAF092DF1D63B35D005FAEF4 /* PWActivityIndicatorOwner.m in Sources */,
 				CAF091881D4E94B3005FAEF4 /* PWUsersRestaurantInfo.m in Sources */,
 				CAF091731D4E9099005FAEF4 /* PWPresentProduct.m in Sources */,
 				CAF092571D607B69005FAEF4 /* PWEnterPromoViewController.m in Sources */,

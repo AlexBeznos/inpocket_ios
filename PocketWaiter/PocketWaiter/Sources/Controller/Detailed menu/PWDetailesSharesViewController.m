@@ -38,7 +38,8 @@
 	return self;
 }
 
-- (void)retrieveModelAndSetupInitialController
+- (void)retrieveModelAndSetupInitialControllerWithCompletion:
+			(void (^)())aCompletion
 {
 	__weak __typeof(self) weakSelf = self;
 	[[PWModelManager sharedManager] getSharesWithCount:10 offset:0
@@ -47,6 +48,11 @@
 		weakSelf.shares = shares;
 		
 		[weakSelf setupContentWithMode:0];
+		
+		if (nil != aCompletion)
+		{
+			aCompletion();
+		}
 	}];
 }
 

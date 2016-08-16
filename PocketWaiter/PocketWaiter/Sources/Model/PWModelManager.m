@@ -43,7 +43,7 @@
 			completion:(void (^)(NSArray<PWRestaurant *> *))completion
 {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
-				(int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(),
+				(int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
 	^{
 		if (nil != completion)
 		{
@@ -56,7 +56,7 @@
 			completion:(void (^)(NSArray<PWRestaurantShare *> *))completion
 {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
-				(int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(),
+				(int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
 	^{
 		if (nil != completion)
 		{
@@ -69,7 +69,7 @@
 			completion:(void (^)(NSArray<PWPresentProduct *> *))completion
 {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
-				(int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(),
+				(int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
 	^{
 		if (nil != completion)
 		{
@@ -83,11 +83,11 @@
 			(void (^)(NSArray<PWPurchase *> *))completion
 {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
-				(int64_t)(3.1 * NSEC_PER_SEC)), dispatch_get_main_queue(),
+				(int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
 	^{
 		if (nil != completion)
 		{
-			completion(self.user.purchases);
+			completion(nil/*self.user.purchases*/);
 		}
 	});
 }

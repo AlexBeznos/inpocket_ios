@@ -38,7 +38,8 @@
 	return self;
 }
 
-- (void)retrieveModelAndSetupInitialController
+- (void)retrieveModelAndSetupInitialControllerWithCompletion:
+			(void (^)())aCompletion
 {
 	__weak __typeof(self) weakSelf = self;
 	[[PWModelManager sharedManager] getRestaurantsWithCount:10 offset:0
@@ -47,6 +48,10 @@
 		weakSelf.restaurants = restaurants;
 		
 		[weakSelf setupContentWithMode:0];
+		if (nil != aCompletion)
+		{
+			aCompletion();
+		}
 	}];
 }
 

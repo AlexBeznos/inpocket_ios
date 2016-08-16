@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PWActivityIndicatorOwner.h"
 #import "UIViewControllerAdditions.h"
 
 @class PWUser;
 
-@interface PWPurchasesViewController : UIViewController
+@interface PWPurchasesViewController : PWActivityIndicatorOwner
 			<IPWTransitableController>
 
 - (instancetype)initWithUser:(PWUser *)user;
