@@ -13,6 +13,7 @@
 #import "PWMainMenuViewController.h"
 #import "UIViewControllerAdditions.h"
 #import "PWRestaurantsViewController.h"
+#import "PWAboutController.h"
 
 @interface PWRootMenuTableViewController ()
 
@@ -88,7 +89,7 @@
 		PWContentSource *aboutSource = [[PWContentSource alloc]
 					initWithTitle:@"О приложении" details:nil
 					icon:[UIImage imageNamed:@"whiteAbout"]
-					contentViewController:[[PWMainMenuViewController alloc]
+					contentViewController:[[PWAboutController alloc]
 					initWithTransitionHandler:
 		^{
 			[theWeakSelf performBackTransition];
