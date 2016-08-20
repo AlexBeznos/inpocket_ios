@@ -38,4 +38,7 @@
 			offset:(NSUInteger)offset completion:
 			(void (^)(NSArray<PWPurchase *> *))completion;
 
+- (void)getRestaurantForBeacons:(NSArray<NSString *> *)beacons
+			completion:(void (^)(PWRestaurant *restaurant, NSError *error))completion;
+
 @end

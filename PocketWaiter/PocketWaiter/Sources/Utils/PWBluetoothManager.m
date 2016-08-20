@@ -8,6 +8,8 @@
 
 #import "PWBluetoothManager.h"
 
+NSInteger const kBluetoothIsNotAvailable = -1;
+
 @interface PWBluetoothManager () <CBCentralManagerDelegate>
 
 @property (strong, nonatomic) CBCentralManager *bluetoothManager;
@@ -54,7 +56,8 @@
 	{
 		if (nil != completion)
 		{
-			completion(nil, [NSError errorWithDomain:@"bluetooth" code:-1 userInfo:nil]);
+			completion(nil, [NSError errorWithDomain:@"bluetooth"
+						code:kBluetoothIsNotAvailable userInfo:nil]);
 		}
 	}
 	else if (!self.bluetoothManager.isScanning)
@@ -83,7 +86,11 @@
 	[self.bluetoothManager stopScan];
 	if (nil != self.completion)
 	{
-		self.completion([self.beacons allObjects], nil);
+		dispatch_async(dispatch_get_main_queue(),
+		^{
+			self.completion([self.beacons allObjects], nil);
+			self.completion = nil;
+		});
 	}
 	
 	@synchronized (self)
@@ -96,11 +103,16 @@
 {
 	if (self.state != CBCentralManagerStatePoweredOn)
 	{
+		[self.bluetoothManager stopScan];
 		if (nil != self.completion)
 		{
-			self.completion(nil, [NSError errorWithDomain:@"bluetooth" code:-1 userInfo:nil]);
+			dispatch_async(dispatch_get_main_queue(),
+			^{
+				self.completion(nil, [NSError errorWithDomain:@"bluetooth"
+						code:kBluetoothIsNotAvailable userInfo:nil]);
+				self.completion = nil;
+			});
 		}
-		[self.bluetoothManager stopScan];
 	}
 	else
 	{
@@ -118,7 +130,5 @@
 		[self.beacons addObject:[peripheral identifier]];
 	}
 }
-
-
 
 @end

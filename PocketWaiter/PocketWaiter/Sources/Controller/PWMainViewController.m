@@ -15,6 +15,8 @@
 #import "PWBluetoothManager.h"
 #import "UIColorAdditions.h"
 
+#import "PWModelManager.h"
+
 @interface PWMainViewController ()
 
 @property (nonatomic, strong) PWIntroViewController *introController;
@@ -33,13 +35,6 @@
 	self.navigationController.navigationBarHidden = YES;
 	self.view.backgroundColor = [UIColor pwBackgroundColor];
 	
-	self.blueToothManager = [PWBluetoothManager new];
-	[self.blueToothManager startScanBeaconsForInterval:3 completion:
-	^(NSArray<NSString *> *beacons, NSError *error)
-	{
-		NSLog(@"Found uuids: %@\n\nError: %@", [beacons description], error);
-	}];
-	
 	if (nil == [[NSUserDefaults standardUserDefaults] valueForKey:@"showIntro"])
 	{
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showIntro"];
@@ -48,6 +43,10 @@
 	{
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showScan"];
 	}
+	if (nil == [[NSUserDefaults standardUserDefaults] valueForKey:@"showDefault"])
+	{
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showDefault"];
+	}
 	
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showIntro"])
 	{
@@ -55,28 +54,68 @@
 		self.introController = [[PWIntroViewController alloc]
 					initWithCompletionHandler:
 		^{
-			if (![[NSUserDefaults standardUserDefaults] boolForKey:@"showScan"])
-			{
-				theWeakSelf.rootMenuController = [PWRootMenuTableViewController new];
-				[theWeakSelf navigateViewController:theWeakSelf.rootMenuController];
-			}
-			else
-			{
-				PWQRCodeScanViewController *controller =
-							[[PWQRCodeScanViewController alloc] initWithCompletion:
-				^{
-					theWeakSelf.rootMenuController = [PWRootMenuTableViewController new];
-					[theWeakSelf navigateViewController:theWeakSelf.rootMenuController];
-				}];
-				[theWeakSelf navigateViewController:controller];
-			}
+			[theWeakSelf showMainFlow];
+			[theWeakSelf.introController.view removeFromSuperview];
 		}];
 		[self setupChildController:self.introController];
 	}
 	else
 	{
+		[self showMainFlow];
+	}
+}
+
+- (void)showMainFlow
+{
+	self.blueToothManager = [PWBluetoothManager new];
+	[self startActivity];
+	__weak __typeof(self) weakSelf = self;
+	[self.blueToothManager startScanBeaconsForInterval:3 completion:
+	^(NSArray<NSString *> *beacons, NSError *error)
+	{
+		if (nil == error)
+		{
+			[[PWModelManager sharedManager] getRestaurantForBeacons:beacons
+						completion:^(PWRestaurant *restaurant, NSError *error)
+			{
+				if (nil == error)
+				{
+					// show main mode
+				}
+				else
+				{
+					[weakSelf showDefaultMode];
+				}
+				[weakSelf stopActivity];
+			}];
+		}
+		else
+		{
+			[weakSelf stopActivity];
+			[weakSelf showDefaultMode];
+			// show error
+		}
+		NSLog(@"Found uuids: %@\n\nError: %@", [beacons description], error);
+	}];
+}
+
+- (void)showDefaultMode
+{
+	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"showScan"])
+	{
 		self.rootMenuController = [PWRootMenuTableViewController new];
 		[self navigateViewController:self.rootMenuController];
+	}
+	else
+	{
+		__weak __typeof(self) weakSelf = self;
+		PWQRCodeScanViewController *controller =
+					[[PWQRCodeScanViewController alloc] initWithCompletion:
+		^{
+			weakSelf.rootMenuController = [PWRootMenuTableViewController new];
+			[weakSelf navigateViewController:weakSelf.rootMenuController];
+		}];
+		[self navigateViewController:controller];
 	}
 }
 

@@ -8,6 +8,8 @@
 
 #import <CoreBluetooth/CoreBluetooth.h>
 
+extern NSInteger const kBluetoothIsNotAvailable;
+
 @interface PWBluetoothManager : NSObject
 
 @property (nonatomic, readonly) CBCentralManagerState state;
