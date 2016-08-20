@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PWRootMenuTableViewController : UITableViewController
+@protocol IPWContentTransitionControler;
+
+@interface PWRootMenuTableViewController : UIViewController
+
+- (instancetype)initWithMode:(BOOL)defaultMode;
 
 @end

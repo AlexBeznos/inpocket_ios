@@ -70,7 +70,7 @@
 	self.blueToothManager = [PWBluetoothManager new];
 	[self startActivity];
 	__weak __typeof(self) weakSelf = self;
-	[self.blueToothManager startScanBeaconsForInterval:3 completion:
+	[self.blueToothManager startScanBeaconsForInterval:1.5 completion:
 	^(NSArray<NSString *> *beacons, NSError *error)
 	{
 		if (nil == error)
@@ -78,13 +78,13 @@
 			[[PWModelManager sharedManager] getRestaurantForBeacons:beacons
 						completion:^(PWRestaurant *restaurant, NSError *error)
 			{
-				if (nil == error)
+				if (nil != error || nil == restaurant)
 				{
-					// show main mode
+					[weakSelf showMode:YES];
 				}
 				else
 				{
-					[weakSelf showDefaultMode];
+					[weakSelf showMode:NO];
 				}
 				[weakSelf stopActivity];
 			}];
@@ -92,18 +92,19 @@
 		else
 		{
 			[weakSelf stopActivity];
-			[weakSelf showDefaultMode];
+			[weakSelf showMode:YES];
 			// show error
 		}
 		NSLog(@"Found uuids: %@\n\nError: %@", [beacons description], error);
 	}];
 }
 
-- (void)showDefaultMode
+- (void)showMode:(BOOL)defaultMode
 {
 	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"showScan"])
 	{
-		self.rootMenuController = [PWRootMenuTableViewController new];
+		self.rootMenuController = [[PWRootMenuTableViewController alloc]
+					initWithMode:defaultMode];
 		[self navigateViewController:self.rootMenuController];
 	}
 	else
@@ -112,7 +113,8 @@
 		PWQRCodeScanViewController *controller =
 					[[PWQRCodeScanViewController alloc] initWithCompletion:
 		^{
-			weakSelf.rootMenuController = [PWRootMenuTableViewController new];
+			weakSelf.rootMenuController = [[PWRootMenuTableViewController alloc]
+						initWithMode:defaultMode];
 			[weakSelf navigateViewController:weakSelf.rootMenuController];
 		}];
 		[self navigateViewController:controller];

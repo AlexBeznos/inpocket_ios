@@ -15,7 +15,7 @@
 #import "PWRestaurantsViewController.h"
 #import "PWAboutController.h"
 
-@interface PWRootMenuTableViewController ()
+@interface PWRootMenuTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, readonly) NSArray<PWContentSource *> *sources;
 @property (nonatomic, strong) PWRestaurant *restaurant;
@@ -23,6 +23,9 @@
 @property (nonatomic, strong) NSLayoutConstraint *transitionConstrain;
 @property (nonatomic, strong) UIViewController *selectedController;
 @property (nonatomic, strong) PWContentSource *selectedSource;
+@property (nonatomic, strong) UIViewController<IPWContentTransitionControler> *mainController;
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -30,16 +33,101 @@
 
 @synthesize sources = _sources;
 
+- (instancetype)initWithMode:(BOOL)defaultMode
+{
+	self = [super init];
+	
+	if (nil != self)
+	{
+		__weak __typeof(self) theWeakSelf = self;
+		
+		self.mainController = defaultMode ? [[PWMainMenuViewController alloc]
+					initWithTransitionHandler:
+		^{
+			[theWeakSelf performBackTransition];
+		}
+					forwardTransitionHandler:
+		^{
+			[theWeakSelf performForwardTransition];
+		}] : nil ;
+	}
+	
+	return self;
+}
+
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+	[super viewDidLoad];
 	
-	 self.view.backgroundColor = [UIColor blackColor];
-	 self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-	 [self.tableView registerClass:[UITableViewCell class]
+	self.view.backgroundColor = [UIColor blackColor];
+	self.tableView = [UITableView new];
+	self.tableView.backgroundColor = [UIColor blackColor];
+	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+	[self.tableView registerClass:[UITableViewCell class]
 				forCellReuseIdentifier:@"id"];
+	self.tableView.delegate = self;
+	self.tableView.dataSource = self;
 	
 	self.tableView.scrollEnabled = NO;
+	
+	[self.view addSubview:self.tableView];
+	self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
+	
+	[self.view addConstraint:[NSLayoutConstraint
+				constraintWithItem:self.view attribute:NSLayoutAttributeHeight
+				relatedBy:NSLayoutRelationEqual toItem:self.tableView
+				attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
+	
+	[self.view addConstraint:[NSLayoutConstraint
+				constraintWithItem:self.view attribute:NSLayoutAttributeWidth
+				relatedBy:NSLayoutRelationEqual toItem:self.tableView
+				attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
+	
+	[self.view addConstraint:[NSLayoutConstraint
+				constraintWithItem:self.view attribute:NSLayoutAttributeTop
+				relatedBy:NSLayoutRelationEqual toItem:self.tableView
+				attribute:NSLayoutAttributeTop multiplier:1
+				constant:0]];
+	
+	[self.view addConstraint:[NSLayoutConstraint
+				constraintWithItem:self.view attribute:NSLayoutAttributeLeft
+				relatedBy:NSLayoutRelationEqual toItem:self.tableView
+				attribute:NSLayoutAttributeLeft multiplier:1
+				constant:0]];
+	
+	self.selectedSource = self.sources.firstObject;
+	
+	UINavigationController *navigation = [[UINavigationController alloc]
+				initWithRootViewController:self.mainController];
+	navigation.navigationBar.translucent = NO;
+	self.selectedController = navigation;
+	
+	[self addChildViewController:navigation];
+	[self.view addSubview:navigation.view];
+	navigation.view.translatesAutoresizingMaskIntoConstraints = NO;
+	
+	[self.view addConstraint:[NSLayoutConstraint
+				constraintWithItem:self.view attribute:NSLayoutAttributeHeight
+				relatedBy:NSLayoutRelationEqual toItem:navigation.view
+				attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
+	
+	[self.view addConstraint:[NSLayoutConstraint
+				constraintWithItem:self.view attribute:NSLayoutAttributeWidth
+				relatedBy:NSLayoutRelationEqual toItem:navigation.view
+				attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
+	
+	[self.view addConstraint:[NSLayoutConstraint
+				constraintWithItem:self.view attribute:NSLayoutAttributeTop
+				relatedBy:NSLayoutRelationEqual toItem:navigation.view
+				attribute:NSLayoutAttributeTop multiplier:1
+				constant:0]];
+	
+	self.transitionConstrain = [NSLayoutConstraint
+				constraintWithItem:self.view attribute:NSLayoutAttributeLeft
+				relatedBy:NSLayoutRelationEqual toItem:navigation.view
+				attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
+	
+	[self.view addConstraint:self.transitionConstrain];
 }
 
 - (NSArray<PWContentSource *> *)sources
@@ -50,15 +138,7 @@
 		PWContentSource *mainSource = [[PWContentSource alloc]
 					initWithTitle:@"Главная" details:self.restaurant.aboutInfo.name
 					icon:[UIImage imageNamed:@"whiteBonus"]
-					contentViewController:[[PWMainMenuViewController alloc]
-					initWithTransitionHandler:
-		^{
-			[theWeakSelf performBackTransition];
-		}
-					forwardTransitionHandler:
-		^{
-			[theWeakSelf performForwardTransition];
-		}]];
+					contentViewController:self.mainController];
 		
 		PWContentSource *restaurantsSource = [[PWContentSource alloc]
 					initWithTitle:@"Заведения" details:nil
