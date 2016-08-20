@@ -113,6 +113,9 @@
 		CAF092DC1D63B262005FAEF4 /* PWNoPurchasesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF092DB1D63B262005FAEF4 /* PWNoPurchasesViewController.xib */; };
 		CAF092DF1D63B35D005FAEF4 /* PWActivityIndicatorOwner.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092DE1D63B35D005FAEF4 /* PWActivityIndicatorOwner.m */; };
 		CAF092E51D63B9BC005FAEF4 /* UIImageAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092E41D63B9BC005FAEF4 /* UIImageAdditions.m */; };
+		CAF092E91D688F7E005FAEF4 /* PWBluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092E81D688F7E005FAEF4 /* PWBluetoothManager.m */; };
+		CAF092EC1D6894ED005FAEF4 /* PWLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092EB1D6894ED005FAEF4 /* PWLocationManager.m */; };
+		CAF092EE1D68D3B0005FAEF4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CAF092ED1D68D3B0005FAEF4 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -293,6 +296,11 @@
 		CAF092DE1D63B35D005FAEF4 /* PWActivityIndicatorOwner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWActivityIndicatorOwner.m; sourceTree = "<group>"; };
 		CAF092E31D63B9BC005FAEF4 /* UIImageAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageAdditions.h; sourceTree = "<group>"; };
 		CAF092E41D63B9BC005FAEF4 /* UIImageAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageAdditions.m; sourceTree = "<group>"; };
+		CAF092E71D688F7E005FAEF4 /* PWBluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWBluetoothManager.h; sourceTree = "<group>"; };
+		CAF092E81D688F7E005FAEF4 /* PWBluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWBluetoothManager.m; sourceTree = "<group>"; };
+		CAF092EA1D6894ED005FAEF4 /* PWLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWLocationManager.h; sourceTree = "<group>"; };
+		CAF092EB1D6894ED005FAEF4 /* PWLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWLocationManager.m; sourceTree = "<group>"; };
+		CAF092ED1D68D3B0005FAEF4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,6 +385,7 @@
 				CAF0911A1D4D3A4C005FAEF4 /* Info.plist */,
 				CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */,
 				CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */,
+				CAF092ED1D68D3B0005FAEF4 /* Settings.bundle */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -384,6 +393,7 @@
 		CAF0911D1D4D3A4C005FAEF4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				CAF092E61D688F31005FAEF4 /* Utils */,
 				CAF0917B1D4E91FE005FAEF4 /* Other */,
 				CAF0911E1D4D3A4C005FAEF4 /* Controller */,
 				CAF091231D4D3A4C005FAEF4 /* Model */,
@@ -651,6 +661,17 @@
 			path = Purchases;
 			sourceTree = "<group>";
 		};
+		CAF092E61D688F31005FAEF4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CAF092E71D688F7E005FAEF4 /* PWBluetoothManager.h */,
+				CAF092E81D688F7E005FAEF4 /* PWBluetoothManager.m */,
+				CAF092EA1D6894ED005FAEF4 /* PWLocationManager.h */,
+				CAF092EB1D6894ED005FAEF4 /* PWLocationManager.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -725,6 +746,7 @@
 				CAF092C61D628006005FAEF4 /* PWMapController.xib in Resources */,
 				CAF092391D5FED1F005FAEF4 /* PWRestaurantFilterCell.xib in Resources */,
 				CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */,
+				CAF092EE1D68D3B0005FAEF4 /* Settings.bundle in Resources */,
 				CAF091A11D562471005FAEF4 /* PWIntroSecondPageCell.xib in Resources */,
 				CAF091A21D562471005FAEF4 /* PWIntroThirdPageCell.xib in Resources */,
 				CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */,
@@ -784,6 +806,7 @@
 				CAF0912F1D4D3A4C005FAEF4 /* PWAppDelegate.m in Sources */,
 				CAF092AD1D618EB8005FAEF4 /* PWRestaurantMapController.m in Sources */,
 				CAF092681D608E77005FAEF4 /* PWMapController.m in Sources */,
+				CAF092EC1D6894ED005FAEF4 /* PWLocationManager.m in Sources */,
 				CAF092631D607BB2005FAEF4 /* PWRestaurantsCollectionController.m in Sources */,
 				CAF091BF1D576703005FAEF4 /* PWDropShadowView.m in Sources */,
 				CAF092381D5FED1F005FAEF4 /* PWRestaurantFilterCell.m in Sources */,
@@ -815,6 +838,7 @@
 				CAF091BC1D57559A005FAEF4 /* UIViewControllerAdditions.m in Sources */,
 				CAF091E91D57AA0C005FAEF4 /* PWNearItemCollectionViewCell.m in Sources */,
 				CAF092331D5FE08D005FAEF4 /* PWRestaurantFilterController.m in Sources */,
+				CAF092E91D688F7E005FAEF4 /* PWBluetoothManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

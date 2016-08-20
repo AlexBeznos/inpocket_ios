@@ -12,11 +12,15 @@
 #import "PWRootMenuTableViewController.h"
 #import "UIViewControllerAdditions.h"
 #import "PWQRCodeScanViewController.h"
+#import "PWBluetoothManager.h"
+#import "UIColorAdditions.h"
 
 @interface PWMainViewController ()
 
 @property (nonatomic, strong) PWIntroViewController *introController;
 @property (nonatomic, strong) PWRootMenuTableViewController *rootMenuController;
+
+@property (nonatomic, strong) PWBluetoothManager *blueToothManager;
 
 @end
 
@@ -27,31 +31,53 @@
 	[super viewDidLoad];
 	
 	self.navigationController.navigationBarHidden = YES;
+	self.view.backgroundColor = [UIColor pwBackgroundColor];
 	
-	#if 0
-	__weak __typeof(self) theWeakSelf = self;
-	self.introController = [[PWIntroViewController alloc]
-				initWithCompletionHandler:
-	^{
-		#if 0
-		theWeakSelf.rootMenuController = [PWRootMenuTableViewController new];
-		[theWeakSelf navigateViewController:theWeakSelf.rootMenuController];
-		#else
-		PWQRCodeScanViewController *controller =
-					[[PWQRCodeScanViewController alloc] initWithCompletion:
-		^{
-			theWeakSelf.rootMenuController = [PWRootMenuTableViewController new];
-			[theWeakSelf navigateViewController:theWeakSelf.rootMenuController];
-		}];
-		[theWeakSelf navigateViewController:controller];
-		#endif
+	self.blueToothManager = [PWBluetoothManager new];
+	[self.blueToothManager startScanBeaconsForInterval:3 completion:
+	^(NSArray<NSString *> *beacons, NSError *error)
+	{
+		NSLog(@"Found uuids: %@\n\nError: %@", [beacons description], error);
 	}];
-	[self setupChildController:self.introController];
-	#else
-	self.rootMenuController = [PWRootMenuTableViewController new];
-	[self navigateViewController:self.rootMenuController];
-
-	#endif
+	
+	if (nil == [[NSUserDefaults standardUserDefaults] valueForKey:@"showIntro"])
+	{
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showIntro"];
+	}
+	if (nil == [[NSUserDefaults standardUserDefaults] valueForKey:@"showScan"])
+	{
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showScan"];
+	}
+	
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showIntro"])
+	{
+		__weak __typeof(self) theWeakSelf = self;
+		self.introController = [[PWIntroViewController alloc]
+					initWithCompletionHandler:
+		^{
+			if (![[NSUserDefaults standardUserDefaults] boolForKey:@"showScan"])
+			{
+				theWeakSelf.rootMenuController = [PWRootMenuTableViewController new];
+				[theWeakSelf navigateViewController:theWeakSelf.rootMenuController];
+			}
+			else
+			{
+				PWQRCodeScanViewController *controller =
+							[[PWQRCodeScanViewController alloc] initWithCompletion:
+				^{
+					theWeakSelf.rootMenuController = [PWRootMenuTableViewController new];
+					[theWeakSelf navigateViewController:theWeakSelf.rootMenuController];
+				}];
+				[theWeakSelf navigateViewController:controller];
+			}
+		}];
+		[self setupChildController:self.introController];
+	}
+	else
+	{
+		self.rootMenuController = [PWRootMenuTableViewController new];
+		[self navigateViewController:self.rootMenuController];
+	}
 }
 
 - (void)setupChildController:(UIViewController *)controller
