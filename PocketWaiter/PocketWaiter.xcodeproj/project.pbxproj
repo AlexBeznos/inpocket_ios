@@ -118,7 +118,7 @@
 		CAF092EE1D68D3B0005FAEF4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CAF092ED1D68D3B0005FAEF4 /* Settings.bundle */; };
 		CAF092F11D68E68A005FAEF4 /* PWModalController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092F01D68E68A005FAEF4 /* PWModalController.m */; };
 		CAF092F61D69A881005FAEF4 /* PWNoConnectionAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092F41D69A881005FAEF4 /* PWNoConnectionAlertController.m */; };
-		CAFE5FD11D69B8F8003F5991 /* PWNoConnectionAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE5FD01D69B8F8003F5991 /* PWNoConnectionAlertController.xib */; };
+		CAFE5FD31D6DE51C003F5991 /* PWNoConnectionAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE5FD21D6DE51C003F5991 /* PWNoConnectionAlertController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -308,7 +308,7 @@
 		CAF092F01D68E68A005FAEF4 /* PWModalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWModalController.m; sourceTree = "<group>"; };
 		CAF092F31D69A881005FAEF4 /* PWNoConnectionAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWNoConnectionAlertController.h; sourceTree = "<group>"; };
 		CAF092F41D69A881005FAEF4 /* PWNoConnectionAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWNoConnectionAlertController.m; sourceTree = "<group>"; };
-		CAFE5FD01D69B8F8003F5991 /* PWNoConnectionAlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWNoConnectionAlertController.xib; sourceTree = "<group>"; };
+		CAFE5FD21D6DE51C003F5991 /* PWNoConnectionAlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWNoConnectionAlertController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,6 +371,7 @@
 		CAF091181D4D3A4C005FAEF4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CAFE5FD21D6DE51C003F5991 /* PWNoConnectionAlertController.xib */,
 				CAF092DB1D63B262005FAEF4 /* PWNoPurchasesViewController.xib */,
 				CAF092CD1D63A54B005FAEF4 /* PWAboutController.xib */,
 				CAF092C21D628006005FAEF4 /* PWDetailesItemsViewController.xib */,
@@ -686,7 +687,6 @@
 		CAF092F21D69A85E005FAEF4 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
-				CAFE5FD01D69B8F8003F5991 /* PWNoConnectionAlertController.xib */,
 				CAF092F31D69A881005FAEF4 /* PWNoConnectionAlertController.h */,
 				CAF092F41D69A881005FAEF4 /* PWNoConnectionAlertController.m */,
 			);
@@ -751,7 +751,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAFE5FD11D69B8F8003F5991 /* PWNoConnectionAlertController.xib in Resources */,
+				CAFE5FD31D6DE51C003F5991 /* PWNoConnectionAlertController.xib in Resources */,
 				CAF091DA1D5799DB005FAEF4 /* coffeetoria3.jpg in Resources */,
 				CAF092C51D628006005FAEF4 /* PWDetailesItemsViewController.xib in Resources */,
 				CAF091E01D57A05F005FAEF4 /* hookah1.jpeg in Resources */,
