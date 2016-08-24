@@ -14,6 +14,7 @@
 #import "PWQRCodeScanViewController.h"
 #import "PWBluetoothManager.h"
 #import "UIColorAdditions.h"
+#import "PWNoConnectionAlertController.h"
 
 #import "PWModelManager.h"
 
@@ -23,6 +24,10 @@
 @property (nonatomic, strong) PWRootMenuTableViewController *rootMenuController;
 
 @property (nonatomic, strong) PWBluetoothManager *blueToothManager;
+@property (nonatomic, strong) PWModalController *bluetoothDialog;
+@property (nonatomic, strong) PWModalController *internetDialog;
+
+@property (nonatomic, strong) NSArray<NSString *> *beacons;
 
 @end
 
@@ -75,28 +80,66 @@
 	{
 		if (nil == error)
 		{
-			[[PWModelManager sharedManager] getRestaurantForBeacons:beacons
-						completion:^(PWRestaurant *restaurant, NSError *error)
-			{
-				if (nil != error || nil == restaurant)
-				{
-					[weakSelf showMode:YES];
-				}
-				else
-				{
-					[weakSelf showMode:NO];
-				}
-				[weakSelf stopActivity];
-			}];
+			weakSelf.beacons = beacons;
+			[weakSelf validateBeacons];
 		}
 		else
 		{
+			PWNoConnectionAlertController *alert = [[PWNoConnectionAlertController alloc]
+						initWithType:kPWConnectionTypeBluetooth retryAction:
+			^{
+				[weakSelf.bluetoothDialog hideWithCompletion:
+				^{
+					[weakSelf showMainFlow];
+				}];
+			}];
+			weakSelf.bluetoothDialog = [[PWModalController alloc]
+						initWithContentController:alert autoDismiss:NO];
+			[weakSelf.bluetoothDialog showWithCompletion:nil];
 			[weakSelf stopActivity];
-			[weakSelf showMode:YES];
-			// show error
 		}
 		NSLog(@"Found uuids: %@\n\nError: %@", [beacons description], error);
 	}];
+}
+
+- (void)validateBeacons
+{
+	__weak __typeof(self) weakSelf = self;
+	[self startActivity];
+	[[PWModelManager sharedManager] getRestaurantForBeacons:self.beacons
+				completion:^(PWRestaurant *restaurant, NSError *error)
+	{
+		if (nil != error)
+		{
+			[weakSelf showNoInternetDialog];
+		}
+		else if (nil == restaurant)
+		{
+			[weakSelf showMode:YES];
+		}
+		else
+		{
+			[weakSelf showMode:NO];
+		}
+		[weakSelf stopActivity];
+	}];
+
+}
+
+- (void)showNoInternetDialog
+{
+	__weak __typeof(self) weakSelf = self;
+	PWNoConnectionAlertController *alert = [[PWNoConnectionAlertController alloc]
+				initWithType:kPWConnectionTypeInternet retryAction:
+	^{
+		[weakSelf.internetDialog hideWithCompletion:
+		^{
+			[weakSelf validateBeacons];
+		}];
+	}];
+	self.internetDialog = [[PWModalController alloc]
+				initWithContentController:alert autoDismiss:NO];
+	[self.internetDialog showWithCompletion:nil];
 }
 
 - (void)showMode:(BOOL)defaultMode

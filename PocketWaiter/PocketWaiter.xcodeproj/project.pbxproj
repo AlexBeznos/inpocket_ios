@@ -116,6 +116,9 @@
 		CAF092E91D688F7E005FAEF4 /* PWBluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092E81D688F7E005FAEF4 /* PWBluetoothManager.m */; };
 		CAF092EC1D6894ED005FAEF4 /* PWLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092EB1D6894ED005FAEF4 /* PWLocationManager.m */; };
 		CAF092EE1D68D3B0005FAEF4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CAF092ED1D68D3B0005FAEF4 /* Settings.bundle */; };
+		CAF092F11D68E68A005FAEF4 /* PWModalController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092F01D68E68A005FAEF4 /* PWModalController.m */; };
+		CAF092F61D69A881005FAEF4 /* PWNoConnectionAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF092F41D69A881005FAEF4 /* PWNoConnectionAlertController.m */; };
+		CAFE5FD11D69B8F8003F5991 /* PWNoConnectionAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE5FD01D69B8F8003F5991 /* PWNoConnectionAlertController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -301,6 +304,11 @@
 		CAF092EA1D6894ED005FAEF4 /* PWLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWLocationManager.h; sourceTree = "<group>"; };
 		CAF092EB1D6894ED005FAEF4 /* PWLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWLocationManager.m; sourceTree = "<group>"; };
 		CAF092ED1D68D3B0005FAEF4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		CAF092EF1D68E68A005FAEF4 /* PWModalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWModalController.h; sourceTree = "<group>"; };
+		CAF092F01D68E68A005FAEF4 /* PWModalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWModalController.m; sourceTree = "<group>"; };
+		CAF092F31D69A881005FAEF4 /* PWNoConnectionAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWNoConnectionAlertController.h; sourceTree = "<group>"; };
+		CAF092F41D69A881005FAEF4 /* PWNoConnectionAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWNoConnectionAlertController.m; sourceTree = "<group>"; };
+		CAFE5FD01D69B8F8003F5991 /* PWNoConnectionAlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWNoConnectionAlertController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -406,6 +414,7 @@
 		CAF0911E1D4D3A4C005FAEF4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CAF092F21D69A85E005FAEF4 /* Alerts */,
 				CAF092CF1D63A5CB005FAEF4 /* Purchases */,
 				CAF0923A1D607B69005FAEF4 /* Detailed menu */,
 				CAF092411D607B69005FAEF4 /* Intro */,
@@ -431,6 +440,8 @@
 				CAF092B21D627264005FAEF4 /* PWPresentsMapController.m */,
 				CAF092DD1D63B35D005FAEF4 /* PWActivityIndicatorOwner.h */,
 				CAF092DE1D63B35D005FAEF4 /* PWActivityIndicatorOwner.m */,
+				CAF092EF1D68E68A005FAEF4 /* PWModalController.h */,
+				CAF092F01D68E68A005FAEF4 /* PWModalController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -672,6 +683,16 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		CAF092F21D69A85E005FAEF4 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				CAFE5FD01D69B8F8003F5991 /* PWNoConnectionAlertController.xib */,
+				CAF092F31D69A881005FAEF4 /* PWNoConnectionAlertController.h */,
+				CAF092F41D69A881005FAEF4 /* PWNoConnectionAlertController.m */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -730,6 +751,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAFE5FD11D69B8F8003F5991 /* PWNoConnectionAlertController.xib in Resources */,
 				CAF091DA1D5799DB005FAEF4 /* coffeetoria3.jpg in Resources */,
 				CAF092C51D628006005FAEF4 /* PWDetailesItemsViewController.xib in Resources */,
 				CAF091E01D57A05F005FAEF4 /* hookah1.jpeg in Resources */,
@@ -788,6 +810,7 @@
 				CAF0920D1D5E4316005FAEF4 /* PWQRCodeScanViewController.m in Sources */,
 				CAF091331D4D3A4C005FAEF4 /* main.m in Sources */,
 				CAF092D21D63A5F1005FAEF4 /* PWPurchasesViewController.m in Sources */,
+				CAF092F61D69A881005FAEF4 /* PWNoConnectionAlertController.m in Sources */,
 				CAF092551D607B69005FAEF4 /* PWDetailedNearPresentsCollectionController.m in Sources */,
 				CAF091891D4E94B6005FAEF4 /* PWWorkingTime.m in Sources */,
 				CAF092D91D63AE60005FAEF4 /* PWNoPurchasesViewController.m in Sources */,
@@ -814,6 +837,7 @@
 				CAF092DF1D63B35D005FAEF4 /* PWActivityIndicatorOwner.m in Sources */,
 				CAF091881D4E94B3005FAEF4 /* PWUsersRestaurantInfo.m in Sources */,
 				CAF091731D4E9099005FAEF4 /* PWPresentProduct.m in Sources */,
+				CAF092F11D68E68A005FAEF4 /* PWModalController.m in Sources */,
 				CAF092571D607B69005FAEF4 /* PWEnterPromoViewController.m in Sources */,
 				CAF092641D607BB2005FAEF4 /* PWRestaurantsViewController.m in Sources */,
 				CAF091871D4E94B0005FAEF4 /* PWUser.m in Sources */,
