@@ -78,7 +78,22 @@
 	});
 }
 
-- (void)getPurchasesForUser:(PWUser *)user withCount:(NSUInteger)count
+- (void)getPurchasesRestaurantsForUser:(PWUser *)user withCount:(NSUInteger)count
+			offset:(NSUInteger)offset completion:
+			(void (^)(NSArray<PWRestaurant *> *))completion
+{
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
+				(int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
+	^{
+		if (nil != completion)
+		{
+			completion(self.cachedRestaurants);
+		}
+	});
+}
+
+- (void)getPurchasesForUser:(PWUser *)user restaurant:(PWRestaurant *)restaurant
+			withCount:(NSUInteger)count
 			offset:(NSUInteger)offset completion:
 			(void (^)(NSArray<PWPurchase *> *))completion
 {
@@ -87,7 +102,7 @@
 	^{
 		if (nil != completion)
 		{
-			completion(nil/*self.user.purchases*/);
+			completion(self.user.purchases);
 		}
 	});
 }

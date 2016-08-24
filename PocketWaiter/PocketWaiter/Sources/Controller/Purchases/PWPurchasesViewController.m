@@ -10,12 +10,14 @@
 #import "PWModelManager.h"
 #import "UIColorAdditions.h"
 #import "PWNoPurchasesViewController.h"
+#import "PWAllPurchasesViewController.h"
 
 @interface PWPurchasesViewController ()
 
-@property (nonatomic, strong) NSArray<PWPurchase *> *purchases;
+@property (nonatomic, strong) NSArray<PWRestaurant *> *restaurants;
 @property (nonatomic, strong) PWUser *user;
 @property (nonatomic, strong) PWNoPurchasesViewController *noPurchasesController;
+@property (nonatomic, strong) PWAllPurchasesViewController *allPurchasesController;
 
 @end
 
@@ -44,15 +46,26 @@
 	__weak __typeof(self) theWeakSelf = self;
 	[self startActivity];
 	
-	[[PWModelManager sharedManager] getPurchasesForUser:self.user
-				withCount:20 offset:0 completion:^(NSArray<PWPurchase *> *purchases)
+	[[PWModelManager sharedManager] getPurchasesRestaurantsForUser:self.user
+				withCount:5 offset:0 completion:^(NSArray<PWRestaurant *> *restaurants)
 	{
-		theWeakSelf.purchases = purchases;
+		theWeakSelf.restaurants = restaurants;
 		[theWeakSelf stopActivity];
 		
-		if (0 == purchases.count)
+		if (0 == restaurants.count)
 		{
 			[theWeakSelf setupController:theWeakSelf.noPurchasesController];
+		}
+		else
+		{
+			PWAllPurchasesViewController *allPurchasesController =
+						[[PWAllPurchasesViewController alloc]
+						initWithUser:theWeakSelf.user purchases:restaurants];
+			theWeakSelf.allPurchasesController = allPurchasesController;
+			[theWeakSelf setupController:theWeakSelf.allPurchasesController];
+			CGFloat aspectRatio = CGRectGetWidth(theWeakSelf.parentViewController.
+						view.frame) / 320.;
+			[allPurchasesController setWidth:320 * aspectRatio];
 		}
 	}];
 }

@@ -34,7 +34,12 @@
 - (void)getPresentsWithCount:(NSUInteger)count offset:(NSUInteger)offset
 			completion:(void (^)(NSArray<PWPresentProduct *> *))completion;
 
-- (void)getPurchasesForUser:(PWUser *)user withCount:(NSUInteger)count
+- (void)getPurchasesRestaurantsForUser:(PWUser *)user withCount:(NSUInteger)count
+			offset:(NSUInteger)offset completion:
+			(void (^)(NSArray<PWRestaurant *> *))completion;
+
+- (void)getPurchasesForUser:(PWUser *)user restaurant:(PWRestaurant *)restaurant
+			withCount:(NSUInteger)count
 			offset:(NSUInteger)offset completion:
 			(void (^)(NSArray<PWPurchase *> *))completion;
 
