@@ -12,6 +12,7 @@
 #import "PWIntroLayout.h"
 #import "PWIntroFirstPageCell.h"
 #import "PWEnterPromoViewController.h"
+#import "UIColorAdditions.h"
 
 @interface PWIntroViewController () <UICollectionViewDataSource,
 			UICollectionViewDelegate>
@@ -47,9 +48,10 @@
 	
 	self.indicator.itemsCount = 3;
 	self.indicator.selectedItemIndex = 0;
+	self.indicator.backgroundColor = [UIColor clearColor];
 	
-	self.view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
-	self.slidesView.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
+	self.view.backgroundColor = [UIColor pwBackgroundColor];
+	self.slidesView.backgroundColor =[UIColor pwBackgroundColor];
 	
 	self.layout.countOfSlides = 3;
 	self.layout.minimumLineSpacing = 0;
@@ -160,6 +162,8 @@
 					CGRectGetWidth(self.parentViewController.view.frame) / 320.;
 		theCell = slideCell;
 	}
+	
+	theCell.backgroundColor = [UIColor pwBackgroundColor];
 	
 	return theCell;
 }
