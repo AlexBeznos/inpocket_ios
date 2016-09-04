@@ -84,7 +84,7 @@
                                                 <action selector="getRestaurant:" destination="-1" eventType="touchUpInside" id="Lbf-y7-FnE"/>
                                             </connections>
                                         </button>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hxa-xO-RJ3">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whiteLittleArrow" translatesAutoresizingMaskIntoConstraints="NO" id="hxa-xO-RJ3">
                                             <rect key="frame" x="268" y="144" width="22" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="X6K-09-tpw"/>
@@ -160,4 +160,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
+    <resources>
+        <image name="whiteLittleArrow" width="24" height="24"/>
+    </resources>
 </document>

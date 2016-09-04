@@ -9,6 +9,7 @@
 #import "PWNoConnectionAlertController.h"
 
 @interface PWNoConnectionAlertController ()
+
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *detailsLabel;
 @property (strong, nonatomic) IBOutlet UIButton *retryButton;

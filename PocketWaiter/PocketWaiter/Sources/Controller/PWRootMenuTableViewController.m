@@ -14,6 +14,7 @@
 #import "UIViewControllerAdditions.h"
 #import "PWRestaurantsViewController.h"
 #import "PWAboutController.h"
+#import "PWShareWithFriendsController.h"
 
 @interface PWRootMenuTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -156,7 +157,7 @@
 		PWContentSource *shareSource = [[PWContentSource alloc]
 					initWithTitle:@"Поделиться" details:nil
 					icon:[UIImage imageNamed:@"whiteShare"]
-					contentViewController:[[PWMainMenuViewController alloc]
+					contentViewController:[[PWShareWithFriendsController alloc]
 					initWithTransitionHandler:
 		^{
 			[theWeakSelf performBackTransition];
