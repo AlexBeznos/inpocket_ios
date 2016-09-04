@@ -13,4 +13,8 @@
 @property (nonatomic) UIColor *color;
 @property (nonatomic) UIImage *image;
 
+@property (nonatomic) NSUInteger bonusesCount;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *descriptionText;
+
 @end

@@ -31,9 +31,45 @@
                             <constraint firstAttribute="height" constant="180" id="ZBf-kO-BkL"/>
                         </constraints>
                     </imageView>
-                    <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WqQ-ay-2gt">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WqQ-ay-2gt">
                         <rect key="frame" x="15" y="10" width="272" height="180"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMv-iB-qGV">
+                                <rect key="frame" x="17" y="18" width="96.5" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKe-Jj-ddk">
+                                <rect key="frame" x="17" y="118" width="49" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojM-og-O4t">
+                                <rect key="frame" x="17" y="140" width="26.5" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nc5-i7-spS">
+                                <rect key="frame" x="17" y="64" width="37.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LKe-Jj-ddk" firstAttribute="top" secondItem="nc5-i7-spS" secondAttribute="bottom" constant="36" id="OzS-O4-4bc"/>
+                            <constraint firstItem="LKe-Jj-ddk" firstAttribute="leading" secondItem="nc5-i7-spS" secondAttribute="leading" id="nwN-0z-c1k"/>
+                            <constraint firstItem="nc5-i7-spS" firstAttribute="leading" secondItem="QMv-iB-qGV" secondAttribute="leading" id="of1-vs-t8s"/>
+                            <constraint firstItem="ojM-og-O4t" firstAttribute="leading" secondItem="LKe-Jj-ddk" secondAttribute="leading" id="qnc-cs-dTK"/>
+                            <constraint firstItem="QMv-iB-qGV" firstAttribute="leading" secondItem="WqQ-ay-2gt" secondAttribute="leading" constant="17" id="rsO-cL-2n1"/>
+                            <constraint firstItem="nc5-i7-spS" firstAttribute="top" secondItem="QMv-iB-qGV" secondAttribute="bottom" constant="-2" id="vDG-vS-RiC"/>
+                            <constraint firstItem="ojM-og-O4t" firstAttribute="top" secondItem="LKe-Jj-ddk" secondAttribute="bottom" constant="-2" id="z4j-Lh-D97"/>
+                            <constraint firstItem="QMv-iB-qGV" firstAttribute="top" secondItem="WqQ-ay-2gt" secondAttribute="top" constant="18" id="z4n-Oj-TFy"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -55,8 +91,12 @@
                 <constraint firstItem="WqQ-ay-2gt" firstAttribute="height" secondItem="Ta4-Ct-kSS" secondAttribute="height" id="x7f-FB-Bct"/>
             </constraints>
             <connections>
+                <outlet property="bonusesCountLabel" destination="QMv-iB-qGV" id="OAe-9d-diC"/>
+                <outlet property="bonusesLabel" destination="nc5-i7-spS" id="kdT-Qz-s8Y"/>
                 <outlet property="colorView" destination="WqQ-ay-2gt" id="gfZ-Yx-ka1"/>
+                <outlet property="descriptionLabel" destination="ojM-og-O4t" id="NAe-ho-8Cl"/>
                 <outlet property="imageView" destination="Ta4-Ct-kSS" id="HWI-lh-P2S"/>
+                <outlet property="nameLabel" destination="LKe-Jj-ddk" id="K3P-UE-8H7"/>
             </connections>
         </collectionViewCell>
     </objects>
