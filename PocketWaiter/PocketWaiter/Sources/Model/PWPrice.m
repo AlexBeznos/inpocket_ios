@@ -20,7 +20,7 @@
 
 - (NSString *)humanReadableValue
 {
-	return [NSString stringWithFormat:@"%f $", self.value];
+	return [NSString stringWithFormat:@"%.2f $", self.value];
 }
 
 @end

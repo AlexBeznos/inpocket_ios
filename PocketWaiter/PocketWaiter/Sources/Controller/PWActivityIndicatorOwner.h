@@ -8,9 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@class PWActivityIndicator;
+
 @interface PWActivityIndicatorOwner : UIViewController
 
+@property (nonatomic, readonly) PWActivityIndicator *activity;
+
 - (void)startActivity;
+- (void)startActivityWithTopOffset:(CGFloat)offset;
 - (void)stopActivity;
+
+- (void)startAsyncActivity;
+- (void)stopAsyncActivity;
+- (void)restartAsyncActivity;
+
+- (void)showNoInternetDialog;
 
 @end

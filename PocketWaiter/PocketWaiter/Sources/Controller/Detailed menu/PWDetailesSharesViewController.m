@@ -43,7 +43,7 @@
 {
 	__weak __typeof(self) weakSelf = self;
 	[[PWModelManager sharedManager] getSharesWithCount:10 offset:0
-				completion:^(NSArray<PWRestaurantShare *> *shares)
+				completion:^(NSArray<PWRestaurantShare *> *shares, NSError *error)
 	{
 		weakSelf.shares = shares;
 		

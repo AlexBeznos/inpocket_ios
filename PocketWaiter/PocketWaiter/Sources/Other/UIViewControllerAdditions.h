@@ -39,5 +39,6 @@
 			navigationItem:(UINavigationItem *)item;
 
 - (NSLayoutConstraint *)navigateViewController:(UIViewController *)controller;
+- (void)setupChildController:(UIViewController *)controller inView:(UIView *)view;
 
 @end

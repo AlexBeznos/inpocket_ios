@@ -55,7 +55,7 @@
 	
 	[self startActivity];
 	[[PWModelManager sharedManager] getRestaurantsWithCount:10 offset:0
-				completion:^(NSArray<PWRestaurant *> *restaurants)
+				completion:^(NSArray<PWRestaurant *> *restaurants, NSError *error)
 	{
 		weakSelf.filteredRestaurants = restaurants;
 		

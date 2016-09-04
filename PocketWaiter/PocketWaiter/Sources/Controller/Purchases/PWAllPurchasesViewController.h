@@ -13,7 +13,7 @@
 
 @interface PWAllPurchasesViewController : UIViewController
 
-- (instancetype)initWithUser:(PWUser *)user purchases:(NSArray<PWRestaurant *> *)restaurants;
+- (instancetype)initWithUser:(PWUser *)user restaurants:(NSArray<PWRestaurant *> *)restaurants;
 
 - (void)setWidth:(CGFloat)contentWidth;
 

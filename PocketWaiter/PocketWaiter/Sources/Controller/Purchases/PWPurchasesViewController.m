@@ -47,7 +47,7 @@
 	[self startActivity];
 	
 	[[PWModelManager sharedManager] getPurchasesRestaurantsForUser:self.user
-				withCount:5 offset:0 completion:^(NSArray<PWRestaurant *> *restaurants)
+				withCount:5 offset:0 completion:^(NSArray<PWRestaurant *> *restaurants, NSError *error)
 	{
 		theWeakSelf.restaurants = restaurants;
 		[theWeakSelf stopActivity];
@@ -60,7 +60,7 @@
 		{
 			PWAllPurchasesViewController *allPurchasesController =
 						[[PWAllPurchasesViewController alloc]
-						initWithUser:theWeakSelf.user purchases:restaurants];
+						initWithUser:theWeakSelf.user restaurants:restaurants];
 			theWeakSelf.allPurchasesController = allPurchasesController;
 			[theWeakSelf setupController:theWeakSelf.allPurchasesController];
 			CGFloat aspectRatio = CGRectGetWidth(theWeakSelf.parentViewController.

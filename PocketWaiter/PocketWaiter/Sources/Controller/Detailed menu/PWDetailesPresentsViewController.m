@@ -43,15 +43,22 @@
 {
 	__weak __typeof(self) weakSelf = self;
 	[[PWModelManager sharedManager] getPresentsWithCount:10 offset:0
-				completion:^(NSArray<PWPresentProduct *> *presents)
+				completion:^(NSArray<PWPresentProduct *> *presents, NSError *error)
 	{
-		weakSelf.presents = presents;
-		
-		[weakSelf setupContentWithMode:0];
-		
-		if (nil != aCompletion)
+		if (nil == error)
 		{
-			aCompletion();
+			weakSelf.presents = presents;
+			
+			[weakSelf setupContentWithMode:0];
+			
+			if (nil != aCompletion)
+			{
+				aCompletion();
+			}
+		}
+		else
+		{
+		
 		}
 	}];
 }

@@ -17,4 +17,6 @@
 @property (nonatomic, readonly) NSArray<PWOrder *> *presents;
 @property (nonatomic, readonly) NSString *restaurantId;
 
+@property (nonatomic, readonly) NSUInteger bonusesCount;
+
 @end

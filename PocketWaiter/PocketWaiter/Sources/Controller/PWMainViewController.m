@@ -62,7 +62,7 @@
 			[theWeakSelf showMainFlow];
 			[theWeakSelf.introController.view removeFromSuperview];
 		}];
-		[self setupChildController:self.introController];
+		[self setupChildController:self.introController inView:self.view];
 	}
 	else
 	{
@@ -123,23 +123,6 @@
 		}
 		[weakSelf stopActivity];
 	}];
-
-}
-
-- (void)showNoInternetDialog
-{
-	__weak __typeof(self) weakSelf = self;
-	PWNoConnectionAlertController *alert = [[PWNoConnectionAlertController alloc]
-				initWithType:kPWConnectionTypeInternet retryAction:
-	^{
-		[weakSelf.internetDialog hideWithCompletion:
-		^{
-			[weakSelf validateBeacons];
-		}];
-	}];
-	self.internetDialog = [[PWModalController alloc]
-				initWithContentController:alert autoDismiss:NO];
-	[self.internetDialog showWithCompletion:nil];
 }
 
 - (void)showMode:(BOOL)defaultMode
@@ -164,20 +147,19 @@
 	}
 }
 
-- (void)setupChildController:(UIViewController *)controller
+- (void)startAsyncActivity
 {
-	[self addChildViewController:controller];
-	[self.view addSubview:controller.view];
-	[controller didMoveToParentViewController:self];
-	controller.view.translatesAutoresizingMaskIntoConstraints = NO;
-	[self.view addConstraints:[NSLayoutConstraint
-				constraintsWithVisualFormat:@"V:|[view]|"
-				options:0 metrics:nil
-				views:@{@"view" : controller.view}]];
-	[self.view addConstraints:[NSLayoutConstraint
-				constraintsWithVisualFormat:@"H:|[view]|"
-				options:0 metrics:nil
-				views:@{@"view" : controller.view}]];
+	[self validateBeacons];
+}
+
+- (void)stopAsyncActivity
+{
+
+}
+
+- (void)restartAsyncActivity
+{
+
 }
 
 @end

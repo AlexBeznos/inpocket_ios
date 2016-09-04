@@ -13,11 +13,15 @@
 #import "PWPurchaseRestaurantCell.h"
 #import "PWSlidesLayout.h"
 #import "UIColorAdditions.h"
+#import "PWRestaurantPurchasesController.h"
+#import "UIViewControllerAdditions.h"
 
 @interface PWAllPurchasesViewController ()
 			<UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) NSArray<PWRestaurant *> *restaurants;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *sliderHeight;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *indicatorHeight;
 @property (nonatomic, strong) PWUser *user;
 @property (strong, nonatomic) IBOutlet PWCollectionView *cardsView;
 @property (strong, nonatomic) IBOutlet UILabel *purchasesLabel;
@@ -31,12 +35,25 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *contentWidth;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *contentHeight;
 @property (strong, nonatomic) IBOutlet UIView *contentHolder;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *labelBottom;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *labelHeight;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *sliderOffset;
+
+@property (strong, nonatomic) PWRestaurantPurchasesController *currentPaysController;
+@property (strong, nonatomic) PWRestaurantPurchasesController *nextPaysController;
+@property (strong, nonatomic) PWRestaurantPurchasesController *previousPaysController;
+
+@property (strong, nonatomic) NSLayoutConstraint *firstAnimatableConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *secondAnimatableConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *thirdAnimatableConstraint;
+@property (nonatomic) CGFloat lastOffset;
+@property (nonatomic) NSUInteger currentIndex;
 
 @end
 
 @implementation PWAllPurchasesViewController
 
-- (instancetype)initWithUser:(PWUser *)user purchases:(NSArray<PWRestaurant *> *)restaurants
+- (instancetype)initWithUser:(PWUser *)user restaurants:(NSArray<PWRestaurant *> *)restaurants
 {
 	self = [super init];
 	
@@ -57,6 +74,7 @@
 	self.cardsView.backgroundColor = [UIColor pwBackgroundColor];
 	self.indicator.backgroundColor = [UIColor pwBackgroundColor];
 	self.contentHolder.backgroundColor = [UIColor pwBackgroundColor];
+	self.purchasesContainer.backgroundColor = [UIColor pwBackgroundColor];
 	
 	self.purchasesLabel.text = @"ИСТОРИЯ ПОКУПОК";
 	
@@ -70,6 +88,8 @@
 	 
 	self.layout.itemSize = CGSizeMake(320, 210);
 	self.layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+	
+	self.contentHeight.constant = 500;
 	
 	if (self.restaurants.count == 1)
 	{
@@ -87,15 +107,193 @@
 		self.indicatorWidth.constant = 16 * self.restaurants.count;
 	}
 	
+	__weak __typeof(self) weakSelf = self;
 	self.cardsView.delegate = self;
 	self.cardsView.dataSource = self;
-	self.cardsView.contentOffsetObserver = ^(CGPoint offsset)
+	self.cardsView.contentOffsetObserver = ^(CGPoint offset)
 	{
-	
+		[weakSelf slidePurchasesWithOffset:offset.x];
 	};
 	
 	[self.cardsView registerNib:[UINib nibWithNibName:@"PWPurchaseRestaurantCell"
 				bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"id"];
+	
+	UIView *holder = [UIView new];
+	holder.backgroundColor = [UIColor clearColor];
+	holder.translatesAutoresizingMaskIntoConstraints = NO;
+	
+	[self.purchasesContainer addSubview:holder];
+	
+	[self.purchasesContainer addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"V:|[view]|"
+				options:0 metrics:nil views:@{@"view" :holder}]];
+	[self.purchasesContainer addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"H:|[view]|"
+				options:0 metrics:nil views:@{@"view" :holder}]];
+	
+	self.currentPaysController = [[PWRestaurantPurchasesController alloc] initWithUser:self.user estimatedHeightHandler:
+	^(CGFloat height)
+	{
+		[weakSelf adjustContentHeightWithPurchasesHeight:height];
+	}];
+	[self.currentPaysController updateWithRestaurant:self.restaurants[0]];
+	
+	[self addChildViewController:self.currentPaysController];
+	[holder addSubview:self.currentPaysController.view];
+	[self.currentPaysController didMoveToParentViewController:self];
+	self.currentPaysController.view.translatesAutoresizingMaskIntoConstraints = NO;
+	
+	[self.currentPaysController.view addConstraint:[NSLayoutConstraint
+				constraintWithItem:self.currentPaysController.view
+				attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual
+				toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1
+				constant:CGRectGetWidth(self.parentViewController.view.frame)]];
+	
+	self.previousPaysController = [[PWRestaurantPurchasesController alloc] initWithUser:self.user estimatedHeightHandler:
+	^(CGFloat height)
+	{
+		[weakSelf adjustContentHeightWithPurchasesHeight:height];
+	}];
+	
+	[self addChildViewController:self.previousPaysController];
+	[holder addSubview:self.previousPaysController.view];
+	[self.previousPaysController didMoveToParentViewController:self];
+	self.previousPaysController.view.translatesAutoresizingMaskIntoConstraints = NO;
+	
+	[self.previousPaysController.view addConstraint:[NSLayoutConstraint
+				constraintWithItem:self.previousPaysController.view
+				attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual
+				toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1
+				constant:CGRectGetWidth(self.parentViewController.view.frame)]];
+	
+	self.nextPaysController = [[PWRestaurantPurchasesController alloc] initWithUser:self.user estimatedHeightHandler:
+	^(CGFloat height)
+	{
+		[weakSelf adjustContentHeightWithPurchasesHeight:height];
+	}];
+	
+	[self addChildViewController:self.nextPaysController];
+	[holder addSubview:self.nextPaysController.view];
+	[self.nextPaysController didMoveToParentViewController:self];
+	self.nextPaysController.view.translatesAutoresizingMaskIntoConstraints = NO;
+	
+	[self.nextPaysController.view addConstraint:[NSLayoutConstraint
+				constraintWithItem:self.nextPaysController.view
+				attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual
+				toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1
+				constant:CGRectGetWidth(self.parentViewController.view.frame)]];
+	
+	[holder addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"V:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : self.currentPaysController.view}]];
+	[holder addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"V:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : self.previousPaysController.view}]];
+	[holder addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"V:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : self.nextPaysController.view}]];
+	
+	self.firstAnimatableConstraint = [NSLayoutConstraint constraintWithItem:
+				holder attribute:NSLayoutAttributeLeft
+				relatedBy:NSLayoutRelationEqual toItem: self.previousPaysController.view
+				attribute:NSLayoutAttributeLeft multiplier:1.0
+				constant:-CGRectGetWidth(self.parentViewController.view.frame)];
+	self.secondAnimatableConstraint = [NSLayoutConstraint constraintWithItem:
+				holder attribute:NSLayoutAttributeLeft
+				relatedBy:NSLayoutRelationEqual toItem:self.currentPaysController.view
+				attribute:NSLayoutAttributeLeft multiplier:1.0
+				constant:0];
+	self.thirdAnimatableConstraint = [NSLayoutConstraint constraintWithItem:
+				holder attribute:NSLayoutAttributeLeft
+				relatedBy:NSLayoutRelationEqual toItem:self.nextPaysController.view
+				attribute:NSLayoutAttributeLeft multiplier:1.0
+				constant:CGRectGetWidth(self.parentViewController.view.frame)];
+	[holder addConstraints:@[self.firstAnimatableConstraint,
+				self.secondAnimatableConstraint, self.thirdAnimatableConstraint]];
+}
+
+- (void)setupChildControllers:(UIViewController *)controller
+			leftOffset:(CGFloat)left rightOffset:(CGFloat)right
+{
+	[self addChildViewController:controller];
+	[self.purchasesContainer addSubview:controller.view];
+	[controller didMoveToParentViewController:self];
+	controller.view.translatesAutoresizingMaskIntoConstraints = NO;
+	[self.purchasesContainer addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"V:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : controller.view}]];
+	[self.purchasesContainer addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"H:|[view]|"
+				options:0 metrics:@{@"left" : @(left), @"right" : @(right)}
+				views:@{@"view" : controller.view}]];
+}
+
+- (void)adjustContentHeightWithPurchasesHeight:(CGFloat)height
+{
+	self.contentHeight.constant = height + self.indicatorHeight.constant +
+				self.indicatorTop.constant + self.indicatorBottom.constant +
+				self.sliderHeight.constant + self.labelBottom.constant +
+				self.labelHeight.constant + self.sliderOffset.constant;
+}
+
+- (void)slidePurchasesWithOffset:(CGFloat)offset
+{
+	if (offset != self.lastOffset && offset >= 0 && offset <=
+				(self.restaurants.count - 1) * CGRectGetWidth(self.parentViewController.view.frame))
+	{
+		self.firstAnimatableConstraint.constant = offset -
+					CGRectGetWidth(self.parentViewController.view.frame) * (1 + self.currentIndex);
+		self.secondAnimatableConstraint.constant = offset -
+					CGRectGetWidth(self.parentViewController.view.frame) * self.currentIndex;
+		self.thirdAnimatableConstraint.constant = offset -
+					CGRectGetWidth(self.parentViewController.view.frame) * (self.currentIndex - 1);
+		
+		CGFloat ratio = offset / CGRectGetWidth(self.parentViewController.view.frame);
+		NSUInteger pageIndex = (NSInteger)ratio;
+		if (ratio == pageIndex)
+		{
+			PWRestaurantPurchasesController *currentController = self.currentPaysController;
+			NSLayoutConstraint *currentConstraint = self.secondAnimatableConstraint;
+			
+			if (self.lastOffset < offset)
+			{
+				self.currentPaysController = self.previousPaysController;
+				self.secondAnimatableConstraint = self.firstAnimatableConstraint;
+				
+				self.previousPaysController = self.nextPaysController;
+				self.firstAnimatableConstraint = self.thirdAnimatableConstraint;
+				
+				self.nextPaysController = currentController;
+				self.thirdAnimatableConstraint = currentConstraint;
+				
+				self.firstAnimatableConstraint.constant = -CGRectGetWidth(self.parentViewController.view.frame);
+			}
+			else
+			{
+				self.currentPaysController = self.nextPaysController;
+				self.secondAnimatableConstraint = self.thirdAnimatableConstraint;
+				
+				self.nextPaysController = self.previousPaysController;
+				self.thirdAnimatableConstraint = self.firstAnimatableConstraint;
+				
+				self.previousPaysController = currentController;
+				self.firstAnimatableConstraint = currentConstraint;
+				
+				self.thirdAnimatableConstraint.constant = CGRectGetWidth(self.parentViewController.view.frame);
+			}
+			[self.currentPaysController updateWithRestaurant:self.restaurants[pageIndex]];
+			[self.previousPaysController updateWithRestaurant:nil];
+			[self.nextPaysController updateWithRestaurant:nil];
+			
+			self.currentIndex = pageIndex;
+		}
+		
+		self.lastOffset = offset;
+	}
 }
 
 - (void)setWidth:(CGFloat)contentWidth

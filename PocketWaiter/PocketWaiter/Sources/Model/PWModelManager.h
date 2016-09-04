@@ -14,6 +14,8 @@
 #import "PWPresentProduct.h"
 #import "PWPurchase.h"
 #import "PWUser.h"
+#import "PWOrder.h"
+#import "PWPrice.h"
 
 @interface PWModelManager : NSObject
 
@@ -26,22 +28,22 @@
 - (NSArray<PWPresentProduct *> *)nearPresents;
 
 - (void)getRestaurantsWithCount:(NSUInteger)count offset:(NSUInteger)offset
-			completion:(void (^)(NSArray<PWRestaurant *> *))completion;
+			completion:(void (^)(NSArray<PWRestaurant *> *, NSError *error))completion;
 
 - (void)getSharesWithCount:(NSUInteger)count offset:(NSUInteger)offset
-			completion:(void (^)(NSArray<PWRestaurantShare *> *))completion;
+			completion:(void (^)(NSArray<PWRestaurantShare *> *, NSError *error))completion;
 
 - (void)getPresentsWithCount:(NSUInteger)count offset:(NSUInteger)offset
-			completion:(void (^)(NSArray<PWPresentProduct *> *))completion;
+			completion:(void (^)(NSArray<PWPresentProduct *> *, NSError *error))completion;
 
 - (void)getPurchasesRestaurantsForUser:(PWUser *)user withCount:(NSUInteger)count
 			offset:(NSUInteger)offset completion:
-			(void (^)(NSArray<PWRestaurant *> *))completion;
+			(void (^)(NSArray<PWRestaurant *> *, NSError *error))completion;
 
 - (void)getPurchasesForUser:(PWUser *)user restaurant:(PWRestaurant *)restaurant
 			withCount:(NSUInteger)count
 			offset:(NSUInteger)offset completion:
-			(void (^)(NSArray<PWPurchase *> *))completion;
+			(void (^)(NSArray<PWPurchase *> *, NSError *error))completion;
 
 - (void)getRestaurantForBeacons:(NSArray<NSString *> *)beacons
 			completion:(void (^)(PWRestaurant *restaurant, NSError *error))completion;

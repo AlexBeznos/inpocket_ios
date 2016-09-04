@@ -124,6 +124,9 @@
 		CAFE5FE41D6DF62F003F5991 /* PWAllPurchasesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE5FE11D6DF62F003F5991 /* PWAllPurchasesViewController.xib */; };
 		CAFE5FE51D6DF62F003F5991 /* PWPurchaseRestaurantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE5FE21D6DF62F003F5991 /* PWPurchaseRestaurantCell.xib */; };
 		CAFE5FE61D6DF62F003F5991 /* PWRestaurantFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE5FE31D6DF62F003F5991 /* PWRestaurantFilterCell.xib */; };
+		CAFE5FE91D6DFDAC003F5991 /* PWRestaurantPurchasesController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE5FE81D6DFDAC003F5991 /* PWRestaurantPurchasesController.m */; };
+		CAFE5FED1D7B62F9003F5991 /* PWPurchaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE5FEB1D7B62F9003F5991 /* PWPurchaseTableViewCell.m */; };
+		CAFE5FF01D7B8237003F5991 /* PWPurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE5FEF1D7B8237003F5991 /* PWPurchaseTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -322,6 +325,11 @@
 		CAFE5FE11D6DF62F003F5991 /* PWAllPurchasesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWAllPurchasesViewController.xib; sourceTree = "<group>"; };
 		CAFE5FE21D6DF62F003F5991 /* PWPurchaseRestaurantCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWPurchaseRestaurantCell.xib; sourceTree = "<group>"; };
 		CAFE5FE31D6DF62F003F5991 /* PWRestaurantFilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWRestaurantFilterCell.xib; sourceTree = "<group>"; };
+		CAFE5FE71D6DFDAC003F5991 /* PWRestaurantPurchasesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWRestaurantPurchasesController.h; sourceTree = "<group>"; };
+		CAFE5FE81D6DFDAC003F5991 /* PWRestaurantPurchasesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRestaurantPurchasesController.m; sourceTree = "<group>"; };
+		CAFE5FEA1D7B62F9003F5991 /* PWPurchaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWPurchaseTableViewCell.h; sourceTree = "<group>"; };
+		CAFE5FEB1D7B62F9003F5991 /* PWPurchaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWPurchaseTableViewCell.m; sourceTree = "<group>"; };
+		CAFE5FEF1D7B8237003F5991 /* PWPurchaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWPurchaseTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,6 +392,7 @@
 		CAF091181D4D3A4C005FAEF4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CAFE5FEF1D7B8237003F5991 /* PWPurchaseTableViewCell.xib */,
 				CAFE5FE11D6DF62F003F5991 /* PWAllPurchasesViewController.xib */,
 				CAFE5FE21D6DF62F003F5991 /* PWPurchaseRestaurantCell.xib */,
 				CAFE5FE31D6DF62F003F5991 /* PWRestaurantFilterCell.xib */,
@@ -538,6 +547,8 @@
 				CAFE5FDA1D6DECA2003F5991 /* PWPurchaseRestaurantCell.m */,
 				CAFE5FDE1D6DED05003F5991 /* PWCollectionView.h */,
 				CAFE5FDF1D6DED05003F5991 /* PWCollectionView.m */,
+				CAFE5FEA1D7B62F9003F5991 /* PWPurchaseTableViewCell.h */,
+				CAFE5FEB1D7B62F9003F5991 /* PWPurchaseTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -690,6 +701,8 @@
 				CAF092D71D63AE60005FAEF4 /* PWNoPurchasesViewController.m */,
 				CAFE5FD41D6DE59C003F5991 /* PWAllPurchasesViewController.h */,
 				CAFE5FD51D6DE59C003F5991 /* PWAllPurchasesViewController.m */,
+				CAFE5FE71D6DFDAC003F5991 /* PWRestaurantPurchasesController.h */,
+				CAFE5FE81D6DFDAC003F5991 /* PWRestaurantPurchasesController.m */,
 			);
 			path = Purchases;
 			sourceTree = "<group>";
@@ -773,6 +786,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAFE5FD31D6DE51C003F5991 /* PWNoConnectionAlertController.xib in Resources */,
+				CAFE5FF01D7B8237003F5991 /* PWPurchaseTableViewCell.xib in Resources */,
 				CAF091DA1D5799DB005FAEF4 /* coffeetoria3.jpg in Resources */,
 				CAF092C51D628006005FAEF4 /* PWDetailesItemsViewController.xib in Resources */,
 				CAF091E01D57A05F005FAEF4 /* hookah1.jpeg in Resources */,
@@ -849,6 +863,7 @@
 				CAF0916D1D4E904E005FAEF4 /* PWModelObject.m in Sources */,
 				CAF0925A1D607B69005FAEF4 /* PWMainMenuViewController.m in Sources */,
 				CAFE5FE01D6DED05003F5991 /* PWCollectionView.m in Sources */,
+				CAFE5FE91D6DFDAC003F5991 /* PWRestaurantPurchasesController.m in Sources */,
 				CAF0922A1D5FBA5B005FAEF4 /* PWTapper.m in Sources */,
 				CAF0912F1D4D3A4C005FAEF4 /* PWAppDelegate.m in Sources */,
 				CAF092AD1D618EB8005FAEF4 /* PWRestaurantMapController.m in Sources */,
@@ -867,6 +882,7 @@
 				CAF091871D4E94B0005FAEF4 /* PWUser.m in Sources */,
 				CAF092111D5F3A0A005FAEF4 /* PWQRCodeScannerView.m in Sources */,
 				CAF092561D607B69005FAEF4 /* PWDetailedNearSharesCollectionController.m in Sources */,
+				CAFE5FED1D7B62F9003F5991 /* PWPurchaseTableViewCell.m in Sources */,
 				CAF091861D4E94AE005FAEF4 /* PWPurchase.m in Sources */,
 				CAF0925E1D607B69005FAEF4 /* PWNearSharesViewController.m in Sources */,
 				CAF0918A1D4E94B8005FAEF4 /* PWRestaurantAboutInfo.m in Sources */,

@@ -40,54 +40,54 @@
 }
 
 - (void)getRestaurantsWithCount:(NSUInteger)count offset:(NSUInteger)offset
-			completion:(void (^)(NSArray<PWRestaurant *> *))completion
+			completion:(void (^)(NSArray<PWRestaurant *> *, NSError *error))completion
 {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
 				(int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
 	^{
 		if (nil != completion)
 		{
-			completion(self.nearRestaurants);
+			completion(self.nearRestaurants, nil);
 		}
 	});
 }
 
 - (void)getSharesWithCount:(NSUInteger)count offset:(NSUInteger)offset
-			completion:(void (^)(NSArray<PWRestaurantShare *> *))completion
+			completion:(void (^)(NSArray<PWRestaurantShare *> *, NSError *error))completion
 {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
 				(int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
 	^{
 		if (nil != completion)
 		{
-			completion(self.nearShares);
+			completion(self.nearShares, nil);
 		}
 	});
 }
 
 - (void)getPresentsWithCount:(NSUInteger)count offset:(NSUInteger)offset
-			completion:(void (^)(NSArray<PWPresentProduct *> *))completion
+			completion:(void (^)(NSArray<PWPresentProduct *> *, NSError *error))completion
 {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
 				(int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
 	^{
 		if (nil != completion)
 		{
-			completion(self.nearPresents);
+			completion(self.nearPresents, nil);
 		}
 	});
 }
 
 - (void)getPurchasesRestaurantsForUser:(PWUser *)user withCount:(NSUInteger)count
 			offset:(NSUInteger)offset completion:
-			(void (^)(NSArray<PWRestaurant *> *))completion
+			(void (^)(NSArray<PWRestaurant *> *, NSError *error))completion
 {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
 				(int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
 	^{
 		if (nil != completion)
 		{
-			completion(self.cachedRestaurants);
+			completion(self.cachedRestaurants, nil);
 		}
 	});
 }
@@ -95,14 +95,14 @@
 - (void)getPurchasesForUser:(PWUser *)user restaurant:(PWRestaurant *)restaurant
 			withCount:(NSUInteger)count
 			offset:(NSUInteger)offset completion:
-			(void (^)(NSArray<PWPurchase *> *))completion
+			(void (^)(NSArray<PWPurchase *> *, NSError *error))completion
 {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
 				(int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
 	^{
 		if (nil != completion)
 		{
-			completion(self.user.purchases);
+			completion(self.user.purchases, nil);
 		}
 	});
 }

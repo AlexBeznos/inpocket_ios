@@ -7,6 +7,8 @@
 //
 
 #import "PWPurchase.h"
+#import "PWOrder.h"
+#import "PWProduct.h"
 
 @interface PWPurchase ()
 
@@ -18,5 +20,17 @@
 @end
 
 @implementation PWPurchase
+
+- (NSUInteger)bonusesCount
+{
+	NSUInteger count = 0;
+	
+	for (PWOrder *order in self.orders)
+	{
+		count += order.product.bonusesValue;
+	}
+	
+	return count;
+}
 
 @end

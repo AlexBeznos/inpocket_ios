@@ -13,12 +13,17 @@
                 <outlet property="contentWidth" destination="4BV-Gz-q5L" id="sNj-16-fin"/>
                 <outlet property="indicator" destination="JAW-RT-9XB" id="GXa-ab-cqk"/>
                 <outlet property="indicatorBottom" destination="iUo-TH-oIN" id="SzV-Y9-E0A"/>
+                <outlet property="indicatorHeight" destination="ML8-uj-ZJm" id="JeW-VH-hmj"/>
                 <outlet property="indicatorLeft" destination="Mxz-g8-qEp" id="553-XW-GgJ"/>
                 <outlet property="indicatorTop" destination="Fv7-d0-Ryy" id="Hc9-0w-N3d"/>
                 <outlet property="indicatorWidth" destination="HUD-Ml-KEP" id="tps-8b-Dzu"/>
+                <outlet property="labelBottom" destination="XZ9-tM-G4e" id="xgQ-RW-TlW"/>
+                <outlet property="labelHeight" destination="1em-Nh-DnM" id="3i9-o4-h8o"/>
                 <outlet property="layout" destination="TnW-61-hng" id="Xpu-mW-kYw"/>
                 <outlet property="purchasesContainer" destination="heb-Tc-gna" id="feL-v2-Aki"/>
                 <outlet property="purchasesLabel" destination="8Q6-bY-1L3" id="An9-Il-md1"/>
+                <outlet property="sliderHeight" destination="tHr-UH-q0j" id="C0h-Hq-wZI"/>
+                <outlet property="sliderOffset" destination="e2M-Gm-SNq" id="YtC-c9-Ga5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -42,12 +47,15 @@
                                 </collectionView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Q6-bY-1L3">
                                     <rect key="frame" x="10" y="271" width="49" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="24" id="1em-Nh-DnM"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heb-Tc-gna">
-                                    <rect key="frame" x="10" y="271" width="270" height="359"/>
+                                    <rect key="frame" x="0.0" y="300" width="320" height="330"/>
                                     <color key="backgroundColor" red="0.93922048430000005" green="1" blue="0.036091119640000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JAW-RT-9XB" customClass="PWIndicator">
@@ -61,14 +69,14 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="heb-Tc-gna" secondAttribute="trailing" constant="40" id="1ra-zC-f4Y"/>
-                                <constraint firstItem="heb-Tc-gna" firstAttribute="top" secondItem="JAW-RT-9XB" secondAttribute="bottom" constant="10" id="2rS-Ec-0hn"/>
+                                <constraint firstAttribute="trailing" secondItem="heb-Tc-gna" secondAttribute="trailing" id="1ra-zC-f4Y"/>
                                 <constraint firstAttribute="width" constant="320" id="4BV-Gz-q5L"/>
                                 <constraint firstItem="JAW-RT-9XB" firstAttribute="top" secondItem="Z2Z-9y-Sk5" secondAttribute="bottom" constant="10" id="Fv7-d0-Ryy"/>
                                 <constraint firstItem="Z2Z-9y-Sk5" firstAttribute="leading" secondItem="Fo3-lX-eOK" secondAttribute="leading" id="G0S-0E-zXs"/>
                                 <constraint firstItem="JAW-RT-9XB" firstAttribute="leading" secondItem="Fo3-lX-eOK" secondAttribute="leading" constant="10" id="Mxz-g8-qEp"/>
                                 <constraint firstAttribute="trailing" secondItem="Z2Z-9y-Sk5" secondAttribute="trailing" id="OBF-xf-kAc"/>
-                                <constraint firstItem="heb-Tc-gna" firstAttribute="leading" secondItem="Fo3-lX-eOK" secondAttribute="leading" constant="10" id="SvT-lj-2j9"/>
+                                <constraint firstItem="heb-Tc-gna" firstAttribute="leading" secondItem="Fo3-lX-eOK" secondAttribute="leading" id="SvT-lj-2j9"/>
+                                <constraint firstItem="heb-Tc-gna" firstAttribute="top" secondItem="8Q6-bY-1L3" secondAttribute="bottom" constant="5" id="XZ9-tM-G4e"/>
                                 <constraint firstItem="8Q6-bY-1L3" firstAttribute="leading" secondItem="Fo3-lX-eOK" secondAttribute="leading" constant="10" id="b2p-E3-BlU"/>
                                 <constraint firstItem="Z2Z-9y-Sk5" firstAttribute="top" secondItem="Fo3-lX-eOK" secondAttribute="top" constant="15" id="e2M-Gm-SNq"/>
                                 <constraint firstAttribute="bottom" secondItem="heb-Tc-gna" secondAttribute="bottom" constant="10" id="hsW-X1-xUb"/>

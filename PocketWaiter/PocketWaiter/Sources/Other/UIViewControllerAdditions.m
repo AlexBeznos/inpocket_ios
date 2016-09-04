@@ -48,6 +48,22 @@
 				[[UIBarButtonItem alloc] initWithCustomView:menuButton];
 }
 
+- (void)setupChildController:(UIViewController *)controller inView:(UIView *)view
+{
+	[self addChildViewController:controller];
+	[view addSubview:controller.view];
+	[controller didMoveToParentViewController:self];
+	controller.view.translatesAutoresizingMaskIntoConstraints = NO;
+	[view addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"V:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : controller.view}]];
+	[view addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"H:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : controller.view}]];
+}
+
 - (NSLayoutConstraint *)navigateViewController:(UIViewController *)controller
 {
 	[self addChildViewController:controller];

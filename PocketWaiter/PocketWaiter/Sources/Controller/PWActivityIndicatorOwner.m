@@ -8,10 +8,12 @@
 
 #import "PWActivityIndicatorOwner.h"
 #import "PWActivityIndicator.h"
+#import "PWNoConnectionAlertController.h"
 
 @interface PWActivityIndicatorOwner ()
 
 @property (nonatomic, strong) PWActivityIndicator *activity;
+@property (nonatomic, strong) PWModalController *internetDialog;
 
 @end
 
@@ -30,6 +32,23 @@
 					attribute:NSLayoutAttributeCenterY
 					relatedBy:NSLayoutRelationEqual toItem:self.activity
 					attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
+		[self.activity startAnimating];
+	}
+}
+
+- (void)startActivityWithTopOffset:(CGFloat)offset
+{
+	if (!self.activity.animating)
+	{
+		[self.view addSubview:self.activity];
+		[self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view
+					attribute:NSLayoutAttributeCenterX
+					relatedBy:NSLayoutRelationEqual toItem:self.activity
+					attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
+		[self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view
+					attribute:NSLayoutAttributeTop
+					relatedBy:NSLayoutRelationEqual toItem:self.activity
+					attribute:NSLayoutAttributeTop multiplier:1.0 constant:offset]];
 		[self.activity startAnimating];
 	}
 }
@@ -60,6 +79,34 @@
 	}
 	
 	return _activity;
+}
+
+- (void)startAsyncActivity
+{
+
+}
+
+- (void)stopAsyncActivity
+{
+
+}
+
+- (void)restartAsyncActivity
+{
+
+}
+
+- (void)showNoInternetDialog
+{
+	__weak __typeof(self) weakSelf = self;
+	PWNoConnectionAlertController *alert = [[PWNoConnectionAlertController alloc]
+				initWithType:kPWConnectionTypeInternet retryAction:
+	^{
+		[weakSelf startAsyncActivity];
+	}];
+	self.internetDialog = [[PWModalController alloc]
+				initWithContentController:alert autoDismiss:NO];
+	[self.internetDialog showWithCompletion:nil];
 }
 
 @end
