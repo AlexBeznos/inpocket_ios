@@ -7,6 +7,8 @@
 //
 
 #import "PWShareWithFriendsController.h"
+#import "PWSharePromoController.h"
+#import "PWModalController.h"
 
 @interface PWShareWithFriendsController ()
 
@@ -16,6 +18,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *shareTitle;
 @property (strong, nonatomic) IBOutlet UILabel *shareDescription;
 @property (strong, nonatomic) IBOutlet UILabel *shareButtonTitle;
+
+@property (nonatomic, strong) PWModalController *modal;
 
 @end
 
@@ -35,6 +39,18 @@
 
 - (IBAction)invite:(UIButton *)sender
 {
+	__weak __typeof(self) weakSelf = self;
+	PWSharePromoController *sharePromoController = [[PWSharePromoController alloc]
+				initWithPromo:@"sdasgeradfgsds" completion:
+	^(BOOL success)
+	{
+		[weakSelf.modal hideWithCompletion:nil];
+	}];
+	
+	sharePromoController.contentSize = CGSizeMake(280, 350);
+	self.modal = [[PWModalController alloc] initWithContentController:
+				sharePromoController autoDismiss:NO];
+	[self.modal showWithCompletion:nil];
 }
 
 - (IBAction)share:(UIButton *)sender

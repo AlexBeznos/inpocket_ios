@@ -132,6 +132,8 @@
 		CAFE5FF81D7C5EFB003F5991 /* PWShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE5FF61D7C5EFB003F5991 /* PWShareViewController.xib */; };
 		CAFE5FFC1D7C9D92003F5991 /* PWShareWithFriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE5FFA1D7C9D92003F5991 /* PWShareWithFriendsController.m */; };
 		CAFE5FFD1D7C9D92003F5991 /* PWShareWithFriendsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE5FFB1D7C9D92003F5991 /* PWShareWithFriendsController.xib */; };
+		CAFE60011D7CA831003F5991 /* PWSharePromoController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE5FFF1D7CA831003F5991 /* PWSharePromoController.m */; };
+		CAFE60021D7CA831003F5991 /* PWSharePromoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE60001D7CA831003F5991 /* PWSharePromoController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -343,6 +345,9 @@
 		CAFE5FF91D7C9D92003F5991 /* PWShareWithFriendsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWShareWithFriendsController.h; sourceTree = "<group>"; };
 		CAFE5FFA1D7C9D92003F5991 /* PWShareWithFriendsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWShareWithFriendsController.m; sourceTree = "<group>"; };
 		CAFE5FFB1D7C9D92003F5991 /* PWShareWithFriendsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWShareWithFriendsController.xib; sourceTree = "<group>"; };
+		CAFE5FFE1D7CA831003F5991 /* PWSharePromoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWSharePromoController.h; sourceTree = "<group>"; };
+		CAFE5FFF1D7CA831003F5991 /* PWSharePromoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWSharePromoController.m; sourceTree = "<group>"; };
+		CAFE60001D7CA831003F5991 /* PWSharePromoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWSharePromoController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -744,6 +749,9 @@
 			children = (
 				CAF092F31D69A881005FAEF4 /* PWNoConnectionAlertController.h */,
 				CAF092F41D69A881005FAEF4 /* PWNoConnectionAlertController.m */,
+				CAFE5FFE1D7CA831003F5991 /* PWSharePromoController.h */,
+				CAFE5FFF1D7CA831003F5991 /* PWSharePromoController.m */,
+				CAFE60001D7CA831003F5991 /* PWSharePromoController.xib */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -819,6 +827,7 @@
 				CAF091911D560B80005FAEF4 /* PWIntroViewController.xib in Resources */,
 				CAF092A51D60C52E005FAEF4 /* GoogleMaps.bundle in Resources */,
 				CAF092021D5D1838005FAEF4 /* PWNearRestaurantsViewController.xib in Resources */,
+				CAFE60021D7CA831003F5991 /* PWSharePromoController.xib in Resources */,
 				CAF091D81D5799DB005FAEF4 /* coffeetoria1.jpg in Resources */,
 				CAFE5FFD1D7C9D92003F5991 /* PWShareWithFriendsController.xib in Resources */,
 				CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */,
@@ -926,6 +935,7 @@
 				CAF091AF1D56672F005FAEF4 /* PWRootMenuTableViewController.m in Sources */,
 				CAF0916F1D4E9059005FAEF4 /* PWRestaurantShare.m in Sources */,
 				CAF091711D4E9061005FAEF4 /* PWProduct.m in Sources */,
+				CAFE60011D7CA831003F5991 /* PWSharePromoController.m in Sources */,
 				CAF091BC1D57559A005FAEF4 /* UIViewControllerAdditions.m in Sources */,
 				CAF091E91D57AA0C005FAEF4 /* PWNearItemCollectionViewCell.m in Sources */,
 				CAF092331D5FE08D005FAEF4 /* PWRestaurantFilterController.m in Sources */,
