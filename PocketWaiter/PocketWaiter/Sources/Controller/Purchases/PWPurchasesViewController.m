@@ -60,7 +60,8 @@
 		{
 			PWAllPurchasesViewController *allPurchasesController =
 						[[PWAllPurchasesViewController alloc]
-						initWithUser:theWeakSelf.user restaurants:restaurants];
+						initWithUser:theWeakSelf.user restaurants:restaurants
+						transiter:self.transiter];
 			theWeakSelf.allPurchasesController = allPurchasesController;
 			[theWeakSelf setupController:theWeakSelf.allPurchasesController];
 			CGFloat aspectRatio = CGRectGetWidth(theWeakSelf.parentViewController.

@@ -187,7 +187,6 @@
 	item.leftBarButtonItems = @[item.leftBarButtonItem,
 				[[UIBarButtonItem alloc] initWithCustomView:theTitleLabel]];
 	item.rightBarButtonItem = nil;
-
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView

@@ -127,6 +127,7 @@
 		CAFE5FE91D6DFDAC003F5991 /* PWRestaurantPurchasesController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE5FE81D6DFDAC003F5991 /* PWRestaurantPurchasesController.m */; };
 		CAFE5FED1D7B62F9003F5991 /* PWPurchaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE5FEB1D7B62F9003F5991 /* PWPurchaseTableViewCell.m */; };
 		CAFE5FF01D7B8237003F5991 /* PWPurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE5FEF1D7B8237003F5991 /* PWPurchaseTableViewCell.xib */; };
+		CAFE5FF31D7BA3BF003F5991 /* PWPurchasesPlainController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE5FF21D7BA3BF003F5991 /* PWPurchasesPlainController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -330,6 +331,8 @@
 		CAFE5FEA1D7B62F9003F5991 /* PWPurchaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWPurchaseTableViewCell.h; sourceTree = "<group>"; };
 		CAFE5FEB1D7B62F9003F5991 /* PWPurchaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWPurchaseTableViewCell.m; sourceTree = "<group>"; };
 		CAFE5FEF1D7B8237003F5991 /* PWPurchaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWPurchaseTableViewCell.xib; sourceTree = "<group>"; };
+		CAFE5FF11D7BA3BF003F5991 /* PWPurchasesPlainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWPurchasesPlainController.h; sourceTree = "<group>"; };
+		CAFE5FF21D7BA3BF003F5991 /* PWPurchasesPlainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWPurchasesPlainController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -703,6 +706,8 @@
 				CAFE5FD51D6DE59C003F5991 /* PWAllPurchasesViewController.m */,
 				CAFE5FE71D6DFDAC003F5991 /* PWRestaurantPurchasesController.h */,
 				CAFE5FE81D6DFDAC003F5991 /* PWRestaurantPurchasesController.m */,
+				CAFE5FF11D7BA3BF003F5991 /* PWPurchasesPlainController.h */,
+				CAFE5FF21D7BA3BF003F5991 /* PWPurchasesPlainController.m */,
 			);
 			path = Purchases;
 			sourceTree = "<group>";
@@ -861,6 +866,7 @@
 				CAF092581D607B69005FAEF4 /* PWIntroViewController.m in Sources */,
 				CAF092BE1D627AA0005FAEF4 /* PWDetailesSharesViewController.m in Sources */,
 				CAF0916D1D4E904E005FAEF4 /* PWModelObject.m in Sources */,
+				CAFE5FF31D7BA3BF003F5991 /* PWPurchasesPlainController.m in Sources */,
 				CAF0925A1D607B69005FAEF4 /* PWMainMenuViewController.m in Sources */,
 				CAFE5FE01D6DED05003F5991 /* PWCollectionView.m in Sources */,
 				CAFE5FE91D6DFDAC003F5991 /* PWRestaurantPurchasesController.m in Sources */,

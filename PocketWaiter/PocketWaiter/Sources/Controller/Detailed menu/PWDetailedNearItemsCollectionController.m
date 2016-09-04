@@ -90,7 +90,4 @@ static NSString * const reuseIdentifier = @"Cell";
 	return self.contentItems.count;
 }
 
-
-#pragma mark <UICollectionViewDelegate>
-
 @end

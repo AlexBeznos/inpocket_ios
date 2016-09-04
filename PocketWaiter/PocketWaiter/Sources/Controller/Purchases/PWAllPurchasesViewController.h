@@ -6,14 +6,16 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "UIViewControllerAdditions.h"
 
 @class PWUser;
 @class PWRestaurant;
 
 @interface PWAllPurchasesViewController : UIViewController
 
-- (instancetype)initWithUser:(PWUser *)user restaurants:(NSArray<PWRestaurant *> *)restaurants;
+- (instancetype)initWithUser:(PWUser *)user
+			restaurants:(NSArray<PWRestaurant *> *)restaurants
+			transiter:(id<IPWTransiter>)transiter;
 
 - (void)setWidth:(CGFloat)contentWidth;
 

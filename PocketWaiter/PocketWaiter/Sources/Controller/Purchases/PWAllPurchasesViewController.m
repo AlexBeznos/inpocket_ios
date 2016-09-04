@@ -15,6 +15,7 @@
 #import "UIColorAdditions.h"
 #import "PWRestaurantPurchasesController.h"
 #import "UIViewControllerAdditions.h"
+#import "PWPurchasesPlainController.h"
 
 @interface PWAllPurchasesViewController ()
 			<UICollectionViewDelegate, UICollectionViewDataSource>
@@ -48,12 +49,15 @@
 @property (strong, nonatomic) NSLayoutConstraint *thirdAnimatableConstraint;
 @property (nonatomic) CGFloat lastOffset;
 @property (nonatomic) NSUInteger currentIndex;
+@property (strong, nonatomic) id<IPWTransiter> transiter;
 
 @end
 
 @implementation PWAllPurchasesViewController
 
-- (instancetype)initWithUser:(PWUser *)user restaurants:(NSArray<PWRestaurant *> *)restaurants
+- (instancetype)initWithUser:(PWUser *)user
+			restaurants:(NSArray<PWRestaurant *> *)restaurants
+			transiter:(id<IPWTransiter>)transiter
 {
 	self = [super init];
 	
@@ -61,6 +65,7 @@
 	{
 		self.user = user;
 		self.restaurants = restaurants;
+		self.transiter = transiter;
 	}
 	
 	return self;
@@ -72,6 +77,7 @@
 	
 	self.view.backgroundColor = [UIColor pwBackgroundColor];
 	self.cardsView.backgroundColor = [UIColor pwBackgroundColor];
+	self.cardsView.allowsSelection = YES;
 	self.indicator.backgroundColor = [UIColor pwBackgroundColor];
 	self.contentHolder.backgroundColor = [UIColor pwBackgroundColor];
 	self.purchasesContainer.backgroundColor = [UIColor pwBackgroundColor];
@@ -326,6 +332,23 @@
 	cell.descriptionText = restaurant.restaurantDescription;
 	
 	return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	__weak __typeof(self) weakSelf = self;
+	PWPurchasesPlainController *controller = [[PWPurchasesPlainController alloc]
+				initWithRestaurants:self.restaurants restaurantHandler:
+	^(PWRestaurant *restaurant)
+	{
+		CGFloat offset = CGRectGetWidth(weakSelf.parentViewController.view.frame) *
+					[weakSelf.restaurants indexOfObject:restaurant];
+		[weakSelf slidePurchasesWithOffset:offset];
+		[weakSelf.cardsView setContentOffset:CGPointMake(offset, 0)];
+		[weakSelf handleScrollToPage:[weakSelf.restaurants indexOfObject:restaurant]];
+	}];
+	[controller setWidth:CGRectGetWidth(self.parentViewController.view.frame)];
+	[self.transiter performForwardTransition:controller];
 }
 
 - (void)handleScrollToPage:(NSUInteger)aPageNumber
