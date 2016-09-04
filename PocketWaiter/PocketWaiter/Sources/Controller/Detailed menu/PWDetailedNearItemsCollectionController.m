@@ -11,11 +11,17 @@
 #import "UIColorAdditions.h"
 #import "UIViewControllerAdditions.h"
 
+@interface PWDetailedNearItemsCollectionController ()
+
+@property (nonatomic, weak) id<IPWTransiter> transiter;
+
+@end
+
 @implementation PWDetailedNearItemsCollectionController
 
 static NSString * const reuseIdentifier = @"Cell";
 
-- (instancetype)init
+- (instancetype)initWithTransiter:(id<IPWTransiter>)transiter
 {
 	UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
 	layout.minimumLineSpacing = 20;
@@ -25,7 +31,14 @@ static NSString * const reuseIdentifier = @"Cell";
 	layout.itemSize = CGSizeMake(320, self.initialCellHeight);
 	layout.scrollDirection = UICollectionViewScrollDirectionVertical;
 	
-	return [super initWithCollectionViewLayout:layout];
+	self = [super initWithCollectionViewLayout:layout];
+	
+	if (nil != self)
+	{
+		self.transiter = transiter;
+	}
+	
+	return self;
 }
 
 - (void)viewDidLoad
@@ -70,6 +83,11 @@ static NSString * const reuseIdentifier = @"Cell";
 	return nil;
 }
 
+- (void)presentDetailsForItemAtIndex:(NSUInteger)index
+{
+	// no-op
+}
+
 #pragma mark <UICollectionViewDataSource>
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -80,6 +98,12 @@ static NSString * const reuseIdentifier = @"Cell";
 				forIndexPath:indexPath];
 	
 	[self setupCell:cell forItemAtIndexPath:indexPath];
+	
+	__weak __typeof(self) weakSelf = self;
+	cell.moreHandler =
+	^{
+		[weakSelf presentDetailsForItemAtIndex:indexPath.row];
+	};
 
 	return cell;
 }

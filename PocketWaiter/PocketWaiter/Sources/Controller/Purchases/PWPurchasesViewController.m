@@ -115,7 +115,7 @@
 
 - (void)transitionBack
 {
-	[self.transiter performBackTransitionWithSetupNavigationItem:YES];
+	[self.transiter performBackTransition];
 }
 
 @end

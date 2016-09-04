@@ -14,6 +14,7 @@
 @interface PWNearItemsViewController : UIViewController
 
 @property (nonatomic) CGSize contentSize;
+@property (nonatomic, weak, readonly) id<IPWTransiter> transiter;
 
 - (instancetype)initWithScrollHandler:
 			(void (^)(CGPoint velocity))aHandler

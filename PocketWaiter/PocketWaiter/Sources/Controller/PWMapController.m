@@ -39,9 +39,23 @@
 @property (nonatomic) NSUInteger selectedIndex;
 @property (nonatomic) BOOL markerTransitionInProgress;
 
+@property (nonatomic, weak) id<IPWTransiter> transiter;
+
 @end
 
 @implementation PWMapController
+
+- (instancetype)initWithTransiter:(id<IPWTransiter>)transiter
+{
+	self = [super init];
+	
+	if (nil != self)
+	{
+		self.transiter = transiter;
+	}
+	
+	return self;
+}
 
 - (NSString *)nibName
 {
@@ -155,6 +169,11 @@
 	}
 }
 
+- (void)processSelectAtIndex:(NSUInteger)index
+{
+	// no-op
+}
+
 - (void)setupCell:(PWNearRestaurantCollectionViewCell *)cell
 			forItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -176,6 +195,11 @@
 			numberOfItemsInSection:(NSInteger)section
 {
 	return self.points.count;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	[self processSelectAtIndex:indexPath.item];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

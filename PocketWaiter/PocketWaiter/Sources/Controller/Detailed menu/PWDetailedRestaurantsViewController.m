@@ -58,14 +58,14 @@
 - (PWDetailedNearItemsCollectionController *)createListController
 {
 	return [[PWRestaurantsCollectionController alloc]
-					initWithRestaurants:self.restaurants];;
+					initWithRestaurants:self.restaurants transiter:self.transiter];
 }
 
 - (PWMapController *)createMapController
 {
 	return [[PWRestaurantMapController alloc]
 					initWithRestaurants:self.restaurants
-					selectedRestaurant:self.restaurants.firstObject];
+					selectedRestaurant:self.restaurants.firstObject transiter:self.transiter];
 }
 
 - (NSString *)navigationTitle

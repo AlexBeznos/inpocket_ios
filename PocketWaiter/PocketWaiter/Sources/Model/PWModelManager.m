@@ -311,7 +311,7 @@
 	
 	PWRestaurantShare *share1 = [PWRestaurantShare new];
 	share1.name = @"Burger + cola";
-	share1.shareDescription = @"buy burger and receive free cola";
+	share1.shareDescription = @"buy burger and receive free cola\n\nblah\nblah blah\n\nblah";
 	share1.image = [UIImage imageWithContentsOfFile:
 				[[NSBundle mainBundle] pathForResource:@"burger" ofType:@"jpg"]];
 	

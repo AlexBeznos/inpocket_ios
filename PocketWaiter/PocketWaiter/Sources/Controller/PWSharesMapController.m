@@ -9,6 +9,7 @@
 #import "PWSharesMapController.h"
 #import "PWRestaurantShare.h"
 #import "PWNearRestaurantCollectionViewCell.h"
+#import "PWShareViewController.h"
 
 @interface PWMapController ()
 
@@ -27,8 +28,9 @@
 
 - (instancetype)initWithShares:(NSArray<PWRestaurantShare *> *)shares
 			selectedShare:(PWRestaurantShare *)share
+			transiter:(id<IPWTransiter>)transiter
 {
-	self = [super init];
+	self = [super initWithTransiter:transiter];
 	
 	if (nil != self)
 	{
@@ -60,6 +62,13 @@
 	cell.descriptionText = share.restaurant.name;
 	cell.place = share.restaurant.address;
 	cell.image = share.image;
+}
+
+- (void)processSelectAtIndex:(NSUInteger)index
+{
+	PWShareViewController *shareController = [[PWShareViewController alloc]
+				initWithShare:self.shares[index]];
+	[self.transiter performForwardTransition:shareController];
 }
 
 @end

@@ -37,7 +37,7 @@
 
 - (void)transitionBack
 {
-	[self.transiter performBackTransitionWithSetupNavigationItem:YES];
+	[self.transiter performBackTransition];
 }
 
 - (void)setupWithNavigationItem:(UINavigationItem *)item

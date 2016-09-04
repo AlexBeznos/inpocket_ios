@@ -20,8 +20,9 @@
 @implementation PWRestaurantsCollectionController
 
 - (instancetype)initWithRestaurants:(NSArray<PWRestaurant *> *)restaurants
+			transiter:(id<IPWTransiter>)transiter
 {
-	self = [super init];
+	self = [super initWithTransiter:transiter];
 	
 	if (nil != self)
 	{

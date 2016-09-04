@@ -27,8 +27,9 @@
 
 - (instancetype)initWithRestaurants:(NSArray<PWRestaurant *> *)restaurants
 			selectedRestaurant:(PWRestaurant *)restaurant
+			transiter:(id<IPWTransiter>)transiter
 {
-	self = [super init];
+	self = [super initWithTransiter:transiter];
 	
 	if (nil != self)
 	{

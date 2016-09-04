@@ -12,6 +12,7 @@
 
 @interface PWDetailedNearSharesCollectionController : PWDetailedNearItemsCollectionController
 
-- (instancetype)initWithShares:(NSArray<PWRestaurantShare *> *)shares;
+- (instancetype)initWithShares:(NSArray<PWRestaurantShare *> *)shares
+			transiter:(id<IPWTransiter>)transiter;
 
 @end

@@ -11,7 +11,10 @@
 
 @interface PWDetailedNearItemsCollectionController : UICollectionViewController
 
+- (instancetype)initWithTransiter:(id<IPWTransiter>)transiter;
+
 @property (nonatomic, readonly) NSString *navigationTitle;
+@property (nonatomic, weak, readonly) id<IPWTransiter> transiter;
 
 - (void)setContentSize:(CGSize)contentSize;
 

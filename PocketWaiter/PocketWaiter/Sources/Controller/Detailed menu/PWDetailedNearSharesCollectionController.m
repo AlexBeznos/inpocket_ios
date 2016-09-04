@@ -9,6 +9,7 @@
 #import "PWDetailedNearSharesCollectionController.h"
 #import "PWNearItemCollectionViewCell.h"
 #import "PWRestaurantShare.h"
+#import "PWShareViewController.h"
 
 @interface PWDetailedNearSharesCollectionController ()
 
@@ -19,8 +20,9 @@
 @implementation PWDetailedNearSharesCollectionController
 
 - (instancetype)initWithShares:(NSArray<PWRestaurantShare *> *)shares
+			transiter:(id<IPWTransiter>)transiter
 {
-	self = [super init];
+	self = [super initWithTransiter:transiter];
 	
 	if (nil != self)
 	{
@@ -45,6 +47,13 @@
 - (NSArray *)contentItems
 {
 	return self.shares;
+}
+
+- (void)presentDetailsForItemAtIndex:(NSUInteger)index
+{
+	PWShareViewController *shareController =
+				[[PWShareViewController alloc] initWithShare:self.shares[index]];
+	[self.transiter performForwardTransition:shareController];
 }
 
 @end

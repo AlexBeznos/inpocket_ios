@@ -66,13 +66,13 @@
 - (PWDetailedNearItemsCollectionController *)createListController
 {
 	return [[PWDetailedNearPresentsCollectionController alloc]
-					initWithPresents:self.presents];
+					initWithPresents:self.presents transiter:self.transiter];
 }
 
 - (PWMapController *)createMapController
 {
 	return [[PWPresentsMapController alloc] initWithPresents:self.presents
-					selectedPresent:self.presents.firstObject];
+					selectedPresent:self.presents.firstObject transiter:self.transiter];
 }
 
 - (NSString *)navigationTitle

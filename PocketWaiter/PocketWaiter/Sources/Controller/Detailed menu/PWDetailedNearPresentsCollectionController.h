@@ -12,6 +12,7 @@
 
 @interface PWDetailedNearPresentsCollectionController : PWDetailedNearItemsCollectionController
 
-- (instancetype)initWithPresents:(NSArray<PWPresentProduct *> *)presents;
+- (instancetype)initWithPresents:(NSArray<PWPresentProduct *> *)presents
+			transiter:(id<IPWTransiter>)transiter;
 
 @end

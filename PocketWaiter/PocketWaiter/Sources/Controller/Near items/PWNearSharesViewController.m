@@ -10,6 +10,7 @@
 #import "PWModelManager.h"
 #import "PWNearItemCollectionViewCell.h"
 #import "PWDetailesSharesViewController.h"
+#import "PWShareViewController.h"
 
 @interface PWNearSharesViewController ()
 
@@ -31,11 +32,11 @@
 {
 	PWRestaurantShare *share = self.shares[indexPath.row];
 	
-	cell.placeName = @"Vapiano";
+	cell.placeName = share.restaurant.name;
 	cell.placeDistance = @"2 km";
 	cell.image = share.image;
 	cell.descriptionTitle = share.shareDescription;
-	cell.buttonTitle = @"Podrobnee'";
+	cell.buttonTitle = @"Подробнее";
 }
 
 - (PWDetailesItemsViewController *)allItemsController
@@ -43,8 +44,6 @@
 	PWDetailesSharesViewController *controller =
 				[[PWDetailesSharesViewController alloc]
 				initWithShares:self.shares];
-	
-//	[controller setContentSize:self.contentSize];
 	
 	return controller;
 }
@@ -57,6 +56,13 @@
 - (NSString *)titleDescription
 {
 	return @"Акции рядом";
+}
+
+- (void)presentDetailsForItemAtIndex:(NSUInteger)index
+{
+	PWShareViewController *shareController =
+				[[PWShareViewController alloc] initWithShare:self.shares[index]];
+	[self.transiter performForwardTransition:shareController];
 }
 
 @end

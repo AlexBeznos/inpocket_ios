@@ -18,6 +18,7 @@
 @property (nonatomic) BOOL isTransited;
 @property (nonatomic, strong) PWTouchView *touchView;
 @property (nonatomic, strong) NSLayoutConstraint *trasitedConstraint;
+@property (nonatomic, strong) NSMutableArray *transitedControllers;
 
 @end
 
@@ -34,6 +35,7 @@
 	{
 		self.transitionHandler = aHandler;
 		self.forwardTransitionHandler = aForwardHandler;
+		self.transitedControllers = [NSMutableArray array];
 	}
 	
 	return self;
@@ -118,11 +120,17 @@
 	}
 }
 
-- (void)performBackTransitionWithSetupNavigationItem:(BOOL)setup
+- (void)performBackTransition
 {
-	if (setup)
+	[self.transitedControllers removeObject:self.transitedController];
+	
+	if (nil == [self.transitedControllers lastObject])
 	{
 		[self setupNavigation];
+	}
+	else
+	{
+		[[self.transitedControllers lastObject] setupWithNavigationItem:self.navigationItem];
 	}
 	[UIView animateWithDuration:0.25 animations:
 	^{
@@ -134,13 +142,14 @@
 	{
 		[self.transitedController.view removeFromSuperview];
 		[self.transitedController removeFromParentViewController];
-		self.transitedController = nil;
+		self.transitedController = [self.transitedControllers firstObject];
 	}];
 }
 
 - (void)performForwardTransition:
 			(UIViewController<IPWTransitableController> *)controller
 {
+	[self.transitedControllers addObject:controller];
 	controller.transiter = self;
 	[controller setupWithNavigationItem:self.navigationItem];
 	self.transitedController = controller;

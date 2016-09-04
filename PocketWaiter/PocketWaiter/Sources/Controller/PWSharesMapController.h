@@ -13,6 +13,7 @@
 @interface PWSharesMapController : PWMapController
 
 - (instancetype)initWithShares:(NSArray<PWRestaurantShare *> *)shares
-			selectedShare:(PWRestaurantShare *)share;
+			selectedShare:(PWRestaurantShare *)share
+			transiter:(id<IPWTransiter>)transiter;
 
 @end

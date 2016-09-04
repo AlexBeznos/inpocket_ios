@@ -12,6 +12,7 @@
 
 @interface PWRestaurantsCollectionController : PWDetailedNearItemsCollectionController
 
-- (instancetype)initWithRestaurants:(NSArray<PWRestaurant *> *)restaurants;
+- (instancetype)initWithRestaurants:(NSArray<PWRestaurant *> *)restaurants
+			transiter:(id<IPWTransiter>)transiter;
 
 @end

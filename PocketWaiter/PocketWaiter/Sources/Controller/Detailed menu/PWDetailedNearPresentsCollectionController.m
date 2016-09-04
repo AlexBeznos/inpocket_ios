@@ -19,8 +19,9 @@
 @implementation PWDetailedNearPresentsCollectionController
 
 - (instancetype)initWithPresents:(NSArray<PWPresentProduct *> *)presents
+			transiter:(id<IPWTransiter>)transiter
 {
-	self = [super init];
+	self = [super initWithTransiter:transiter];
 	
 	if (nil != self)
 	{

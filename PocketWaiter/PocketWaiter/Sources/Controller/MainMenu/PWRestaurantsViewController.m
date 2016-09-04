@@ -72,14 +72,14 @@
 	if (0 == mode)
 	{
 		self.listController = [[PWRestaurantsCollectionController alloc]
-					initWithRestaurants:self.filteredRestaurants];
+					initWithRestaurants:self.filteredRestaurants transiter:self];
 		self.currentController = self.listController;
 	}
 	else
 	{
 		self.mapController = [[PWRestaurantMapController alloc]
 					initWithRestaurants:self.filteredRestaurants
-					selectedRestaurant:self.filteredRestaurants.firstObject];
+					selectedRestaurant:self.filteredRestaurants.firstObject transiter:self];
 		self.currentController = self.mapController;
 	}
 	

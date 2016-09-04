@@ -13,6 +13,7 @@
 @interface PWRestaurantMapController : PWMapController
 
 - (instancetype)initWithRestaurants:(NSArray<PWRestaurant *> *)restaurants
-			selectedRestaurant:(PWRestaurant *)restaurant;
+			selectedRestaurant:(PWRestaurant *)restaurant
+			transiter:(id<IPWTransiter>)transiter;
 
 @end

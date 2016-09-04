@@ -74,7 +74,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)back
 {
-	[self.transiter performBackTransitionWithSetupNavigationItem:YES];
+	[self.transiter performBackTransition];
 }
 
 - (void)setupWithNavigationItem:(UINavigationItem *)item

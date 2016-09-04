@@ -13,6 +13,7 @@
 @interface PWPresentsMapController : PWMapController
 
 - (instancetype)initWithPresents:(NSArray<PWPresentProduct *> *)presents
-			selectedPresent:(PWPresentProduct *)present;
+			selectedPresent:(PWPresentProduct *)present
+			transiter:(id<IPWTransiter>)transiter;
 
 @end

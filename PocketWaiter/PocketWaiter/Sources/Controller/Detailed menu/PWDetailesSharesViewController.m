@@ -59,13 +59,13 @@
 - (PWDetailedNearItemsCollectionController *)createListController
 {
 	return [[PWDetailedNearSharesCollectionController alloc]
-					initWithShares:self.shares];
+					initWithShares:self.shares transiter:self.transiter];
 }
 
 - (PWMapController *)createMapController
 {
 	return [[PWSharesMapController alloc] initWithShares:self.shares
-					selectedShare:self.shares.firstObject];
+					selectedShare:self.shares.firstObject transiter:self.transiter];
 }
 
 - (NSString *)navigationTitle

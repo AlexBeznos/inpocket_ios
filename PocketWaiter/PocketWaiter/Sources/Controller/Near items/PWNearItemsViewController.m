@@ -25,7 +25,7 @@
 @property (nonatomic, strong) NSLayoutConstraint *widthConstraint;
 
 @property (nonatomic, copy) void (^handler)(CGPoint);
-@property (nonatomic, strong) id<IPWTransiter> transiter;
+@property (nonatomic, weak) id<IPWTransiter> transiter;
 @property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 
 @end
@@ -192,6 +192,11 @@
 	// no-op
 }
 
+- (void)presentDetailsForItemAtIndex:(NSUInteger)index
+{
+	// no-op
+}
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
 			cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -199,6 +204,12 @@
 				dequeueReusableCellWithReuseIdentifier:@"id" forIndexPath:indexPath];
 	
 	[self setupCell:cell forItemAtIndexPath:indexPath];
+	
+	__weak __typeof(self) weakSelf = self;
+	cell.moreHandler =
+	^{
+		[weakSelf presentDetailsForItemAtIndex:indexPath.item];
+	};
 
 	return cell;
 }

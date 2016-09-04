@@ -27,8 +27,9 @@
 
 - (instancetype)initWithPresents:(NSArray<PWPresentProduct *> *)presents
 			selectedPresent:(PWPresentProduct *)present
+			transiter:(id<IPWTransiter>)transiter
 {
-	self = [super init];
+	self = [super initWithTransiter:transiter];
 	
 	if (nil != self)
 	{
