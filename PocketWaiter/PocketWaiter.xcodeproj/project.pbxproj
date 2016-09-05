@@ -134,6 +134,9 @@
 		CAFE5FFD1D7C9D92003F5991 /* PWShareWithFriendsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE5FFB1D7C9D92003F5991 /* PWShareWithFriendsController.xib */; };
 		CAFE60011D7CA831003F5991 /* PWSharePromoController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE5FFF1D7CA831003F5991 /* PWSharePromoController.m */; };
 		CAFE60021D7CA831003F5991 /* PWSharePromoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE60001D7CA831003F5991 /* PWSharePromoController.xib */; };
+		CAFE60041D7E000A003F5991 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFE60031D7E000A003F5991 /* FBSDKCoreKit.framework */; };
+		CAFE60061D7E0098003F5991 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFE60051D7E0098003F5991 /* Bolts.framework */; };
+		CAFE60081D7E00F2003F5991 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFE60071D7E00F2003F5991 /* FBSDKLoginKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -348,6 +351,9 @@
 		CAFE5FFE1D7CA831003F5991 /* PWSharePromoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWSharePromoController.h; sourceTree = "<group>"; };
 		CAFE5FFF1D7CA831003F5991 /* PWSharePromoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWSharePromoController.m; sourceTree = "<group>"; };
 		CAFE60001D7CA831003F5991 /* PWSharePromoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWSharePromoController.xib; sourceTree = "<group>"; };
+		CAFE60031D7E000A003F5991 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		CAFE60051D7E0098003F5991 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		CAFE60071D7E00F2003F5991 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -358,8 +364,11 @@
 				CAF092A71D60C616005FAEF4 /* libz.tbd in Frameworks */,
 				CAF092A31D60C464005FAEF4 /* GLKit.framework in Frameworks */,
 				CAF0929F1D60C43A005FAEF4 /* ImageIO.framework in Frameworks */,
+				CAFE60061D7E0098003F5991 /* Bolts.framework in Frameworks */,
+				CAFE60041D7E000A003F5991 /* FBSDKCoreKit.framework in Frameworks */,
 				CAF0929D1D60C42F005FAEF4 /* SystemConfiguration.framework in Frameworks */,
 				CAF092991D60C3CF005FAEF4 /* Accelerate.framework in Frameworks */,
+				CAFE60081D7E00F2003F5991 /* FBSDKLoginKit.framework in Frameworks */,
 				CAF092971D60C3CA005FAEF4 /* CoreBluetooth.framework in Frameworks */,
 				CAF092951D60C395005FAEF4 /* libc++.tbd in Frameworks */,
 				CAF092931D60C287005FAEF4 /* CoreGraphics.framework in Frameworks */,
@@ -700,6 +709,9 @@
 		CAF0926A1D60986E005FAEF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CAFE60071D7E00F2003F5991 /* FBSDKLoginKit.framework */,
+				CAFE60051D7E0098003F5991 /* Bolts.framework */,
+				CAFE60031D7E000A003F5991 /* FBSDKCoreKit.framework */,
 				CAF092A61D60C616005FAEF4 /* libz.tbd */,
 				CAF092A21D60C464005FAEF4 /* GLKit.framework */,
 				CAF092A01D60C446005FAEF4 /* CoreImage.framework */,
