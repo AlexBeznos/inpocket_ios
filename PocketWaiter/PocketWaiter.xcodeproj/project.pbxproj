@@ -137,6 +137,12 @@
 		CAFE60041D7E000A003F5991 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFE60031D7E000A003F5991 /* FBSDKCoreKit.framework */; };
 		CAFE60061D7E0098003F5991 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFE60051D7E0098003F5991 /* Bolts.framework */; };
 		CAFE60081D7E00F2003F5991 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFE60071D7E00F2003F5991 /* FBSDKLoginKit.framework */; };
+		CAFE600D1D7E0692003F5991 /* PWLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE600B1D7E0692003F5991 /* PWLoginController.m */; };
+		CAFE600E1D7E0692003F5991 /* PWLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE600C1D7E0692003F5991 /* PWLoginController.xib */; };
+		CAFE60121D7E06B5003F5991 /* PWRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE60101D7E06B5003F5991 /* PWRegisterController.m */; };
+		CAFE60131D7E06B5003F5991 /* PWRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE60111D7E06B5003F5991 /* PWRegisterController.xib */; };
+		CAFE60161D842C3E003F5991 /* PWFacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE60151D842C3E003F5991 /* PWFacebookManager.m */; };
+		CAFE60181D863497003F5991 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFE60171D863497003F5991 /* FBSDKShareKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -354,6 +360,15 @@
 		CAFE60031D7E000A003F5991 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		CAFE60051D7E0098003F5991 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		CAFE60071D7E00F2003F5991 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		CAFE600A1D7E0692003F5991 /* PWLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWLoginController.h; sourceTree = "<group>"; };
+		CAFE600B1D7E0692003F5991 /* PWLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWLoginController.m; sourceTree = "<group>"; };
+		CAFE600C1D7E0692003F5991 /* PWLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWLoginController.xib; sourceTree = "<group>"; };
+		CAFE600F1D7E06B5003F5991 /* PWRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWRegisterController.h; sourceTree = "<group>"; };
+		CAFE60101D7E06B5003F5991 /* PWRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRegisterController.m; sourceTree = "<group>"; };
+		CAFE60111D7E06B5003F5991 /* PWRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWRegisterController.xib; sourceTree = "<group>"; };
+		CAFE60141D842C3E003F5991 /* PWFacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWFacebookManager.h; sourceTree = "<group>"; };
+		CAFE60151D842C3E003F5991 /* PWFacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWFacebookManager.m; sourceTree = "<group>"; };
+		CAFE60171D863497003F5991 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,6 +386,7 @@
 				CAFE60081D7E00F2003F5991 /* FBSDKLoginKit.framework in Frameworks */,
 				CAF092971D60C3CA005FAEF4 /* CoreBluetooth.framework in Frameworks */,
 				CAF092951D60C395005FAEF4 /* libc++.tbd in Frameworks */,
+				CAFE60181D863497003F5991 /* FBSDKShareKit.framework in Frameworks */,
 				CAF092931D60C287005FAEF4 /* CoreGraphics.framework in Frameworks */,
 				CAF092911D60C252005FAEF4 /* CoreData.framework in Frameworks */,
 				CAF0928F1D60BCFF005FAEF4 /* GoogleMaps.framework in Frameworks */,
@@ -467,6 +483,7 @@
 		CAF0911E1D4D3A4C005FAEF4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CAFE60091D7E027E003F5991 /* Login */,
 				CAF092F21D69A85E005FAEF4 /* Alerts */,
 				CAF092CF1D63A5CB005FAEF4 /* Purchases */,
 				CAF0923A1D607B69005FAEF4 /* Detailed menu */,
@@ -709,6 +726,7 @@
 		CAF0926A1D60986E005FAEF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CAFE60171D863497003F5991 /* FBSDKShareKit.framework */,
 				CAFE60071D7E00F2003F5991 /* FBSDKLoginKit.framework */,
 				CAFE60051D7E0098003F5991 /* Bolts.framework */,
 				CAFE60031D7E000A003F5991 /* FBSDKCoreKit.framework */,
@@ -752,6 +770,8 @@
 				CAF092E81D688F7E005FAEF4 /* PWBluetoothManager.m */,
 				CAF092EA1D6894ED005FAEF4 /* PWLocationManager.h */,
 				CAF092EB1D6894ED005FAEF4 /* PWLocationManager.m */,
+				CAFE60141D842C3E003F5991 /* PWFacebookManager.h */,
+				CAFE60151D842C3E003F5991 /* PWFacebookManager.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -766,6 +786,19 @@
 				CAFE60001D7CA831003F5991 /* PWSharePromoController.xib */,
 			);
 			path = Alerts;
+			sourceTree = "<group>";
+		};
+		CAFE60091D7E027E003F5991 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CAFE600A1D7E0692003F5991 /* PWLoginController.h */,
+				CAFE600B1D7E0692003F5991 /* PWLoginController.m */,
+				CAFE600C1D7E0692003F5991 /* PWLoginController.xib */,
+				CAFE600F1D7E06B5003F5991 /* PWRegisterController.h */,
+				CAFE60101D7E06B5003F5991 /* PWRegisterController.m */,
+				CAFE60111D7E06B5003F5991 /* PWRegisterController.xib */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -840,6 +873,7 @@
 				CAF092A51D60C52E005FAEF4 /* GoogleMaps.bundle in Resources */,
 				CAF092021D5D1838005FAEF4 /* PWNearRestaurantsViewController.xib in Resources */,
 				CAFE60021D7CA831003F5991 /* PWSharePromoController.xib in Resources */,
+				CAFE600E1D7E0692003F5991 /* PWLoginController.xib in Resources */,
 				CAF091D81D5799DB005FAEF4 /* coffeetoria1.jpg in Resources */,
 				CAFE5FFD1D7C9D92003F5991 /* PWShareWithFriendsController.xib in Resources */,
 				CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */,
@@ -860,6 +894,7 @@
 				CAF091C21D576B83005FAEF4 /* mohito.jpg in Resources */,
 				CAFE5FE61D6DF62F003F5991 /* PWRestaurantFilterCell.xib in Resources */,
 				CAF092C71D628006005FAEF4 /* PWRestaurantFilterController.xib in Resources */,
+				CAFE60131D7E06B5003F5991 /* PWRegisterController.xib in Resources */,
 				CAF0922F1D5FDA50005FAEF4 /* PWRestaurantsViewController.xib in Resources */,
 				CAF0919B1D561B1E005FAEF4 /* PWIntroFirstPageCell.xib in Resources */,
 				CAFE5FF81D7C5EFB003F5991 /* PWShareViewController.xib in Resources */,
@@ -888,6 +923,7 @@
 				CAF091C51D577286005FAEF4 /* PWModelManager.m in Sources */,
 				CAF092141D5F420B005FAEF4 /* PWTouchView.m in Sources */,
 				CAF091B21D566763005FAEF4 /* PWContentSource.m in Sources */,
+				CAFE600D1D7E0692003F5991 /* PWLoginController.m in Sources */,
 				CAF0919E1D561DCB005FAEF4 /* PWIntroLayout.m in Sources */,
 				CAF0920D1D5E4316005FAEF4 /* PWQRCodeScanViewController.m in Sources */,
 				CAF091331D4D3A4C005FAEF4 /* main.m in Sources */,
@@ -916,6 +952,7 @@
 				CAF092681D608E77005FAEF4 /* PWMapController.m in Sources */,
 				CAF092EC1D6894ED005FAEF4 /* PWLocationManager.m in Sources */,
 				CAFE5FF71D7C5EFB003F5991 /* PWShareViewController.m in Sources */,
+				CAFE60161D842C3E003F5991 /* PWFacebookManager.m in Sources */,
 				CAF092631D607BB2005FAEF4 /* PWRestaurantsCollectionController.m in Sources */,
 				CAF091BF1D576703005FAEF4 /* PWDropShadowView.m in Sources */,
 				CAF092381D5FED1F005FAEF4 /* PWRestaurantFilterCell.m in Sources */,
@@ -923,6 +960,7 @@
 				CAF092DF1D63B35D005FAEF4 /* PWActivityIndicatorOwner.m in Sources */,
 				CAF091881D4E94B3005FAEF4 /* PWUsersRestaurantInfo.m in Sources */,
 				CAF091731D4E9099005FAEF4 /* PWPresentProduct.m in Sources */,
+				CAFE60121D7E06B5003F5991 /* PWRegisterController.m in Sources */,
 				CAF092F11D68E68A005FAEF4 /* PWModalController.m in Sources */,
 				CAF092571D607B69005FAEF4 /* PWEnterPromoViewController.m in Sources */,
 				CAF092641D607BB2005FAEF4 /* PWRestaurantsViewController.m in Sources */,
