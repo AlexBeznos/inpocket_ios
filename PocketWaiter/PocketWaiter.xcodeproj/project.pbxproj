@@ -143,7 +143,54 @@
 		CAFE60131D7E06B5003F5991 /* PWRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE60111D7E06B5003F5991 /* PWRegisterController.xib */; };
 		CAFE60161D842C3E003F5991 /* PWFacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE60151D842C3E003F5991 /* PWFacebookManager.m */; };
 		CAFE60181D863497003F5991 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFE60171D863497003F5991 /* FBSDKShareKit.framework */; };
+		CAFE60F51D8EC823003F5991 /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFE60F21D8EC7EB003F5991 /* VKSdkFramework.framework */; };
+		CAFE60F61D8EC823003F5991 /* VKSdkFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAFE60F21D8EC7EB003F5991 /* VKSdkFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CAFE60ED1D8EC7EB003F5991 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAFE609F1D8EC7EB003F5991 /* VK-ios-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F3C7542D182133CC00964716;
+			remoteInfo = VKSdk;
+		};
+		CAFE60EF1D8EC7EB003F5991 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAFE609F1D8EC7EB003F5991 /* VK-ios-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F3BACC401865905B003158DA;
+			remoteInfo = VKSdkResources;
+		};
+		CAFE60F11D8EC7EB003F5991 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAFE609F1D8EC7EB003F5991 /* VK-ios-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F34670311B8B7C5A003EF74B;
+			remoteInfo = VKSdkFramework;
+		};
+		CAFE60F71D8EC823003F5991 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAFE609F1D8EC7EB003F5991 /* VK-ios-sdk.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F34670301B8B7C5A003EF74B;
+			remoteInfo = VKSdkFramework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CAFE60F91D8EC824003F5991 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CAFE60F61D8EC823003F5991 /* VKSdkFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CAF090FD1D4D3938005FAEF4 /* PocketWaiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketWaiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -369,6 +416,7 @@
 		CAFE60141D842C3E003F5991 /* PWFacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWFacebookManager.h; sourceTree = "<group>"; };
 		CAFE60151D842C3E003F5991 /* PWFacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWFacebookManager.m; sourceTree = "<group>"; };
 		CAFE60171D863497003F5991 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		CAFE609F1D8EC7EB003F5991 /* VK-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "VK-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -383,6 +431,7 @@
 				CAFE60041D7E000A003F5991 /* FBSDKCoreKit.framework in Frameworks */,
 				CAF0929D1D60C42F005FAEF4 /* SystemConfiguration.framework in Frameworks */,
 				CAF092991D60C3CF005FAEF4 /* Accelerate.framework in Frameworks */,
+				CAFE60F51D8EC823003F5991 /* VKSdkFramework.framework in Frameworks */,
 				CAFE60081D7E00F2003F5991 /* FBSDKLoginKit.framework in Frameworks */,
 				CAF092971D60C3CA005FAEF4 /* CoreBluetooth.framework in Frameworks */,
 				CAF092951D60C395005FAEF4 /* libc++.tbd in Frameworks */,
@@ -726,6 +775,7 @@
 		CAF0926A1D60986E005FAEF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CAFE60191D8EC7EB003F5991 /* vkSDK */,
 				CAFE60171D863497003F5991 /* FBSDKShareKit.framework */,
 				CAFE60071D7E00F2003F5991 /* FBSDKLoginKit.framework */,
 				CAFE60051D7E0098003F5991 /* Bolts.framework */,
@@ -801,6 +851,32 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		CAFE60191D8EC7EB003F5991 /* vkSDK */ = {
+			isa = PBXGroup;
+			children = (
+				CAFE601C1D8EC7EB003F5991 /* library */,
+				CAFE609F1D8EC7EB003F5991 /* VK-ios-sdk.xcodeproj */,
+			);
+			path = vkSDK;
+			sourceTree = "<group>";
+		};
+		CAFE601C1D8EC7EB003F5991 /* library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = library;
+			sourceTree = "<group>";
+		};
+		CAFE60A01D8EC7EB003F5991 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CAFE60EE1D8EC7EB003F5991 /* libVKSdk.a */,
+				CAFE60F01D8EC7EB003F5991 /* VKSdkResources.bundle */,
+				CAFE60F21D8EC7EB003F5991 /* VKSdkFramework.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -811,10 +887,12 @@
 				CAF090F91D4D3938005FAEF4 /* Sources */,
 				CAF090FA1D4D3938005FAEF4 /* Frameworks */,
 				CAF090FB1D4D3938005FAEF4 /* Resources */,
+				CAFE60F91D8EC824003F5991 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CAFE60F81D8EC823003F5991 /* PBXTargetDependency */,
 			);
 			name = PocketWaiter;
 			productName = PocketWaiter;
@@ -843,16 +921,47 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = CAF090F41D4D3938005FAEF4;
 			productRefGroup = CAF090FE1D4D3938005FAEF4 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CAFE60A01D8EC7EB003F5991 /* Products */;
+					ProjectRef = CAFE609F1D8EC7EB003F5991 /* VK-ios-sdk.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				CAF090FC1D4D3938005FAEF4 /* PocketWaiter */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		CAFE60EE1D8EC7EB003F5991 /* libVKSdk.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libVKSdk.a;
+			remoteRef = CAFE60ED1D8EC7EB003F5991 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CAFE60F01D8EC7EB003F5991 /* VKSdkResources.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = VKSdkResources.bundle;
+			remoteRef = CAFE60EF1D8EC7EB003F5991 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CAFE60F21D8EC7EB003F5991 /* VKSdkFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = VKSdkFramework.framework;
+			remoteRef = CAFE60F11D8EC7EB003F5991 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CAF090FB1D4D3938005FAEF4 /* Resources */ = {
@@ -995,6 +1104,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CAFE60F81D8EC823003F5991 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VKSdkFramework;
+			targetProxy = CAFE60F71D8EC823003F5991 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CAF091121D4D3938005FAEF4 /* Debug */ = {
