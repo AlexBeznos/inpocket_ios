@@ -9,6 +9,8 @@
 #import "PWActiveRootController.h"
 #import "PWTabBar.h"
 #import "PWRestaurant.h"
+#import "PWPurchasesViewController.h"
+#import "PWModelManager.h"
 
 @interface PWActiveRootController ()
 
@@ -63,6 +65,33 @@
 	self.tabbar.colorSchema = self.restaurant.color;
 }
 
+- (void)setupNavigation
+{
+	[super setupNavigation];
+	
+	PWUser *currentUser = [[PWModelManager sharedManager] registeredUser];
+	PWUsersRestaurantInfo *info = [currentUser infoForRestaurant:self.restaurant];
+	if (info.collectedBonuses > 0)
+	{
+		UIButton *theBonusesButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		[theBonusesButton setImage:[[UIImage imageNamed:@"collectedBonus"]
+					imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
+					forState:UIControlStateNormal];
+		[theBonusesButton setTintColor:self.restaurant.color];
+		[theBonusesButton addTarget:self action:@selector(showBonuses)
+					forControlEvents:UIControlEventTouchUpInside];
+		[theBonusesButton sizeToFit];
+		UILabel *bonussesLabel = [UILabel new];
+		bonussesLabel.font = [UIFont systemFontOfSize:15.];
+		bonussesLabel.text = [NSString stringWithFormat:@"%li", info.collectedBonuses];
+		bonussesLabel.textColor = self.restaurant.color;
+		[bonussesLabel sizeToFit];
+		self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc]
+					initWithCustomView:theBonusesButton], [[UIBarButtonItem alloc]
+					initWithCustomView:bonussesLabel]];
+	}
+}
+
 - (UIColor *)titleColor
 {
 	return self.restaurant.color;
@@ -91,6 +120,14 @@
 - (void)showAbout
 {
 
+}
+
+- (void)showBonuses
+{
+	PWPurchasesViewController *controller = [[PWPurchasesViewController alloc]
+				initWithUser:[[PWModelManager sharedManager] registeredUser]
+				restaurants:@[self.restaurant]];
+	[self performForwardTransition:controller];
 }
 
 @end

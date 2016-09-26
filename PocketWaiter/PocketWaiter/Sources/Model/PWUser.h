@@ -10,6 +10,7 @@
 
 @class PWPurchase;
 @class PWUsersRestaurantInfo;
+@class PWRestaurant;
 
 @interface PWUser : PWModelObject
 
@@ -19,5 +20,7 @@
 @property (nonatomic, readonly) NSString *humanReadableName;
 @property (nonatomic, readonly) NSArray<PWPurchase *> *purchases;
 @property (nonatomic, readonly) NSArray<PWUsersRestaurantInfo *> *restaurants;
+
+- (PWUsersRestaurantInfo *)infoForRestaurant:(PWRestaurant *)restaurant;
 
 @end

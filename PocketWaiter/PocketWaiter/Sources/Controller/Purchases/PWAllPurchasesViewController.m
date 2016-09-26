@@ -100,6 +100,7 @@
 	if (self.restaurants.count == 1)
 	{
 		[self.indicator removeFromSuperview];
+		self.cardsView.userInteractionEnabled = NO;
 	}
 	else
 	{
@@ -111,6 +112,7 @@
 						self.indicatorBottom]];
 		}
 		self.indicatorWidth.constant = 16 * self.restaurants.count;
+		self.cardsView.userInteractionEnabled = YES;
 	}
 	
 	__weak __typeof(self) weakSelf = self;
@@ -240,8 +242,8 @@
 
 - (void)adjustContentHeightWithPurchasesHeight:(CGFloat)height
 {
-	self.contentHeight.constant = height + self.indicatorHeight.constant +
-				self.indicatorTop.constant + self.indicatorBottom.constant +
+	self.contentHeight.constant = height + (nil != self.indicator.superview ? self.indicatorHeight.constant +
+				self.indicatorBottom.constant : 0) + self.indicatorTop.constant +
 				self.sliderHeight.constant + self.labelBottom.constant +
 				self.labelHeight.constant + self.sliderOffset.constant;
 }
@@ -260,7 +262,7 @@
 		
 		CGFloat ratio = offset / CGRectGetWidth(self.parentViewController.view.frame);
 		NSUInteger pageIndex = (NSInteger)ratio;
-		if (ratio == pageIndex)
+		if (ratio == pageIndex && pageIndex != self.currentIndex)
 		{
 			PWRestaurantPurchasesController *currentController = self.currentPaysController;
 			NSLayoutConstraint *currentConstraint = self.secondAnimatableConstraint;

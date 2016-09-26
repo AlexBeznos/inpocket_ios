@@ -164,7 +164,8 @@
 - (void)showBonuses
 {
 	PWPurchasesViewController *controller = [[PWPurchasesViewController alloc]
-				initWithUser:[[PWModelManager sharedManager] registeredUser]];
+				initWithUser:[[PWModelManager sharedManager] registeredUser]
+				restaurants:nil];
 	[self performForwardTransition:controller];
 }
 

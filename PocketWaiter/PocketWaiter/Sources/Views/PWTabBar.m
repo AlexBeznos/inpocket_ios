@@ -97,7 +97,7 @@
 			[holder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:
 						@"H:|[view]|" options:0 metrics:nil views:@{@"view": titleLabel}]];
 			[holder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:
-						@"V:|[view]" options:0 metrics:nil views:@{@"view": titleLabel}]];
+						@"V:|-5-[view]" options:0 metrics:nil views:@{@"view": titleLabel}]];
 		}
 		
 		[self applySelectedIndex];

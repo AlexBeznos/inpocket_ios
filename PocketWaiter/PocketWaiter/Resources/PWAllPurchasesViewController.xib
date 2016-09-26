@@ -82,6 +82,7 @@
                                 <constraint firstAttribute="bottom" secondItem="heb-Tc-gna" secondAttribute="bottom" constant="10" id="hsW-X1-xUb"/>
                                 <constraint firstItem="8Q6-bY-1L3" firstAttribute="top" secondItem="JAW-RT-9XB" secondAttribute="bottom" constant="10" id="iUo-TH-oIN"/>
                                 <constraint firstAttribute="height" constant="640" id="tSn-Ue-ahu"/>
+                                <constraint firstItem="8Q6-bY-1L3" firstAttribute="top" secondItem="Z2Z-9y-Sk5" secondAttribute="bottom" priority="750" constant="10" id="xNO-ah-NQt"/>
                             </constraints>
                         </view>
                     </subviews>

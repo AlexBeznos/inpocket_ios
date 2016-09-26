@@ -25,13 +25,14 @@
 
 @synthesize transiter;
 
-- (instancetype)initWithUser:(PWUser *)user
+- (instancetype)initWithUser:(PWUser *)user restaurants:(NSArray *)restaurants
 {
 	self = [super init];
 	
 	if (nil != self)
 	{
 		self.user = user;
+		self.restaurants = restaurants;
 	}
 	
 	return self;
@@ -44,31 +45,47 @@
 	self.view.backgroundColor = [UIColor pwBackgroundColor];
 	
 	__weak __typeof(self) theWeakSelf = self;
-	[self startActivity];
 	
-	[[PWModelManager sharedManager] getPurchasesRestaurantsForUser:self.user
-				withCount:5 offset:0 completion:^(NSArray<PWRestaurant *> *restaurants, NSError *error)
+	if (nil == self.restaurants)
 	{
-		theWeakSelf.restaurants = restaurants;
-		[theWeakSelf stopActivity];
+		[self startActivity];
 		
-		if (0 == restaurants.count)
+		[[PWModelManager sharedManager] getPurchasesRestaurantsForUser:self.user
+					withCount:5 offset:0 completion:^(NSArray<PWRestaurant *> *restaurants, NSError *error)
 		{
-			[theWeakSelf setupController:theWeakSelf.noPurchasesController];
-		}
-		else
-		{
-			PWAllPurchasesViewController *allPurchasesController =
-						[[PWAllPurchasesViewController alloc]
-						initWithUser:theWeakSelf.user restaurants:restaurants
-						transiter:self.transiter];
-			theWeakSelf.allPurchasesController = allPurchasesController;
-			[theWeakSelf setupController:theWeakSelf.allPurchasesController];
-			CGFloat aspectRatio = CGRectGetWidth(theWeakSelf.parentViewController.
-						view.frame) / 320.;
-			[allPurchasesController setWidth:320 * aspectRatio];
-		}
-	}];
+			theWeakSelf.restaurants = restaurants;
+			[theWeakSelf stopActivity];
+			
+			if (0 == restaurants.count)
+			{
+				[theWeakSelf setupController:theWeakSelf.noPurchasesController];
+			}
+			else
+			{
+				PWAllPurchasesViewController *allPurchasesController =
+							[[PWAllPurchasesViewController alloc]
+							initWithUser:theWeakSelf.user restaurants:restaurants
+							transiter:self.transiter];
+				theWeakSelf.allPurchasesController = allPurchasesController;
+				[theWeakSelf setupController:theWeakSelf.allPurchasesController];
+				CGFloat aspectRatio = CGRectGetWidth(theWeakSelf.parentViewController.
+							view.frame) / 320.;
+				[allPurchasesController setWidth:320 * aspectRatio];
+			}
+		}];
+	}
+	else
+	{
+		PWAllPurchasesViewController *allPurchasesController =
+					[[PWAllPurchasesViewController alloc]
+					initWithUser:theWeakSelf.user restaurants:self.restaurants
+					transiter:self.transiter];
+		theWeakSelf.allPurchasesController = allPurchasesController;
+		[theWeakSelf setupController:theWeakSelf.allPurchasesController];
+		CGFloat aspectRatio = CGRectGetWidth(theWeakSelf.parentViewController.
+					view.frame) / 320.;
+		[allPurchasesController setWidth:320 * aspectRatio];
+	}
 }
 
 - (void)setupController:(UIViewController *)controller
@@ -110,7 +127,7 @@
 	
 	item.leftBarButtonItems = @[item.leftBarButtonItem,
 				[[UIBarButtonItem alloc] initWithCustomView:theTitleLabel]];
-	item.rightBarButtonItem = nil;
+	item.rightBarButtonItems = nil;
 }
 
 - (void)transitionBack

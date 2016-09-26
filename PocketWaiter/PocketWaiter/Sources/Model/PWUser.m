@@ -7,6 +7,8 @@
 //
 
 #import "PWUser.h"
+#import "PWUsersRestaurantInfo.h"
+#import "PWRestaurant.h"
 
 @interface PWUser ()
 
@@ -20,5 +22,18 @@
 @end
 
 @implementation PWUser
+
+- (PWUsersRestaurantInfo *)infoForRestaurant:(PWRestaurant *)restaurant
+{
+	for (PWUsersRestaurantInfo *info in self.restaurants)
+	{
+		if ([info.restaurantId isEqualToString:restaurant.name])
+		{
+			return info;
+		}
+	}
+	
+	return nil;
+}
 
 @end

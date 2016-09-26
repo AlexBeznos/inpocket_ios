@@ -15,6 +15,6 @@
 @interface PWPurchasesViewController : PWActivityIndicatorOwner
 			<IPWTransitableController>
 
-- (instancetype)initWithUser:(PWUser *)user;
+- (instancetype)initWithUser:(PWUser *)user restaurants:(NSArray *)restaurants;
 
 @end
