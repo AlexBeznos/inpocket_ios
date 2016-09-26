@@ -21,14 +21,19 @@
 
 - (void)startActivity
 {
+	[self startActivityInView:self.view];
+}
+
+- (void)startActivityInView:(UIView *)view
+{
 	if (!self.activity.animating)
 	{
-		[self.view addSubview:self.activity];
-		[self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view
+		[view addSubview:self.activity];
+		[view addConstraint:[NSLayoutConstraint constraintWithItem:view
 					attribute:NSLayoutAttributeCenterX
 					relatedBy:NSLayoutRelationEqual toItem:self.activity
 					attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
-		[self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view
+		[view addConstraint:[NSLayoutConstraint constraintWithItem:view
 					attribute:NSLayoutAttributeCenterY
 					relatedBy:NSLayoutRelationEqual toItem:self.activity
 					attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];

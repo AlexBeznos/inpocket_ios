@@ -49,4 +49,7 @@
 - (void)getRestaurantForBeacons:(NSArray<NSString *> *)beacons
 			completion:(void (^)(PWRestaurant *restaurant, NSError *error))completion;
 
+- (void)getFirstPresentsInfoForUser:(PWUser *)user restaurant:(PWRestaurant *)restaurant
+			completion:(void (^)(PWPresentProduct *firstPresent, NSArray *shares, NSArray *presentByBonuses, NSError *error))completion;
+
 @end

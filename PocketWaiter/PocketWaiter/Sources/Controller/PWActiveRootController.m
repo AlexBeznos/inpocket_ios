@@ -11,11 +11,15 @@
 #import "PWRestaurant.h"
 #import "PWPurchasesViewController.h"
 #import "PWModelManager.h"
+#import "PWPresentsTabController.h"
 
 @interface PWActiveRootController ()
 
 @property (strong, nonatomic) IBOutlet PWTabBar *tabbar;
 @property (nonatomic, strong) PWRestaurant *restaurant;
+@property (strong, nonatomic) IBOutlet UIView *bottomBar;
+@property (strong, nonatomic) IBOutlet UIView *contentView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomBarConstraint;
 
 @end
 
@@ -63,6 +67,25 @@
 	[self.tabbar addItem:reviews];
 	[self.tabbar addItem:about];
 	self.tabbar.colorSchema = self.restaurant.color;
+	
+	PWPresentsTabController *presentsController = [[PWPresentsTabController
+				alloc] initWithRestaurant:self.restaurant];
+	CGFloat aspectRatio = CGRectGetWidth(self.parentViewController.view.frame) / 320.;
+	presentsController.contentSize = CGSizeMake(320 * aspectRatio, 320 * aspectRatio);
+	[self addChildViewController:presentsController];
+	[self.contentView addSubview:presentsController.view];
+			
+	[presentsController didMoveToParentViewController:self];
+	presentsController.view.translatesAutoresizingMaskIntoConstraints = NO;
+	
+	[self.contentView addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"V:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : presentsController.view}]];
+	[self.contentView addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"H:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : presentsController.view}]];
 }
 
 - (void)setupNavigation

@@ -15,6 +15,7 @@
 @property (nonatomic, readonly) PWActivityIndicator *activity;
 
 - (void)startActivity;
+- (void)startActivityInView:(UIView *)view;
 - (void)startActivityWithTopOffset:(CGFloat)offset;
 - (void)stopActivity;
 

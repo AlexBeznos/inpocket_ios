@@ -7,6 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PWActiveRootController">
             <connections>
+                <outlet property="bottomBar" destination="qwU-1d-VUe" id="6ZE-S4-XSS"/>
+                <outlet property="bottomBarConstraint" destination="Z6m-jM-hPV" id="WRI-oU-Bb1"/>
+                <outlet property="contentView" destination="PM3-9V-fow" id="NzG-kH-PWz"/>
                 <outlet property="tabbar" destination="Zy8-Dj-MTU" id="okW-LL-RdI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -17,17 +20,36 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zy8-Dj-MTU" customClass="PWTabBar">
-                    <rect key="frame" x="0.0" y="0.0" width="312" height="58"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="58" id="3K7-TR-7aT"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qwU-1d-VUe">
+                    <rect key="frame" x="0.0" y="533" width="320" height="67"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="67" id="t4q-iG-Ysw"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PM3-9V-fow">
+                    <rect key="frame" x="0.0" y="58" width="320" height="475"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Zy8-Dj-MTU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AiN-Mk-gJD"/>
-                <constraint firstAttribute="trailing" secondItem="Zy8-Dj-MTU" secondAttribute="trailing" constant="8" id="ega-wu-ed8"/>
+                <constraint firstItem="PM3-9V-fow" firstAttribute="leading" secondItem="qwU-1d-VUe" secondAttribute="leading" id="FkU-z5-IVS"/>
+                <constraint firstItem="qwU-1d-VUe" firstAttribute="top" secondItem="PM3-9V-fow" secondAttribute="bottom" id="TST-mf-22l"/>
+                <constraint firstItem="qwU-1d-VUe" firstAttribute="leading" secondItem="Zy8-Dj-MTU" secondAttribute="leading" id="Xp0-M2-HMK"/>
+                <constraint firstAttribute="bottom" secondItem="qwU-1d-VUe" secondAttribute="bottom" id="Z6m-jM-hPV"/>
+                <constraint firstAttribute="trailing" secondItem="Zy8-Dj-MTU" secondAttribute="trailing" id="ega-wu-ed8"/>
+                <constraint firstItem="PM3-9V-fow" firstAttribute="trailing" secondItem="qwU-1d-VUe" secondAttribute="trailing" id="jes-Pa-8g8"/>
+                <constraint firstItem="qwU-1d-VUe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jzC-u1-bAh"/>
+                <constraint firstItem="qwU-1d-VUe" firstAttribute="trailing" secondItem="Zy8-Dj-MTU" secondAttribute="trailing" id="l3N-Sm-Sfq"/>
+                <constraint firstItem="PM3-9V-fow" firstAttribute="top" secondItem="Zy8-Dj-MTU" secondAttribute="bottom" id="rfK-by-e9j"/>
                 <constraint firstItem="Zy8-Dj-MTU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vjG-Cr-Pif"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
