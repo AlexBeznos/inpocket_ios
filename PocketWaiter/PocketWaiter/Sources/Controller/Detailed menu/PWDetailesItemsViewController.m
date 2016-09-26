@@ -7,7 +7,7 @@
 //
 
 #import "PWDetailesItemsViewController.h"
-#import "PWTapper.h"
+#import "PWTabBar.h"
 
 #import "PWDetailedNearItemsCollectionController.h"
 #import "PWMapController.h"
@@ -15,7 +15,7 @@
 
 @interface PWDetailesItemsViewController ()
 
-@property (strong, nonatomic) IBOutlet PWTapper *tapper;
+@property (strong, nonatomic) IBOutlet PWTabBar *tapper;
 @property (strong, nonatomic) IBOutlet UIView *contentHolder;
 
 @property (strong, nonatomic)
@@ -69,13 +69,18 @@
 	self.view.backgroundColor = [UIColor pwBackgroundColor];
 	self.contentHolder.backgroundColor = [UIColor pwBackgroundColor];
 	
-	self.tapper.firstValue = @"СПИСОК";
-	self.tapper.secondValue = @"КАРТА";
-	self.tapper.tapHandler =
-	^(NSUInteger index)
-	{
-		[weakSelf setupContentWithMode:index];
-	};
+	PWTabBarItem *list = [[PWTabBarItem alloc] initWithTitle:@"СПИСОК" handler:
+	^{
+		[weakSelf setupContentWithMode:0];
+	}];
+	PWTabBarItem *map = [[PWTabBarItem alloc] initWithTitle:@"КАРТА" handler:
+	^{
+		[weakSelf setupContentWithMode:1];
+	}];
+	
+	[self.tapper addItem:list];
+	[self.tapper addItem:map];
+	self.tapper.colorSchema = [UIColor blackColor];
 	
 	[self startActivity];
 	[self retrieveModelAndSetupInitialControllerWithCompletion:

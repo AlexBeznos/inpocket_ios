@@ -116,7 +116,7 @@
 			^{
 				[weakSelf.welcomeDialog hideWithCompletion:
 				^{
-					[weakSelf presentRootControllerWithDefaultMode:NO];
+					[weakSelf presentRootControllerWithDefaultMode:YES];
 				}];
 			}];
 			weakSelf.welcomeDialog = [[PWModalController alloc]

@@ -8,7 +8,7 @@
 
 #import "PWRestaurantsViewController.h"
 #import "PWRestaurantsCollectionController.h"
-#import "PWTapper.h"
+#import "PWTabBar.h"
 #import "PWModelManager.h"
 #import "UIViewControllerAdditions.h"
 #import "UIColorAdditions.h"
@@ -19,7 +19,7 @@
 
 @interface PWRestaurantsViewController ()
 
-@property (strong, nonatomic) IBOutlet PWTapper *tapper;
+@property (strong, nonatomic) IBOutlet PWTabBar *tapper;
 @property (strong, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) PWRestaurantFilterController *filterController;
 @property (nonatomic) PWRestaurantType filter;
@@ -45,13 +45,18 @@
 	__weak __typeof(self) weakSelf = self;
 	
 	self.containerView.backgroundColor = [UIColor pwBackgroundColor];
-	self.tapper.firstValue = @"СПИСОК";
-	self.tapper.secondValue = @"КАРТА";
-	self.tapper.tapHandler =
-	^(NSUInteger index)
-	{
-		[weakSelf setupContentWithMode:index];
-	};
+	PWTabBarItem *list = [[PWTabBarItem alloc] initWithTitle:@"СПИСОК" handler:
+	^{
+		[weakSelf setupContentWithMode:0];
+	}];
+	PWTabBarItem *map = [[PWTabBarItem alloc] initWithTitle:@"КАРТА" handler:
+	^{
+		[weakSelf setupContentWithMode:1];
+	}];
+	
+	[self.tapper addItem:list];
+	[self.tapper addItem:map];
+	self.tapper.colorSchema = [UIColor blackColor];
 	
 	[self startActivity];
 	[[PWModelManager sharedManager] getRestaurantsWithCount:10 offset:0
