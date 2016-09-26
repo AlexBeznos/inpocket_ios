@@ -10,10 +10,12 @@
 #import "PWFirstPresentController.h"
 #import "PWRestaurant.h"
 #import "PWModelManager.h"
+#import "PWFirstPresentDetailsController.h"
 
 @interface PWPresentsTabController ()
 
 @property (nonatomic, strong) PWRestaurant *restaurant;
+@property (nonatomic, weak) id<IPWTransiter> transiter;
 @property (nonatomic, strong) UIScrollView *scrollView;
 
 @end
@@ -21,11 +23,13 @@
 @implementation PWPresentsTabController
 
 - (instancetype)initWithRestaurant:(PWRestaurant *)restaurant
+			transiter:(id<IPWTransiter>)transiter
 {
 	self = [super init];
 	if (nil != self)
 	{
 		self.restaurant = restaurant;
+		self.transiter = transiter;
 	}
 	
 	return self;
@@ -61,7 +65,11 @@
 						[[PWFirstPresentController alloc] initWithPresent:firstPresent
 						restaurant:weakSelf.restaurant getPresentHandler:
 			^{
-				
+				PWFirstPresentDetailsController *controller =
+							[[PWFirstPresentDetailsController alloc]
+							initWithPresent:firstPresent
+							restaurant:weakSelf.restaurant];
+				[weakSelf.transiter performForwardTransition:controller];
 			}];
 			[weakSelf addChildViewController:firstPresentController];
 			[weakSelf.scrollView addSubview:firstPresentController.view];

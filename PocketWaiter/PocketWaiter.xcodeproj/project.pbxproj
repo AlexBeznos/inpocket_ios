@@ -154,6 +154,8 @@
 		CAFE61151D9945D0003F5991 /* PWFirstPresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE61131D9945D0003F5991 /* PWFirstPresentCell.m */; };
 		CAFE61161D9945D0003F5991 /* PWFirstPresentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE61141D9945D0003F5991 /* PWFirstPresentCell.xib */; };
 		CAFE611A1D994C33003F5991 /* PWPresentsTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE61191D994C33003F5991 /* PWPresentsTabController.m */; };
+		CAFE611E1D997E0E003F5991 /* PWFirstPresentDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE611C1D997E0E003F5991 /* PWFirstPresentDetailsController.m */; };
+		CAFE611F1D997E0E003F5991 /* PWFirstPresentDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE611D1D997E0E003F5991 /* PWFirstPresentDetailsController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -441,6 +443,9 @@
 		CAFE61141D9945D0003F5991 /* PWFirstPresentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWFirstPresentCell.xib; sourceTree = "<group>"; };
 		CAFE61181D994C33003F5991 /* PWPresentsTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWPresentsTabController.h; sourceTree = "<group>"; };
 		CAFE61191D994C33003F5991 /* PWPresentsTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWPresentsTabController.m; sourceTree = "<group>"; };
+		CAFE611B1D997E0E003F5991 /* PWFirstPresentDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWFirstPresentDetailsController.h; sourceTree = "<group>"; };
+		CAFE611C1D997E0E003F5991 /* PWFirstPresentDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWFirstPresentDetailsController.m; sourceTree = "<group>"; };
+		CAFE611D1D997E0E003F5991 /* PWFirstPresentDetailsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWFirstPresentDetailsController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -942,6 +947,9 @@
 			children = (
 				CAFE610F1D99459A003F5991 /* PWFirstPresentController.h */,
 				CAFE61101D99459A003F5991 /* PWFirstPresentController.m */,
+				CAFE611B1D997E0E003F5991 /* PWFirstPresentDetailsController.h */,
+				CAFE611C1D997E0E003F5991 /* PWFirstPresentDetailsController.m */,
+				CAFE611D1D997E0E003F5991 /* PWFirstPresentDetailsController.xib */,
 			);
 			name = FirstPresent;
 			sourceTree = "<group>";
@@ -1095,6 +1103,7 @@
 				CAF091D51D5799DB005FAEF4 /* vapiano_1.jpg in Resources */,
 				CAF091CE1D579967005FAEF4 /* coffeetoria.jpg in Resources */,
 				CAF091D91D5799DB005FAEF4 /* coffeetoria2.jpg in Resources */,
+				CAFE611F1D997E0E003F5991 /* PWFirstPresentDetailsController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1107,6 +1116,7 @@
 			files = (
 				CAF091941D56165C005FAEF4 /* PWMainViewController.m in Sources */,
 				CAF092B31D627264005FAEF4 /* PWPresentsMapController.m in Sources */,
+				CAFE611E1D997E0E003F5991 /* PWFirstPresentDetailsController.m in Sources */,
 				CAF092541D607B69005FAEF4 /* PWDetailedNearItemsCollectionController.m in Sources */,
 				CAF092061D5D1FF7005FAEF4 /* PWNearRestaurantCollectionViewCell.m in Sources */,
 				CAF091981D561AF6005FAEF4 /* PWIntroFirstPageCell.m in Sources */,

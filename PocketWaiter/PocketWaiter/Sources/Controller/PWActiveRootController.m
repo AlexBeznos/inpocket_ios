@@ -69,7 +69,7 @@
 	self.tabbar.colorSchema = self.restaurant.color;
 	
 	PWPresentsTabController *presentsController = [[PWPresentsTabController
-				alloc] initWithRestaurant:self.restaurant];
+				alloc] initWithRestaurant:self.restaurant transiter:self];
 	CGFloat aspectRatio = CGRectGetWidth(self.parentViewController.view.frame) / 320.;
 	presentsController.contentSize = CGSizeMake(320 * aspectRatio, 320 * aspectRatio);
 	[self addChildViewController:presentsController];

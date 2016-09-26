@@ -7,12 +7,14 @@
 //
 
 #import "PWActivityIndicatorOwner.h"
+#import "UIViewControllerAdditions.h"
 
 @class PWRestaurant;
 
 @interface PWPresentsTabController : PWActivityIndicatorOwner
 
-- (instancetype)initWithRestaurant:(PWRestaurant *)restaurant;
+- (instancetype)initWithRestaurant:(PWRestaurant *)restaurant
+			transiter:(id<IPWTransiter>)transiter;
 
 @property (nonatomic) CGSize contentSize;
 

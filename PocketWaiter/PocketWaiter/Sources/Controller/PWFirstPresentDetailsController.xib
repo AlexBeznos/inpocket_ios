@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PWFirstPresentDetailsController">
+            <connections>
+                <outlet property="bonusView" destination="FiC-Mu-tuY" id="gWo-Sc-Mwy"/>
+                <outlet property="button" destination="Pm8-4L-f70" id="Q3O-hZ-T7u"/>
+                <outlet property="descriptionLabel" destination="589-E4-7Uc" id="O8i-7a-JlI"/>
+                <outlet property="getPresentView" destination="ijG-sO-cNn" id="iu3-Vq-Q1n"/>
+                <outlet property="imageView" destination="P6R-OK-QJh" id="S6q-nz-skn"/>
+                <outlet property="nameLabel" destination="Umf-VB-gRA" id="2qX-zk-KHR"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XjY-qq-rU8" customClass="PWDropShadowView">
+                    <rect key="frame" x="20" y="40" width="260" height="260"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P6R-OK-QJh">
+                            <rect key="frame" x="0.0" y="0.0" width="260" height="260"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="P6R-OK-QJh" firstAttribute="leading" secondItem="XjY-qq-rU8" secondAttribute="leading" id="I4p-c9-7ix"/>
+                        <constraint firstItem="P6R-OK-QJh" firstAttribute="height" secondItem="XjY-qq-rU8" secondAttribute="height" id="Lgb-A1-0va"/>
+                        <constraint firstItem="P6R-OK-QJh" firstAttribute="top" secondItem="XjY-qq-rU8" secondAttribute="top" id="RMk-hE-Y3G"/>
+                        <constraint firstItem="P6R-OK-QJh" firstAttribute="width" secondItem="XjY-qq-rU8" secondAttribute="width" id="n79-8I-mF2"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" horizontalHuggingPriority="100" horizontalCompressionResistancePriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="pmd-Df-1JF" customClass="PWDropShadowView">
+                    <rect key="frame" x="10" y="30" width="220" height="40"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijG-sO-cNn">
+                            <rect key="frame" x="44" y="11" width="38" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FiC-Mu-tuY">
+                            <rect key="frame" x="10" y="8" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="8xA-nW-TQx"/>
+                                <constraint firstAttribute="width" constant="24" id="OD3-Y2-I93"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="220" id="6EA-1U-1T1"/>
+                        <constraint firstItem="FiC-Mu-tuY" firstAttribute="leading" secondItem="pmd-Df-1JF" secondAttribute="leading" constant="10" id="9Of-fM-dVE"/>
+                        <constraint firstAttribute="height" constant="40" id="FbE-li-nrV"/>
+                        <constraint firstItem="FiC-Mu-tuY" firstAttribute="centerY" secondItem="pmd-Df-1JF" secondAttribute="centerY" id="ZiO-is-WdI"/>
+                        <constraint firstItem="ijG-sO-cNn" firstAttribute="leading" secondItem="pmd-Df-1JF" secondAttribute="leading" constant="44" id="igx-vO-iMc"/>
+                        <constraint firstItem="ijG-sO-cNn" firstAttribute="centerY" secondItem="pmd-Df-1JF" secondAttribute="centerY" id="qgF-Xu-sc1"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="254" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umf-VB-gRA">
+                    <rect key="frame" x="20" y="310" width="280" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="589-E4-7Uc">
+                    <rect key="frame" x="20" y="344" width="37.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pm8-4L-f70" customClass="PWButton">
+                    <rect key="frame" x="20" y="530" width="280" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Ycx-wu-qYN"/>
+                    </constraints>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="pmd-Df-1JF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="0NG-C8-l6T"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Umf-VB-gRA" secondAttribute="trailing" constant="10" id="A5Z-KS-ujh"/>
+                <constraint firstAttribute="trailing" secondItem="pmd-Df-1JF" secondAttribute="trailing" constant="90" id="Bnv-ds-sRi"/>
+                <constraint firstItem="589-E4-7Uc" firstAttribute="top" secondItem="Umf-VB-gRA" secondAttribute="bottom" constant="10" id="E9Q-zx-A4s"/>
+                <constraint firstItem="Pm8-4L-f70" firstAttribute="top" relation="greaterThanOrEqual" secondItem="589-E4-7Uc" secondAttribute="bottom" constant="10" id="K35-Nl-eba"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="589-E4-7Uc" secondAttribute="trailing" constant="10" id="MgG-Em-lxw"/>
+                <constraint firstAttribute="trailing" secondItem="XjY-qq-rU8" secondAttribute="trailing" constant="40" id="NRr-23-RX2"/>
+                <constraint firstItem="589-E4-7Uc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="OIy-Ce-IMW"/>
+                <constraint firstAttribute="trailing" secondItem="Pm8-4L-f70" secondAttribute="trailing" constant="20" id="Skr-vh-WYI"/>
+                <constraint firstItem="XjY-qq-rU8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="TtB-bt-qKt"/>
+                <constraint firstItem="Pm8-4L-f70" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="U5s-Ta-y0W"/>
+                <constraint firstItem="Umf-VB-gRA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="UJs-Dn-z2g"/>
+                <constraint firstItem="Umf-VB-gRA" firstAttribute="top" secondItem="XjY-qq-rU8" secondAttribute="bottom" constant="10" id="YzT-2f-afd"/>
+                <constraint firstItem="pmd-Df-1JF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="lPN-g1-Eh1"/>
+                <constraint firstAttribute="bottom" secondItem="Pm8-4L-f70" secondAttribute="bottom" constant="20" id="mCI-zm-UGI"/>
+                <constraint firstItem="XjY-qq-rU8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="mHB-WR-hgS"/>
+                <constraint firstAttribute="bottom" secondItem="XjY-qq-rU8" secondAttribute="bottom" constant="300" id="o9T-TN-yyv"/>
+                <constraint firstItem="Umf-VB-gRA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="xuS-z1-ofM"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>
