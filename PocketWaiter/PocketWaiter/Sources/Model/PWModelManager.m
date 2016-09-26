@@ -113,19 +113,9 @@
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
 				(int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
 	^{
-		if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showDefault"])
+		if (nil != completion)
 		{
-			if (nil != completion)
-			{
-				completion(nil, nil);
-			}
-		}
-		else
-		{
-			if (nil != completion)
-			{
-				completion([self.cachedRestaurants firstObject], nil);
-			}
+			completion([self.cachedRestaurants firstObject], nil);
 		}
 	});
 }

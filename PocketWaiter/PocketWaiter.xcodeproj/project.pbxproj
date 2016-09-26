@@ -145,6 +145,9 @@
 		CAFE60181D863497003F5991 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFE60171D863497003F5991 /* FBSDKShareKit.framework */; };
 		CAFE60F51D8EC823003F5991 /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFE60F21D8EC7EB003F5991 /* VKSdkFramework.framework */; };
 		CAFE60F61D8EC823003F5991 /* VKSdkFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAFE60F21D8EC7EB003F5991 /* VKSdkFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CAFE60FF1D98FAFE003F5991 /* PWWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE60FD1D98FAFE003F5991 /* PWWelcomeViewController.m */; };
+		CAFE61001D98FAFE003F5991 /* PWWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE60FE1D98FAFE003F5991 /* PWWelcomeViewController.xib */; };
+		CAFE61031D98FBDD003F5991 /* PWButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE61021D98FBDD003F5991 /* PWButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -417,6 +420,11 @@
 		CAFE60151D842C3E003F5991 /* PWFacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWFacebookManager.m; sourceTree = "<group>"; };
 		CAFE60171D863497003F5991 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		CAFE609F1D8EC7EB003F5991 /* VK-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "VK-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
+		CAFE60FC1D98FAFE003F5991 /* PWWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWWelcomeViewController.h; sourceTree = "<group>"; };
+		CAFE60FD1D98FAFE003F5991 /* PWWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWWelcomeViewController.m; sourceTree = "<group>"; };
+		CAFE60FE1D98FAFE003F5991 /* PWWelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWWelcomeViewController.xib; sourceTree = "<group>"; };
+		CAFE61011D98FBDD003F5991 /* PWButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWButton.h; sourceTree = "<group>"; };
+		CAFE61021D98FBDD003F5991 /* PWButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -532,6 +540,7 @@
 		CAF0911E1D4D3A4C005FAEF4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CAFE60FB1D98FAC4003F5991 /* Active mode */,
 				CAFE60091D7E027E003F5991 /* Login */,
 				CAF092F21D69A85E005FAEF4 /* Alerts */,
 				CAF092CF1D63A5CB005FAEF4 /* Purchases */,
@@ -645,6 +654,8 @@
 				CAFE5FDF1D6DED05003F5991 /* PWCollectionView.m */,
 				CAFE5FEA1D7B62F9003F5991 /* PWPurchaseTableViewCell.h */,
 				CAFE5FEB1D7B62F9003F5991 /* PWPurchaseTableViewCell.m */,
+				CAFE61011D98FBDD003F5991 /* PWButton.h */,
+				CAFE61021D98FBDD003F5991 /* PWButton.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -877,6 +888,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		CAFE60FB1D98FAC4003F5991 /* Active mode */ = {
+			isa = PBXGroup;
+			children = (
+				CAFE60FC1D98FAFE003F5991 /* PWWelcomeViewController.h */,
+				CAFE60FD1D98FAFE003F5991 /* PWWelcomeViewController.m */,
+				CAFE60FE1D98FAFE003F5991 /* PWWelcomeViewController.xib */,
+			);
+			name = "Active mode";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -986,6 +1007,7 @@
 				CAF091D81D5799DB005FAEF4 /* coffeetoria1.jpg in Resources */,
 				CAFE5FFD1D7C9D92003F5991 /* PWShareWithFriendsController.xib in Resources */,
 				CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */,
+				CAFE61001D98FAFE003F5991 /* PWWelcomeViewController.xib in Resources */,
 				CAF091DF1D57A05F005FAEF4 /* hookah2.jpeg in Resources */,
 				CAF092C61D628006005FAEF4 /* PWMapController.xib in Resources */,
 				CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */,
@@ -1047,6 +1069,7 @@
 				CAF092591D607B69005FAEF4 /* PWMainMenuItemViewController.m in Sources */,
 				CAF0916E1D4E9054005FAEF4 /* PWRestaurant.m in Sources */,
 				CAF092C11D627C3C005FAEF4 /* PWDetailesPresentsViewController.m in Sources */,
+				CAFE61031D98FBDD003F5991 /* PWButton.m in Sources */,
 				CAF092E51D63B9BC005FAEF4 /* UIImageAdditions.m in Sources */,
 				CAF092581D607B69005FAEF4 /* PWIntroViewController.m in Sources */,
 				CAF092BE1D627AA0005FAEF4 /* PWDetailesSharesViewController.m in Sources */,
@@ -1069,6 +1092,7 @@
 				CAF092DF1D63B35D005FAEF4 /* PWActivityIndicatorOwner.m in Sources */,
 				CAF091881D4E94B3005FAEF4 /* PWUsersRestaurantInfo.m in Sources */,
 				CAF091731D4E9099005FAEF4 /* PWPresentProduct.m in Sources */,
+				CAFE60FF1D98FAFE003F5991 /* PWWelcomeViewController.m in Sources */,
 				CAFE60121D7E06B5003F5991 /* PWRegisterController.m in Sources */,
 				CAF092F11D68E68A005FAEF4 /* PWModalController.m in Sources */,
 				CAF092571D607B69005FAEF4 /* PWEnterPromoViewController.m in Sources */,

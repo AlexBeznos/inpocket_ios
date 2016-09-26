@@ -15,6 +15,7 @@
 #import "PWBluetoothManager.h"
 #import "UIColorAdditions.h"
 #import "PWNoConnectionAlertController.h"
+#import "PWWelcomeViewController.h"
 
 #import "PWModelManager.h"
 
@@ -26,6 +27,7 @@
 @property (nonatomic, strong) PWBluetoothManager *blueToothManager;
 @property (nonatomic, strong) PWModalController *bluetoothDialog;
 @property (nonatomic, strong) PWModalController *internetDialog;
+@property (nonatomic, strong) PWModalController *welcomeDialog;
 
 @property (nonatomic, strong) NSArray<NSString *> *beacons;
 
@@ -40,18 +42,7 @@
 	self.navigationController.navigationBarHidden = YES;
 	self.view.backgroundColor = [UIColor pwBackgroundColor];
 	
-	if (nil == [[NSUserDefaults standardUserDefaults] valueForKey:@"showIntro"])
-	{
-		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showIntro"];
-	}
-	if (nil == [[NSUserDefaults standardUserDefaults] valueForKey:@"showScan"])
-	{
-		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showScan"];
-	}
-	if (nil == [[NSUserDefaults standardUserDefaults] valueForKey:@"showDefault"])
-	{
-		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showDefault"];
-	}
+	[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showIntro"];
 	
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showIntro"])
 	{
@@ -115,36 +106,32 @@
 		}
 		else if (nil == restaurant)
 		{
-			[weakSelf showMode:YES];
+			[weakSelf presentRootControllerWithDefaultMode:YES];
 		}
 		else
 		{
-			[weakSelf showMode:NO];
+			PWWelcomeViewController *welcomeController =
+			[[PWWelcomeViewController alloc] initWithRestaurant:restaurant
+						continueHandler:
+			^{
+				[weakSelf.welcomeDialog hideWithCompletion:
+				^{
+					[weakSelf presentRootControllerWithDefaultMode:NO];
+				}];
+			}];
+			weakSelf.welcomeDialog = [[PWModalController alloc]
+						initWithContentController:welcomeController autoDismiss:NO];
+			[weakSelf.welcomeDialog showWithCompletion:nil];
 		}
 		[weakSelf stopActivity];
 	}];
 }
 
-- (void)showMode:(BOOL)defaultMode
+- (void)presentRootControllerWithDefaultMode:(BOOL)defaultMode
 {
-	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"showScan"])
-	{
-		self.rootMenuController = [[PWRootMenuTableViewController alloc]
-					initWithMode:defaultMode];
-		[self navigateViewController:self.rootMenuController];
-	}
-	else
-	{
-		__weak __typeof(self) weakSelf = self;
-		PWQRCodeScanViewController *controller =
-					[[PWQRCodeScanViewController alloc] initWithCompletion:
-		^{
-			weakSelf.rootMenuController = [[PWRootMenuTableViewController alloc]
-						initWithMode:defaultMode];
-			[weakSelf navigateViewController:weakSelf.rootMenuController];
-		}];
-		[self navigateViewController:controller];
-	}
+	self.rootMenuController = [[PWRootMenuTableViewController alloc]
+				initWithMode:defaultMode];
+	[self navigateViewController:self.rootMenuController];
 }
 
 - (void)startAsyncActivity
