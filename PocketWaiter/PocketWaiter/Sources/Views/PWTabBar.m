@@ -92,10 +92,10 @@
 			titleLabel.text = storedItem.title;
 			titleLabel.textColor = [UIColor grayColor];
 			[titleLabel sizeToFit];
-			
+			titleLabel.textAlignment = NSTextAlignmentCenter;
 			[holder addSubview:titleLabel];
 			[holder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:
-						@"H:|-10-[view]" options:0 metrics:nil views:@{@"view": titleLabel}]];
+						@"H:|[view]|" options:0 metrics:nil views:@{@"view": titleLabel}]];
 			[holder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:
 						@"V:|[view]" options:0 metrics:nil views:@{@"view": titleLabel}]];
 		}

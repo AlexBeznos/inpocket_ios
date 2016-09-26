@@ -6,8 +6,13 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PWMainMenuItemViewController.h"
+@class PWRestaurant;
 
-@interface PWActiveRootController : UIViewController
+@interface PWActiveRootController : PWMainMenuItemViewController
+
+- (instancetype)initWithRestaurant:(PWRestaurant *)restaurant
+			transitionHandler:(PWContentTransitionHandler)aHandler
+			forwardTransitionHandler:(PWContentTransitionHandler)aFwdHandler;
 
 @end

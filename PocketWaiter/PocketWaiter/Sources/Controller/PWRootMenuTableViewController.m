@@ -16,16 +16,16 @@
 #import "PWAboutController.h"
 #import "PWShareWithFriendsController.h"
 #import "PWRegisterController.h"
+#import "PWActiveRootController.h"
 
 @interface PWRootMenuTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, readonly) NSArray<PWContentSource *> *sources;
-@property (nonatomic, strong) PWRestaurant *restaurant;
+@property (nonatomic, strong) NSArray<PWContentSource *> *sources;
 @property (nonatomic, strong) UIView *headerView;
 @property (nonatomic, strong) NSLayoutConstraint *transitionConstrain;
 @property (nonatomic, strong) UIViewController *selectedController;
 @property (nonatomic, strong) PWContentSource *selectedSource;
-@property (nonatomic, strong) UIViewController<IPWContentTransitionControler> *mainController;
+@property (nonatomic, strong) PWContentSource *activeMenuSource;
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -35,23 +35,13 @@
 
 @synthesize sources = _sources;
 
-- (instancetype)initWithMode:(BOOL)defaultMode
+- (instancetype)initWithRestaurant:(PWRestaurant *)restaurant
 {
 	self = [super init];
 	
 	if (nil != self)
 	{
-		__weak __typeof(self) theWeakSelf = self;
-		
-		self.mainController = defaultMode ? [[PWMainMenuViewController alloc]
-					initWithTransitionHandler:
-		^{
-			[theWeakSelf performBackTransition];
-		}
-					forwardTransitionHandler:
-		^{
-			[theWeakSelf performForwardTransition];
-		}] : nil ;
+		self.restaurant = restaurant;
 	}
 	
 	return self;
@@ -97,10 +87,12 @@
 				attribute:NSLayoutAttributeLeft multiplier:1
 				constant:0]];
 	
-	self.selectedSource = self.sources.firstObject;
+	self.selectedSource = nil != self.restaurant &&
+				[self.sources containsObject:self.activeMenuSource] ?
+				self.activeMenuSource : self.sources.firstObject;
 	
 	UINavigationController *navigation = [[UINavigationController alloc]
-				initWithRootViewController:self.mainController];
+				initWithRootViewController:self.selectedSource.contentViewController];
 	navigation.navigationBar.translucent = NO;
 	self.selectedController = navigation;
 	
@@ -136,13 +128,22 @@
 {
 	if (nil == _sources)
 	{
+		NSMutableArray *sources = [NSMutableArray array];
 		__weak __typeof(self) theWeakSelf = self;
-		PWContentSource *mainSource = [[PWContentSource alloc]
+		[sources addObject:[[PWContentSource alloc]
 					initWithTitle:@"Главная" details:self.restaurant.aboutInfo.name
 					icon:[UIImage imageNamed:@"whiteBonus"]
-					contentViewController:self.mainController];
+					contentViewController:[[PWMainMenuViewController alloc]
+					initWithTransitionHandler:
+		^{
+			[theWeakSelf performBackTransition];
+		}
+					forwardTransitionHandler:
+		^{
+			[theWeakSelf performForwardTransition];
+		}]]];
 		
-		PWContentSource *restaurantsSource = [[PWContentSource alloc]
+		[sources addObject:[[PWContentSource alloc]
 					initWithTitle:@"Заведения" details:nil
 					icon:[UIImage imageNamed:@"whiteRestaurants"]
 					contentViewController:[[PWRestaurantsViewController alloc]
@@ -153,9 +154,26 @@
 					forwardTransitionHandler:
 		^{
 			[theWeakSelf performForwardTransition];
-		}]];
+		}]]];
 		
-		PWContentSource *shareSource = [[PWContentSource alloc]
+		if (nil != self.restaurant)
+		{
+			self.activeMenuSource = [[PWContentSource alloc]
+						initWithTitle:self.restaurant.name details:nil
+						icon:self.restaurant.restaurantImage
+						contentViewController:[[PWActiveRootController alloc]
+						initWithRestaurant:self.restaurant transitionHandler:
+			^{
+				[theWeakSelf performBackTransition];
+			}
+						forwardTransitionHandler:
+			^{
+				[theWeakSelf performForwardTransition];
+			}]];
+			[sources addObject:self.activeMenuSource];
+		}
+		
+		[sources addObject:[[PWContentSource alloc]
 					initWithTitle:@"Поделиться" details:nil
 					icon:[UIImage imageNamed:@"whiteShare"]
 					contentViewController:[[PWShareWithFriendsController alloc]
@@ -166,9 +184,9 @@
 					forwardTransitionHandler:
 		^{
 			[theWeakSelf performForwardTransition];
-		}]];
+		}]]];
 		
-		PWContentSource *aboutSource = [[PWContentSource alloc]
+		[sources addObject:[[PWContentSource alloc]
 					initWithTitle:@"О приложении" details:nil
 					icon:[UIImage imageNamed:@"whiteAbout"]
 					contentViewController:[[PWAboutController alloc]
@@ -179,9 +197,9 @@
 					forwardTransitionHandler:
 		^{
 			[theWeakSelf performForwardTransition];
-		}]];
+		}]]];
 		
-		PWContentSource *profileSource = [[PWContentSource alloc]
+		[sources addObject:[[PWContentSource alloc]
 					initWithTitle:@"Профиль" details:[[PWModelManager sharedManager]
 					registeredUser].humanReadableName
 					icon:[UIImage imageNamed:@"whiteProfile"]
@@ -193,13 +211,22 @@
 					forwardTransitionHandler:
 		^{
 			[theWeakSelf performForwardTransition];
-		}]];
+		}]]];
 		
-		_sources = @[mainSource, restaurantsSource, shareSource,
-					aboutSource, profileSource];
+		_sources = sources;
 	}
 	
 	return _sources;
+}
+
+- (void)setRestaurant:(PWRestaurant *)restaurant
+{
+	if (_restaurant != restaurant)
+	{
+		_restaurant = restaurant;
+		self.sources = nil;
+		[self.tableView reloadData];
+	}
 }
 
 - (UIView *)headerView

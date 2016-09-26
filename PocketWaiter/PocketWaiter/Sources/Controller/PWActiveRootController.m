@@ -7,31 +7,80 @@
 //
 
 #import "PWActiveRootController.h"
+#import "PWTabBar.h"
+#import "PWRestaurant.h"
 
 @interface PWActiveRootController ()
+
+@property (strong, nonatomic) IBOutlet PWTabBar *tabbar;
+@property (nonatomic, strong) PWRestaurant *restaurant;
 
 @end
 
 @implementation PWActiveRootController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+- (instancetype)initWithRestaurant:(PWRestaurant *)restaurant
+			transitionHandler:(PWContentTransitionHandler)aHandler
+			forwardTransitionHandler:(PWContentTransitionHandler)aFwdHandler
+{
+	self = [super initWithTransitionHandler:aHandler forwardTransitionHandler:aFwdHandler];
+	
+	if (nil != self)
+	{
+		self.restaurant = restaurant;
+	}
+	
+	return self;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+	
+	__weak __typeof(self) weakSelf = self;
+	PWTabBarItem *presents = [[PWTabBarItem alloc] initWithTitle:@"ПОДАРКИ" handler:
+	^{
+		[weakSelf showPresents];
+	}];
+	PWTabBarItem *menu = [[PWTabBarItem alloc] initWithTitle:@"МЕНЮ" handler:
+	^{
+		[weakSelf showMenu];
+	}];
+	
+	PWTabBarItem *reviews = [[PWTabBarItem alloc] initWithTitle:@"ОТЗЫВЫ" handler:
+	^{
+		[weakSelf showReviews];
+	}];
+	PWTabBarItem *about = [[PWTabBarItem alloc] initWithTitle:@"О НАС" handler:
+	^{
+		[weakSelf showAbout];
+	}];
+	
+	[self.tabbar addItem:presents];
+	[self.tabbar addItem:menu];
+	[self.tabbar addItem:reviews];
+	[self.tabbar addItem:about];
+	self.tabbar.colorSchema = [UIColor blackColor];
 }
 
-/*
-#pragma mark - Navigation
+- (void)showPresents
+{
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
+
+- (void)showMenu
+{
+
+}
+
+- (void)showReviews
+{
+
+}
+
+- (void)showAbout
+{
+
+}
 
 @end

@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class PWRestaurant;
 @protocol IPWContentTransitionControler;
 
 @interface PWRootMenuTableViewController : UIViewController
 
-- (instancetype)initWithMode:(BOOL)defaultMode;
+- (instancetype)initWithRestaurant:(PWRestaurant *)restaurant;
+@property (nonatomic, strong) PWRestaurant *restaurant;
 
 @end

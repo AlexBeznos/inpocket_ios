@@ -106,7 +106,7 @@
 		}
 		else if (nil == restaurant)
 		{
-			[weakSelf presentRootControllerWithDefaultMode:YES];
+			[weakSelf presentRootControllerWithRestaurant:restaurant];
 		}
 		else
 		{
@@ -116,7 +116,7 @@
 			^{
 				[weakSelf.welcomeDialog hideWithCompletion:
 				^{
-					[weakSelf presentRootControllerWithDefaultMode:YES];
+					[weakSelf presentRootControllerWithRestaurant:restaurant];
 				}];
 			}];
 			weakSelf.welcomeDialog = [[PWModalController alloc]
@@ -127,10 +127,10 @@
 	}];
 }
 
-- (void)presentRootControllerWithDefaultMode:(BOOL)defaultMode
+- (void)presentRootControllerWithRestaurant:(PWRestaurant *)restaurant
 {
 	self.rootMenuController = [[PWRootMenuTableViewController alloc]
-				initWithMode:defaultMode];
+				initWithRestaurant:restaurant];
 	[self navigateViewController:self.rootMenuController];
 }
 
