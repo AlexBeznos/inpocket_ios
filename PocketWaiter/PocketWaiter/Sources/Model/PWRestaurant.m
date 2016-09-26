@@ -21,6 +21,8 @@
 
 @implementation PWRestaurant
 
+@synthesize thumbnail = _thumbnail;
+
 - (NSArray<PWProduct *> *)firstPresents
 {
 	NSMutableArray *presents = [NSMutableArray new];
@@ -74,6 +76,20 @@
 - (NSString *)restaurantDescription
 {
 	return self.aboutInfo.restaurantDescription;
+}
+
+- (UIImage *)thumbnail
+{
+	if (nil == _thumbnail && nil != self.restaurantImage)
+	{
+		UIGraphicsBeginImageContextWithOptions(CGSizeMake(24, 24), NO, 0);
+		[self.restaurantImage drawInRect:CGRectMake(0, 0, 24, 24)];
+		_thumbnail = UIGraphicsGetImageFromCurrentImageContext();
+	
+		UIGraphicsEndImageContext();
+	}
+	
+	return _thumbnail;
 }
 
 - (UIImage *)restaurantImage

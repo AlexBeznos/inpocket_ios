@@ -59,11 +59,17 @@
 	UILabel *theTitleLabel = [UILabel new];
 	theTitleLabel.text = self.name;
 	theTitleLabel.font = [UIFont systemFontOfSize:20];
+	theTitleLabel.textColor = [self titleColor];
 	[theTitleLabel sizeToFit];
 	
 	self.navigationItem.leftBarButtonItems =
 				@[self.navigationItem.leftBarButtonItem,
 				[[UIBarButtonItem alloc] initWithCustomView:theTitleLabel]];
+}
+
+- (UIColor *)titleColor
+{
+	return [UIColor blackColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated

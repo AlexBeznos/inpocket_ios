@@ -60,7 +60,17 @@
 	[self.tabbar addItem:menu];
 	[self.tabbar addItem:reviews];
 	[self.tabbar addItem:about];
-	self.tabbar.colorSchema = [UIColor blackColor];
+	self.tabbar.colorSchema = self.restaurant.color;
+}
+
+- (UIColor *)titleColor
+{
+	return self.restaurant.color;
+}
+
+- (NSString *)name
+{
+	return self.restaurant.name;
 }
 
 - (void)showPresents

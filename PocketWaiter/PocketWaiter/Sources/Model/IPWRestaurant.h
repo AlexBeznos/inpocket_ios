@@ -20,6 +20,7 @@
 @property (nonatomic, readonly) CLLocation *location;
 @property (nonatomic, readonly) NSString *restaurantDescription;
 @property (nonatomic, readonly) UIImage *restaurantImage;
+@property (nonatomic, readonly) UIImage *thumbnail;
 @property (nonatomic, readonly) UIColor *color;
 @property (nonatomic, readonly) NSArray<UIImage *> *photos;
 @property (nonatomic, readonly) NSArray<PWRestaurantReview *> *reviews;

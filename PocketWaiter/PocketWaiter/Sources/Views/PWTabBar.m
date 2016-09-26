@@ -154,8 +154,9 @@
 	[holder addSubview:self.selectedIndicatorView];
 	[holder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[view]-10-|"
 				options:0 metrics:nil views:@{@"view" : self.selectedIndicatorView}]];
-	[holder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-10-[view]"
-				options:0 metrics:nil views:@{@"view" : self.selectedIndicatorView}]];
+	[holder addConstraint:[NSLayoutConstraint constraintWithItem:self.selectedIndicatorView
+				attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual
+				toItem:holder attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
 	
 	titleLabel = holder.subviews.firstObject;
 	titleLabel.textColor = [UIColor blackColor];

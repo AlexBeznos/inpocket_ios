@@ -160,7 +160,7 @@
 		{
 			self.activeMenuSource = [[PWContentSource alloc]
 						initWithTitle:self.restaurant.name details:nil
-						icon:self.restaurant.restaurantImage
+						icon:self.restaurant.thumbnail
 						contentViewController:[[PWActiveRootController alloc]
 						initWithRestaurant:self.restaurant transitionHandler:
 			^{
