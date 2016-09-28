@@ -28,6 +28,12 @@
 - (NSArray<PWRestaurantShare *> *)nearShares;
 - (NSArray<PWPresentProduct *> *)nearPresents;
 
+
+- (void)getNearItemsWithCount:(NSUInteger)count
+			completion:(void (^)(NSArray<PWRestaurant *> *nearRestaurant,
+			NSArray<PWRestaurantShare *> *nearShares,
+			NSArray<PWPresentProduct *> *nearPresents, NSError *error))completion;
+
 - (void)getRestaurantsWithCount:(NSUInteger)count offset:(NSUInteger)offset
 			completion:(void (^)(NSArray<PWRestaurant *> *, NSError *error))completion;
 

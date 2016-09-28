@@ -19,11 +19,18 @@
 
 @implementation PWNearPresentsViewController
 
-- (void)viewDidLoad
+- (instancetype)initWithPresents:(NSArray<PWPresentProduct *> *)presents
+			scrollHandler:(void (^)(CGPoint velocity))aHandler
+			transiter:(id<IPWTransiter>)transiter
 {
-	self.presents = [[PWModelManager sharedManager] nearPresents];
+	self = [super initWithScrollHandler:aHandler transiter:transiter];
 	
-	[super viewDidLoad];
+	if (nil != self)
+	{
+		self.presents = presents;
+	}
+	
+	return self;
 }
 
 - (void)setupCell:(PWNearItemCollectionViewCell *)cell
@@ -31,11 +38,11 @@
 {
 	PWPresentProduct *present = self.presents[indexPath.row];
 	
-	cell.placeName = @"Vapiano";
+	cell.placeName = present.restaurant.name;
 	cell.placeDistance = @"2 km";
 	cell.image = present.icon;
 	cell.descriptionTitle = present.name;
-	cell.buttonTitle = @"Poluchit'";
+	cell.buttonTitle = @"Получить";
 }
 
 - (NSArray *)contentItems
@@ -48,8 +55,6 @@
 	PWDetailesPresentsViewController *controller =
 				[[PWDetailesPresentsViewController alloc]
 				initWithPresents:self.presents];
-//	
-//	[controller setContentSize:self.contentSize];
 	
 	return controller;
 }

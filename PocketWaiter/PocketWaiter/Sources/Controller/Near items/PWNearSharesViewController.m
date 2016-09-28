@@ -11,6 +11,14 @@
 #import "PWNearItemCollectionViewCell.h"
 #import "PWDetailesSharesViewController.h"
 #import "PWShareViewController.h"
+#import "PWIndicator.h"
+
+@interface PWNearItemsViewController (Protected)
+
+@property (nonatomic) PWIndicator *indicator;
+- (void)setupIndicator;
+
+@end
 
 @interface PWNearSharesViewController ()
 
@@ -20,11 +28,34 @@
 
 @implementation PWNearSharesViewController
 
-- (void)viewDidLoad
+- (instancetype)initWithShares:(NSArray<PWRestaurantShare *> *)shares
+			scrollHandler:(void (^)(CGPoint velocity))aHandler
+			transiter:(id<IPWTransiter>)transiter
 {
-	self.shares = [[PWModelManager sharedManager] nearShares];
+	self = [super initWithScrollHandler:aHandler transiter:transiter];
 	
-	[super viewDidLoad];
+	if (nil != self)
+	{
+		self.shares = shares;
+	}
+	
+	return self;
+}
+
+- (void)setColorScheme:(UIColor *)colorScheme
+{
+	if (_colorScheme != colorScheme)
+	{
+		_colorScheme = colorScheme;
+	}
+	self.indicator.colorSchema = colorScheme;
+}
+
+- (void)setupIndicator
+{
+	[super setupIndicator];
+	
+	self.indicator.colorSchema = self.colorScheme;
 }
 
 - (void)setupCell:(PWNearItemCollectionViewCell *)cell
@@ -37,6 +68,7 @@
 	cell.image = share.image;
 	cell.descriptionTitle = share.shareDescription;
 	cell.buttonTitle = @"Подробнее";
+	cell.colorScheme = self.colorScheme;
 }
 
 - (PWDetailesItemsViewController *)allItemsController

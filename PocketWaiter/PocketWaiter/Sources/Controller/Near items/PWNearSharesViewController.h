@@ -8,6 +8,14 @@
 
 #import "PWNearItemsViewController.h"
 
+@class PWRestaurantShare;
+
 @interface PWNearSharesViewController : PWNearItemsViewController
+
+- (instancetype)initWithShares:(NSArray<PWRestaurantShare *> *)shares
+			scrollHandler:(void (^)(CGPoint velocity))aHandler
+			transiter:(id<IPWTransiter>)transiter;
+
+@property (strong, nonatomic) UIColor *colorScheme;
 
 @end

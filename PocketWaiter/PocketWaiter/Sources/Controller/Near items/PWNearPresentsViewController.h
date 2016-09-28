@@ -8,6 +8,12 @@
 
 #import "PWNearItemsViewController.h"
 
+@class PWPresentProduct;
+
 @interface PWNearPresentsViewController : PWNearItemsViewController
+
+- (instancetype)initWithPresents:(NSArray<PWPresentProduct *> *)presents
+			scrollHandler:(void (^)(CGPoint velocity))aHandler
+			transiter:(id<IPWTransiter>)transiter;
 
 @end

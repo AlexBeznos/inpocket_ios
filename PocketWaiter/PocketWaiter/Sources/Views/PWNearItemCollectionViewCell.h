@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString *placeName;
 @property (strong, nonatomic) NSString *placeDistance;
 @property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) UIColor *colorScheme;
 
 @property (nonatomic, copy) void (^moreHandler)();
 

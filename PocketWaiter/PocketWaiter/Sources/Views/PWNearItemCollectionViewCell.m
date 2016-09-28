@@ -30,6 +30,14 @@
 	self.shadowView.shadowOffset = CGSizeMake(5, 5);
 }
 
+- (void)setColorScheme:(UIColor *)colorScheme
+{
+	if (nil != colorScheme)
+	{
+		self.moreButton.backgroundColor = colorScheme;
+	}
+}
+
 - (void)setButtonTitle:(NSString *)buttonTitle
 {
 	self.buttonLabel.text = buttonTitle;

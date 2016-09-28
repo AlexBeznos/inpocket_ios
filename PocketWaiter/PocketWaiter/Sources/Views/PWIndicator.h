@@ -14,5 +14,6 @@
 
 @property (nonatomic) NSUInteger itemsCount;
 @property (nonatomic) NSUInteger selectedItemIndex;
+@property (nonatomic, strong) UIColor *colorSchema;
 
 @end

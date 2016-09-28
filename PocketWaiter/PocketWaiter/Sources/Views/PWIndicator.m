@@ -20,6 +20,29 @@
 ////////////////////////////////////////////////////////////////////////////////
 @implementation PWIndicator
 
+- (void)setColorSchema:(UIColor *)colorSchema
+{
+	if (_colorSchema != colorSchema)
+	{
+		_colorSchema = colorSchema;
+	}
+	
+	if (nil != colorSchema)
+	{
+		for (UIView *view in self.indicatorViews)
+		{
+			if ([self.indicatorViews indexOfObject:view] == self.selectedItemIndex)
+			{
+				view.backgroundColor = colorSchema;
+			}
+			else
+			{
+				view.backgroundColor = [colorSchema colorWithAlphaComponent:0.2];
+			}
+		}
+	}
+}
+
 - (NSMutableArray<UIView *> *)indicatorViews
 {
 	if (nil == _indicatorViews)
@@ -64,7 +87,9 @@
 		{
 			UIView *indicatorView = [[UIView alloc]
 						initWithFrame:CGRectMake(0, 0, 6, 6)];
-			indicatorView.backgroundColor = [UIColor pwColorWithAlpha:0.2];
+			UIColor *color = nil != self.colorSchema ?
+						[self.colorSchema colorWithAlphaComponent:0.2] : [UIColor pwColorWithAlpha:0.2];
+			indicatorView.backgroundColor = color;
 			indicatorView.translatesAutoresizingMaskIntoConstraints = NO;
 			[indicatorView addConstraint:[NSLayoutConstraint
 						constraintWithItem:indicatorView attribute:NSLayoutAttributeWidth
@@ -102,10 +127,11 @@
 {
 	if (selectedItemIndex < self.indicatorViews.count)
 	{
+		UIColor *color = nil != self.colorSchema ?
+						self.colorSchema : [UIColor pwColorWithAlpha:1];
 		self.indicatorViews[_selectedItemIndex].backgroundColor =
-					[UIColor pwColorWithAlpha:0.2];;
-		self.indicatorViews[selectedItemIndex].backgroundColor =
-					[UIColor pwColorWithAlpha:1];
+					[color colorWithAlphaComponent:0.2];
+		self.indicatorViews[selectedItemIndex].backgroundColor = color;
 	
 		_selectedItemIndex = selectedItemIndex;
 	}

@@ -29,6 +29,20 @@
 
 @implementation PWNearRestaurantsViewController
 
+- (instancetype)initWithRestaurants:(NSArray<PWRestaurant *> *)restaurants
+			scrollHandler:(void (^)(CGPoint velocity))aHandler
+			transiter:(id<IPWTransiter>)transiter
+{
+	self = [super initWithScrollHandler:aHandler transiter:transiter];
+	
+	if (nil != self)
+	{
+		self.restaurants = restaurants;
+	}
+	
+	return self;
+}
+
 - (NSString *)nibName
 {
 	return @"PWNearRestaurantsViewController";
@@ -39,7 +53,6 @@
 	[super viewDidLoad];
 	
 	self.collectionView.scrollEnabled = NO;
-	self.restaurants = [[PWModelManager sharedManager] nearRestaurants];
 }
 
 - (void)setupIndicator
@@ -108,8 +121,6 @@
 	PWDetailedRestaurantsViewController *controller =
 				[[PWDetailedRestaurantsViewController alloc]
 				initWithRestaurants:self.restaurants];
-//	
-//	[controller setContentSize:self.contentSize];
 	
 	return controller;
 }
