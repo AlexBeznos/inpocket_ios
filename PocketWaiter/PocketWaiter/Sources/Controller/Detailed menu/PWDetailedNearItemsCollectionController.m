@@ -96,7 +96,6 @@ static NSString * const reuseIdentifier = @"Cell";
 	PWNearItemCollectionViewCell *cell = [self.collectionView
 				dequeueReusableCellWithReuseIdentifier:reuseIdentifier
 				forIndexPath:indexPath];
-	
 	[self setupCell:cell forItemAtIndexPath:indexPath];
 	
 	__weak __typeof(self) weakSelf = self;

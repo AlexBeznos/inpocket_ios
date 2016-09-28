@@ -42,7 +42,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijG-sO-cNn">
                             <rect key="frame" x="44" y="11" width="38" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FiC-Mu-tuY">
@@ -66,13 +66,13 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="254" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umf-VB-gRA">
                     <rect key="frame" x="20" y="310" width="280" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="589-E4-7Uc">
                     <rect key="frame" x="20" y="344" width="37.5" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pm8-4L-f70" customClass="PWButton">

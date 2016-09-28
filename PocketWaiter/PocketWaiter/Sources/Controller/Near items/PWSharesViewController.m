@@ -72,6 +72,7 @@
 	cell.descriptionTitle = share.shareDescription;
 	cell.buttonTitle = @"Подробнее";
 	cell.colorScheme = self.colorScheme;
+	cell.deleteDescriptionView = [self.preferredTitle isEqualToString:@"Акции"];
 }
 
 - (PWDetailesItemsViewController *)allItemsController

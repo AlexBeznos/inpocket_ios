@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *placeDistanceLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet PWDropShadowView *shadowView;
+@property (strong, nonatomic) IBOutlet PWDropShadowView *shadowDescriptionView;
 
 @end
 
@@ -28,6 +29,23 @@
 	[super awakeFromNib];
 	
 	self.shadowView.shadowOffset = CGSizeMake(5, 5);
+	if (self.deleteDescriptionView)
+	{
+		[self.shadowDescriptionView removeFromSuperview];
+	}
+}
+
+- (void)setDeleteDescriptionView:(BOOL)deleteDescriptionView
+{
+	if (deleteDescriptionView != _deleteDescriptionView)
+	{
+		_deleteDescriptionView = deleteDescriptionView;
+	}
+	
+	if (_deleteDescriptionView)
+	{
+		[self.shadowDescriptionView removeFromSuperview];
+	}
 }
 
 - (void)setColorScheme:(UIColor *)colorScheme
