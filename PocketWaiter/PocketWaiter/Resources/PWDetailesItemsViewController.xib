@@ -33,6 +33,7 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Qp7-j6-X8X" secondAttribute="trailing" id="2Qz-PS-Ezn"/>
                 <constraint firstItem="qMs-eR-3G3" firstAttribute="leading" secondItem="JWw-zz-9Hx" secondAttribute="leading" constant="15" id="2yH-vT-lcP"/>
+                <constraint firstItem="Qp7-j6-X8X" firstAttribute="top" secondItem="JWw-zz-9Hx" secondAttribute="top" priority="750" id="K7Y-M6-Yjb"/>
                 <constraint firstAttribute="bottom" secondItem="Qp7-j6-X8X" secondAttribute="bottom" id="OE4-Nb-zMs"/>
                 <constraint firstItem="Qp7-j6-X8X" firstAttribute="top" secondItem="qMs-eR-3G3" secondAttribute="bottom" constant="8" id="Sae-gV-ye6"/>
                 <constraint firstItem="Qp7-j6-X8X" firstAttribute="leading" secondItem="JWw-zz-9Hx" secondAttribute="leading" id="mCs-bW-G8y"/>

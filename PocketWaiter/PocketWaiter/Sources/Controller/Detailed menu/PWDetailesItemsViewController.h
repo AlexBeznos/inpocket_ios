@@ -12,4 +12,6 @@
 @interface PWDetailesItemsViewController : PWActivityIndicatorOwner
 			<IPWTransitableController>
 
+- (instancetype)initWithListModeOnly:(BOOL)aListOnly;
+
 @end

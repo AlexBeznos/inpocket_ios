@@ -28,7 +28,7 @@
 
 - (instancetype)initWithPresents:(NSArray<PWPresentProduct *> *)presents
 {
-	self = [super init];
+	self = [super initWithListModeOnly:NO];
 	
 	if (nil != self)
 	{

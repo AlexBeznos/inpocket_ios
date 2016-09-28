@@ -21,6 +21,7 @@
 @property (strong, nonatomic)
 			PWDetailedNearItemsCollectionController *listController;
 @property (strong, nonatomic) PWMapController *mapController;
+@property (nonatomic) BOOL showOnlyList;
 
 @property (nonatomic, strong) UIViewController *currentController;
 
@@ -29,6 +30,18 @@
 @implementation PWDetailesItemsViewController
 
 @synthesize transiter;
+
+- (instancetype)initWithListModeOnly:(BOOL)aListOnly
+{
+	self = [super init];
+	
+	if (nil != self)
+	{
+		self.showOnlyList = aListOnly;
+	}
+	
+	return self;
+}
 
 - (NSString *)nibName
 {
@@ -52,7 +65,7 @@
 	
 	item.leftBarButtonItems = @[item.leftBarButtonItem,
 				[[UIBarButtonItem alloc] initWithCustomView:theTitleLabel]];
-	item.rightBarButtonItem = nil;
+	item.rightBarButtonItems = nil;
 }
 
 - (NSString *)navigationTitle
@@ -68,6 +81,11 @@
 	
 	self.view.backgroundColor = [UIColor pwBackgroundColor];
 	self.contentHolder.backgroundColor = [UIColor pwBackgroundColor];
+	
+	if (self.showOnlyList)
+	{
+		[self.tapper removeFromSuperview];
+	}
 	
 	PWTabBarItem *list = [[PWTabBarItem alloc] initWithTitle:@"СПИСОК" handler:
 	^{

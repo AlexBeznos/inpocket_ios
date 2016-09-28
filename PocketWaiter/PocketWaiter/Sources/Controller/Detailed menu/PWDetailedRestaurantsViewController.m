@@ -28,7 +28,7 @@
 
 - (instancetype)initWithRestaurants:(NSArray<PWRestaurant *> *)restaurants
 {
-	self = [super init];
+	self = [super initWithListModeOnly:NO];
 	
 	if (nil != self)
 	{

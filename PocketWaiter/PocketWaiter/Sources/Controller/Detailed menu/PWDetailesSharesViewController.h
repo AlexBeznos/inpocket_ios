@@ -12,6 +12,7 @@
 
 @interface PWDetailesSharesViewController : PWDetailesItemsViewController
 
-- (instancetype)initWithShares:(NSArray<PWRestaurantShare *> *)shares;
+- (instancetype)initWithShares:(NSArray<PWRestaurantShare *> *)shares
+			listOnly:(BOOL)listOnly;
 
 @end

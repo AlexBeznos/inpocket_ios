@@ -88,7 +88,7 @@
 	
 	item.leftBarButtonItems = @[item.leftBarButtonItem,
 				[[UIBarButtonItem alloc] initWithCustomView:theTitleLabel]];
-	item.rightBarButtonItem = nil;
+	item.rightBarButtonItems = nil;
 }
 
 - (IBAction)getRestaurant:(UIButton *)sender

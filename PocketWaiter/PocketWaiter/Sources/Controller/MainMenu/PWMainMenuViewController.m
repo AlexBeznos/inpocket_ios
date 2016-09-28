@@ -9,7 +9,7 @@
 #import "PWMainMenuViewController.h"
 #import "UIViewControllerAdditions.h"
 #import "PWNearPresentsViewController.h"
-#import "PWNearSharesViewController.h"
+#import "PWSharesViewController.h"
 #import "PWNearRestaurantsViewController.h"
 #import "PWPurchasesViewController.h"
 #import "PWModelManager.h"
@@ -91,8 +91,8 @@
 	
 	if (nil != shares)
 	{
-		PWNearSharesViewController *nearSharesController =
-					[[PWNearSharesViewController alloc] initWithShares:shares
+		PWSharesViewController *nearSharesController =
+					[[PWSharesViewController alloc] initWithShares:shares title:nil
 					scrollHandler:^(CGPoint velocity)
 		{
 			[weakSelf handleVelocity:velocity];

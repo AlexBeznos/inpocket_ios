@@ -27,8 +27,9 @@
 @implementation PWDetailesSharesViewController
 
 - (instancetype)initWithShares:(NSArray<PWRestaurantShare *> *)shares
+			listOnly:(BOOL)listOnly
 {
-	self = [super init];
+	self = [super initWithListModeOnly:listOnly];
 	
 	if (nil != self)
 	{

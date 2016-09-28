@@ -11,6 +11,7 @@
 #import "PWRestaurant.h"
 #import "PWModelManager.h"
 #import "PWFirstPresentDetailsController.h"
+#import "PWSharesViewController.h"
 
 @interface PWPresentsTabController ()
 
@@ -56,8 +57,11 @@
 	[[PWModelManager sharedManager] getFirstPresentsInfoForUser:
 				[[PWModelManager sharedManager] registeredUser] restaurant:self.restaurant
 				completion:
-	^(PWPresentProduct *firstPresent, NSArray *shares, NSArray *presentByBonuses, NSError *error)
+	^(PWPresentProduct *firstPresent, NSArray<PWRestaurantShare *> *shares,
+				NSArray *presentByBonuses, NSError *error)
 	{
+		NSInteger estimatedHeight = 0;
+		UIView *previousView = nil;
 		if (nil != firstPresent)
 		{
 			[weakSelf stopActivity];
@@ -87,7 +91,54 @@
 						views:@{@"view" : firstPresentController.view}]];
 			
 			firstPresentController.contentSize = weakSelf.contentSize;
+			previousView = firstPresentController.view;
+			estimatedHeight += weakSelf.contentSize.height;
 		}
+		
+		if (nil != shares)
+		{
+			PWSharesViewController *sharesController =
+						[[PWSharesViewController alloc] initWithShares:shares title:@"Акции"
+						scrollHandler:^(CGPoint velocity)
+			{
+				[weakSelf handleVelocity:velocity];
+			}
+						transiter:weakSelf.transiter];
+			sharesController.colorScheme = weakSelf.restaurant.color;
+			[weakSelf addChildViewController:sharesController];
+			[weakSelf.scrollView addSubview:sharesController.view];
+			
+			[sharesController didMoveToParentViewController:self];
+			sharesController.view.translatesAutoresizingMaskIntoConstraints = NO;
+			
+			if (nil != previousView)
+			{
+				[weakSelf.scrollView addConstraint:[NSLayoutConstraint
+							constraintWithItem:sharesController.view
+							attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual
+							toItem:previousView
+							attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+			}
+			else
+			{
+				[weakSelf.scrollView addConstraints:[NSLayoutConstraint
+							constraintsWithVisualFormat:@"V:|[view]"
+							options:0 metrics:nil
+							views:@{@"view" : sharesController.view}]];
+			}
+			
+			[weakSelf.scrollView addConstraints:[NSLayoutConstraint
+						constraintsWithVisualFormat:@"H:|[view]"
+						options:0 metrics:nil
+						views:@{@"view" : sharesController.view}]];
+			
+			sharesController.contentSize = CGSizeMake(weakSelf.contentSize.width,
+						375 * weakSelf.contentSize.height / 320.);
+			estimatedHeight += sharesController.contentSize.height;
+			previousView = sharesController.view;
+		}
+		
+		weakSelf.scrollView.contentSize = CGSizeMake(weakSelf.contentSize.width, estimatedHeight);
 	}];
 	
 	self.scrollView.contentSize = weakSelf.contentSize;

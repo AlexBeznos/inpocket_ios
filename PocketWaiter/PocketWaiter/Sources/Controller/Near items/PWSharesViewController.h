@@ -10,9 +10,10 @@
 
 @class PWRestaurantShare;
 
-@interface PWNearSharesViewController : PWNearItemsViewController
+@interface PWSharesViewController : PWNearItemsViewController
 
 - (instancetype)initWithShares:(NSArray<PWRestaurantShare *> *)shares
+			title:(NSString *)title
 			scrollHandler:(void (^)(CGPoint velocity))aHandler
 			transiter:(id<IPWTransiter>)transiter;
 

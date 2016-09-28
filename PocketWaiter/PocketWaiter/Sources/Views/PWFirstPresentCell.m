@@ -40,6 +40,7 @@
 - (void)setColorScheme:(UIColor *)colorScheme
 {
 	self.getButton.bgColor = colorScheme;
+	self.getButton.colorScheme = [UIColor whiteColor];
 	self.yourFirstPresentLabel.textColor = colorScheme;
 	self.presentColoredView.image = [[UIImage imageNamed:@"collectedBonus"]
 				imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];

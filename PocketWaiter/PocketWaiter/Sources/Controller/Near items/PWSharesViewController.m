@@ -6,7 +6,7 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import "PWNearSharesViewController.h"
+#import "PWSharesViewController.h"
 #import "PWModelManager.h"
 #import "PWNearItemCollectionViewCell.h"
 #import "PWDetailesSharesViewController.h"
@@ -20,15 +20,17 @@
 
 @end
 
-@interface PWNearSharesViewController ()
+@interface PWSharesViewController ()
 
 @property (strong, nonatomic) NSArray<PWRestaurantShare *> *shares;
+@property (nonatomic, strong) NSString *preferredTitle;
 
 @end
 
-@implementation PWNearSharesViewController
+@implementation PWSharesViewController
 
 - (instancetype)initWithShares:(NSArray<PWRestaurantShare *> *)shares
+			title:(NSString *)title
 			scrollHandler:(void (^)(CGPoint velocity))aHandler
 			transiter:(id<IPWTransiter>)transiter
 {
@@ -37,6 +39,7 @@
 	if (nil != self)
 	{
 		self.shares = shares;
+		self.preferredTitle = title;
 	}
 	
 	return self;
@@ -75,7 +78,8 @@
 {
 	PWDetailesSharesViewController *controller =
 				[[PWDetailesSharesViewController alloc]
-				initWithShares:self.shares];
+				initWithShares:self.shares
+				listOnly:[self.preferredTitle isEqualToString:@"Акции"]];
 	
 	return controller;
 }
@@ -87,7 +91,7 @@
 
 - (NSString *)titleDescription
 {
-	return @"Акции рядом";
+	return nil == self.preferredTitle ? @"Акции рядом" : self.preferredTitle;
 }
 
 - (void)presentDetailsForItemAtIndex:(NSUInteger)index
