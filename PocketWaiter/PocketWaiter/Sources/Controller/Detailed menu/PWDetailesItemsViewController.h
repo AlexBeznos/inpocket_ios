@@ -7,9 +7,9 @@
 //
 
 #import "UIViewControllerAdditions.h"
-#import "PWActivityIndicatorOwner.h"
+#import "PWScrollableViewController.h"
 
-@interface PWDetailesItemsViewController : PWActivityIndicatorOwner
+@interface PWDetailesItemsViewController : PWScrollableViewController
 			<IPWTransitableController>
 
 - (instancetype)initWithListModeOnly:(BOOL)aListOnly;

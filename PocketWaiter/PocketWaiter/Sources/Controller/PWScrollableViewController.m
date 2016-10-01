@@ -1,23 +1,38 @@
 //
-//  PWActivityIndicatorOwner.m
+//  PWScrollableViewController.m
 //  PocketWaiter
 //
-//  Created by Www Www on 8/16/16.
+//  Created by Www Www on 10/1/16.
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import "PWActivityIndicatorOwner.h"
+#import "PWScrollableViewController.h"
 #import "PWActivityIndicator.h"
 #import "PWNoConnectionAlertController.h"
 
-@interface PWActivityIndicatorOwner ()
+@interface PWScrollableViewController ()
 
+@property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) PWActivityIndicator *activity;
 @property (nonatomic, strong) PWModalController *internetDialog;
 
 @end
 
-@implementation PWActivityIndicatorOwner
+@implementation PWScrollableViewController
+
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+	
+	self.scrollView = [UIScrollView new];
+	self.scrollView.backgroundColor = [UIColor clearColor];
+	self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+	[self.view insertSubview:self.scrollView atIndex:0];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|"
+				options:0 metrics:nil views:@{@"view" : self.scrollView}]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|"
+				options:0 metrics:nil views:@{@"view" : self.scrollView}]];
+}
 
 - (void)startActivity
 {
@@ -86,17 +101,12 @@
 	return _activity;
 }
 
-- (void)startAsyncActivity
+- (void)resumeActivity
 {
 
 }
 
-- (void)stopAsyncActivity
-{
-
-}
-
-- (void)restartAsyncActivity
+- (void)suspendActivity
 {
 
 }
@@ -107,11 +117,35 @@
 	PWNoConnectionAlertController *alert = [[PWNoConnectionAlertController alloc]
 				initWithType:kPWConnectionTypeInternet retryAction:
 	^{
-		[weakSelf startAsyncActivity];
+		[weakSelf resumeActivity];
 	}];
 	self.internetDialog = [[PWModalController alloc]
 				initWithContentController:alert autoDismiss:NO];
 	[self.internetDialog showWithCompletion:nil];
+}
+
+- (void)handleVelocity:(CGPoint)velocity
+{
+	CGFloat slideFactor = 0.2 * sqrt(velocity.x * velocity.x + velocity.y * velocity.y) / 5000;
+	
+	CGFloat yOffset = 0;
+	
+	if (velocity.y > 0)
+	{
+		CGFloat proposedOffset = self.scrollView.contentOffset.y -
+					velocity.y * slideFactor;
+		yOffset = proposedOffset > 0 ? proposedOffset : 0;
+	}
+	else
+	{
+		CGFloat proposedOffset = self.scrollView.contentOffset.y -
+					velocity.y * slideFactor;
+		CGFloat maxOffset = self.scrollView.contentSize.height -
+					CGRectGetHeight(self.scrollView.frame);
+		yOffset = proposedOffset < maxOffset ? proposedOffset : maxOffset;
+	}
+	NSLog(@"velocity %@ offset %f", NSStringFromCGPoint(velocity), yOffset);
+	[self.scrollView setContentOffset:CGPointMake(0, yOffset) animated:YES];
 }
 
 @end

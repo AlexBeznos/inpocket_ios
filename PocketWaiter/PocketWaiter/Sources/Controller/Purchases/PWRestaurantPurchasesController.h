@@ -6,12 +6,12 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import "PWActivityIndicatorOwner.h"
+#import "PWScrollableViewController.h"
 
 @class PWRestaurant;
 @class PWUser;
 
-@interface PWRestaurantPurchasesController : PWActivityIndicatorOwner
+@interface PWRestaurantPurchasesController : PWScrollableViewController
 
 - (instancetype)initWithUser:(PWUser *)user estimatedHeightHandler:(void (^)(CGFloat))handler;
 

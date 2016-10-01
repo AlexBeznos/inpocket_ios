@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PWActivityIndicatorOwner.h"
+#import "PWScrollableViewController.h"
 #import "UIViewControllerAdditions.h"
 
 @class PWUser;
 
-@interface PWPurchasesViewController : PWActivityIndicatorOwner
+@interface PWPurchasesViewController : PWScrollableViewController
 			<IPWTransitableController>
 
 - (instancetype)initWithUser:(PWUser *)user restaurants:(NSArray *)restaurants;

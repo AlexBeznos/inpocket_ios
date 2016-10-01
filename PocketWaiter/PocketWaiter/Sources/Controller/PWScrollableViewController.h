@@ -1,8 +1,8 @@
 //
-//  PWActivityIndicatorOwner.h
+//  PWScrollableViewController.h
 //  PocketWaiter
 //
-//  Created by Www Www on 8/16/16.
+//  Created by Www Www on 10/1/16.
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
@@ -10,7 +10,9 @@
 
 @class PWActivityIndicator;
 
-@interface PWActivityIndicatorOwner : UIViewController
+@interface PWScrollableViewController : UIViewController
+
+@property (nonatomic, readonly) UIScrollView *scrollView;
 
 @property (nonatomic, readonly) PWActivityIndicator *activity;
 
@@ -19,9 +21,8 @@
 - (void)startActivityWithTopOffset:(CGFloat)offset;
 - (void)stopActivity;
 
-- (void)startAsyncActivity;
-- (void)stopAsyncActivity;
-- (void)restartAsyncActivity;
+- (void)resumeActivity;
+- (void)suspendActivity;
 
 - (void)showNoInternetDialog;
 

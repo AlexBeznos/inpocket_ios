@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PWActivityIndicatorOwner.h"
+#import "PWScrollableViewController.h"
 #import "UIViewControllerAdditions.h"
 
-@interface PWMapController : PWActivityIndicatorOwner
+@interface PWMapController : PWScrollableViewController
 
 @property (nonatomic, weak, readonly) id<IPWTransiter> transiter;
 

@@ -6,12 +6,12 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PWScrollHandlerController.h"
 
 @protocol IPWTransiter;
 @class PWNearItemCollectionViewCell;
 
-@interface PWNearItemsViewController : UIViewController
+@interface PWNearItemsViewController : PWScrollHandlerController
 
 @property (nonatomic) CGSize contentSize;
 @property (nonatomic, weak, readonly) id<IPWTransiter> transiter;

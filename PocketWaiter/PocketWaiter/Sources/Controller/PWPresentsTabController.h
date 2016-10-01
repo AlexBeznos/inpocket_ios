@@ -6,12 +6,12 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import "PWActivityIndicatorOwner.h"
+#import "PWScrollableViewController.h"
 #import "UIViewControllerAdditions.h"
 
 @class PWRestaurant;
 
-@interface PWPresentsTabController : PWActivityIndicatorOwner
+@interface PWPresentsTabController : PWScrollableViewController
 
 - (instancetype)initWithRestaurant:(PWRestaurant *)restaurant
 			transiter:(id<IPWTransiter>)transiter;

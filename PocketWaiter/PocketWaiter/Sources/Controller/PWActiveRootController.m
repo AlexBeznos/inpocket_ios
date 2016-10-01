@@ -43,6 +43,8 @@
 {
 	[super viewDidLoad];
 	
+	self.scrollView.scrollEnabled = NO;
+	
 	__weak __typeof(self) weakSelf = self;
 	PWTabBarItem *presents = [[PWTabBarItem alloc] initWithTitle:@"ПОДАРКИ" handler:
 	^{
@@ -106,7 +108,7 @@
 		[theBonusesButton sizeToFit];
 		UILabel *bonussesLabel = [UILabel new];
 		bonussesLabel.font = [UIFont systemFontOfSize:15.];
-		bonussesLabel.text = [NSString stringWithFormat:@"%li", info.collectedBonuses];
+		bonussesLabel.text = [NSString stringWithFormat:@"%li", (unsigned long)info.collectedBonuses];
 		bonussesLabel.textColor = self.restaurant.color;
 		[bonussesLabel sizeToFit];
 		self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc]

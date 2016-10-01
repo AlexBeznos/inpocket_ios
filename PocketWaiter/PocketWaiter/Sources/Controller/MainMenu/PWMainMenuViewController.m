@@ -14,9 +14,9 @@
 #import "PWPurchasesViewController.h"
 #import "PWModelManager.h"
 
-@interface PWMainMenuViewController ()
+@interface PWScrollableViewController ()
 
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+- (void)handleVelocity:(CGPoint)velocity;
 
 @end
 
@@ -197,30 +197,6 @@
 	[theBonusesButton sizeToFit];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
 				initWithCustomView:theBonusesButton];
-}
-
-- (void)handleVelocity:(CGPoint)velocity
-{
-	CGFloat slideFactor = 0.2 * sqrt(velocity.x * velocity.x + velocity.y * velocity.y) / 5000;
-	
-	CGFloat yOffset = 0;
-	
-	if (velocity.y > 0)
-	{
-		CGFloat proposedOffset = self.scrollView.contentOffset.y -
-					velocity.y * slideFactor;
-		yOffset = proposedOffset > 0 ? proposedOffset : 0;
-	}
-	else
-	{
-		CGFloat proposedOffset = self.scrollView.contentOffset.y -
-					velocity.y * slideFactor;
-		CGFloat maxOffset = self.scrollView.contentSize.height -
-					CGRectGetHeight(self.scrollView.frame);
-		yOffset = proposedOffset < maxOffset ? proposedOffset : maxOffset;
-	}
-	NSLog(@"velocity %@ offset %f", NSStringFromCGPoint(velocity), yOffset);
-	[self.scrollView setContentOffset:CGPointMake(0, yOffset) animated:YES];
 }
 
 - (void)showBonuses

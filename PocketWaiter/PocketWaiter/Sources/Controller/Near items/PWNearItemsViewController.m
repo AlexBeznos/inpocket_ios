@@ -13,8 +13,7 @@
 #import "PWDetailesItemsViewController.h"
 
 @interface PWNearItemsViewController ()
-			<UICollectionViewDataSource, UICollectionViewDelegate,
-			UIGestureRecognizerDelegate>
+			<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet PWIndicator *indicator;
@@ -24,9 +23,7 @@
 @property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *widthConstraint;
 
-@property (nonatomic, copy) void (^handler)(CGPoint);
 @property (nonatomic, weak) id<IPWTransiter> transiter;
-@property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 
 @end
 
@@ -36,11 +33,10 @@
 			(void (^)(CGPoint velocity))aHandler
 			transiter:(id<IPWTransiter>)transiter
 {
-	self = [super init];
+	self = [super initWithScrollHandler:aHandler];
 	
 	if (nil != self)
 	{
-		self.handler = aHandler;
 		self.transiter = transiter;
 	}
 	
@@ -67,8 +63,11 @@
 	[self setupConstraints];
 	
 	[self registerCell];
-	
-	[self setupGestures];
+}
+
+- (UIView *)scrollHandlerView
+{
+	return self.collectionView;
 }
 
 - (void)setupIndicator
@@ -104,14 +103,6 @@
 	[self.view addConstraint:self.heightConstraint];
 }
 
-- (void)setupGestures
-{
-	self.panRecognizer = [[UIPanGestureRecognizer alloc]
-				initWithTarget:self action:@selector(panAction:)];
-	self.panRecognizer.delegate = self;
-	[self.collectionView addGestureRecognizer:self.panRecognizer];
-}
-
 - (void)registerCell
 {
 	[self.collectionView registerNib:[UINib
@@ -142,14 +133,6 @@
 - (NSArray *)contentItems
 {
 	return nil;
-}
-
-- (void)panAction:(UIPanGestureRecognizer *)sender
-{
-	if (nil != self.handler && sender.state == UIGestureRecognizerStateEnded)
-	{
-		self.handler([sender velocityInView:self.collectionView]);
-	}
 }
 
 - (void)setContentSize:(CGSize)contentSize
@@ -227,30 +210,6 @@
 	float currentPage = scrollView.contentOffset.x / pageWidth + 0.5;
 	
 	[self handleScrollToPage:currentPage];
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
-			shouldRecognizeSimultaneouslyWithGestureRecognizer:
-			(UIGestureRecognizer *)otherGestureRecognizer
-{
-	return YES;
-}
-
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
-{
-	if ([gestureRecognizer isEqual:self.panRecognizer])
-	{
-		if (gestureRecognizer.numberOfTouches > 0)
-		{
-			CGPoint translation = [self.panRecognizer velocityInView:self.collectionView];
-			return fabs(translation.y) > fabs(translation.x);
-		}
-		else
-		{
-			return NO;
-		}
-	}
-	return YES;
 }
 
 @end

@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "PWContentSource.h"
 #import "UIViewControllerAdditions.h"
-#import "PWActivityIndicatorOwner.h"
+#import "PWScrollableViewController.h"
 
-@interface PWMainMenuItemViewController :
-			PWActivityIndicatorOwner <IPWContentTransitionControler, IPWTransiter>
+@interface PWMainMenuItemViewController : PWScrollableViewController
+			<IPWContentTransitionControler, IPWTransiter>
 
 @property (nonatomic, readonly) NSString *name;
 

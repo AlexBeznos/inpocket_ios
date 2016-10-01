@@ -134,17 +134,12 @@
 	[self navigateViewController:self.rootMenuController];
 }
 
-- (void)startAsyncActivity
+- (void)resumeActivity
 {
 	[self validateBeacons];
 }
 
-- (void)stopAsyncActivity
-{
-
-}
-
-- (void)restartAsyncActivity
+- (void)suspendActivity
 {
 
 }

@@ -6,8 +6,8 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import "PWActivityIndicatorOwner.h"
+#import "PWScrollableViewController.h"
 
-@interface PWMainViewController : PWActivityIndicatorOwner
+@interface PWMainViewController : PWScrollableViewController
 
 @end
