@@ -14,6 +14,7 @@
 		CA3CE6CE1D9FE7A300825A0A /* PWPresentByBonusesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6CC1D9FE7A300825A0A /* PWPresentByBonusesViewController.xib */; };
 		CA3CE6D21D9FF82900825A0A /* PWProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6D01D9FF82900825A0A /* PWProductCell.m */; };
 		CA3CE6D31D9FF82900825A0A /* PWProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6D11D9FF82900825A0A /* PWProductCell.xib */; };
+		CA3CE6D61DA020EB00825A0A /* PWGridProductsController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6D51DA020EB00825A0A /* PWGridProductsController.m */; };
 		CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */; };
 		CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */; };
 		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
@@ -220,6 +221,8 @@
 		CA3CE6CF1D9FF82900825A0A /* PWProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWProductCell.h; sourceTree = "<group>"; };
 		CA3CE6D01D9FF82900825A0A /* PWProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWProductCell.m; sourceTree = "<group>"; };
 		CA3CE6D11D9FF82900825A0A /* PWProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWProductCell.xib; sourceTree = "<group>"; };
+		CA3CE6D41DA020EB00825A0A /* PWGridProductsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGridProductsController.h; sourceTree = "<group>"; };
+		CA3CE6D51DA020EB00825A0A /* PWGridProductsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGridProductsController.m; sourceTree = "<group>"; };
 		CAF090FD1D4D3938005FAEF4 /* PocketWaiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketWaiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAF0911A1D4D3A4C005FAEF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -502,6 +505,8 @@
 				CA3CE6CA1D9FE7A300825A0A /* PWPresentByBonusesViewController.h */,
 				CA3CE6CB1D9FE7A300825A0A /* PWPresentByBonusesViewController.m */,
 				CA3CE6CC1D9FE7A300825A0A /* PWPresentByBonusesViewController.xib */,
+				CA3CE6D41DA020EB00825A0A /* PWGridProductsController.h */,
+				CA3CE6D51DA020EB00825A0A /* PWGridProductsController.m */,
 			);
 			name = PresentsByBonuses;
 			sourceTree = "<group>";
@@ -1159,6 +1164,7 @@
 			files = (
 				CAF091941D56165C005FAEF4 /* PWMainViewController.m in Sources */,
 				CAF092B31D627264005FAEF4 /* PWPresentsMapController.m in Sources */,
+				CA3CE6D61DA020EB00825A0A /* PWGridProductsController.m in Sources */,
 				CAFE611E1D997E0E003F5991 /* PWFirstPresentDetailsController.m in Sources */,
 				CA3CE6BE1D9BD38D00825A0A /* PWSharesViewController.m in Sources */,
 				CAF092541D607B69005FAEF4 /* PWDetailedNearItemsCollectionController.m in Sources */,

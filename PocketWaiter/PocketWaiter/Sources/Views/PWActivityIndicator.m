@@ -52,7 +52,7 @@
 	if (nil == _imageView)
 	{
 		_imageView = [[UIImageView alloc] initWithImage:
-					[UIImage imageNamed:@"blackBack"]];
+					[UIImage imageNamed:@"activity"]];
 		[_imageView sizeToFit];
 		_imageView.translatesAutoresizingMaskIntoConstraints = NO;
 		

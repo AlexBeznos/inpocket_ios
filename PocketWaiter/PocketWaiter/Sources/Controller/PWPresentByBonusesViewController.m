@@ -12,6 +12,7 @@
 #import "PWProductCell.h"
 #import "PWRestaurant.h"
 #import "PWPrice.h"
+#import "PWGridProductsController.h"
 
 @interface PWPresentByBonusesViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -103,12 +104,11 @@
 
 - (void)presentDetailItems
 {
-	[self.transiter performForwardTransition:[self allItemsController]];
-}
-
-- (UIViewController<IPWTransitableController> *)allItemsController
-{
-	return nil;
+	PWGridProductsController *grid = [[PWGridProductsController alloc]
+				initWithPresents:self.presents restaurant:self.restaurant];
+	grid.view.translatesAutoresizingMaskIntoConstraints = NO;
+	grid.contentWidth = self.contentSize.width;
+	[self.transiter performForwardTransition:grid];
 }
 
 - (void)setContentSize:(CGSize)contentSize

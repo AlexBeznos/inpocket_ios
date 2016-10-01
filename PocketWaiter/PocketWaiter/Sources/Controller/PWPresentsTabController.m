@@ -86,9 +86,9 @@
 						options:0 metrics:nil
 						views:@{@"view" : firstPresentController.view}]];
 			
-			firstPresentController.contentSize = weakSelf.contentSize;
+			firstPresentController.contentSize = CGSizeMake(weakSelf.contentWidth, weakSelf.contentWidth);
 			previousView = firstPresentController.view;
-			estimatedHeight += weakSelf.contentSize.height;
+			estimatedHeight += weakSelf.contentWidth;
 		}
 		
 		if (nil != shares)
@@ -127,16 +127,17 @@
 						constraintsWithVisualFormat:@"H:|[view]"
 						options:0 metrics:nil
 						views:@{@"view" : sharesController.view}]];
-			
-			sharesController.contentSize = CGSizeMake(weakSelf.contentSize.width,
-						375 * weakSelf.contentSize.height / 320.);
+			sharesController.contentSize = CGSizeMake(weakSelf.contentWidth,
+						375 *weakSelf.contentWidth / 320.);
 			estimatedHeight += sharesController.contentSize.height;
 			previousView = sharesController.view;
 		}
 		if (nil != presentsByBonuses)
 		{
 			PWPresentByBonusesViewController *presentsController =
-						[[PWPresentByBonusesViewController alloc] initWithPresents:presentsByBonuses restaurant:weakSelf.restaurant scrollHandler:^(CGPoint velocity)
+						[[PWPresentByBonusesViewController alloc]
+						initWithPresents:presentsByBonuses
+						restaurant:weakSelf.restaurant scrollHandler:^(CGPoint velocity)
 			{
 				[weakSelf handleVelocity:velocity];
 			}
@@ -169,15 +170,15 @@
 						options:0 metrics:nil
 						views:@{@"view" : presentsController.view}]];
 			
-			presentsController.contentSize = CGSizeMake(weakSelf.contentSize.width,
-						320 * weakSelf.contentSize.height / 320.);
+			presentsController.contentSize = CGSizeMake(weakSelf.contentWidth,
+						320 * weakSelf.contentWidth / 320.);
 			estimatedHeight += presentsController.contentSize.height;
 		}
 		
-		weakSelf.scrollView.contentSize = CGSizeMake(weakSelf.contentSize.width, estimatedHeight);
+		weakSelf.scrollView.contentSize = CGSizeMake(weakSelf.contentWidth, estimatedHeight);
 	}];
 	
-	self.scrollView.contentSize = weakSelf.contentSize;
+	self.scrollView.contentSize = CGSizeMake(weakSelf.contentWidth, weakSelf.contentWidth);
 }
 
 @end

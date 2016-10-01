@@ -154,12 +154,19 @@
 
 - (void)performForwardTransition:
 			(UIViewController<IPWTransitableController> *)controller
+			inView:(UIView *)view insets:(UIEdgeInsets)insets
 {
 	[self.transitedControllers addObject:controller];
 	controller.transiter = self;
 	[controller setupWithNavigationItem:self.navigationItem];
 	self.transitedController = controller;
-	self.trasitedConstraint = [self navigateViewController:controller];
+	self.trasitedConstraint = [self navigateViewController:controller inView:view withOffsets:insets];
+}
+
+- (void)performForwardTransition:
+			(UIViewController<IPWTransitableController> *)controller
+{
+	[self performForwardTransition:controller inView:self.view insets:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 
 

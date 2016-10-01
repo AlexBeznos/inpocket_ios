@@ -13,6 +13,14 @@
 #import "PWModelManager.h"
 #import "PWPresentsTabController.h"
 
+@interface PWMainMenuItemViewController (Protected)
+
+- (void)performForwardTransition:
+			(UIViewController<IPWTransitableController> *)controller
+			inView:(UIView *)view insets:(UIEdgeInsets)insets;
+
+@end
+
 @interface PWActiveRootController ()
 
 @property (strong, nonatomic) IBOutlet PWTabBar *tabbar;
@@ -20,6 +28,7 @@
 @property (strong, nonatomic) IBOutlet UIView *bottomBar;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomBarConstraint;
+@property (strong, nonatomic) PWPresentsTabController *presentController;
 
 @end
 
@@ -69,25 +78,13 @@
 	[self.tabbar addItem:reviews];
 	[self.tabbar addItem:about];
 	self.tabbar.colorSchema = self.restaurant.color;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
 	
-	PWPresentsTabController *presentsController = [[PWPresentsTabController
-				alloc] initWithRestaurant:self.restaurant transiter:self];
-	CGFloat aspectRatio = CGRectGetWidth(self.parentViewController.view.frame) / 320.;
-	presentsController.contentSize = CGSizeMake(320 * aspectRatio, 320 * aspectRatio);
-	[self addChildViewController:presentsController];
-	[self.contentView addSubview:presentsController.view];
-			
-	[presentsController didMoveToParentViewController:self];
-	presentsController.view.translatesAutoresizingMaskIntoConstraints = NO;
-	
-	[self.contentView addConstraints:[NSLayoutConstraint
-				constraintsWithVisualFormat:@"V:|[view]|"
-				options:0 metrics:nil
-				views:@{@"view" : presentsController.view}]];
-	[self.contentView addConstraints:[NSLayoutConstraint
-				constraintsWithVisualFormat:@"H:|[view]|"
-				options:0 metrics:nil
-				views:@{@"view" : presentsController.view}]];
+	[self showPresents];
 }
 
 - (void)setupNavigation
@@ -127,9 +124,43 @@
 	return self.restaurant.name;
 }
 
+- (void)performForwardTransition:
+			(UIViewController<IPWTransitableController> *)controller
+{
+	[self performForwardTransition:controller
+				inView:self.view insets:[controller isKindOfClass:[PWPurchasesViewController class]] ?
+				UIEdgeInsetsMake(0, 0, 0, 0) :
+				UIEdgeInsetsMake(0, 0, CGRectGetHeight(self.bottomBar.frame), 0)];
+}
+
+- (void)clearViews
+{
+	[self.presentController.view removeFromSuperview];
+	[self.presentController removeFromParentViewController];
+}
+
 - (void)showPresents
 {
-
+	[self clearViews];
+	PWPresentsTabController *presentsController = [[PWPresentsTabController
+				alloc] initWithRestaurant:self.restaurant transiter:self];
+	CGFloat aspectRatio = CGRectGetWidth(self.parentViewController.view.frame) / 320.;
+	presentsController.contentWidth = 320 * aspectRatio;
+	[self addChildViewController:presentsController];
+	[self.contentView addSubview:presentsController.view];
+			
+	[presentsController didMoveToParentViewController:self];
+	presentsController.view.translatesAutoresizingMaskIntoConstraints = NO;
+	
+	[self.contentView addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"V:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : presentsController.view}]];
+	[self.contentView addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"H:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : presentsController.view}]];
+	self.presentController = presentsController;
 }
 
 - (void)showMenu

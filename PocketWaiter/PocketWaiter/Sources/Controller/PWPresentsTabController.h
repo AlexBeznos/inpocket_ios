@@ -16,6 +16,6 @@
 - (instancetype)initWithRestaurant:(PWRestaurant *)restaurant
 			transiter:(id<IPWTransiter>)transiter;
 
-@property (nonatomic) CGSize contentSize;
+@property (nonatomic) CGFloat contentWidth;
 
 @end

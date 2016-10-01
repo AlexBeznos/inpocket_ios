@@ -66,42 +66,41 @@
 
 - (NSLayoutConstraint *)navigateViewController:(UIViewController *)controller
 {
+	return [self navigateViewController:controller inView:self.view
+				withOffsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+}
+
+- (NSLayoutConstraint *)navigateViewController:(UIViewController *)controller inView:(UIView *)view withOffsets:(UIEdgeInsets)offsets
+{
 	[self addChildViewController:controller];
-	[self.view addSubview:controller.view];
+	[view addSubview:controller.view];
+	[controller willMoveToParentViewController:self];
 	controller.view.translatesAutoresizingMaskIntoConstraints = NO;
-	
-	[self.view addConstraint:[NSLayoutConstraint
-				constraintWithItem:self.view attribute:NSLayoutAttributeHeight
-				relatedBy:NSLayoutRelationEqual toItem:controller.view
-				attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
 	
 	[self.view addConstraint:[NSLayoutConstraint
 				constraintWithItem:self.view attribute:NSLayoutAttributeWidth
 				relatedBy:NSLayoutRelationEqual toItem:controller.view
 				attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
-	
-	[self.view addConstraint:[NSLayoutConstraint
-				constraintWithItem:self.view attribute:NSLayoutAttributeCenterY
-				relatedBy:NSLayoutRelationEqual toItem:controller.view
-				attribute:NSLayoutAttributeCenterY multiplier:1
-				constant:0]];
+	[view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:
+				@"V:|-(t)-[view]-(b)-|" options:0 metrics:@{@"t" : @(offsets.top), @"b" : @(offsets.bottom)}
+				views:@{@"view" : controller.view}]];
 	
 	NSLayoutConstraint *constraint = [NSLayoutConstraint
-				constraintWithItem:self.view attribute:NSLayoutAttributeLeft
+				constraintWithItem:view attribute:NSLayoutAttributeLeft
 				relatedBy:NSLayoutRelationEqual toItem:controller.view
 				attribute:NSLayoutAttributeLeft multiplier:1
-				constant:-CGRectGetWidth(self.view.frame)];
+				constant:-CGRectGetWidth(view.frame)];
 	
-	[self.view addConstraint:constraint];
+	[view addConstraint:constraint];
 	
-	[self.view setNeedsLayout];
-	[self.view layoutIfNeeded];
+	[view setNeedsLayout];
+	[view layoutIfNeeded];
 	
 	[UIView animateWithDuration:0.25 animations:
 	^{
-		constraint.constant = 0;
-		[self.view setNeedsLayout];
-		[self.view layoutIfNeeded];
+		constraint.constant = offsets.left;
+		[view setNeedsLayout];
+		[view layoutIfNeeded];
 	}];
 	
 	return constraint;
