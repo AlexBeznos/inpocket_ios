@@ -12,6 +12,7 @@
 #import "PWModelManager.h"
 #import "PWFirstPresentDetailsController.h"
 #import "PWSharesViewController.h"
+#import "PWPresentByBonusesViewController.h"
 
 @interface PWScrollableViewController ()
 
@@ -53,7 +54,7 @@
 				[[PWModelManager sharedManager] registeredUser] restaurant:self.restaurant
 				completion:
 	^(PWPresentProduct *firstPresent, NSArray<PWRestaurantShare *> *shares,
-				NSArray *presentByBonuses, NSError *error)
+				NSArray *presentsByBonuses, NSError *error)
 	{
 		NSInteger estimatedHeight = 0;
 		UIView *previousView = nil;
@@ -131,6 +132,46 @@
 						375 * weakSelf.contentSize.height / 320.);
 			estimatedHeight += sharesController.contentSize.height;
 			previousView = sharesController.view;
+		}
+		if (nil != presentsByBonuses)
+		{
+			PWPresentByBonusesViewController *presentsController =
+						[[PWPresentByBonusesViewController alloc] initWithPresents:presentsByBonuses restaurant:weakSelf.restaurant scrollHandler:^(CGPoint velocity)
+			{
+				[weakSelf handleVelocity:velocity];
+			}
+						transiter:weakSelf.transiter];
+
+			[weakSelf addChildViewController:presentsController];
+			[weakSelf.scrollView addSubview:presentsController.view];
+			
+			[presentsController didMoveToParentViewController:self];
+			presentsController.view.translatesAutoresizingMaskIntoConstraints = NO;
+			
+			if (nil != previousView)
+			{
+				[weakSelf.scrollView addConstraint:[NSLayoutConstraint
+							constraintWithItem:presentsController.view
+							attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual
+							toItem:previousView
+							attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+			}
+			else
+			{
+				[weakSelf.scrollView addConstraints:[NSLayoutConstraint
+							constraintsWithVisualFormat:@"V:|[view]"
+							options:0 metrics:nil
+							views:@{@"view" : presentsController.view}]];
+			}
+			
+			[weakSelf.scrollView addConstraints:[NSLayoutConstraint
+						constraintsWithVisualFormat:@"H:|[view]"
+						options:0 metrics:nil
+						views:@{@"view" : presentsController.view}]];
+			
+			presentsController.contentSize = CGSizeMake(weakSelf.contentSize.width,
+						320 * weakSelf.contentSize.height / 320.);
+			estimatedHeight += presentsController.contentSize.height;
 		}
 		
 		weakSelf.scrollView.contentSize = CGSizeMake(weakSelf.contentSize.width, estimatedHeight);

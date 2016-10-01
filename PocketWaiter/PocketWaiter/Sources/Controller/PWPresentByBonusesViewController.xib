@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PWPresentByBonusesViewController">
+            <connections>
+                <outlet property="collectionView" destination="hit-jj-JVC" id="GRJ-V5-L5V"/>
+                <outlet property="label" destination="S17-gd-7HK" id="ets-Zh-lbK"/>
+                <outlet property="layout" destination="PXl-Ny-06x" id="pwT-Qu-gtL"/>
+                <outlet property="view" destination="Uod-bF-wrv" id="9yy-XS-0ed"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Uod-bF-wrv">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S17-gd-7HK">
+                    <rect key="frame" x="20" y="20" width="49" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="Jgf-mG-gUO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="hit-jj-JVC">
+                    <rect key="frame" x="0.0" y="54" width="320" height="546"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <collectionViewLayout key="collectionViewLayout" id="PXl-Ny-06x" customClass="PWSlidesLayout"/>
+                </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J0E-R4-zoi">
+                    <rect key="frame" x="0.0" y="15" width="320" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="fDd-Nk-WRr"/>
+                    </constraints>
+                    <connections>
+                        <action selector="actionPressed:" destination="-1" eventType="touchUpInside" id="etr-gT-9Uw"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackLittleArrow" translatesAutoresizingMaskIntoConstraints="NO" id="kiD-G5-MRZ">
+                    <rect key="frame" x="272" y="17" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="3tT-Wj-UAZ"/>
+                        <constraint firstAttribute="height" constant="24" id="xdI-TD-Hdc"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="kiD-G5-MRZ" secondAttribute="trailing" constant="24" id="HsG-SE-Dwb"/>
+                <constraint firstItem="hit-jj-JVC" firstAttribute="width" secondItem="Uod-bF-wrv" secondAttribute="width" id="W6I-ax-n69"/>
+                <constraint firstItem="J0E-R4-zoi" firstAttribute="top" secondItem="Uod-bF-wrv" secondAttribute="top" constant="15" id="Wmn-lR-YRz"/>
+                <constraint firstItem="kiD-G5-MRZ" firstAttribute="top" secondItem="Uod-bF-wrv" secondAttribute="top" constant="17" id="eHz-rX-vT3"/>
+                <constraint firstItem="hit-jj-JVC" firstAttribute="top" secondItem="S17-gd-7HK" secondAttribute="bottom" constant="10" id="eue-Jk-ljI"/>
+                <constraint firstItem="hit-jj-JVC" firstAttribute="leading" secondItem="Uod-bF-wrv" secondAttribute="leading" id="hcN-XU-YQx"/>
+                <constraint firstItem="S17-gd-7HK" firstAttribute="leading" secondItem="Uod-bF-wrv" secondAttribute="leading" constant="20" id="lbQ-w8-zi5"/>
+                <constraint firstAttribute="bottom" secondItem="hit-jj-JVC" secondAttribute="bottom" id="p49-zt-ZJe"/>
+                <constraint firstAttribute="trailing" secondItem="J0E-R4-zoi" secondAttribute="trailing" id="qGx-Al-eTX"/>
+                <constraint firstItem="S17-gd-7HK" firstAttribute="top" secondItem="Uod-bF-wrv" secondAttribute="top" constant="20" id="qIz-dq-rfO"/>
+                <constraint firstItem="J0E-R4-zoi" firstAttribute="leading" secondItem="Uod-bF-wrv" secondAttribute="leading" id="zmy-om-lCG"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="blackLittleArrow" width="24" height="24"/>
+    </resources>
+</document>

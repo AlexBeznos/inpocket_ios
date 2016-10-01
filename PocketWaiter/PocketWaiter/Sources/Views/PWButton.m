@@ -57,7 +57,6 @@
 	
 	self.arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"whiteLittleArrow"]];
 	self.arrowView.translatesAutoresizingMaskIntoConstraints = NO;
-//	self.arrowView.backgroundColor = [UIColor clearColor];
 	[self.arrowView sizeToFit];
 	[self.arrowView addConstraint:[NSLayoutConstraint constraintWithItem:self.arrowView
 				attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual

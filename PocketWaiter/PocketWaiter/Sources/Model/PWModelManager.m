@@ -415,7 +415,7 @@
 	presentProduct1.type = kPWProductTypeRegular;
 	presentProduct1.bonusesPrice = 25;
 	
-	PWProduct *presentProduct2 = [PWProduct new];
+	PWPresentProduct *presentProduct2 = [PWPresentProduct new];
 	presentProduct2.category = @"Hookah";
 	presentProduct2.name = @"Tanjir";
 	presentProduct2.productDescription = @"For hardcore smokers";
