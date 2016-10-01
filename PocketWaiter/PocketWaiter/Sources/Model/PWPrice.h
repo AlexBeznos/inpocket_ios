@@ -11,6 +11,8 @@
 
 @interface PWPrice : PWModelObject
 
+- (instancetype)initWithValue:(CGFloat)value currency:(PWPriceCurrency)currency;
+
 @property (nonatomic, readonly) PWPriceCurrency currency;
 @property (nonatomic, readonly) CGFloat value;
 @property (nonatomic, readonly) NSString *humanReadableValue;

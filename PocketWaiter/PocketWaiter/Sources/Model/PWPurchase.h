@@ -9,6 +9,7 @@
 #import "PWModelObject.h"
 
 @class PWOrder;
+@class PWPrice;
 
 @interface PWPurchase : PWModelObject
 
@@ -16,6 +17,8 @@
 @property (nonatomic, readonly) NSArray<PWOrder *> *orders;
 @property (nonatomic, readonly) NSArray<PWOrder *> *presents;
 @property (nonatomic, readonly) NSString *restaurantId;
+
+@property (nonatomic, readonly) PWPrice *totalPrice;
 
 @property (nonatomic, readonly) NSUInteger bonusesCount;
 

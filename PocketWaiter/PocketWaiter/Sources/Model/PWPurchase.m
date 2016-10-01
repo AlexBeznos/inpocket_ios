@@ -9,6 +9,7 @@
 #import "PWPurchase.h"
 #import "PWOrder.h"
 #import "PWProduct.h"
+#import "PWPrice.h"
 
 @interface PWPurchase ()
 
@@ -31,6 +32,19 @@
 	}
 	
 	return count;
+}
+
+- (PWPrice *)totalPrice
+{
+	NSUInteger count = 0;
+	
+	for (PWOrder *order in self.orders)
+	{
+		count += order.product.price.value * order.count;
+	}
+	
+	return [[PWPrice alloc] initWithValue:count
+				currency:self.orders.firstObject.product.price.currency];
 }
 
 @end

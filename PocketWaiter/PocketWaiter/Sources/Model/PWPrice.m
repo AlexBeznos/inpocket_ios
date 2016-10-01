@@ -12,11 +12,23 @@
 
 @property (nonatomic) PWPriceCurrency currency;
 @property (nonatomic) CGFloat value;
-@property (nonatomic, strong) NSString *humanReadableValue;
 
 @end
 
 @implementation PWPrice
+
+- (instancetype)initWithValue:(CGFloat)value currency:(PWPriceCurrency)currency
+{
+	self = [super init];
+	
+	if (nil != self)
+	{
+		self.currency = currency;
+		self.value = value;
+	}
+	
+	return self;
+}
 
 - (NSString *)humanReadableValue
 {

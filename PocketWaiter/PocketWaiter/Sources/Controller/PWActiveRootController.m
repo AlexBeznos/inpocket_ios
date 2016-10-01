@@ -30,6 +30,9 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomBarConstraint;
 @property (strong, nonatomic) PWPresentsTabController *presentController;
 
+@property (nonatomic, strong) UIButton *callWaiterButton;
+@property (nonatomic, strong) UIButton *orderButton;
+
 @end
 
 @implementation PWActiveRootController
@@ -78,6 +81,27 @@
 	[self.tabbar addItem:reviews];
 	[self.tabbar addItem:about];
 	self.tabbar.colorSchema = self.restaurant.color;
+	
+	[self.bottomBar addSubview:self.orderButton];
+	[self.bottomBar addConstraint:[NSLayoutConstraint
+				constraintWithItem:self.orderButton attribute:NSLayoutAttributeLeft
+				relatedBy:NSLayoutRelationEqual toItem:self.bottomBar
+				attribute:NSLayoutAttributeLeft multiplier:1 constant:10]];
+	[self.bottomBar addConstraint:[NSLayoutConstraint
+				constraintWithItem:self.orderButton attribute:NSLayoutAttributeCenterY
+				relatedBy:NSLayoutRelationEqual toItem:self.bottomBar
+				attribute:NSLayoutAttributeCenterY multiplier:1 constant:10]];
+	
+	[self.bottomBar addSubview:self.callWaiterButton];
+	[self.bottomBar addConstraint:[NSLayoutConstraint
+				constraintWithItem:self.callWaiterButton attribute:NSLayoutAttributeRight
+				relatedBy:NSLayoutRelationEqual toItem:self.bottomBar
+				attribute:NSLayoutAttributeRight multiplier:1 constant:-10]];
+	[self.bottomBar addConstraint:[NSLayoutConstraint
+				constraintWithItem:self.callWaiterButton attribute:NSLayoutAttributeCenterY
+				relatedBy:NSLayoutRelationEqual toItem:self.bottomBar
+				attribute:NSLayoutAttributeCenterY multiplier:1 constant:10]];
+	self.bottomBar.backgroundColor = self.restaurant.color;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -184,6 +208,60 @@
 				initWithUser:[[PWModelManager sharedManager] registeredUser]
 				restaurants:@[self.restaurant]];
 	[self performForwardTransition:controller];
+}
+
+- (UIButton *)callWaiterButton
+{
+	if (nil == _callWaiterButton)
+	{
+		_callWaiterButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		_callWaiterButton.backgroundColor = [UIColor clearColor];
+		_callWaiterButton.translatesAutoresizingMaskIntoConstraints = NO;
+		[_callWaiterButton addConstraint:[NSLayoutConstraint
+					constraintWithItem:_callWaiterButton attribute:NSLayoutAttributeWidth
+					relatedBy:NSLayoutRelationEqual toItem:nil
+					attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:40]];
+		[_callWaiterButton addConstraint:[NSLayoutConstraint
+					constraintWithItem:_callWaiterButton attribute:NSLayoutAttributeHeight
+					relatedBy:NSLayoutRelationEqual toItem:nil
+					attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:40]];
+		
+		[_callWaiterButton setImage:[UIImage imageNamed:@"bell"] forState:UIControlStateNormal];
+		[_callWaiterButton addTarget:self action:@selector(callWaiter)
+					forControlEvents:UIControlEventTouchUpInside];
+	}
+	
+	return _callWaiterButton;
+}
+
+- (UIButton *)orderButton
+{
+	if (nil == _orderButton)
+	{
+		_orderButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		_orderButton.backgroundColor = [UIColor clearColor];
+		_orderButton.translatesAutoresizingMaskIntoConstraints = NO;
+		[_orderButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+		[_orderButton addTarget:self action:@selector(showOrder)
+					forControlEvents:UIControlEventTouchUpInside];
+		PWUser *currentUser = [[PWModelManager sharedManager] registeredUser];
+		PWPurchase *currentPurchase = currentUser.currentPurchases[self.restaurant.name];
+		
+		[_orderButton setTitle:[NSString stringWithFormat:@"Ваш заказ %@",
+					currentPurchase.totalPrice.humanReadableValue] forState:UIControlStateNormal];
+	}
+	
+	return _orderButton;
+}
+
+- (void)callWaiter
+{
+
+}
+
+- (void)showOrder
+{
+
 }
 
 @end

@@ -21,6 +21,8 @@
 @property (nonatomic, readonly) NSArray<PWPurchase *> *purchases;
 @property (nonatomic, readonly) NSArray<PWUsersRestaurantInfo *> *restaurants;
 
+@property (nonatomic, readonly) NSDictionary<NSString *, PWPurchase *> *currentPurchases;
+
 - (PWUsersRestaurantInfo *)infoForRestaurant:(PWRestaurant *)restaurant;
 
 @end
