@@ -10,6 +10,7 @@
 #import "PWOrder.h"
 #import "PWProduct.h"
 #import "PWPrice.h"
+#import "PWPresentProduct.h"
 
 @interface PWPurchase ()
 
@@ -21,6 +22,22 @@
 @end
 
 @implementation PWPurchase
+
+- (instancetype)initWithFirstPresent:(PWPresentProduct *)present
+{
+	self = [super init];
+	
+	if (nil != self)
+	{
+		self.date = [NSDate date];
+		PWOrder *presentOrder = [PWOrder new];
+		presentOrder.count = 1;
+		presentOrder.product = present;
+		self.presents = @[presentOrder];
+	}
+	
+	return self;
+}
 
 - (NSUInteger)bonusesCount
 {

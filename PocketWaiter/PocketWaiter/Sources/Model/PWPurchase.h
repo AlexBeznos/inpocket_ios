@@ -10,8 +10,11 @@
 
 @class PWOrder;
 @class PWPrice;
+@class PWPresentProduct;
 
 @interface PWPurchase : PWModelObject
+
+- (instancetype)initWithFirstPresent:(PWPresentProduct *)present;
 
 @property (nonatomic, readonly) NSDate *date;
 @property (nonatomic, readonly) NSArray<PWOrder *> *orders;

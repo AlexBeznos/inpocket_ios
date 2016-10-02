@@ -15,6 +15,7 @@
 		CA3CE6D21D9FF82900825A0A /* PWProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6D01D9FF82900825A0A /* PWProductCell.m */; };
 		CA3CE6D31D9FF82900825A0A /* PWProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6D11D9FF82900825A0A /* PWProductCell.xib */; };
 		CA3CE6D61DA020EB00825A0A /* PWGridProductsController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6D51DA020EB00825A0A /* PWGridProductsController.m */; };
+		CA3CE6DA1DA10BC000825A0A /* PWThanksForOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6D91DA10BC000825A0A /* PWThanksForOrderViewController.m */; };
 		CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */; };
 		CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */; };
 		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
@@ -223,6 +224,8 @@
 		CA3CE6D11D9FF82900825A0A /* PWProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWProductCell.xib; sourceTree = "<group>"; };
 		CA3CE6D41DA020EB00825A0A /* PWGridProductsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGridProductsController.h; sourceTree = "<group>"; };
 		CA3CE6D51DA020EB00825A0A /* PWGridProductsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGridProductsController.m; sourceTree = "<group>"; };
+		CA3CE6D81DA10BC000825A0A /* PWThanksForOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWThanksForOrderViewController.h; sourceTree = "<group>"; };
+		CA3CE6D91DA10BC000825A0A /* PWThanksForOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWThanksForOrderViewController.m; sourceTree = "<group>"; };
 		CAF090FD1D4D3938005FAEF4 /* PocketWaiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketWaiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAF0911A1D4D3A4C005FAEF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -509,6 +512,15 @@
 				CA3CE6D51DA020EB00825A0A /* PWGridProductsController.m */,
 			);
 			name = PresentsByBonuses;
+			sourceTree = "<group>";
+		};
+		CA3CE6D71DA10B9D00825A0A /* ThanksForOrder */ = {
+			isa = PBXGroup;
+			children = (
+				CA3CE6D81DA10BC000825A0A /* PWThanksForOrderViewController.h */,
+				CA3CE6D91DA10BC000825A0A /* PWThanksForOrderViewController.m */,
+			);
+			name = ThanksForOrder;
 			sourceTree = "<group>";
 		};
 		CAF090F41D4D3938005FAEF4 = {
@@ -933,6 +945,7 @@
 		CAFE60FB1D98FAC4003F5991 /* Active mode */ = {
 			isa = PBXGroup;
 			children = (
+				CA3CE6D71DA10B9D00825A0A /* ThanksForOrder */,
 				CAFE61171D994BEB003F5991 /* Present tab */,
 				CAFE61041D990D47003F5991 /* ActiveRootController */,
 				CAFE60FC1D98FAFE003F5991 /* PWWelcomeViewController.h */,
@@ -1184,6 +1197,7 @@
 				CAF091891D4E94B6005FAEF4 /* PWWorkingTime.m in Sources */,
 				CA3CE6C21D9FDDBB00825A0A /* PWScrollableViewController.m in Sources */,
 				CAF092D91D63AE60005FAEF4 /* PWNoPurchasesViewController.m in Sources */,
+				CA3CE6DA1DA10BC000825A0A /* PWThanksForOrderViewController.m in Sources */,
 				CAF0925B1D607B69005FAEF4 /* PWNearItemsViewController.m in Sources */,
 				CAF092D51D63A770005FAEF4 /* PWActivityIndicator.m in Sources */,
 				CAF0913A1D4D4062005FAEF4 /* PWIndicator.m in Sources */,

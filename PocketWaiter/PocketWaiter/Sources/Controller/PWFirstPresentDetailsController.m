@@ -11,6 +11,8 @@
 #import "PWRestaurant.h"
 #import "PWButton.h"
 #import "UIColorAdditions.h"
+#import "PWThanksForOrderViewController.h"
+#import "PWPurchase.h"
 
 @interface PWFirstPresentDetailsController ()
 
@@ -77,6 +79,17 @@
 - (void)transitionBack
 {
 	[self.transiter performBackTransition];
+}
+
+- (IBAction)getPresent:(PWButton *)sender
+{
+	CGFloat aspectRatio = CGRectGetWidth(self.parentViewController.view.frame) / 320.;
+	PWPurchase *purchase = [[PWPurchase alloc] initWithFirstPresent:self.present];
+	PWThanksForOrderViewController *controller = [[PWThanksForOrderViewController alloc]
+				initWithRestaurant:self.restaurant purchase:purchase
+				title:@"Ваш первый подарок" contentWidth:aspectRatio * 320];
+	
+	[self.transiter performForwardTransition:controller];
 }
 
 @end

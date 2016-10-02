@@ -80,6 +80,9 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Ycx-wu-qYN"/>
                     </constraints>
+                    <connections>
+                        <action selector="getPresent:" destination="-1" eventType="touchUpInside" id="gTh-mi-r5K"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

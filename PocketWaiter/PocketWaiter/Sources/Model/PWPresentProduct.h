@@ -10,6 +10,7 @@
 
 @interface PWPresentProduct : PWProduct
 
++ (instancetype)firstPresentFromSourcePresent:(PWPresentProduct *)present;
 @property (nonatomic, readonly) NSUInteger bonusesPrice;
 
 @end
