@@ -128,7 +128,7 @@
 
 - (void)performBackTransitionToRoot
 {
-	for (NSInteger i = 0; i < self.transitedControllers.count - 1; i++)
+	for (NSInteger i = 0; i < (NSInteger)self.transitedControllers.count - 1; i++)
 	{
 		[[self.transitedControllers[i] view] removeFromSuperview];
 	}
@@ -159,7 +159,7 @@
 	{
 		[self.transitedController.view removeFromSuperview];
 		[self.transitedController removeFromParentViewController];
-		self.transitedController = [self.transitedControllers firstObject];
+		self.transitedController = [self.transitedControllers lastObject];
 	}];
 }
 

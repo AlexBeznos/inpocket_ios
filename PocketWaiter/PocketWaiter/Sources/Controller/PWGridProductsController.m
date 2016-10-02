@@ -11,13 +11,16 @@
 #import "PWRestaurant.h"
 #import "PWProductCell.h"
 #import "UIColorAdditions.h"
+#import "PWPrice.h"
 
 @interface PWGridProductsController () <UICollectionViewDelegate,UICollectionViewDataSource>
 
-@property (nonatomic, strong) NSArray<PWPresentProduct *> *presents;
+@property (nonatomic, strong) NSArray<PWProduct *> *products;
 @property (nonatomic, strong) PWRestaurant *restaurant;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
+@property (nonatomic, strong) NSString *labelTitle;
+@property (nonatomic) BOOL isPresent;
 
 @end
 
@@ -25,15 +28,17 @@
 
 @synthesize transiter;
 
-- (instancetype)initWithPresents:(NSArray<PWPresentProduct *> *)presents
-			restaurant:(PWRestaurant *)restaurant
+- (instancetype)initWithProducts:(NSArray<PWProduct *> *)products
+			restaurant:(PWRestaurant *)restaurant title:(NSString *)title isPresent:(BOOL)isPresent
 {
 	self = [super init];
 	
 	if (nil != self)
 	{
-		self.presents = presents;
+		self.products = products;
 		self.restaurant = restaurant;
+		self.labelTitle = title;
+		self.isPresent = isPresent;
 	}
 	
 	return self;
@@ -78,7 +83,7 @@
 				navigationItem:item];
 	
 	UILabel *theTitleLabel = [UILabel new];
-	theTitleLabel.text = @"Подарки за бонусами";
+	theTitleLabel.text = self.labelTitle;
 	theTitleLabel.font = [UIFont systemFontOfSize:20];
 	[theTitleLabel sizeToFit];
 	
@@ -121,13 +126,22 @@
 	PWProductCell *cell = [self.collectionView
 				dequeueReusableCellWithReuseIdentifier:@"id" forIndexPath:indexPath];
 	
-	PWPresentProduct *present = [self.presents objectAtIndex:indexPath.item];
+	PWProduct *product = [self.products objectAtIndex:indexPath.item];
 	
-	[cell.bonusesLabel removeFromSuperview];
-	cell.productImageView.image = present.icon;
+	if (self.isPresent)
+	{
+		PWPresentProduct *present = (PWPresentProduct *)product;
+		[cell.bonusesLabel removeFromSuperview];
+		cell.priceLabel.text = [NSString stringWithFormat:@"%li бонусов", present.bonusesPrice];
+	}
+	else
+	{
+		cell.priceLabel.text = product.price.humanReadableValue;
+		cell.bonusesLabel.text = [NSString stringWithFormat:@"+%li", product.bonusesValue];
+	}
+	cell.productImageView.image = product.icon;
 	cell.getButton.backgroundColor = self.restaurant.color;
-	cell.nameLabel.text = present.name;
-	cell.priceLabel.text = [NSString stringWithFormat:@"%li бонусов", present.bonusesPrice];
+	cell.nameLabel.text = product.name;
 	cell.bonusesImageView.image = [[UIImage imageNamed:@"collectedBonus"]
 					imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 	[cell.bonusesImageView setTintColor:self.restaurant.color];
@@ -135,8 +149,8 @@
 	cell.addToOrderLabel.text = @"+ Добавить в заказ";
 	cell.addToOrderHandler =
 	^{
-		[weakSelf presentAddToOrderForItemAtIndex:[self.presents
-					indexOfObject:present]];
+		[weakSelf presentAddToOrderForItemAtIndex:[weakSelf.products
+					indexOfObject:product]];
 	};
 	
 	return cell;
@@ -145,7 +159,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView
 			numberOfItemsInSection:(NSInteger)section
 {
-	return self.presents.count;
+	return self.products.count;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

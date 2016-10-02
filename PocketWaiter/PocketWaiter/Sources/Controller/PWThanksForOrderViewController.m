@@ -10,6 +10,13 @@
 #import "PWModelManager.h"
 #import "UIColorAdditions.h"
 #import "PWThanksForOrderHolderController.h"
+#import "PWProductViewController.h"
+
+@interface PWScrollableViewController (Protected)
+
+- (void)handleVelocity:(CGPoint)velocity;
+
+@end
 
 @interface PWThanksForOrderViewController ()
 
@@ -77,6 +84,66 @@
 	previousView = controller.view;
 	estimatedHeight +=controller.contentSize.height;
 	self.scrollView.contentSize = CGSizeMake(weakSelf.contentWidth, estimatedHeight);
+	
+	[[PWModelManager sharedManager] getRecomendedProductsInfoForUser:
+				[[PWModelManager sharedManager] registeredUser]
+				restaurant:self.restaurant completion:
+	^(NSArray<PWProduct *> *products, BOOL allowShare, BOOL allowComment, NSError *error)
+	{
+		if (nil == error)
+		{
+			NSInteger newEstimatedHeight = estimatedHeight;
+			if (nil != products)
+			{
+				PWProductViewController *productController =
+							[[PWProductViewController alloc]
+							initWithProducts:products
+							restaurant:weakSelf.restaurant scrollHandler:^(CGPoint velocity)
+				{
+					[weakSelf handleVelocity:velocity];
+				}
+							transiter:weakSelf.transiter title:@"Заказать еще" isPresents:NO];
+
+				[weakSelf addChildViewController:productController];
+				[weakSelf.scrollView addSubview:productController.view];
+				
+				[productController didMoveToParentViewController:self];
+				productController.view.translatesAutoresizingMaskIntoConstraints = NO;
+				
+				if (nil != previousView)
+				{
+					[weakSelf.scrollView addConstraint:[NSLayoutConstraint
+								constraintWithItem:productController.view
+								attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual
+								toItem:previousView
+								attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+				}
+				else
+				{
+					[weakSelf.scrollView addConstraints:[NSLayoutConstraint
+								constraintsWithVisualFormat:@"V:|[view]"
+								options:0 metrics:nil
+								views:@{@"view" : productController.view}]];
+				}
+				
+				[weakSelf.scrollView addConstraints:[NSLayoutConstraint
+							constraintsWithVisualFormat:@"H:|[view]"
+							options:0 metrics:nil
+							views:@{@"view" : productController.view}]];
+				
+				productController.contentSize = CGSizeMake(weakSelf.contentWidth,
+							320 * weakSelf.contentWidth / 320.);
+				newEstimatedHeight += productController.contentSize.height;
+				
+				weakSelf.scrollView.contentSize = CGSizeMake(weakSelf.contentWidth, newEstimatedHeight);
+			}
+
+		}
+		else
+		{
+			[weakSelf showNoInternetDialog];
+		}
+	}];
 }
 
 - (void)transitionBack

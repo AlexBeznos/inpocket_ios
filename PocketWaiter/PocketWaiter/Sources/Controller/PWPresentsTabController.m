@@ -12,7 +12,7 @@
 #import "PWModelManager.h"
 #import "PWFirstPresentDetailsController.h"
 #import "PWSharesViewController.h"
-#import "PWPresentByBonusesViewController.h"
+#import "PWProductViewController.h"
 
 @interface PWScrollableViewController ()
 
@@ -134,14 +134,14 @@
 		}
 		if (nil != presentsByBonuses)
 		{
-			PWPresentByBonusesViewController *presentsController =
-						[[PWPresentByBonusesViewController alloc]
-						initWithPresents:presentsByBonuses
+			PWProductViewController *presentsController =
+						[[PWProductViewController alloc]
+						initWithProducts:presentsByBonuses
 						restaurant:weakSelf.restaurant scrollHandler:^(CGPoint velocity)
 			{
 				[weakSelf handleVelocity:velocity];
 			}
-						transiter:weakSelf.transiter];
+						transiter:weakSelf.transiter title:@"Подарки за бонусами" isPresents:YES];
 
 			[weakSelf addChildViewController:presentsController];
 			[weakSelf.scrollView addSubview:presentsController.view];

@@ -58,4 +58,7 @@
 - (void)getFirstPresentsInfoForUser:(PWUser *)user restaurant:(PWRestaurant *)restaurant
 			completion:(void (^)(PWPresentProduct *firstPresent, NSArray *shares, NSArray *presentByBonuses, NSError *error))completion;
 
+- (void)getRecomendedProductsInfoForUser:(PWUser *)user restaurant:(PWRestaurant *)restaurant
+			completion:(void (^)(NSArray<PWProduct *> *products, BOOL allowShare, BOOL allowComment, NSError *error))completion;
+
 @end

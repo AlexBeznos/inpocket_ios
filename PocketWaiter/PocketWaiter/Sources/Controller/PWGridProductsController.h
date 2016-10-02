@@ -9,7 +9,7 @@
 #import "PWScrollableViewController.h"
 #import "UIViewControllerAdditions.h"
 
-@class PWPresentProduct;
+@class PWProduct;
 @class PWRestaurant;
 
 @interface PWGridProductsController : PWScrollableViewController
@@ -17,7 +17,7 @@
 
 @property (nonatomic) CGFloat contentWidth;
 
-- (instancetype)initWithPresents:(NSArray<PWPresentProduct *> *)presents
-			restaurant:(PWRestaurant *)restaurant;
+- (instancetype)initWithProducts:(NSArray<PWProduct *> *)products
+			restaurant:(PWRestaurant *)restaurant title:(NSString *)title isPresent:(BOOL)isPresent;
 
 @end

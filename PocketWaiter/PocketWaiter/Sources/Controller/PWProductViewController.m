@@ -6,7 +6,7 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import "PWPresentByBonusesViewController.h"
+#import "PWProductViewController.h"
 #import "PWSlidesLayout.h"
 #import "PWPresentProduct.h"
 #import "PWProductCell.h"
@@ -14,7 +14,7 @@
 #import "PWPrice.h"
 #import "PWGridProductsController.h"
 
-@interface PWPresentByBonusesViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface PWProductViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UILabel *label;
@@ -24,25 +24,30 @@
 @property (nonatomic, strong) NSLayoutConstraint *widthConstraint;
 
 @property (nonatomic, weak) id<IPWTransiter> transiter;
-@property (nonatomic, strong) NSArray<PWPresentProduct *> *presents;
+@property (nonatomic, strong) NSArray<PWProduct *> *products;
 @property (nonatomic, strong) PWRestaurant *restaurant;
+
+@property (nonatomic, strong) NSString *labelTitle;
+@property (nonatomic) BOOL isPresents;
 
 @end
 
-@implementation PWPresentByBonusesViewController
+@implementation PWProductViewController
 
-- (instancetype)initWithPresents:(NSArray<PWPresentProduct *> *)presents
+- (instancetype)initWithProducts:(NSArray<PWProduct *> *)products
 			restaurant:(PWRestaurant *)restaurant
 			scrollHandler:(void (^)(CGPoint velocity))aHandler
-			transiter:(id<IPWTransiter>)transiter
+			transiter:(id<IPWTransiter>)transiter title:(NSString *)title isPresents:(BOOL)isPresent
 {
 	self = [super initWithScrollHandler:aHandler];
 	
 	if (nil != self)
 	{
 		self.transiter = transiter;
-		self.presents = presents;
+		self.products = products;
 		self.restaurant = restaurant;
+		self.labelTitle = title;
+		self.isPresents = isPresent;
 	}
 	
 	return self;
@@ -53,7 +58,7 @@
 	[super viewDidLoad];
 	
 	self.view.translatesAutoresizingMaskIntoConstraints = NO;
-	self.label.text = @"Подарки за бонусами";
+	self.label.text = self.labelTitle;
 	self.collectionView.delegate = self;
 	self.collectionView.dataSource = self;
 	
@@ -71,7 +76,7 @@
 
 - (void)setupLayout
 {
-	self.layout.countOfSlides = self.presents.count;
+	self.layout.countOfSlides = self.products.count;
 	self.layout.minimumLineSpacing = 20;
 	self.layout.sectionInset = UIEdgeInsetsMake(0, 10, 5, 10);
 	self.layout.minimumInteritemSpacing = 0;
@@ -105,7 +110,8 @@
 - (void)presentDetailItems
 {
 	PWGridProductsController *grid = [[PWGridProductsController alloc]
-				initWithPresents:self.presents restaurant:self.restaurant];
+				initWithProducts:self.products restaurant:self.restaurant
+				title:self.labelTitle isPresent:self.isPresents];
 	grid.view.translatesAutoresizingMaskIntoConstraints = NO;
 	grid.contentWidth = self.contentSize.width;
 	[self.transiter performForwardTransition:grid];
@@ -141,13 +147,22 @@
 	PWProductCell *cell = [self.collectionView
 				dequeueReusableCellWithReuseIdentifier:@"id" forIndexPath:indexPath];
 	
-	PWPresentProduct *present = [self.presents objectAtIndex:indexPath.item];
+	PWProduct *product = [self.products objectAtIndex:indexPath.item];
 	
-	[cell.bonusesLabel removeFromSuperview];
-	cell.productImageView.image = present.icon;
+	if (self.isPresents)
+	{
+		PWPresentProduct *present = (PWPresentProduct *)product;
+		[cell.bonusesLabel removeFromSuperview];
+		cell.priceLabel.text = [NSString stringWithFormat:@"%li бонусов", present.bonusesPrice];
+	}
+	else
+	{
+		cell.priceLabel.text = product.price.humanReadableValue;
+		cell.bonusesLabel.text = [NSString stringWithFormat:@"+%li", product.bonusesValue];
+	}
+	cell.productImageView.image = product.icon;
 	cell.getButton.backgroundColor = self.restaurant.color;
-	cell.nameLabel.text = present.name;
-	cell.priceLabel.text = [NSString stringWithFormat:@"%li бонусов", present.bonusesPrice];
+	cell.nameLabel.text = product.name;
 	cell.bonusesImageView.image = [[UIImage imageNamed:@"collectedBonus"]
 					imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 	[cell.bonusesImageView setTintColor:self.restaurant.color];
@@ -155,8 +170,8 @@
 	cell.addToOrderLabel.text = @"+ Добавить в заказ";
 	cell.addToOrderHandler =
 	^{
-		[weakSelf presentAddToOrderForItemAtIndex:[self.presents
-					indexOfObject:present]];
+		[weakSelf presentAddToOrderForItemAtIndex:[weakSelf.products
+					indexOfObject:product]];
 	};
 	
 	return cell;
@@ -165,7 +180,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView
 			numberOfItemsInSection:(NSInteger)section
 {
-	return self.presents.count;
+	return self.products.count;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

@@ -9,17 +9,17 @@
 #import "PWScrollHandlerController.h"
 #import "UIViewControllerAdditions.h"
 
-@class PWPresentProduct;
+@class PWProduct;
 @class PWRestaurant;
 
-@interface PWPresentByBonusesViewController : PWScrollHandlerController
+@interface PWProductViewController : PWScrollHandlerController
 
 @property (nonatomic) CGSize contentSize;
 @property (nonatomic, weak, readonly) id<IPWTransiter> transiter;
 
-- (instancetype)initWithPresents:(NSArray<PWPresentProduct *> *)presents
+- (instancetype)initWithProducts:(NSArray<PWProduct *> *)products
 			restaurant:(PWRestaurant *)restaurant
 			scrollHandler:(void (^)(CGPoint velocity))aHandler
-			transiter:(id<IPWTransiter>)transiter;
+			transiter:(id<IPWTransiter>)transiter title:(NSString *)title isPresents:(BOOL)isPresent;
 
 @end

@@ -10,8 +10,8 @@
 		CA3CE6BE1D9BD38D00825A0A /* PWSharesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6BD1D9BD38D00825A0A /* PWSharesViewController.m */; };
 		CA3CE6C21D9FDDBB00825A0A /* PWScrollableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6C11D9FDDBB00825A0A /* PWScrollableViewController.m */; };
 		CA3CE6C81D9FE3A000825A0A /* PWScrollHandlerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6C71D9FE3A000825A0A /* PWScrollHandlerController.m */; };
-		CA3CE6CD1D9FE7A300825A0A /* PWPresentByBonusesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6CB1D9FE7A300825A0A /* PWPresentByBonusesViewController.m */; };
-		CA3CE6CE1D9FE7A300825A0A /* PWPresentByBonusesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6CC1D9FE7A300825A0A /* PWPresentByBonusesViewController.xib */; };
+		CA3CE6CD1D9FE7A300825A0A /* PWProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6CB1D9FE7A300825A0A /* PWProductViewController.m */; };
+		CA3CE6CE1D9FE7A300825A0A /* PWProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6CC1D9FE7A300825A0A /* PWProductViewController.xib */; };
 		CA3CE6D21D9FF82900825A0A /* PWProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6D01D9FF82900825A0A /* PWProductCell.m */; };
 		CA3CE6D31D9FF82900825A0A /* PWProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6D11D9FF82900825A0A /* PWProductCell.xib */; };
 		CA3CE6D61DA020EB00825A0A /* PWGridProductsController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6D51DA020EB00825A0A /* PWGridProductsController.m */; };
@@ -218,9 +218,9 @@
 		CA3CE6C11D9FDDBB00825A0A /* PWScrollableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWScrollableViewController.m; sourceTree = "<group>"; };
 		CA3CE6C61D9FE3A000825A0A /* PWScrollHandlerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWScrollHandlerController.h; sourceTree = "<group>"; };
 		CA3CE6C71D9FE3A000825A0A /* PWScrollHandlerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWScrollHandlerController.m; sourceTree = "<group>"; };
-		CA3CE6CA1D9FE7A300825A0A /* PWPresentByBonusesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWPresentByBonusesViewController.h; sourceTree = "<group>"; };
-		CA3CE6CB1D9FE7A300825A0A /* PWPresentByBonusesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWPresentByBonusesViewController.m; sourceTree = "<group>"; };
-		CA3CE6CC1D9FE7A300825A0A /* PWPresentByBonusesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWPresentByBonusesViewController.xib; sourceTree = "<group>"; };
+		CA3CE6CA1D9FE7A300825A0A /* PWProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWProductViewController.h; sourceTree = "<group>"; };
+		CA3CE6CB1D9FE7A300825A0A /* PWProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWProductViewController.m; sourceTree = "<group>"; };
+		CA3CE6CC1D9FE7A300825A0A /* PWProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWProductViewController.xib; sourceTree = "<group>"; };
 		CA3CE6CF1D9FF82900825A0A /* PWProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWProductCell.h; sourceTree = "<group>"; };
 		CA3CE6D01D9FF82900825A0A /* PWProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWProductCell.m; sourceTree = "<group>"; };
 		CA3CE6D11D9FF82900825A0A /* PWProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWProductCell.xib; sourceTree = "<group>"; };
@@ -510,9 +510,9 @@
 		CA3CE6C91D9FE71900825A0A /* PresentsByBonuses */ = {
 			isa = PBXGroup;
 			children = (
-				CA3CE6CA1D9FE7A300825A0A /* PWPresentByBonusesViewController.h */,
-				CA3CE6CB1D9FE7A300825A0A /* PWPresentByBonusesViewController.m */,
-				CA3CE6CC1D9FE7A300825A0A /* PWPresentByBonusesViewController.xib */,
+				CA3CE6CA1D9FE7A300825A0A /* PWProductViewController.h */,
+				CA3CE6CB1D9FE7A300825A0A /* PWProductViewController.m */,
+				CA3CE6CC1D9FE7A300825A0A /* PWProductViewController.xib */,
 				CA3CE6D41DA020EB00825A0A /* PWGridProductsController.h */,
 				CA3CE6D51DA020EB00825A0A /* PWGridProductsController.m */,
 			);
@@ -1137,7 +1137,7 @@
 				CAF092221D5F6D3F005FAEF4 /* PWQRCodeScanViewController.xib in Resources */,
 				CAF091EC1D57B239005FAEF4 /* PWNearItemCollectionViewCell.xib in Resources */,
 				CAF091911D560B80005FAEF4 /* PWIntroViewController.xib in Resources */,
-				CA3CE6CE1D9FE7A300825A0A /* PWPresentByBonusesViewController.xib in Resources */,
+				CA3CE6CE1D9FE7A300825A0A /* PWProductViewController.xib in Resources */,
 				CAF092A51D60C52E005FAEF4 /* GoogleMaps.bundle in Resources */,
 				CAF092021D5D1838005FAEF4 /* PWNearRestaurantsViewController.xib in Resources */,
 				CAFE60021D7CA831003F5991 /* PWSharePromoController.xib in Resources */,
@@ -1252,7 +1252,7 @@
 				CAFE5FED1D7B62F9003F5991 /* PWPurchaseTableViewCell.m in Sources */,
 				CAF091861D4E94AE005FAEF4 /* PWPurchase.m in Sources */,
 				CAF0918A1D4E94B8005FAEF4 /* PWRestaurantAboutInfo.m in Sources */,
-				CA3CE6CD1D9FE7A300825A0A /* PWPresentByBonusesViewController.m in Sources */,
+				CA3CE6CD1D9FE7A300825A0A /* PWProductViewController.m in Sources */,
 				CAFE5FDC1D6DECA2003F5991 /* PWPurchaseRestaurantCell.m in Sources */,
 				CAF091841D4E949C005FAEF4 /* PWOrder.m in Sources */,
 				CAF091F11D57B6BE005FAEF4 /* PWSlidesLayout.m in Sources */,
