@@ -87,7 +87,7 @@
 	PWPurchase *purchase = [[PWPurchase alloc] initWithFirstPresent:self.present];
 	PWThanksForOrderViewController *controller = [[PWThanksForOrderViewController alloc]
 				initWithRestaurant:self.restaurant purchase:purchase
-				title:@"Ваш первый подарок" contentWidth:aspectRatio * 320];
+				title:@"Ваш первый подарок" contentWidth:aspectRatio * 320 isFirstPresent:YES];
 	
 	[self.transiter performForwardTransition:controller];
 }

@@ -16,6 +16,7 @@
 			<IPWTransitableController>
 
 - (instancetype)initWithRestaurant:(PWRestaurant *)restaurant
-			purchase:(PWPurchase *)purchase title:(NSString *)title contentWidth:(CGFloat)width;
+			purchase:(PWPurchase *)purchase title:(NSString *)title
+			contentWidth:(CGFloat)width isFirstPresent:(BOOL)firstPresent;
 
 @end

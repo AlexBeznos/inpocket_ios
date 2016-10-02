@@ -16,6 +16,7 @@
 			UIViewController<IPWTransitableController> *transitedController;
 
 - (void)performBackTransition;
+- (void)performBackTransitionToRoot;
 - (void)performForwardTransition:
 			(UIViewController<IPWTransitableController> *)controller;
 

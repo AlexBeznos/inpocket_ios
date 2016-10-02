@@ -126,6 +126,17 @@
 	}
 }
 
+- (void)performBackTransitionToRoot
+{
+	for (NSInteger i = 0; i < self.transitedControllers.count - 1; i++)
+	{
+		[[self.transitedControllers[i] view] removeFromSuperview];
+	}
+	
+	[self.transitedControllers removeAllObjects];
+	[self performBackTransition];
+}
+
 - (void)performBackTransition
 {
 	[self.transitedControllers removeObject:self.transitedController];

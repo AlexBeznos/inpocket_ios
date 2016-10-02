@@ -16,6 +16,8 @@
 		CA3CE6D31D9FF82900825A0A /* PWProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6D11D9FF82900825A0A /* PWProductCell.xib */; };
 		CA3CE6D61DA020EB00825A0A /* PWGridProductsController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6D51DA020EB00825A0A /* PWGridProductsController.m */; };
 		CA3CE6DA1DA10BC000825A0A /* PWThanksForOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6D91DA10BC000825A0A /* PWThanksForOrderViewController.m */; };
+		CA3CE6DE1DA1139700825A0A /* PWThanksForOrderHolderController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6DC1DA1139700825A0A /* PWThanksForOrderHolderController.m */; };
+		CA3CE6DF1DA1139700825A0A /* PWThanksForOrderHolderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6DD1DA1139700825A0A /* PWThanksForOrderHolderController.xib */; };
 		CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */; };
 		CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */; };
 		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
@@ -226,6 +228,9 @@
 		CA3CE6D51DA020EB00825A0A /* PWGridProductsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGridProductsController.m; sourceTree = "<group>"; };
 		CA3CE6D81DA10BC000825A0A /* PWThanksForOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWThanksForOrderViewController.h; sourceTree = "<group>"; };
 		CA3CE6D91DA10BC000825A0A /* PWThanksForOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWThanksForOrderViewController.m; sourceTree = "<group>"; };
+		CA3CE6DB1DA1139700825A0A /* PWThanksForOrderHolderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWThanksForOrderHolderController.h; sourceTree = "<group>"; };
+		CA3CE6DC1DA1139700825A0A /* PWThanksForOrderHolderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWThanksForOrderHolderController.m; sourceTree = "<group>"; };
+		CA3CE6DD1DA1139700825A0A /* PWThanksForOrderHolderController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWThanksForOrderHolderController.xib; sourceTree = "<group>"; };
 		CAF090FD1D4D3938005FAEF4 /* PocketWaiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketWaiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAF0911A1D4D3A4C005FAEF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -519,6 +524,9 @@
 			children = (
 				CA3CE6D81DA10BC000825A0A /* PWThanksForOrderViewController.h */,
 				CA3CE6D91DA10BC000825A0A /* PWThanksForOrderViewController.m */,
+				CA3CE6DB1DA1139700825A0A /* PWThanksForOrderHolderController.h */,
+				CA3CE6DC1DA1139700825A0A /* PWThanksForOrderHolderController.m */,
+				CA3CE6DD1DA1139700825A0A /* PWThanksForOrderHolderController.xib */,
 			);
 			name = ThanksForOrder;
 			sourceTree = "<group>";
@@ -1117,6 +1125,7 @@
 			files = (
 				CAFE5FD31D6DE51C003F5991 /* PWNoConnectionAlertController.xib in Resources */,
 				CAFE5FF01D7B8237003F5991 /* PWPurchaseTableViewCell.xib in Resources */,
+				CA3CE6DF1DA1139700825A0A /* PWThanksForOrderHolderController.xib in Resources */,
 				CAF091DA1D5799DB005FAEF4 /* coffeetoria3.jpg in Resources */,
 				CAF092C51D628006005FAEF4 /* PWDetailesItemsViewController.xib in Resources */,
 				CA3CE6D31D9FF82900825A0A /* PWProductCell.xib in Resources */,
@@ -1203,6 +1212,7 @@
 				CAF0913A1D4D4062005FAEF4 /* PWIndicator.m in Sources */,
 				CAF092591D607B69005FAEF4 /* PWMainMenuItemViewController.m in Sources */,
 				CAF0916E1D4E9054005FAEF4 /* PWRestaurant.m in Sources */,
+				CA3CE6DE1DA1139700825A0A /* PWThanksForOrderHolderController.m in Sources */,
 				CAF092C11D627C3C005FAEF4 /* PWDetailesPresentsViewController.m in Sources */,
 				CAFE61031D98FBDD003F5991 /* PWButton.m in Sources */,
 				CAF092E51D63B9BC005FAEF4 /* UIImageAdditions.m in Sources */,
