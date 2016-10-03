@@ -20,6 +20,7 @@
 		CA3CE6DF1DA1139700825A0A /* PWThanksForOrderHolderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6DD1DA1139700825A0A /* PWThanksForOrderHolderController.xib */; };
 		CA3CE6E31DA159C600825A0A /* PWMoreBonusesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6E11DA159C600825A0A /* PWMoreBonusesViewController.m */; };
 		CA3CE6E41DA159C600825A0A /* PWMoreBonusesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6E21DA159C600825A0A /* PWMoreBonusesViewController.xib */; };
+		CA3CE6E81DA22EA400825A0A /* PWMenuTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6E71DA22EA400825A0A /* PWMenuTabController.m */; };
 		CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */; };
 		CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */; };
 		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
@@ -236,6 +237,8 @@
 		CA3CE6E01DA159C600825A0A /* PWMoreBonusesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWMoreBonusesViewController.h; sourceTree = "<group>"; };
 		CA3CE6E11DA159C600825A0A /* PWMoreBonusesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWMoreBonusesViewController.m; sourceTree = "<group>"; };
 		CA3CE6E21DA159C600825A0A /* PWMoreBonusesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWMoreBonusesViewController.xib; sourceTree = "<group>"; };
+		CA3CE6E61DA22EA400825A0A /* PWMenuTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWMenuTabController.h; sourceTree = "<group>"; };
+		CA3CE6E71DA22EA400825A0A /* PWMenuTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWMenuTabController.m; sourceTree = "<group>"; };
 		CAF090FD1D4D3938005FAEF4 /* PocketWaiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketWaiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAF0911A1D4D3A4C005FAEF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -520,6 +523,8 @@
 				CA3CE6CC1D9FE7A300825A0A /* PWProductViewController.xib */,
 				CA3CE6D41DA020EB00825A0A /* PWGridProductsController.h */,
 				CA3CE6D51DA020EB00825A0A /* PWGridProductsController.m */,
+				CA3CE6E61DA22EA400825A0A /* PWMenuTabController.h */,
+				CA3CE6E71DA22EA400825A0A /* PWMenuTabController.m */,
 			);
 			name = PresentsByBonuses;
 			sourceTree = "<group>";
@@ -537,6 +542,13 @@
 				CA3CE6E21DA159C600825A0A /* PWMoreBonusesViewController.xib */,
 			);
 			name = ThanksForOrder;
+			sourceTree = "<group>";
+		};
+		CA3CE6E51DA22E7400825A0A /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Menu;
 			sourceTree = "<group>";
 		};
 		CAF090F41D4D3938005FAEF4 = {
@@ -961,6 +973,7 @@
 		CAFE60FB1D98FAC4003F5991 /* Active mode */ = {
 			isa = PBXGroup;
 			children = (
+				CA3CE6E51DA22E7400825A0A /* Menu */,
 				CA3CE6D71DA10B9D00825A0A /* ThanksForOrder */,
 				CAFE61171D994BEB003F5991 /* Present tab */,
 				CAFE61041D990D47003F5991 /* ActiveRootController */,
@@ -1232,6 +1245,7 @@
 				CAFE61081D990D79003F5991 /* PWActiveRootController.m in Sources */,
 				CAF0925A1D607B69005FAEF4 /* PWMainMenuViewController.m in Sources */,
 				CAFE610C1D990DE6003F5991 /* PWTabBar.m in Sources */,
+				CA3CE6E81DA22EA400825A0A /* PWMenuTabController.m in Sources */,
 				CAFE5FE01D6DED05003F5991 /* PWCollectionView.m in Sources */,
 				CAFE5FE91D6DFDAC003F5991 /* PWRestaurantPurchasesController.m in Sources */,
 				CAF0912F1D4D3A4C005FAEF4 /* PWAppDelegate.m in Sources */,

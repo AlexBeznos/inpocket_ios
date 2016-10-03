@@ -12,6 +12,7 @@
 #import "PWPurchasesViewController.h"
 #import "PWModelManager.h"
 #import "PWPresentsTabController.h"
+#import "PWMenuTabController.h"
 
 @interface PWMainMenuItemViewController (Protected)
 
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomBarConstraint;
 @property (strong, nonatomic) PWPresentsTabController *presentController;
+@property (strong, nonatomic) PWMenuTabController *menuController;
 
 @property (nonatomic, strong) UIButton *callWaiterButton;
 @property (nonatomic, strong) UIButton *orderButton;
@@ -189,7 +191,26 @@
 
 - (void)showMenu
 {
-
+	[self clearViews];
+	PWMenuTabController *menuController = [[PWMenuTabController
+				alloc] initWithRestaurant:self.restaurant transiter:self];
+	CGFloat aspectRatio = CGRectGetWidth(self.parentViewController.view.frame) / 320.;
+	menuController.contentWidth = 320 * aspectRatio;
+	[self addChildViewController:menuController];
+	[self.contentView addSubview:menuController.view];
+			
+	[menuController didMoveToParentViewController:self];
+	menuController.view.translatesAutoresizingMaskIntoConstraints = NO;
+	
+	[self.contentView addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"V:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : menuController.view}]];
+	[self.contentView addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"H:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : menuController.view}]];
+	self.menuController = menuController;
 }
 
 - (void)showReviews
