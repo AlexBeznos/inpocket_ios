@@ -12,6 +12,7 @@
 #import "PWFirstPresentDetailsController.h"
 #import "PWSharesViewController.h"
 #import "PWProductViewController.h"
+#import "PWBestOfDayViewController.h"
 
 @interface PWScrollableViewController ()
 
@@ -57,6 +58,43 @@
 		UIView *previousView = nil;
 		if (nil != bestOfDay)
 		{
+			PWBestOfDayViewController *productOfDay =
+						[[PWBestOfDayViewController alloc] initWithProducts:bestOfDay restaurant:weakSelf.restaurant
+						scrollHandler:^(CGPoint velocity)
+			{
+				[weakSelf handleVelocity:velocity];
+			}
+						transiter:weakSelf.transiter];
+			[weakSelf addChildViewController:productOfDay];
+			[weakSelf.scrollView addSubview:productOfDay.view];
+			
+			[productOfDay didMoveToParentViewController:self];
+			productOfDay.view.translatesAutoresizingMaskIntoConstraints = NO;
+			
+			if (nil != previousView)
+			{
+				[weakSelf.scrollView addConstraint:[NSLayoutConstraint
+							constraintWithItem:productOfDay.view
+							attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual
+							toItem:previousView
+							attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+			}
+			else
+			{
+				[weakSelf.scrollView addConstraints:[NSLayoutConstraint
+							constraintsWithVisualFormat:@"V:|[view]"
+							options:0 metrics:nil
+							views:@{@"view" : productOfDay.view}]];
+			}
+			
+			[weakSelf.scrollView addConstraints:[NSLayoutConstraint
+						constraintsWithVisualFormat:@"H:|[view]"
+						options:0 metrics:nil
+						views:@{@"view" : productOfDay.view}]];
+			productOfDay.contentSize = CGSizeMake(weakSelf.contentWidth,
+						375 * weakSelf.contentWidth / 320.);
+			estimatedHeight += productOfDay.contentSize.height;
+			previousView = productOfDay.view;
 		}
 		
 		for (NSString *categoryName in categories.allKeys)

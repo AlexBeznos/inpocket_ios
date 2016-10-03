@@ -163,6 +163,9 @@
 {
 	[self.presentController.view removeFromSuperview];
 	[self.presentController removeFromParentViewController];
+	
+	[self.menuController.view removeFromSuperview];
+	[self.menuController removeFromParentViewController];
 }
 
 - (void)showPresents

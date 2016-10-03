@@ -21,6 +21,10 @@
 		CA3CE6E31DA159C600825A0A /* PWMoreBonusesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6E11DA159C600825A0A /* PWMoreBonusesViewController.m */; };
 		CA3CE6E41DA159C600825A0A /* PWMoreBonusesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6E21DA159C600825A0A /* PWMoreBonusesViewController.xib */; };
 		CA3CE6E81DA22EA400825A0A /* PWMenuTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6E71DA22EA400825A0A /* PWMenuTabController.m */; };
+		CA3CE6EC1DA233A000825A0A /* PWBestOfDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6EA1DA233A000825A0A /* PWBestOfDayViewController.m */; };
+		CA3CE6ED1DA233A000825A0A /* PWBestOfDayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6EB1DA233A000825A0A /* PWBestOfDayViewController.xib */; };
+		CA3CE6F11DA236C300825A0A /* PWBestOfDayProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6EF1DA236C300825A0A /* PWBestOfDayProductCell.m */; };
+		CA3CE6F21DA236C300825A0A /* PWBestOfDayProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6F01DA236C300825A0A /* PWBestOfDayProductCell.xib */; };
 		CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */; };
 		CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */; };
 		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
@@ -239,6 +243,12 @@
 		CA3CE6E21DA159C600825A0A /* PWMoreBonusesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWMoreBonusesViewController.xib; sourceTree = "<group>"; };
 		CA3CE6E61DA22EA400825A0A /* PWMenuTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWMenuTabController.h; sourceTree = "<group>"; };
 		CA3CE6E71DA22EA400825A0A /* PWMenuTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWMenuTabController.m; sourceTree = "<group>"; };
+		CA3CE6E91DA233A000825A0A /* PWBestOfDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWBestOfDayViewController.h; sourceTree = "<group>"; };
+		CA3CE6EA1DA233A000825A0A /* PWBestOfDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWBestOfDayViewController.m; sourceTree = "<group>"; };
+		CA3CE6EB1DA233A000825A0A /* PWBestOfDayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWBestOfDayViewController.xib; sourceTree = "<group>"; };
+		CA3CE6EE1DA236C300825A0A /* PWBestOfDayProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWBestOfDayProductCell.h; sourceTree = "<group>"; };
+		CA3CE6EF1DA236C300825A0A /* PWBestOfDayProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWBestOfDayProductCell.m; sourceTree = "<group>"; };
+		CA3CE6F01DA236C300825A0A /* PWBestOfDayProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWBestOfDayProductCell.xib; sourceTree = "<group>"; };
 		CAF090FD1D4D3938005FAEF4 /* PocketWaiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketWaiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAF0911A1D4D3A4C005FAEF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -523,8 +533,6 @@
 				CA3CE6CC1D9FE7A300825A0A /* PWProductViewController.xib */,
 				CA3CE6D41DA020EB00825A0A /* PWGridProductsController.h */,
 				CA3CE6D51DA020EB00825A0A /* PWGridProductsController.m */,
-				CA3CE6E61DA22EA400825A0A /* PWMenuTabController.h */,
-				CA3CE6E71DA22EA400825A0A /* PWMenuTabController.m */,
 			);
 			name = PresentsByBonuses;
 			sourceTree = "<group>";
@@ -547,6 +555,14 @@
 		CA3CE6E51DA22E7400825A0A /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				CA3CE6E61DA22EA400825A0A /* PWMenuTabController.h */,
+				CA3CE6E71DA22EA400825A0A /* PWMenuTabController.m */,
+				CA3CE6E91DA233A000825A0A /* PWBestOfDayViewController.h */,
+				CA3CE6EA1DA233A000825A0A /* PWBestOfDayViewController.m */,
+				CA3CE6EB1DA233A000825A0A /* PWBestOfDayViewController.xib */,
+				CA3CE6EE1DA236C300825A0A /* PWBestOfDayProductCell.h */,
+				CA3CE6EF1DA236C300825A0A /* PWBestOfDayProductCell.m */,
+				CA3CE6F01DA236C300825A0A /* PWBestOfDayProductCell.xib */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -1170,6 +1186,7 @@
 				CAFE61001D98FAFE003F5991 /* PWWelcomeViewController.xib in Resources */,
 				CAF091DF1D57A05F005FAEF4 /* hookah2.jpeg in Resources */,
 				CAF092C61D628006005FAEF4 /* PWMapController.xib in Resources */,
+				CA3CE6F21DA236C300825A0A /* PWBestOfDayProductCell.xib in Resources */,
 				CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */,
 				CAF092EE1D68D3B0005FAEF4 /* Settings.bundle in Resources */,
 				CAF091A11D562471005FAEF4 /* PWIntroSecondPageCell.xib in Resources */,
@@ -1185,6 +1202,7 @@
 				CAF091C21D576B83005FAEF4 /* mohito.jpg in Resources */,
 				CAFE5FE61D6DF62F003F5991 /* PWRestaurantFilterCell.xib in Resources */,
 				CA3CE6E41DA159C600825A0A /* PWMoreBonusesViewController.xib in Resources */,
+				CA3CE6ED1DA233A000825A0A /* PWBestOfDayViewController.xib in Resources */,
 				CAF092C71D628006005FAEF4 /* PWRestaurantFilterController.xib in Resources */,
 				CAFE60131D7E06B5003F5991 /* PWRegisterController.xib in Resources */,
 				CAF0922F1D5FDA50005FAEF4 /* PWRestaurantsViewController.xib in Resources */,
@@ -1240,6 +1258,7 @@
 				CAF092E51D63B9BC005FAEF4 /* UIImageAdditions.m in Sources */,
 				CAF092581D607B69005FAEF4 /* PWIntroViewController.m in Sources */,
 				CAF092BE1D627AA0005FAEF4 /* PWDetailesSharesViewController.m in Sources */,
+				CA3CE6F11DA236C300825A0A /* PWBestOfDayProductCell.m in Sources */,
 				CAF0916D1D4E904E005FAEF4 /* PWModelObject.m in Sources */,
 				CAFE5FF31D7BA3BF003F5991 /* PWPurchasesPlainController.m in Sources */,
 				CAFE61081D990D79003F5991 /* PWActiveRootController.m in Sources */,
@@ -1284,6 +1303,7 @@
 				CAF091701D4E905E005FAEF4 /* PWPrice.m in Sources */,
 				CAF092CB1D63A2DF005FAEF4 /* PWAboutController.m in Sources */,
 				CAF091851D4E94A0005FAEF4 /* PWRestaurantReview.m in Sources */,
+				CA3CE6EC1DA233A000825A0A /* PWBestOfDayViewController.m in Sources */,
 				CAF092BB1D6278FC005FAEF4 /* PWDetailedRestaurantsViewController.m in Sources */,
 				CAF0925D1D607B69005FAEF4 /* PWNearRestaurantsViewController.m in Sources */,
 				CAFE611A1D994C33003F5991 /* PWPresentsTabController.m in Sources */,

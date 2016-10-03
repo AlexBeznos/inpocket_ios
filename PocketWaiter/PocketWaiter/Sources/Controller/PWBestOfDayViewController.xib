@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PWBestOfDayViewController">
+            <connections>
+                <outlet property="collectionView" destination="1Om-Rc-ZKo" id="LO8-49-mMl"/>
+                <outlet property="indicator" destination="Bet-gD-7W1" id="c0x-HO-L4v"/>
+                <outlet property="indicatorWidthConstraint" destination="6A2-vf-Mbp" id="zDI-IN-Dpg"/>
+                <outlet property="layout" destination="aGj-J6-MDX" id="DuH-V3-K7z"/>
+                <outlet property="titleLabel" destination="UPq-dA-a3S" id="DkA-aw-WL4"/>
+                <outlet property="view" destination="7sN-uq-LCw" id="ono-Tf-5c1"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="7sN-uq-LCw">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPq-dA-a3S">
+                    <rect key="frame" x="20" y="20" width="49" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="OuG-fJ-Mi9"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bet-gD-7W1" customClass="PWIndicator">
+                    <rect key="frame" x="20" y="570" width="148" height="30"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="2ES-Eo-gZX"/>
+                        <constraint firstAttribute="width" constant="148" id="6A2-vf-Mbp"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="1Om-Rc-ZKo">
+                    <rect key="frame" x="0.0" y="54" width="320" height="516"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <collectionViewLayout key="collectionViewLayout" id="aGj-J6-MDX" customClass="PWSlidesLayout"/>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Bet-gD-7W1" firstAttribute="top" secondItem="1Om-Rc-ZKo" secondAttribute="bottom" id="1mu-eP-etI"/>
+                <constraint firstItem="UPq-dA-a3S" firstAttribute="leading" secondItem="7sN-uq-LCw" secondAttribute="leading" constant="20" id="2GH-yG-dK5"/>
+                <constraint firstItem="UPq-dA-a3S" firstAttribute="top" secondItem="7sN-uq-LCw" secondAttribute="top" constant="20" id="6RG-3k-yMb"/>
+                <constraint firstItem="1Om-Rc-ZKo" firstAttribute="width" secondItem="7sN-uq-LCw" secondAttribute="width" id="CMl-ch-qgJ"/>
+                <constraint firstItem="Bet-gD-7W1" firstAttribute="leading" secondItem="7sN-uq-LCw" secondAttribute="leading" constant="20" id="Dag-Td-2hO"/>
+                <constraint firstAttribute="bottom" secondItem="Bet-gD-7W1" secondAttribute="bottom" id="Ulq-fX-f7a"/>
+                <constraint firstItem="1Om-Rc-ZKo" firstAttribute="leading" secondItem="7sN-uq-LCw" secondAttribute="leading" id="WO6-w7-FGE"/>
+                <constraint firstItem="1Om-Rc-ZKo" firstAttribute="top" secondItem="UPq-dA-a3S" secondAttribute="bottom" constant="10" id="a39-5a-4SB"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="128" y="272"/>
+        </view>
+    </objects>
+</document>
