@@ -13,6 +13,7 @@
 #import "PWRestaurant.h"
 #import "PWPrice.h"
 #import "PWGridProductsController.h"
+#import "PWAddToOrderControler.h"
 
 @interface PWProductViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -138,7 +139,9 @@
 
 - (void)presentAddToOrderForItemAtIndex:(NSUInteger)index
 {
-	// no-op
+	PWAddToOrderControler *controller = [[PWAddToOrderControler alloc]
+				initWithTitle:self.labelTitle product:self.products[index] restaurant:self.restaurant];
+	[self.transiter performForwardTransition:controller];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView

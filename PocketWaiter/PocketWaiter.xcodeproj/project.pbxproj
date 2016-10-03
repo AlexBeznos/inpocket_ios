@@ -25,6 +25,8 @@
 		CA3CE6ED1DA233A000825A0A /* PWBestOfDayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6EB1DA233A000825A0A /* PWBestOfDayViewController.xib */; };
 		CA3CE6F11DA236C300825A0A /* PWBestOfDayProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6EF1DA236C300825A0A /* PWBestOfDayProductCell.m */; };
 		CA3CE6F21DA236C300825A0A /* PWBestOfDayProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6F01DA236C300825A0A /* PWBestOfDayProductCell.xib */; };
+		CA3CE6F71DA2428800825A0A /* PWAddToOrderControler.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6F51DA2428800825A0A /* PWAddToOrderControler.m */; };
+		CA3CE6F81DA2428800825A0A /* PWAddToOrderControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6F61DA2428800825A0A /* PWAddToOrderControler.xib */; };
 		CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */; };
 		CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */; };
 		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
@@ -249,6 +251,9 @@
 		CA3CE6EE1DA236C300825A0A /* PWBestOfDayProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWBestOfDayProductCell.h; sourceTree = "<group>"; };
 		CA3CE6EF1DA236C300825A0A /* PWBestOfDayProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWBestOfDayProductCell.m; sourceTree = "<group>"; };
 		CA3CE6F01DA236C300825A0A /* PWBestOfDayProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWBestOfDayProductCell.xib; sourceTree = "<group>"; };
+		CA3CE6F41DA2428800825A0A /* PWAddToOrderControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWAddToOrderControler.h; sourceTree = "<group>"; };
+		CA3CE6F51DA2428800825A0A /* PWAddToOrderControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWAddToOrderControler.m; sourceTree = "<group>"; };
+		CA3CE6F61DA2428800825A0A /* PWAddToOrderControler.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWAddToOrderControler.xib; sourceTree = "<group>"; };
 		CAF090FD1D4D3938005FAEF4 /* PocketWaiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketWaiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAF0911A1D4D3A4C005FAEF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -565,6 +570,16 @@
 				CA3CE6F01DA236C300825A0A /* PWBestOfDayProductCell.xib */,
 			);
 			name = Menu;
+			sourceTree = "<group>";
+		};
+		CA3CE6F31DA2426400825A0A /* AddToOrder */ = {
+			isa = PBXGroup;
+			children = (
+				CA3CE6F41DA2428800825A0A /* PWAddToOrderControler.h */,
+				CA3CE6F51DA2428800825A0A /* PWAddToOrderControler.m */,
+				CA3CE6F61DA2428800825A0A /* PWAddToOrderControler.xib */,
+			);
+			name = AddToOrder;
 			sourceTree = "<group>";
 		};
 		CAF090F41D4D3938005FAEF4 = {
@@ -989,6 +1004,7 @@
 		CAFE60FB1D98FAC4003F5991 /* Active mode */ = {
 			isa = PBXGroup;
 			children = (
+				CA3CE6F31DA2426400825A0A /* AddToOrder */,
 				CA3CE6E51DA22E7400825A0A /* Menu */,
 				CA3CE6D71DA10B9D00825A0A /* ThanksForOrder */,
 				CAFE61171D994BEB003F5991 /* Present tab */,
@@ -1162,6 +1178,7 @@
 			files = (
 				CAFE5FD31D6DE51C003F5991 /* PWNoConnectionAlertController.xib in Resources */,
 				CAFE5FF01D7B8237003F5991 /* PWPurchaseTableViewCell.xib in Resources */,
+				CA3CE6F81DA2428800825A0A /* PWAddToOrderControler.xib in Resources */,
 				CA3CE6DF1DA1139700825A0A /* PWThanksForOrderHolderController.xib in Resources */,
 				CAF091DA1D5799DB005FAEF4 /* coffeetoria3.jpg in Resources */,
 				CAF092C51D628006005FAEF4 /* PWDetailesItemsViewController.xib in Resources */,
@@ -1232,6 +1249,7 @@
 				CAF092541D607B69005FAEF4 /* PWDetailedNearItemsCollectionController.m in Sources */,
 				CAF092061D5D1FF7005FAEF4 /* PWNearRestaurantCollectionViewCell.m in Sources */,
 				CAF091981D561AF6005FAEF4 /* PWIntroFirstPageCell.m in Sources */,
+				CA3CE6F71DA2428800825A0A /* PWAddToOrderControler.m in Sources */,
 				CAFE5FFC1D7C9D92003F5991 /* PWShareWithFriendsController.m in Sources */,
 				CAF091C51D577286005FAEF4 /* PWModelManager.m in Sources */,
 				CAF092141D5F420B005FAEF4 /* PWTouchView.m in Sources */,

@@ -13,6 +13,7 @@
 #import "PWProduct.h"
 #import "PWRestaurant.h"
 #import "PWPrice.h"
+#import "PWAddToOrderControler.h"
 
 @interface PWBestOfDayViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -148,7 +149,9 @@
 
 - (void)presentAddToOrderForItemAtIndex:(NSUInteger)index
 {
-	// no-op
+	PWAddToOrderControler *controller = [[PWAddToOrderControler alloc]
+				initWithTitle:@"Блюдо дня" product:self.products[index] restaurant:self.restaurant];
+	[self.transiter performForwardTransition:controller];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
