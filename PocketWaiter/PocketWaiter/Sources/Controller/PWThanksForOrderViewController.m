@@ -11,6 +11,7 @@
 #import "UIColorAdditions.h"
 #import "PWThanksForOrderHolderController.h"
 #import "PWProductViewController.h"
+#import "PWMoreBonusesViewController.h"
 
 @interface PWScrollableViewController (Protected)
 
@@ -64,7 +65,7 @@
 	} isFirstPresent:self.firstPresent];
 	
 	NSInteger estimatedHeight = 0;
-	UIView *previousView = nil;
+	__block UIView *previousView = nil;
 	[self addChildViewController:controller];
 	[self.scrollView addSubview:controller.view];
 	
@@ -134,9 +135,47 @@
 				productController.contentSize = CGSizeMake(weakSelf.contentWidth,
 							320 * weakSelf.contentWidth / 320.);
 				newEstimatedHeight += productController.contentSize.height;
-				
-				weakSelf.scrollView.contentSize = CGSizeMake(weakSelf.contentWidth, newEstimatedHeight);
+				previousView = productController.view;
 			}
+			
+			if (allowShare || allowComment)
+			{
+				PWMoreBonusesViewController *moreBonuses = [[PWMoreBonusesViewController alloc]
+							initWithRestaurant:weakSelf.restaurant shareEnabled:allowShare shareBonuses:20
+							commentEnabled:allowComment commentBonuses:20];
+				[weakSelf addChildViewController:moreBonuses];
+				[weakSelf.scrollView addSubview:moreBonuses.view];
+				
+				[moreBonuses didMoveToParentViewController:self];
+				moreBonuses.view.translatesAutoresizingMaskIntoConstraints = NO;
+				
+				if (nil != previousView)
+				{
+					[weakSelf.scrollView addConstraint:[NSLayoutConstraint
+								constraintWithItem:moreBonuses.view
+								attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual
+								toItem:previousView
+								attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+				}
+				else
+				{
+					[weakSelf.scrollView addConstraints:[NSLayoutConstraint
+								constraintsWithVisualFormat:@"V:|[view]"
+								options:0 metrics:nil
+								views:@{@"view" : moreBonuses.view}]];
+				}
+				
+				[weakSelf.scrollView addConstraints:[NSLayoutConstraint
+							constraintsWithVisualFormat:@"H:|[view]"
+							options:0 metrics:nil
+							views:@{@"view" : moreBonuses.view}]];
+				
+				moreBonuses.contentSize = CGSizeMake(weakSelf.contentWidth,
+							320 * weakSelf.contentWidth / 320.);
+				newEstimatedHeight += moreBonuses.contentSize.height;
+			}
+			
+			weakSelf.scrollView.contentSize = CGSizeMake(weakSelf.contentWidth, newEstimatedHeight);
 
 		}
 		else
