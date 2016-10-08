@@ -64,4 +64,6 @@
 - (void)getRootMenuInfoForUser:(PWUser *)user restaurant:(PWRestaurant *)restaurant
 			completion:(void (^)(NSArray<PWProduct *> *bestOfDay, NSDictionary<NSString *, NSArray<PWProduct *> *> *, NSError *error))completion;
 
+- (void)getCommentsInfoForRestaurant:(PWRestaurant *)restaurant completion:(void (^)(BOOL allowComment, NSArray<PWRestaurantReview *> *))completion;
+
 @end

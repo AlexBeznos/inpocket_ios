@@ -176,6 +176,18 @@
 	});
 }
 
+- (void)getCommentsInfoForRestaurant:(PWRestaurant *)restaurant completion:(void (^)(BOOL allowComment, NSArray<PWRestaurantReview *> *))completion
+{
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
+				(int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
+	^{
+		if (nil != completion)
+		{
+			completion(YES, [self.cachedRestaurants.firstObject reviews]);
+		}
+	});
+}
+
 - (NSArray<PWRestaurant *> *)nearRestaurants
 {
 	return self.cachedRestaurants;
