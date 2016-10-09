@@ -10,6 +10,7 @@
 #import "PWRankView.h"
 #import "PWDropShadowView.h"
 #import "UIColorAdditions.h"
+#import "PWNoAccesViewController.h"
 
 @interface PWNewReviewViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate>
 
@@ -83,10 +84,13 @@
 
 - (IBAction)addPhoto:(id)sender
 {
+	PWNoAccesViewController *noAccess = [[PWNoAccesViewController alloc] initWithType:kPWUtilTypePhotos];
+	[noAccess showWithCompletion:nil];
+	/*
 	self.picker = [UIImagePickerController new];
 	self.picker.delegate = self;
 	self.picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-	[self presentViewController:self.picker animated:YES completion:nil];
+	[self presentViewController:self.picker animated:YES completion:nil];*/
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker
