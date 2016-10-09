@@ -102,23 +102,23 @@
 		for (NSInteger i = 0; i < countOfViewToAdd; i++)
 		{
 			UIView *holderView = [[UIView alloc]
-						initWithFrame:CGRectMake(0, 0, 40, 40)];
+						initWithFrame:CGRectMake(0, 0, 24, 24)];
 			holderView.backgroundColor = [UIColor clearColor];
 			holderView.translatesAutoresizingMaskIntoConstraints = NO;
 			[holderView addConstraint:[NSLayoutConstraint
 						constraintWithItem:holderView attribute:NSLayoutAttributeWidth
 						relatedBy:NSLayoutRelationEqual toItem:nil
 						attribute:NSLayoutAttributeNotAnAttribute multiplier:1
-						constant:40]];
+						constant:24]];
 			[holderView addConstraint:[NSLayoutConstraint
 						constraintWithItem:holderView attribute:NSLayoutAttributeHeight
 						relatedBy:NSLayoutRelationEqual toItem:nil
 						attribute:NSLayoutAttributeNotAnAttribute multiplier:1
-						constant:40]];
+						constant:24]];
 			[self addSubview:holderView];
 			[self.holders addObject:holderView];
 			
-			NSInteger offset = i * 40;
+			NSInteger offset = i * 24;
 			[self addConstraints:[NSLayoutConstraint
 						constraintsWithVisualFormat:@"H:|-(offset)-[view]"
 						options:0 metrics:@{@"offset" : @(offset)}
@@ -152,12 +152,12 @@
 						constraintWithItem:imageView attribute:NSLayoutAttributeWidth
 						relatedBy:NSLayoutRelationEqual toItem:nil
 						attribute:NSLayoutAttributeNotAnAttribute multiplier:1
-						constant:36]];
+						constant:20]];
 			[imageView addConstraint:[NSLayoutConstraint
 						constraintWithItem:imageView attribute:NSLayoutAttributeHeight
 						relatedBy:NSLayoutRelationEqual toItem:nil
 						attribute:NSLayoutAttributeNotAnAttribute multiplier:1
-						constant:36]];
+						constant:20]];
 			[holderView addConstraint:[NSLayoutConstraint
 						constraintWithItem:imageView attribute:NSLayoutAttributeCenterX
 						relatedBy:NSLayoutRelationEqual toItem:holderView

@@ -225,7 +225,7 @@
 {
 	[self clearViews];
 	PWReviewsTabController *reviewsControler = [[PWReviewsTabController
-				alloc] initWithRestaurant:self.restaurant isActive:YES];
+				alloc] initWithRestaurant:self.restaurant isActive:YES transiter:self];
 	CGFloat aspectRatio = CGRectGetWidth(self.parentViewController.view.frame) / 320.;
 	reviewsControler.contentWidth = 320 * aspectRatio;
 	[self addChildViewController:reviewsControler];

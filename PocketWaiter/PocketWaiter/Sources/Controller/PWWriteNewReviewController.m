@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (strong, nonatomic) IBOutlet UILabel *buttonTitle;
 @property (strong, nonatomic) PWRestaurant *restaurant;
+@property (nonatomic, copy) void (^handler)();
 
 @property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *widthConstraint;
@@ -22,13 +23,14 @@
 
 @implementation PWWriteNewReviewController
 
-- (instancetype)initWithRestaurant:(PWRestaurant *)restaurant
+- (instancetype)initWithRestaurant:(PWRestaurant *)restaurant newReviewHandler:(void (^)())handler
 {
 	self = [super init];
 	
 	if (nil != self)
 	{
 		self.restaurant = restaurant;
+		self.handler = handler;
 	}
 	
 	return self;
@@ -78,6 +80,10 @@
 
 - (IBAction)buttonAction:(id)sender
 {
+	if (nil != self.handler)
+	{
+		self.handler();
+	}
 }
 
 @end

@@ -10,7 +10,7 @@
 
 @interface PWWriteNewReviewController : UIViewController
 
-- (instancetype)initWithRestaurant:(PWRestaurant *)restaurant;
+- (instancetype)initWithRestaurant:(PWRestaurant *)restaurant newReviewHandler:(void (^)())handler;
 
 @property (nonatomic) CGSize contentSize;
 

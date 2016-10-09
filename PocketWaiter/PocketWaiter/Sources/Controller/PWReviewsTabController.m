@@ -10,23 +10,26 @@
 #import "PWRestaurant.h"
 #import "PWWriteNewReviewController.h"
 #import "PWReviewsListViewController.h"
+#import "PWNewReviewViewController.h"
 
 @interface PWReviewsTabController ()
 
 @property (nonatomic, strong) PWRestaurant *restaurant;
+@property (nonatomic, weak) id<IPWTransiter> transiter;
 
 @end
 
 @implementation PWReviewsTabController
 
 - (instancetype)initWithRestaurant:(PWRestaurant *)restaurant
-			isActive:(BOOL)isActive
+			isActive:(BOOL)isActive transiter:(id<IPWTransiter>)transiter
 {
 	self = [super init];
 	
 	if (nil != self)
 	{
 		self.restaurant = restaurant;
+		self.transiter = transiter;
 	}
 	
 	return self;
@@ -48,7 +51,14 @@
 		if (allowComment)
 		{
 			PWWriteNewReviewController *writeComment =
-						[[PWWriteNewReviewController alloc] initWithRestaurant:weakSelf.restaurant];
+						[[PWWriteNewReviewController alloc]
+						initWithRestaurant:weakSelf.restaurant
+						newReviewHandler:
+			^{
+				PWNewReviewViewController *newReview =
+							[PWNewReviewViewController new];
+				[weakSelf.transiter performForwardTransition:newReview];
+			}];
 			[weakSelf addChildViewController:writeComment];
 			[weakSelf.scrollView addSubview:writeComment.view];
 			

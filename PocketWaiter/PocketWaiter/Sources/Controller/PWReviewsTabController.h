@@ -9,10 +9,12 @@
 #import "PWScrollableViewController.h"
 
 @class PWRestaurant;
+@protocol IPWTransiter;
 
 @interface PWReviewsTabController : PWScrollableViewController
 
-- (instancetype)initWithRestaurant:(PWRestaurant *)restaurant isActive:(BOOL)isActive;
+- (instancetype)initWithRestaurant:(PWRestaurant *)restaurant isActive:(BOOL)isActive
+			transiter:(id<IPWTransiter>)transiter;
 
 @property (nonatomic) CGFloat contentWidth;
 
