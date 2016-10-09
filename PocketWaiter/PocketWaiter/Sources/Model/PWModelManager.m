@@ -313,10 +313,10 @@
 				[[NSBundle mainBundle] pathForResource:@"vapiano" ofType:@"jpeg"]];
 	review1.userName = @"VasyaPupkin";
 	review1.date = [NSDate date];
-	review1.reviewDescription = @"Very nice mohito!!";
+	review1.reviewDescription = @"Very nice mohito\nsdfsdfsdf\ndfgadfgdfaadfg aesg dsgsd fz fchzdsF Dsdfd\nnsFsd fds fsdfd\nsdfsd fasdf sdfsdfds\nsfdgs dfgdfsg\n \n dfgzfdgf \n dzg dfgfd \n !!";
 	review1.photo = [UIImage imageWithContentsOfFile:
 				[[NSBundle mainBundle] pathForResource:@"vapiano_1" ofType:@"jpg"]];
-	
+	review1.rank = 3;
 	PWRestaurantReview *review2 = [PWRestaurantReview new];
 	review2.userIcon = [UIImage imageWithContentsOfFile:
 				[[NSBundle mainBundle] pathForResource:@"vapiano" ofType:@"jpeg"]];
@@ -325,7 +325,7 @@
 	review2.reviewDescription = @"Very nice burger!!";
 	review2.photo = [UIImage imageWithContentsOfFile:
 				[[NSBundle mainBundle] pathForResource:@"vapiano_2" ofType:@"jpg"]];
-	
+	review2.rank = 5;
 	about1.reviews = @[review1, review2];
 	
 	PWWorkingTime *time1 = [PWWorkingTime new];
@@ -487,10 +487,10 @@
 				[[NSBundle mainBundle] pathForResource:@"coffeetoria" ofType:@"jpg"]];
 	review1.userName = @"VasyaPupkin";
 	review1.date = [NSDate date];
-	review1.reviewDescription = @"Very nice hookah!!";
+	review1.reviewDescription = @"Very nice mohito\nsdfsdfsdf\ndfgadfgdfaadfg aesg dsgsd fz fchzdsF Dsdfd\nnsFsd fds fsdfd\nsdfsd fasdf sdfsdfds\nsfdgs dfgdfsg\n \n dfgzfdgf \n dzg dfgfd \n !!";
 	review1.photo = [UIImage imageWithContentsOfFile:
 				[[NSBundle mainBundle] pathForResource:@"hookah" ofType:@"jpg"]];
-	
+	review1.rank = 3;
 	review2 = [PWRestaurantReview new];
 	review2.userIcon = [UIImage imageWithContentsOfFile:
 				[[NSBundle mainBundle] pathForResource:@"coffeetoria" ofType:@"jpg"]];
@@ -499,7 +499,7 @@
 	review2.reviewDescription = @"Very nice burger!!";
 	review2.photo = [UIImage imageWithContentsOfFile:
 				[[NSBundle mainBundle] pathForResource:@"coffeetoria2" ofType:@"jpg"]];
-	
+	review2.rank = 5;
 	about2.reviews = @[review1, review2];
 	about2.color = [UIColor greenColor];
 	

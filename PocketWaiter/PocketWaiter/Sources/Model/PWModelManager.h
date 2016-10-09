@@ -17,6 +17,7 @@
 #import "PWOrder.h"
 #import "PWPrice.h"
 #import "PWUsersRestaurantInfo.h"
+#import "PWRestaurantReview.h"
 
 @interface PWModelManager : NSObject
 

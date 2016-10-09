@@ -76,7 +76,6 @@
 				self.heightConstraint.constant);
 }
 
-
 - (IBAction)buttonAction:(id)sender
 {
 }

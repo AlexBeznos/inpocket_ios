@@ -15,5 +15,6 @@
 @property (nonatomic, readonly) NSDate *date;
 @property (nonatomic, readonly) NSString *reviewDescription;
 @property (nonatomic, readonly) UIImage *photo;
+@property (nonatomic) NSUInteger rank;
 
 @end

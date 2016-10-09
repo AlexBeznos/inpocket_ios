@@ -30,6 +30,11 @@
 		CA46E7AC1DA901120044F96F /* PWReviewsTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA46E7AB1DA901120044F96F /* PWReviewsTabController.m */; };
 		CA46E7B01DA902A30044F96F /* PWWriteNewReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA46E7AE1DA902A30044F96F /* PWWriteNewReviewController.m */; };
 		CA46E7B11DA902A30044F96F /* PWWriteNewReviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA46E7AF1DA902A30044F96F /* PWWriteNewReviewController.xib */; };
+		CA46E7B51DAA41BF0044F96F /* PWReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA46E7B31DAA41BF0044F96F /* PWReviewController.m */; };
+		CA46E7B61DAA41BF0044F96F /* PWReviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA46E7B41DAA41BF0044F96F /* PWReviewController.xib */; };
+		CA46E7B91DAA41DD0044F96F /* PWRankView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA46E7B81DAA41DD0044F96F /* PWRankView.m */; };
+		CA46E7BD1DAA5A520044F96F /* PWReviewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA46E7BB1DAA5A520044F96F /* PWReviewsListViewController.m */; };
+		CA46E7BE1DAA5A520044F96F /* PWReviewsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA46E7BC1DAA5A520044F96F /* PWReviewsListViewController.xib */; };
 		CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */; };
 		CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */; };
 		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
@@ -262,6 +267,14 @@
 		CA46E7AD1DA902A30044F96F /* PWWriteNewReviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWWriteNewReviewController.h; sourceTree = "<group>"; };
 		CA46E7AE1DA902A30044F96F /* PWWriteNewReviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWWriteNewReviewController.m; sourceTree = "<group>"; };
 		CA46E7AF1DA902A30044F96F /* PWWriteNewReviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWWriteNewReviewController.xib; sourceTree = "<group>"; };
+		CA46E7B21DAA41BF0044F96F /* PWReviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWReviewController.h; sourceTree = "<group>"; };
+		CA46E7B31DAA41BF0044F96F /* PWReviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWReviewController.m; sourceTree = "<group>"; };
+		CA46E7B41DAA41BF0044F96F /* PWReviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWReviewController.xib; sourceTree = "<group>"; };
+		CA46E7B71DAA41DD0044F96F /* PWRankView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWRankView.h; sourceTree = "<group>"; };
+		CA46E7B81DAA41DD0044F96F /* PWRankView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRankView.m; sourceTree = "<group>"; };
+		CA46E7BA1DAA5A520044F96F /* PWReviewsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWReviewsListViewController.h; sourceTree = "<group>"; };
+		CA46E7BB1DAA5A520044F96F /* PWReviewsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWReviewsListViewController.m; sourceTree = "<group>"; };
+		CA46E7BC1DAA5A520044F96F /* PWReviewsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWReviewsListViewController.xib; sourceTree = "<group>"; };
 		CAF090FD1D4D3938005FAEF4 /* PocketWaiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketWaiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAF0911A1D4D3A4C005FAEF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -598,6 +611,12 @@
 				CA46E7AD1DA902A30044F96F /* PWWriteNewReviewController.h */,
 				CA46E7AE1DA902A30044F96F /* PWWriteNewReviewController.m */,
 				CA46E7AF1DA902A30044F96F /* PWWriteNewReviewController.xib */,
+				CA46E7B21DAA41BF0044F96F /* PWReviewController.h */,
+				CA46E7B31DAA41BF0044F96F /* PWReviewController.m */,
+				CA46E7B41DAA41BF0044F96F /* PWReviewController.xib */,
+				CA46E7BA1DAA5A520044F96F /* PWReviewsListViewController.h */,
+				CA46E7BB1DAA5A520044F96F /* PWReviewsListViewController.m */,
+				CA46E7BC1DAA5A520044F96F /* PWReviewsListViewController.xib */,
 			);
 			name = Reviews;
 			sourceTree = "<group>";
@@ -786,6 +805,8 @@
 				CAFE61121D9945D0003F5991 /* PWFirstPresentCell.h */,
 				CAFE61131D9945D0003F5991 /* PWFirstPresentCell.m */,
 				CAFE61141D9945D0003F5991 /* PWFirstPresentCell.xib */,
+				CA46E7B71DAA41DD0044F96F /* PWRankView.h */,
+				CA46E7B81DAA41DD0044F96F /* PWRankView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1214,6 +1235,7 @@
 				CAF091911D560B80005FAEF4 /* PWIntroViewController.xib in Resources */,
 				CA3CE6CE1D9FE7A300825A0A /* PWProductViewController.xib in Resources */,
 				CAF092A51D60C52E005FAEF4 /* GoogleMaps.bundle in Resources */,
+				CA46E7B61DAA41BF0044F96F /* PWReviewController.xib in Resources */,
 				CA46E7B11DA902A30044F96F /* PWWriteNewReviewController.xib in Resources */,
 				CAF092021D5D1838005FAEF4 /* PWNearRestaurantsViewController.xib in Resources */,
 				CAFE60021D7CA831003F5991 /* PWSharePromoController.xib in Resources */,
@@ -1249,6 +1271,7 @@
 				CAFE5FF81D7C5EFB003F5991 /* PWShareViewController.xib in Resources */,
 				CAF091D71D5799DB005FAEF4 /* vapiano_3.jpg in Resources */,
 				CAF092CE1D63A54B005FAEF4 /* PWAboutController.xib in Resources */,
+				CA46E7BE1DAA5A520044F96F /* PWReviewsListViewController.xib in Resources */,
 				CAF091D51D5799DB005FAEF4 /* vapiano_1.jpg in Resources */,
 				CAF091CE1D579967005FAEF4 /* coffeetoria.jpg in Resources */,
 				CAF091D91D5799DB005FAEF4 /* coffeetoria2.jpg in Resources */,
@@ -1264,6 +1287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF091941D56165C005FAEF4 /* PWMainViewController.m in Sources */,
+				CA46E7B91DAA41DD0044F96F /* PWRankView.m in Sources */,
 				CAF092B31D627264005FAEF4 /* PWPresentsMapController.m in Sources */,
 				CA3CE6D61DA020EB00825A0A /* PWGridProductsController.m in Sources */,
 				CAFE611E1D997E0E003F5991 /* PWFirstPresentDetailsController.m in Sources */,
@@ -1285,6 +1309,7 @@
 				CAF092551D607B69005FAEF4 /* PWDetailedNearPresentsCollectionController.m in Sources */,
 				CAF091891D4E94B6005FAEF4 /* PWWorkingTime.m in Sources */,
 				CA3CE6C21D9FDDBB00825A0A /* PWScrollableViewController.m in Sources */,
+				CA46E7B51DAA41BF0044F96F /* PWReviewController.m in Sources */,
 				CAF092D91D63AE60005FAEF4 /* PWNoPurchasesViewController.m in Sources */,
 				CA3CE6DA1DA10BC000825A0A /* PWThanksForOrderViewController.m in Sources */,
 				CAF0925B1D607B69005FAEF4 /* PWNearItemsViewController.m in Sources */,
@@ -1336,6 +1361,7 @@
 				CAF092561D607B69005FAEF4 /* PWDetailedNearSharesCollectionController.m in Sources */,
 				CAFE5FED1D7B62F9003F5991 /* PWPurchaseTableViewCell.m in Sources */,
 				CAF091861D4E94AE005FAEF4 /* PWPurchase.m in Sources */,
+				CA46E7BD1DAA5A520044F96F /* PWReviewsListViewController.m in Sources */,
 				CAF0918A1D4E94B8005FAEF4 /* PWRestaurantAboutInfo.m in Sources */,
 				CA3CE6CD1D9FE7A300825A0A /* PWProductViewController.m in Sources */,
 				CAFE5FDC1D6DECA2003F5991 /* PWPurchaseRestaurantCell.m in Sources */,
