@@ -114,6 +114,9 @@
 
 - (IBAction)comment:(id)sender
 {
+	PWNewReviewViewController *newReview =
+				[[PWNewReviewViewController alloc] initWithType:kPWReviewTypeComment];
+	[self.transiter performForwardTransition:newReview];
 }
 
 - (void)setupConstraints
