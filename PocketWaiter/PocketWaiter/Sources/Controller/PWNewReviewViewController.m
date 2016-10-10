@@ -12,6 +12,7 @@
 #import "UIColorAdditions.h"
 #import "PWNoAccesViewController.h"
 #import "PWThankForReviewViewController.h"
+#import "PWUtilsAccessor.h"
 
 @interface PWNewReviewViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate>
 
@@ -141,13 +142,21 @@
 
 - (IBAction)addPhoto:(id)sender
 {
-	PWNoAccesViewController *noAccess = [[PWNoAccesViewController alloc] initWithType:kPWUtilTypePhotos];
-	[noAccess showWithCompletion:nil];
-	/*
-	self.picker = [UIImagePickerController new];
-	self.picker.delegate = self;
-	self.picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-	[self presentViewController:self.picker animated:YES completion:nil];*/
+	[PWUtilsAccessor checkAuthStatusForUtilType:kPWAccessUtilTypePhotos completion:^(PWUtilsAccess status)
+	{
+		if (status == kPWUtilsAccessAccepted)
+		{
+			self.picker = [UIImagePickerController new];
+			self.picker.delegate = self;
+			self.picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+			[self presentViewController:self.picker animated:YES completion:nil];
+		}
+		else
+		{
+			PWNoAccesViewController *noAccess = [[PWNoAccesViewController alloc] initWithType:kPWUtilTypePhotos];
+			[noAccess showWithCompletion:nil];
+		}
+	}];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker
