@@ -6,12 +6,12 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import "PWThanksForOrderHolderController.h"
+#import "PWThanksForController.h"
 #import "PWRestaurant.h"
 #import "PWPurchase.h"
 #import "PWPrice.h"
 
-@interface PWThanksForOrderHolderController ()
+@interface PWThanksForController ()
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
@@ -21,31 +21,33 @@
 @property (strong, nonatomic) IBOutlet UIImageView *bonusImageView;
 @property (strong, nonatomic) IBOutlet UILabel *buttonTitle;
 @property (strong, nonatomic) IBOutlet UIButton *button;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *optionalButtonTopOffset;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *buttonTopOffset;
 
-@property (nonatomic, strong) PWRestaurant *restaurant;
-@property (nonatomic, strong) PWPurchase *purchase;
+@property (nonatomic, strong) UIColor *scheme;
 @property (nonatomic, copy) void (^backHandler)();
-@property (nonatomic) BOOL firstPresent;
+@property (nonatomic) PWItemType type;
+@property (nonatomic) NSUInteger bonusesCount;
 
 @property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *widthConstraint;
 
 @end
 
-@implementation PWThanksForOrderHolderController
+@implementation PWThanksForController
 
-- (instancetype)initWithRestaurant:(PWRestaurant *)restaurant
-			purchase:(PWPurchase *)purchase backHandler:(void (^)())handler
-			isFirstPresent:(BOOL)firstPresent
+- (instancetype)initWithType:(PWItemType)type scheme:(UIColor *)color
+			bonusesCount:(NSUInteger)count backHandler:(void (^)())handler
 {
 	self = [super init];
 	
 	if (nil != self)
 	{
-		self.restaurant = restaurant;
-		self.purchase = purchase;
+		self.scheme = color;
 		self.backHandler = handler;
-		self.firstPresent = firstPresent;
+		self.type = type;
+		self.bonusesCount = count;
 	}
 	
 	return self;
@@ -56,28 +58,58 @@
 	[super viewDidLoad];
 	
 	[self setupConstraints];
-	self.titleLabel.text = @"Спасибо!";
-	self.descriptionLabel.text = self.firstPresent ?
-				@"Ваш подарок уже готовиться на кухне" :
-				@"Ваш заказ уже готовиться на кухне, а бонусы будут начислены в течении 2х часов после оплаты заказа";
+	self.titleLabel.text = self.type == kPWItemTypeComment ? @"Спасибо за ваш отзыв" : @"Спасибо!";
 	
-	if (self.firstPresent)
+	NSString *description = nil;
+	NSString *backTitle = nil;
+	
+	switch (self.type)
+	{
+		case kPWItemTypeComment:
+		{
+			description = @"Мы очень благодарны вам за отзыв и дарим в подарок бонусы на ваш счет";
+			backTitle = @"Вернуться к отзывам";
+		}
+		break;
+		
+		case kPWItemTypePurchase:
+		{
+			description = @"Ваш заказ уже готовиться на кухне, а бонусы будут начислены в течении 2х часов после оплаты заказа";
+			backTitle = @"Вернуться к акциям";
+		}
+		break;
+		
+		case kPWItemTypePresent:
+		{
+			description = @"Ваш подарок уже готовиться на кухне";
+			backTitle = @"Вернуться в меню";
+		}
+		break;
+	}
+	
+	self.descriptionLabel.text = description;
+	
+	if (self.type == kPWItemTypePresent)
 	{
 		[self.collectedBonusesHolder removeFromSuperview];
 	}
 	else
 	{
 		self.collectedLabel.text = @"Бонусов начисленно:";
-		self.bonusesCountLabel.text = [NSString stringWithFormat:@"+ %li", (long)self.purchase.totalPrice.value];
-		self.collectedLabel.textColor = self.restaurant.color;
-		self.bonusesCountLabel.textColor = self.restaurant.color;
+		self.bonusesCountLabel.text = [NSString stringWithFormat:@"+ %li", (long)self.bonusesCount];
+		self.collectedLabel.textColor = self.scheme;
+		self.bonusesCountLabel.textColor = self.scheme;
 		self.bonusImageView.image = [[UIImage imageNamed:@"collectedBonus"]
 					imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-		self.bonusImageView.tintColor = self.restaurant.color;
+		self.bonusImageView.tintColor = self.scheme;
+		
+		self.buttonTopOffset.constant = self.type == kPWItemTypePurchase ? 10 : 30;
 	}
 	
-	self.button.backgroundColor = self.restaurant.color;
+	self.button.backgroundColor = self.scheme;
 	self.buttonTitle.text = @"Вернуться в меню";
+	
+	self.view.backgroundColor = [UIColor greenColor];
 }
 
 - (IBAction)backAction:(UIButton *)sender

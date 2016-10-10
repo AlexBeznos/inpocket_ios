@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "UIViewControllerAdditions.h"
+#import "PWScrollableViewController.h"
 
-@interface PWNewReviewViewController : UIViewController <IPWTransitableController>
+@interface PWNewReviewViewController : PWScrollableViewController <IPWTransitableController>
 
 @end

@@ -20,4 +20,17 @@
 
 @implementation PWRestaurantReview
 
+- (instancetype)initWithCommentbody:(NSString *)body image:(UIImage *)image
+{
+	self = [super init];
+	
+	if (nil != self)
+	{
+		self.photo = image;
+		self.reviewDescription = body;
+	}
+	
+	return self;
+}
+
 @end

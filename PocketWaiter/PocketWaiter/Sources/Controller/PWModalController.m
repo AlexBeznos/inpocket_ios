@@ -51,7 +51,7 @@
 			weakSelf.view.userInteractionEnabled = NO;
 			[weakSelf hideWithCompletion:
 			^{
-				weakSelf.view.userInteractionEnabled = NO;
+				weakSelf.view.userInteractionEnabled = YES;
 			}];
 		}];
 		

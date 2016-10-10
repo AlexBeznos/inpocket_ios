@@ -72,6 +72,7 @@
 
 - (NSLayoutConstraint *)navigateViewController:(UIViewController *)controller inView:(UIView *)view withOffsets:(UIEdgeInsets)offsets
 {
+	[UIApplication sharedApplication].delegate.window.userInteractionEnabled = NO;
 	[self addChildViewController:controller];
 	[view addSubview:controller.view];
 	[controller willMoveToParentViewController:self];
@@ -101,6 +102,9 @@
 		constraint.constant = offsets.left;
 		[view setNeedsLayout];
 		[view layoutIfNeeded];
+	} completion:^(BOOL finished)
+	{
+		[UIApplication sharedApplication].delegate.window.userInteractionEnabled = YES;
 	}];
 	
 	return constraint;

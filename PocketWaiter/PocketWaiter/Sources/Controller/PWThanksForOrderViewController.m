@@ -9,7 +9,7 @@
 #import "PWThanksForOrderViewController.h"
 #import "PWModelManager.h"
 #import "UIColorAdditions.h"
-#import "PWThanksForOrderHolderController.h"
+#import "PWThanksForController.h"
 #import "PWProductViewController.h"
 #import "PWMoreBonusesViewController.h"
 
@@ -57,12 +57,12 @@
 	
 	self.view.backgroundColor = [UIColor pwBackgroundColor];
 	__weak __typeof(self) weakSelf = self;
-	PWThanksForOrderHolderController *controller = [[PWThanksForOrderHolderController alloc]
-				initWithRestaurant:self.restaurant purchase:self.purchase
-				backHandler:
+	PWThanksForController *controller = [[PWThanksForController alloc]
+				initWithType:self.firstPresent ? kPWItemTypePresent : kPWItemTypePurchase
+				scheme:self.restaurant.color bonusesCount:self.purchase.bonusesCount backHandler:
 	^{
 		[weakSelf.transiter performBackTransitionToRoot];
-	} isFirstPresent:self.firstPresent];
+	}];
 	
 	NSInteger estimatedHeight = 0;
 	__block UIView *previousView = nil;

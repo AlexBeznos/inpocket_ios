@@ -91,7 +91,7 @@
 	
 	[self.view setNeedsLayout];
 	[self.view layoutIfNeeded];
-	
+	[UIApplication sharedApplication].delegate.window.userInteractionEnabled = NO;
 	[UIView animateWithDuration:0.25 animations:
 	^{
 		self.constraint.constant = 0;
@@ -100,6 +100,7 @@
 	}
 				completion:^(BOOL finished)
 	{
+		[UIApplication sharedApplication].delegate.window.userInteractionEnabled = YES;
 		if (nil != aCompletion)
 		{
 			aCompletion();
@@ -109,6 +110,7 @@
 
 - (void)hideWithCompletion:(void (^)())aCompletion
 {
+	[UIApplication sharedApplication].delegate.window.userInteractionEnabled = NO;
 	[UIView animateWithDuration:0.25 animations:
 	^{
 		self.constraint.constant = -CGRectGetHeight(self.view.frame);
@@ -119,6 +121,7 @@
 	{
 		[self.view removeFromSuperview];
 		[self removeFromParentViewController];
+		[UIApplication sharedApplication].delegate.window.userInteractionEnabled = YES;
 		if (nil != aCompletion)
 		{
 			aCompletion();

@@ -10,6 +10,8 @@
 
 @interface PWRestaurantReview : PWModelObject
 
+- (instancetype)initWithCommentbody:(NSString *)body image:(UIImage *)image;
+
 @property (nonatomic, readonly) UIImage *userIcon;
 @property (nonatomic, readonly) NSString *userName;
 @property (nonatomic, readonly) NSDate *date;

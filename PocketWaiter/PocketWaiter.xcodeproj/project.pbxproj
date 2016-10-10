@@ -16,8 +16,7 @@
 		CA3CE6D31D9FF82900825A0A /* PWProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6D11D9FF82900825A0A /* PWProductCell.xib */; };
 		CA3CE6D61DA020EB00825A0A /* PWGridProductsController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6D51DA020EB00825A0A /* PWGridProductsController.m */; };
 		CA3CE6DA1DA10BC000825A0A /* PWThanksForOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6D91DA10BC000825A0A /* PWThanksForOrderViewController.m */; };
-		CA3CE6DE1DA1139700825A0A /* PWThanksForOrderHolderController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6DC1DA1139700825A0A /* PWThanksForOrderHolderController.m */; };
-		CA3CE6DF1DA1139700825A0A /* PWThanksForOrderHolderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6DD1DA1139700825A0A /* PWThanksForOrderHolderController.xib */; };
+		CA3CE6DF1DA1139700825A0A /* PWThanksForController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6DD1DA1139700825A0A /* PWThanksForController.xib */; };
 		CA3CE6E31DA159C600825A0A /* PWMoreBonusesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6E11DA159C600825A0A /* PWMoreBonusesViewController.m */; };
 		CA3CE6E41DA159C600825A0A /* PWMoreBonusesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3CE6E21DA159C600825A0A /* PWMoreBonusesViewController.xib */; };
 		CA3CE6E81DA22EA400825A0A /* PWMenuTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3CE6E71DA22EA400825A0A /* PWMenuTabController.m */; };
@@ -39,6 +38,10 @@
 		CA46E7C31DAA76FA0044F96F /* PWNewReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA46E7C11DAA76FA0044F96F /* PWNewReviewViewController.xib */; };
 		CA46E7C81DAA89D60044F96F /* PWNoAccesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA46E7C61DAA89D60044F96F /* PWNoAccesViewController.m */; };
 		CA46E7C91DAA89D60044F96F /* PWNoAccesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA46E7C71DAA89D60044F96F /* PWNoAccesViewController.xib */; };
+		CA46E7CD1DAAAD480044F96F /* PWThankForReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA46E7CB1DAAAD480044F96F /* PWThankForReviewViewController.m */; };
+		CACE8DA41DAABE0400E80F11 /* PWThanksForController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DA31DAABE0400E80F11 /* PWThanksForController.m */; };
+		CACE8DA81DAAC74600E80F11 /* PWShareCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DA61DAAC74600E80F11 /* PWShareCommentViewController.m */; };
+		CACE8DA91DAAC74600E80F11 /* PWShareCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACE8DA71DAAC74600E80F11 /* PWShareCommentViewController.xib */; };
 		CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */; };
 		CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */; };
 		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
@@ -249,9 +252,8 @@
 		CA3CE6D51DA020EB00825A0A /* PWGridProductsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGridProductsController.m; sourceTree = "<group>"; };
 		CA3CE6D81DA10BC000825A0A /* PWThanksForOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWThanksForOrderViewController.h; sourceTree = "<group>"; };
 		CA3CE6D91DA10BC000825A0A /* PWThanksForOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWThanksForOrderViewController.m; sourceTree = "<group>"; };
-		CA3CE6DB1DA1139700825A0A /* PWThanksForOrderHolderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWThanksForOrderHolderController.h; sourceTree = "<group>"; };
-		CA3CE6DC1DA1139700825A0A /* PWThanksForOrderHolderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWThanksForOrderHolderController.m; sourceTree = "<group>"; };
-		CA3CE6DD1DA1139700825A0A /* PWThanksForOrderHolderController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWThanksForOrderHolderController.xib; sourceTree = "<group>"; };
+		CA3CE6DB1DA1139700825A0A /* PWThanksForController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWThanksForController.h; sourceTree = "<group>"; };
+		CA3CE6DD1DA1139700825A0A /* PWThanksForController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWThanksForController.xib; sourceTree = "<group>"; };
 		CA3CE6E01DA159C600825A0A /* PWMoreBonusesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWMoreBonusesViewController.h; sourceTree = "<group>"; };
 		CA3CE6E11DA159C600825A0A /* PWMoreBonusesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWMoreBonusesViewController.m; sourceTree = "<group>"; };
 		CA3CE6E21DA159C600825A0A /* PWMoreBonusesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWMoreBonusesViewController.xib; sourceTree = "<group>"; };
@@ -285,6 +287,12 @@
 		CA46E7C51DAA89D60044F96F /* PWNoAccesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWNoAccesViewController.h; sourceTree = "<group>"; };
 		CA46E7C61DAA89D60044F96F /* PWNoAccesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWNoAccesViewController.m; sourceTree = "<group>"; };
 		CA46E7C71DAA89D60044F96F /* PWNoAccesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWNoAccesViewController.xib; sourceTree = "<group>"; };
+		CA46E7CA1DAAAD480044F96F /* PWThankForReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWThankForReviewViewController.h; sourceTree = "<group>"; };
+		CA46E7CB1DAAAD480044F96F /* PWThankForReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWThankForReviewViewController.m; sourceTree = "<group>"; };
+		CACE8DA31DAABE0400E80F11 /* PWThanksForController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWThanksForController.m; sourceTree = "<group>"; };
+		CACE8DA51DAAC74600E80F11 /* PWShareCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWShareCommentViewController.h; sourceTree = "<group>"; };
+		CACE8DA61DAAC74600E80F11 /* PWShareCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWShareCommentViewController.m; sourceTree = "<group>"; };
+		CACE8DA71DAAC74600E80F11 /* PWShareCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWShareCommentViewController.xib; sourceTree = "<group>"; };
 		CAF090FD1D4D3938005FAEF4 /* PocketWaiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketWaiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAF0911A1D4D3A4C005FAEF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -576,11 +584,11 @@
 		CA3CE6D71DA10B9D00825A0A /* ThanksForOrder */ = {
 			isa = PBXGroup;
 			children = (
+				CA3CE6DB1DA1139700825A0A /* PWThanksForController.h */,
+				CACE8DA31DAABE0400E80F11 /* PWThanksForController.m */,
+				CA3CE6DD1DA1139700825A0A /* PWThanksForController.xib */,
 				CA3CE6D81DA10BC000825A0A /* PWThanksForOrderViewController.h */,
 				CA3CE6D91DA10BC000825A0A /* PWThanksForOrderViewController.m */,
-				CA3CE6DB1DA1139700825A0A /* PWThanksForOrderHolderController.h */,
-				CA3CE6DC1DA1139700825A0A /* PWThanksForOrderHolderController.m */,
-				CA3CE6DD1DA1139700825A0A /* PWThanksForOrderHolderController.xib */,
 				CA3CE6E01DA159C600825A0A /* PWMoreBonusesViewController.h */,
 				CA3CE6E11DA159C600825A0A /* PWMoreBonusesViewController.m */,
 				CA3CE6E21DA159C600825A0A /* PWMoreBonusesViewController.xib */,
@@ -630,6 +638,11 @@
 				CA46E7BF1DAA76FA0044F96F /* PWNewReviewViewController.h */,
 				CA46E7C01DAA76FA0044F96F /* PWNewReviewViewController.m */,
 				CA46E7C11DAA76FA0044F96F /* PWNewReviewViewController.xib */,
+				CA46E7CA1DAAAD480044F96F /* PWThankForReviewViewController.h */,
+				CA46E7CB1DAAAD480044F96F /* PWThankForReviewViewController.m */,
+				CACE8DA51DAAC74600E80F11 /* PWShareCommentViewController.h */,
+				CACE8DA61DAAC74600E80F11 /* PWShareCommentViewController.m */,
+				CACE8DA71DAAC74600E80F11 /* PWShareCommentViewController.xib */,
 			);
 			name = Reviews;
 			sourceTree = "<group>";
@@ -1245,7 +1258,7 @@
 				CAFE5FD31D6DE51C003F5991 /* PWNoConnectionAlertController.xib in Resources */,
 				CAFE5FF01D7B8237003F5991 /* PWPurchaseTableViewCell.xib in Resources */,
 				CA3CE6F81DA2428800825A0A /* PWAddToOrderControler.xib in Resources */,
-				CA3CE6DF1DA1139700825A0A /* PWThanksForOrderHolderController.xib in Resources */,
+				CA3CE6DF1DA1139700825A0A /* PWThanksForController.xib in Resources */,
 				CAF091DA1D5799DB005FAEF4 /* coffeetoria3.jpg in Resources */,
 				CAF092C51D628006005FAEF4 /* PWDetailesItemsViewController.xib in Resources */,
 				CA3CE6D31D9FF82900825A0A /* PWProductCell.xib in Resources */,
@@ -1279,6 +1292,7 @@
 				CA46E7C31DAA76FA0044F96F /* PWNewReviewViewController.xib in Resources */,
 				CAF091A21D562471005FAEF4 /* PWIntroThirdPageCell.xib in Resources */,
 				CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */,
+				CACE8DA91DAAC74600E80F11 /* PWShareCommentViewController.xib in Resources */,
 				CAF091DC1D579EDD005FAEF4 /* juice.jpg in Resources */,
 				CAF091CC1D57994D005FAEF4 /* vapiano.jpeg in Resources */,
 				CAF092091D5D2011005FAEF4 /* PWNearRestaurantCollectionViewCell.xib in Resources */,
@@ -1344,7 +1358,7 @@
 				CAF0913A1D4D4062005FAEF4 /* PWIndicator.m in Sources */,
 				CAF092591D607B69005FAEF4 /* PWMainMenuItemViewController.m in Sources */,
 				CAF0916E1D4E9054005FAEF4 /* PWRestaurant.m in Sources */,
-				CA3CE6DE1DA1139700825A0A /* PWThanksForOrderHolderController.m in Sources */,
+				CA46E7CD1DAAAD480044F96F /* PWThankForReviewViewController.m in Sources */,
 				CAF092C11D627C3C005FAEF4 /* PWDetailesPresentsViewController.m in Sources */,
 				CAFE61031D98FBDD003F5991 /* PWButton.m in Sources */,
 				CA46E7B01DA902A30044F96F /* PWWriteNewReviewController.m in Sources */,
@@ -1365,6 +1379,7 @@
 				CA3CE6E31DA159C600825A0A /* PWMoreBonusesViewController.m in Sources */,
 				CAF092AD1D618EB8005FAEF4 /* PWRestaurantMapController.m in Sources */,
 				CAF092681D608E77005FAEF4 /* PWMapController.m in Sources */,
+				CACE8DA81DAAC74600E80F11 /* PWShareCommentViewController.m in Sources */,
 				CAF092EC1D6894ED005FAEF4 /* PWLocationManager.m in Sources */,
 				CAFE61151D9945D0003F5991 /* PWFirstPresentCell.m in Sources */,
 				CAFE61111D99459A003F5991 /* PWFirstPresentController.m in Sources */,
@@ -1401,6 +1416,7 @@
 				CAF091851D4E94A0005FAEF4 /* PWRestaurantReview.m in Sources */,
 				CA3CE6EC1DA233A000825A0A /* PWBestOfDayViewController.m in Sources */,
 				CAF092BB1D6278FC005FAEF4 /* PWDetailedRestaurantsViewController.m in Sources */,
+				CACE8DA41DAABE0400E80F11 /* PWThanksForController.m in Sources */,
 				CAF0925D1D607B69005FAEF4 /* PWNearRestaurantsViewController.m in Sources */,
 				CAFE611A1D994C33003F5991 /* PWPresentsTabController.m in Sources */,
 				CAF0925C1D607B69005FAEF4 /* PWNearPresentsViewController.m in Sources */,

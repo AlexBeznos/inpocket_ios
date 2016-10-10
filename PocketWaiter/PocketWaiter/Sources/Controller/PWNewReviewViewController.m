@@ -11,6 +11,7 @@
 #import "PWDropShadowView.h"
 #import "UIColorAdditions.h"
 #import "PWNoAccesViewController.h"
+#import "PWThankForReviewViewController.h"
 
 @interface PWNewReviewViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate>
 
@@ -39,6 +40,8 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	
+	[self.scrollView removeFromSuperview];
 	
 	self.view.backgroundColor = [UIColor pwBackgroundColor];
 	self.holder.backgroundColor = [UIColor whiteColor];
@@ -80,6 +83,60 @@
 
 - (IBAction)postComment:(id)sender
 {
+	[self startActivity];
+	
+	if (0 != self.commentTextView.text.length || nil != self.imageView.image)
+	{
+		self.view.userInteractionEnabled = NO;
+		PWRestaurantReview *review = [[PWRestaurantReview alloc]
+					initWithCommentbody:self.commentTextView.text image:self.imageView.image];
+		
+		__weak __typeof(self) weakSelf = self;
+		[[PWModelManager sharedManager] sendReview:review completion:
+		^(NSError *error)
+		{
+			self.view.userInteractionEnabled = YES;
+			[weakSelf stopActivity];
+			if (nil != error)
+			{
+				[weakSelf showNoInternetDialog];
+			}
+			else
+			{
+				PWThankForReviewViewController *thanksController =
+							[[PWThankForReviewViewController alloc]
+							initWithTransiter:self.transiter];
+				[weakSelf addChildViewController:thanksController];
+				thanksController.contentWidth = CGRectGetWidth(self.view.frame);
+				[weakSelf.view addSubview:thanksController.view];
+				
+				[thanksController didMoveToParentViewController:self];
+				thanksController.view.translatesAutoresizingMaskIntoConstraints = NO;
+				
+				[weakSelf.view addConstraints:[NSLayoutConstraint
+							constraintsWithVisualFormat:@"V:|[view]|"
+							options:0 metrics:nil
+							views:@{@"view" : thanksController.view}]];
+				[weakSelf.view addConstraints:[NSLayoutConstraint
+							constraintsWithVisualFormat:@"H:|[view]|"
+							options:0 metrics:nil
+							views:@{@"view" : thanksController.view}]];
+			}
+		}];
+	}
+	else
+	{
+		UIAlertController *alert = [UIAlertController
+					alertControllerWithTitle:@"Не удалось публиковать отзыв"
+					message:@"Отзыв не может быть пустым"
+					preferredStyle:UIAlertControllerStyleAlert];
+		[alert addAction:[UIAlertAction actionWithTitle:@"Хорошо" style:UIAlertActionStyleDefault handler:nil]];
+		self.view.userInteractionEnabled = NO;
+		[self presentViewController:alert animated:YES completion:
+		^{
+			self.view.userInteractionEnabled = YES;
+		}];
+	}
 }
 
 - (IBAction)addPhoto:(id)sender
