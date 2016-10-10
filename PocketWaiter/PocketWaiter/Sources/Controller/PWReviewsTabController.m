@@ -58,7 +58,7 @@
 							newReviewHandler:
 				^{
 					PWNewReviewViewController *newReview =
-								[PWNewReviewViewController new];
+								[[PWNewReviewViewController alloc] initWithType:kPWReviewTypeComment];
 					[weakSelf.transiter performForwardTransition:newReview];
 				}];
 				[weakSelf addChildViewController:writeComment];

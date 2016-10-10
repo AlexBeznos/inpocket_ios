@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PWScrollableViewController.h"
 
-@interface PWShareCommentViewController : UIViewController
+@interface PWShareCommentViewController : PWScrollableViewController
+
+- (instancetype)initWithReview:(PWRestaurantReview *)review;
 
 @property (nonatomic) CGFloat contentWidth;
 @property (nonatomic, readonly) CGSize contentSize;

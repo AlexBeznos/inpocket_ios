@@ -7,6 +7,7 @@
 //
 
 #import "PWShareCommentViewController.h"
+#import "PWShareController.h"
 
 @interface PWShareCommentViewController ()
 
@@ -19,18 +20,34 @@
 @property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *widthConstraint;
 
+@property (nonatomic, strong) PWRestaurantReview *review;
+
 @end
 
 @implementation PWShareCommentViewController
+
+- (instancetype)initWithReview:(PWRestaurantReview *)review
+{
+	self = [super init];
+	
+	if (nil != self)
+	{
+		self.review = review;
+	}
+	
+	return self;
+}
 
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
 	
+	[self.scrollView removeFromSuperview];
+	
 	[self setupConstraints];
 	
-	self.buttonTitle.text = @"Написать коммент";
-	self.shareDescription.text = @"Напишите комментарий заведению";
+	self.buttonTitle.text = @"Поделиться";
+	self.shareDescription.text = @"Поделиться с друзьми вашим отзывом";
 	self.bonusesCount.text =  [NSString stringWithFormat:@"+20"];
 	self.bonusesImage.image = [[UIImage imageNamed:@"collectedBonus"]
 				imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
@@ -62,6 +79,34 @@
 	
 	[self.view setNeedsLayout];
 	[self.view layoutIfNeeded];
+}
+
+- (IBAction)share:(id)sender
+{
+	[self startActivity];
+	self.view.userInteractionEnabled = NO;
+	[PWShareController shareText:self.review.reviewDescription image:self.review.photo
+				completion:^(NSError *error)
+	{
+		[self stopActivity];
+		if (nil != error)
+		{
+			[self showNoInternetDialog];
+		}
+		else
+		{
+			UIAlertController *alert = [UIAlertController
+						alertControllerWithTitle:@"Спасибо"
+						message:@"Ваш отзыв отправлен"
+						preferredStyle:UIAlertControllerStyleAlert];
+			[alert addAction:[UIAlertAction actionWithTitle:@"Хорошо" style:UIAlertActionStyleDefault handler:nil]];
+			self.view.userInteractionEnabled = NO;
+			[self presentViewController:alert animated:YES completion:
+			^{
+				self.view.userInteractionEnabled = YES;
+			}];
+		}
+	}];
 }
 
 - (CGFloat)contentWidth

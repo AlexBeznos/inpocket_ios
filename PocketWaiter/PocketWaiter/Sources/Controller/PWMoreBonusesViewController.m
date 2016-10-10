@@ -8,6 +8,7 @@
 
 #import "PWMoreBonusesViewController.h"
 #import "PWRestaurant.h"
+#import "PWNewReviewViewController.h"
 
 @interface PWMoreBonusesViewController ()
 
@@ -33,6 +34,7 @@
 
 @property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *widthConstraint;
+@property (nonatomic, weak) id<IPWTransiter> transiter;
 
 @end
 
@@ -43,6 +45,7 @@
 			shareBonuses:(NSUInteger)shareBonuses
 			commentEnabled:(BOOL)commentEnabled
 			commentBonuses:(NSUInteger)commentBonuses
+			transiter:(id<IPWTransiter>)transiter
 {
 	self = [super init];
 	
@@ -53,6 +56,7 @@
 		self.shareBonuses = shareBonuses;
 		self.commentBonuses = commentBonuses;
 		self.restaurant = restaurant;
+		self.transiter = transiter;
 	}
 	
 	return self;
@@ -103,6 +107,9 @@
 
 - (IBAction)share:(id)sender
 {
+	PWNewReviewViewController *newReview =
+				[[PWNewReviewViewController alloc] initWithType:kPWReviewTypeShareToFriend];
+	[self.transiter performForwardTransition:newReview];
 }
 
 - (IBAction)comment:(id)sender

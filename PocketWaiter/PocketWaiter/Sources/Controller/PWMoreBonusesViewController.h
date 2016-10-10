@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class PWRestaurant;
+@protocol IPWTransiter;
 
 @interface PWMoreBonusesViewController : UIViewController
 
@@ -16,7 +17,8 @@
 			shareEnabled:(BOOL)shareEnabled
 			shareBonuses:(NSUInteger)shareBonuses
 			commentEnabled:(BOOL)commentEnabled
-			commentBonuses:(NSUInteger)commentBonuses;
+			commentBonuses:(NSUInteger)commentBonuses
+			transiter:(id<IPWTransiter>)transiter;
 
 @property (nonatomic) CGSize contentSize;
 

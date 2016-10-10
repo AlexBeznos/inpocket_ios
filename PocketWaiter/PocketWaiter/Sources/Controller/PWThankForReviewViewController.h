@@ -11,7 +11,7 @@
 
 @interface PWThankForReviewViewController : PWScrollableViewController
 
-- (instancetype)initWithTransiter:(id<IPWTransiter>)transiter;
+- (instancetype)initWithReview:(PWRestaurantReview *)review transiter:(id<IPWTransiter>)transiter;
 @property (nonatomic) CGFloat contentWidth;
 
 @end

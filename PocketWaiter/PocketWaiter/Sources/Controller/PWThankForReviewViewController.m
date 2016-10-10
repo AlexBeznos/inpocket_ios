@@ -14,18 +14,20 @@
 @interface PWThankForReviewViewController ()
 
 @property (nonatomic, weak) id<IPWTransiter> transiter;
+@property (nonatomic, strong) PWRestaurantReview *review;
 
 @end
 
 @implementation PWThankForReviewViewController
 
-- (instancetype)initWithTransiter:(id<IPWTransiter>)transiter
+- (instancetype)initWithReview:(PWRestaurantReview *)review transiter:(id<IPWTransiter>)transiter
 {
 	self = [super init];
 	
 	if (nil != self)
 	{
 		self.transiter = transiter;
+		self.review = review;
 	}
 	
 	return self;
@@ -73,7 +75,7 @@
 			if (allowShare)
 			{
 				PWShareCommentViewController *shareController =
-							[PWShareCommentViewController new];
+							[[PWShareCommentViewController alloc] initWithReview:weakSelf.review];
 				[weakSelf addChildViewController:shareController];
 				[weakSelf.scrollView addSubview:shareController.view];
 				

@@ -43,6 +43,7 @@
 		CACE8DA81DAAC74600E80F11 /* PWShareCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DA61DAAC74600E80F11 /* PWShareCommentViewController.m */; };
 		CACE8DA91DAAC74600E80F11 /* PWShareCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACE8DA71DAAC74600E80F11 /* PWShareCommentViewController.xib */; };
 		CACE8DAC1DAB983D00E80F11 /* PWUtilsAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DAB1DAB983D00E80F11 /* PWUtilsAccessor.m */; };
+		CACE8DB01DAB9DE800E80F11 /* PWShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DAF1DAB9DE800E80F11 /* PWShareController.m */; };
 		CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */; };
 		CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */; };
 		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
@@ -296,6 +297,8 @@
 		CACE8DA71DAAC74600E80F11 /* PWShareCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWShareCommentViewController.xib; sourceTree = "<group>"; };
 		CACE8DAA1DAB983D00E80F11 /* PWUtilsAccessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWUtilsAccessor.h; sourceTree = "<group>"; };
 		CACE8DAB1DAB983D00E80F11 /* PWUtilsAccessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWUtilsAccessor.m; sourceTree = "<group>"; };
+		CACE8DAE1DAB9DE800E80F11 /* PWShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWShareController.h; sourceTree = "<group>"; };
+		CACE8DAF1DAB9DE800E80F11 /* PWShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWShareController.m; sourceTree = "<group>"; };
 		CAF090FD1D4D3938005FAEF4 /* PocketWaiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketWaiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAF0911A1D4D3A4C005FAEF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -660,6 +663,15 @@
 			name = NoAccessTo;
 			sourceTree = "<group>";
 		};
+		CACE8DAD1DAB9D2E00E80F11 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				CACE8DAE1DAB9DE800E80F11 /* PWShareController.h */,
+				CACE8DAF1DAB9DE800E80F11 /* PWShareController.m */,
+			);
+			name = Share;
+			sourceTree = "<group>";
+		};
 		CAF090F41D4D3938005FAEF4 = {
 			isa = PBXGroup;
 			children = (
@@ -726,6 +738,7 @@
 		CAF0911E1D4D3A4C005FAEF4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CACE8DAD1DAB9D2E00E80F11 /* Share */,
 				CA46E7C41DAA89B20044F96F /* NoAccessTo */,
 				CA3CE6BF1D9FDD9C00825A0A /* Base */,
 				CAFE60FB1D98FAC4003F5991 /* Active mode */,
@@ -1395,6 +1408,7 @@
 				CAF091BF1D576703005FAEF4 /* PWDropShadowView.m in Sources */,
 				CAF092381D5FED1F005FAEF4 /* PWRestaurantFilterCell.m in Sources */,
 				CAF091AC1D5657C9005FAEF4 /* UIColorAdditions.m in Sources */,
+				CACE8DB01DAB9DE800E80F11 /* PWShareController.m in Sources */,
 				CA46E7AC1DA901120044F96F /* PWReviewsTabController.m in Sources */,
 				CAF091881D4E94B3005FAEF4 /* PWUsersRestaurantInfo.m in Sources */,
 				CA3CE6C81D9FE3A000825A0A /* PWScrollHandlerController.m in Sources */,

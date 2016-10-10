@@ -72,6 +72,9 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="4zO-lh-2Sy"/>
                             </constraints>
+                            <connections>
+                                <action selector="share:" destination="-1" eventType="touchUpInside" id="q46-NO-HtJ"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dL9-B3-ydU">
                             <rect key="frame" x="30" y="97" width="33" height="16"/>

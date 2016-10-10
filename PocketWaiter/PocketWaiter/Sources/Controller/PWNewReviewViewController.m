@@ -13,6 +13,7 @@
 #import "PWNoAccesViewController.h"
 #import "PWThankForReviewViewController.h"
 #import "PWUtilsAccessor.h"
+#import "PWShareController.h"
 
 @interface PWNewReviewViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate>
 
@@ -27,6 +28,7 @@
 @property (strong, nonatomic) IBOutlet UIView *separator;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet PWDropShadowView *holder;
+@property (nonatomic) PWReviewType type;
 
 @property (nonatomic, strong) UINavigationItem *savedNavigationItem;
 
@@ -38,6 +40,18 @@
 
 @synthesize transiter;
 
+- (instancetype)initWithType:(PWReviewType)type
+{
+	self = [super init];
+	
+	if (nil != self)
+	{
+		self.type = type;
+	}
+	
+	return self;
+}
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
@@ -47,8 +61,10 @@
 	self.view.backgroundColor = [UIColor pwBackgroundColor];
 	self.holder.backgroundColor = [UIColor whiteColor];
 	
-	self.postLabel.text = @"Публиковать отзыв";
-	self.writeCommentLabel.text = @"Напишите свой отзыв";
+	self.postLabel.text = self.type == kPWReviewTypeComment ?
+				@"Публиковать отзыв" : @"Поделиться с друзьями";
+	self.writeCommentLabel.text = self.type == kPWReviewTypeComment ?
+				@"Напишите свой отзыв" : @"Напишите комментарий";
 	self.addPhotoLabel.text = @"Добавить фото";
 	self.rankLabel.text = @"Рейтинг";
 	
@@ -73,7 +89,7 @@
 				navigationItem:item];
 	
 	UILabel *theTitleLabel = [UILabel new];
-	theTitleLabel.text = @"Новый отзыв";
+	theTitleLabel.text = self.type == kPWReviewTypeComment ? @"Новый отзыв" : @"Напишите комментарий";
 	theTitleLabel.font = [UIFont systemFontOfSize:20];
 	[theTitleLabel sizeToFit];
 	
@@ -84,46 +100,73 @@
 
 - (IBAction)postComment:(id)sender
 {
-	[self startActivity];
-	
 	if (0 != self.commentTextView.text.length || nil != self.imageView.image)
 	{
 		self.view.userInteractionEnabled = NO;
 		PWRestaurantReview *review = [[PWRestaurantReview alloc]
 					initWithCommentbody:self.commentTextView.text image:self.imageView.image];
-		
-		__weak __typeof(self) weakSelf = self;
-		[[PWModelManager sharedManager] sendReview:review completion:
-		^(NSError *error)
+		if (self.type == kPWReviewTypeComment)
 		{
-			self.view.userInteractionEnabled = YES;
-			[weakSelf stopActivity];
-			if (nil != error)
+			[self startActivity];
+			__weak __typeof(self) weakSelf = self;
+			[[PWModelManager sharedManager] sendReview:review completion:
+			^(NSError *error)
 			{
-				[weakSelf showNoInternetDialog];
-			}
-			else
+				self.view.userInteractionEnabled = YES;
+				[weakSelf stopActivity];
+				if (nil != error)
+				{
+					[weakSelf showNoInternetDialog];
+				}
+				else
+				{
+					PWThankForReviewViewController *thanksController =
+								[[PWThankForReviewViewController alloc]
+								initWithReview:review transiter:self.transiter];
+					[weakSelf addChildViewController:thanksController];
+					thanksController.contentWidth = CGRectGetWidth(self.view.frame);
+					[weakSelf.view addSubview:thanksController.view];
+					
+					[thanksController didMoveToParentViewController:self];
+					thanksController.view.translatesAutoresizingMaskIntoConstraints = NO;
+					
+					[weakSelf.view addConstraints:[NSLayoutConstraint
+								constraintsWithVisualFormat:@"V:|[view]|"
+								options:0 metrics:nil
+								views:@{@"view" : thanksController.view}]];
+					[weakSelf.view addConstraints:[NSLayoutConstraint
+								constraintsWithVisualFormat:@"H:|[view]|"
+								options:0 metrics:nil
+								views:@{@"view" : thanksController.view}]];
+				}
+			}];
+		}
+		else
+		{
+			self.view.userInteractionEnabled = NO;
+			[PWShareController shareText:review.reviewDescription image:review.photo
+						completion:^(NSError *error)
 			{
-				PWThankForReviewViewController *thanksController =
-							[[PWThankForReviewViewController alloc]
-							initWithTransiter:self.transiter];
-				[weakSelf addChildViewController:thanksController];
-				thanksController.contentWidth = CGRectGetWidth(self.view.frame);
-				[weakSelf.view addSubview:thanksController.view];
-				
-				[thanksController didMoveToParentViewController:self];
-				thanksController.view.translatesAutoresizingMaskIntoConstraints = NO;
-				
-				[weakSelf.view addConstraints:[NSLayoutConstraint
-							constraintsWithVisualFormat:@"V:|[view]|"
-							options:0 metrics:nil
-							views:@{@"view" : thanksController.view}]];
-				[weakSelf.view addConstraints:[NSLayoutConstraint
-							constraintsWithVisualFormat:@"H:|[view]|"
-							options:0 metrics:nil
-							views:@{@"view" : thanksController.view}]];
-			}
-		}];
+				if (nil != error)
+				{
+					[self showNoInternetDialog];
+				}
+				else
+				{
+					UIAlertController *alert = [UIAlertController
+								alertControllerWithTitle:@"Спасибо"
+								message:@"Ваш отзыв отправлен"
+								preferredStyle:UIAlertControllerStyleAlert];
+					[alert addAction:[UIAlertAction actionWithTitle:@"Хорошо" style:UIAlertActionStyleDefault handler:nil]];
+					self.view.userInteractionEnabled = NO;
+					[self presentViewController:alert animated:YES completion:
+					^{
+						self.view.userInteractionEnabled = YES;
+					}];
+				}
+			}];
+
+		}
 	}
 	else
 	{

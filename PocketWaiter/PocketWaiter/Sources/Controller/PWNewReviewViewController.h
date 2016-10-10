@@ -10,6 +10,14 @@
 #import "UIViewControllerAdditions.h"
 #import "PWScrollableViewController.h"
 
+typedef NS_ENUM(NSUInteger, PWReviewType)
+{
+	kPWReviewTypeComment,
+	kPWReviewTypeShareToFriend,
+};
+
 @interface PWNewReviewViewController : PWScrollableViewController <IPWTransitableController>
+
+- (instancetype)initWithType:(PWReviewType)type;
 
 @end

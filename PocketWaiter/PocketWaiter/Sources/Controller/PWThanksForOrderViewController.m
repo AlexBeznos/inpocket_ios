@@ -142,7 +142,7 @@
 			{
 				PWMoreBonusesViewController *moreBonuses = [[PWMoreBonusesViewController alloc]
 							initWithRestaurant:weakSelf.restaurant shareEnabled:allowShare shareBonuses:20
-							commentEnabled:allowComment commentBonuses:20];
+							commentEnabled:allowComment commentBonuses:20 transiter:self.transiter];
 				[weakSelf addChildViewController:moreBonuses];
 				[weakSelf.scrollView addSubview:moreBonuses.view];
 				

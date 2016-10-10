@@ -107,9 +107,7 @@
 	}
 	
 	self.button.backgroundColor = self.scheme;
-	self.buttonTitle.text = @"Вернуться в меню";
-	
-	self.view.backgroundColor = [UIColor greenColor];
+	self.buttonTitle.text = backTitle;
 }
 
 - (IBAction)backAction:(UIButton *)sender
