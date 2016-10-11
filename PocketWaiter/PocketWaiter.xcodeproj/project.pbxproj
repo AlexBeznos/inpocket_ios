@@ -44,6 +44,11 @@
 		CACE8DA91DAAC74600E80F11 /* PWShareCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACE8DA71DAAC74600E80F11 /* PWShareCommentViewController.xib */; };
 		CACE8DAC1DAB983D00E80F11 /* PWUtilsAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DAB1DAB983D00E80F11 /* PWUtilsAccessor.m */; };
 		CACE8DB01DAB9DE800E80F11 /* PWShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DAF1DAB9DE800E80F11 /* PWShareController.m */; };
+		CACE8DB41DABAA3100E80F11 /* PWAboutUsTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DB31DABAA3100E80F11 /* PWAboutUsTabController.m */; };
+		CACE8DB81DABADBD00E80F11 /* PWMainAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DB61DABADBD00E80F11 /* PWMainAboutViewController.m */; };
+		CACE8DB91DABADBD00E80F11 /* PWMainAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACE8DB71DABADBD00E80F11 /* PWMainAboutViewController.xib */; };
+		CACE8DBD1DABB40D00E80F11 /* PWImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DBB1DABB40D00E80F11 /* PWImageCollectionCell.m */; };
+		CACE8DBE1DABB40D00E80F11 /* PWImageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACE8DBC1DABB40D00E80F11 /* PWImageCollectionCell.xib */; };
 		CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */; };
 		CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */; };
 		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
@@ -299,6 +304,14 @@
 		CACE8DAB1DAB983D00E80F11 /* PWUtilsAccessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWUtilsAccessor.m; sourceTree = "<group>"; };
 		CACE8DAE1DAB9DE800E80F11 /* PWShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWShareController.h; sourceTree = "<group>"; };
 		CACE8DAF1DAB9DE800E80F11 /* PWShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWShareController.m; sourceTree = "<group>"; };
+		CACE8DB21DABAA3100E80F11 /* PWAboutUsTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWAboutUsTabController.h; sourceTree = "<group>"; };
+		CACE8DB31DABAA3100E80F11 /* PWAboutUsTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWAboutUsTabController.m; sourceTree = "<group>"; };
+		CACE8DB51DABADBD00E80F11 /* PWMainAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWMainAboutViewController.h; sourceTree = "<group>"; };
+		CACE8DB61DABADBD00E80F11 /* PWMainAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWMainAboutViewController.m; sourceTree = "<group>"; };
+		CACE8DB71DABADBD00E80F11 /* PWMainAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWMainAboutViewController.xib; sourceTree = "<group>"; };
+		CACE8DBA1DABB40D00E80F11 /* PWImageCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWImageCollectionCell.h; sourceTree = "<group>"; };
+		CACE8DBB1DABB40D00E80F11 /* PWImageCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWImageCollectionCell.m; sourceTree = "<group>"; };
+		CACE8DBC1DABB40D00E80F11 /* PWImageCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWImageCollectionCell.xib; sourceTree = "<group>"; };
 		CAF090FD1D4D3938005FAEF4 /* PocketWaiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketWaiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAF0911A1D4D3A4C005FAEF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -670,6 +683,21 @@
 				CACE8DAF1DAB9DE800E80F11 /* PWShareController.m */,
 			);
 			name = Share;
+			sourceTree = "<group>";
+		};
+		CACE8DB11DABA9DF00E80F11 /* AboutUs */ = {
+			isa = PBXGroup;
+			children = (
+				CACE8DB21DABAA3100E80F11 /* PWAboutUsTabController.h */,
+				CACE8DB31DABAA3100E80F11 /* PWAboutUsTabController.m */,
+				CACE8DB51DABADBD00E80F11 /* PWMainAboutViewController.h */,
+				CACE8DB61DABADBD00E80F11 /* PWMainAboutViewController.m */,
+				CACE8DB71DABADBD00E80F11 /* PWMainAboutViewController.xib */,
+				CACE8DBA1DABB40D00E80F11 /* PWImageCollectionCell.h */,
+				CACE8DBB1DABB40D00E80F11 /* PWImageCollectionCell.m */,
+				CACE8DBC1DABB40D00E80F11 /* PWImageCollectionCell.xib */,
+			);
+			name = AboutUs;
 			sourceTree = "<group>";
 		};
 		CAF090F41D4D3938005FAEF4 = {
@@ -1100,6 +1128,7 @@
 		CAFE60FB1D98FAC4003F5991 /* Active mode */ = {
 			isa = PBXGroup;
 			children = (
+				CACE8DB11DABA9DF00E80F11 /* AboutUs */,
 				CA46E7A71DA900780044F96F /* Reviews */,
 				CA3CE6F31DA2426400825A0A /* AddToOrder */,
 				CA3CE6E51DA22E7400825A0A /* Menu */,
@@ -1283,10 +1312,12 @@
 				CAF091E01D57A05F005FAEF4 /* hookah1.jpeg in Resources */,
 				CAF091A91D564E61005FAEF4 /* PWEnterPromoViewController.xib in Resources */,
 				CAF091EE1D57B271005FAEF4 /* PWNearItemsViewController.xib in Resources */,
+				CACE8DBE1DABB40D00E80F11 /* PWImageCollectionCell.xib in Resources */,
 				CAFE61161D9945D0003F5991 /* PWFirstPresentCell.xib in Resources */,
 				CAFE5FE51D6DF62F003F5991 /* PWPurchaseRestaurantCell.xib in Resources */,
 				CAF092221D5F6D3F005FAEF4 /* PWQRCodeScanViewController.xib in Resources */,
 				CAF091EC1D57B239005FAEF4 /* PWNearItemCollectionViewCell.xib in Resources */,
+				CACE8DB91DABADBD00E80F11 /* PWMainAboutViewController.xib in Resources */,
 				CA46E7C91DAA89D60044F96F /* PWNoAccesViewController.xib in Resources */,
 				CAF091911D560B80005FAEF4 /* PWIntroViewController.xib in Resources */,
 				CA3CE6CE1D9FE7A300825A0A /* PWProductViewController.xib in Resources */,
@@ -1346,6 +1377,7 @@
 			files = (
 				CAF091941D56165C005FAEF4 /* PWMainViewController.m in Sources */,
 				CA46E7B91DAA41DD0044F96F /* PWRankView.m in Sources */,
+				CACE8DBD1DABB40D00E80F11 /* PWImageCollectionCell.m in Sources */,
 				CACE8DAC1DAB983D00E80F11 /* PWUtilsAccessor.m in Sources */,
 				CAF092B31D627264005FAEF4 /* PWPresentsMapController.m in Sources */,
 				CA3CE6D61DA020EB00825A0A /* PWGridProductsController.m in Sources */,
@@ -1436,6 +1468,7 @@
 				CAF091851D4E94A0005FAEF4 /* PWRestaurantReview.m in Sources */,
 				CA3CE6EC1DA233A000825A0A /* PWBestOfDayViewController.m in Sources */,
 				CAF092BB1D6278FC005FAEF4 /* PWDetailedRestaurantsViewController.m in Sources */,
+				CACE8DB81DABADBD00E80F11 /* PWMainAboutViewController.m in Sources */,
 				CACE8DA41DAABE0400E80F11 /* PWThanksForController.m in Sources */,
 				CAF0925D1D607B69005FAEF4 /* PWNearRestaurantsViewController.m in Sources */,
 				CAFE611A1D994C33003F5991 /* PWPresentsTabController.m in Sources */,
@@ -1448,6 +1481,7 @@
 				CAF091BC1D57559A005FAEF4 /* UIViewControllerAdditions.m in Sources */,
 				CAF091E91D57AA0C005FAEF4 /* PWNearItemCollectionViewCell.m in Sources */,
 				CAF092331D5FE08D005FAEF4 /* PWRestaurantFilterController.m in Sources */,
+				CACE8DB41DABAA3100E80F11 /* PWAboutUsTabController.m in Sources */,
 				CAFE5FD71D6DE59C003F5991 /* PWAllPurchasesViewController.m in Sources */,
 				CAF092E91D688F7E005FAEF4 /* PWBluetoothManager.m in Sources */,
 			);

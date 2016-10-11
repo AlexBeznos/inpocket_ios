@@ -18,6 +18,7 @@
 @property (nonatomic, readonly) NSString *address;
 @property (nonatomic, readonly) UIColor *color;
 @property (nonatomic, readonly) NSString *phoneNumber;
+@property (nonatomic, readonly) NSString *webLink;
 @property (nonatomic, readonly) CLLocation *location;
 @property (nonatomic, readonly) NSString *restaurantDescription;
 @property (nonatomic, readonly) UIImage *restaurantImage;

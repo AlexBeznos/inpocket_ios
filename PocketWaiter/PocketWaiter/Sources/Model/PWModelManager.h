@@ -71,4 +71,6 @@
 
 - (void)sendReview:(PWRestaurantReview *)review completion:(void (^)(NSError *error))completion;
 
+- (void)getAboutInfoForRestaurant:(PWRestaurant *)restaurant completion:(void (^)(PWRestaurantAboutInfo *, NSError *error))completion;
+
 @end

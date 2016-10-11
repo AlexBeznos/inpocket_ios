@@ -14,6 +14,7 @@
 #import "PWPresentsTabController.h"
 #import "PWMenuTabController.h"
 #import "PWReviewsTabController.h"
+#import "PWAboutUsTabController.h"
 
 @interface PWMainMenuItemViewController (Protected)
 
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) PWPresentsTabController *presentController;
 @property (strong, nonatomic) PWMenuTabController *menuController;
 @property (strong, nonatomic) PWReviewsTabController *reviewsController;
+@property (strong, nonatomic) PWAboutUsTabController *aboutController;
 
 @property (nonatomic, strong) UIButton *callWaiterButton;
 @property (nonatomic, strong) UIButton *orderButton;
@@ -171,6 +173,9 @@
 	
 	[self.reviewsController.view removeFromSuperview];
 	[self.reviewsController removeFromParentViewController];
+	
+	[self.aboutController.view removeFromSuperview];
+	[self.aboutController removeFromParentViewController];
 }
 
 - (void)showPresents
@@ -247,7 +252,26 @@
 
 - (void)showAbout
 {
-
+	[self clearViews];
+	PWAboutUsTabController *aboutController = [[PWAboutUsTabController
+				alloc] initWithRestaurant:self.restaurant transiter:self];
+	CGFloat aspectRatio = CGRectGetWidth(self.parentViewController.view.frame) / 320.;
+	aboutController.contentWidth = 320 * aspectRatio;
+	[self addChildViewController:aboutController];
+	[self.contentView addSubview:aboutController.view];
+			
+	[aboutController didMoveToParentViewController:self];
+	aboutController.view.translatesAutoresizingMaskIntoConstraints = NO;
+	
+	[self.contentView addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"V:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : aboutController.view}]];
+	[self.contentView addConstraints:[NSLayoutConstraint
+				constraintsWithVisualFormat:@"H:|[view]|"
+				options:0 metrics:nil
+				views:@{@"view" : aboutController.view}]];
+	self.aboutController = aboutController;
 }
 
 - (void)showBonuses
