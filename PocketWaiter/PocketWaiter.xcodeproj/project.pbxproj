@@ -49,6 +49,7 @@
 		CACE8DB91DABADBD00E80F11 /* PWMainAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACE8DB71DABADBD00E80F11 /* PWMainAboutViewController.xib */; };
 		CACE8DBD1DABB40D00E80F11 /* PWImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DBB1DABB40D00E80F11 /* PWImageCollectionCell.m */; };
 		CACE8DBE1DABB40D00E80F11 /* PWImageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACE8DBC1DABB40D00E80F11 /* PWImageCollectionCell.xib */; };
+		CACE8DC11DAD0E6800E80F11 /* PWPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DC01DAD0E6800E80F11 /* PWPhotosController.m */; };
 		CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */; };
 		CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */; };
 		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
@@ -312,6 +313,8 @@
 		CACE8DBA1DABB40D00E80F11 /* PWImageCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWImageCollectionCell.h; sourceTree = "<group>"; };
 		CACE8DBB1DABB40D00E80F11 /* PWImageCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWImageCollectionCell.m; sourceTree = "<group>"; };
 		CACE8DBC1DABB40D00E80F11 /* PWImageCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWImageCollectionCell.xib; sourceTree = "<group>"; };
+		CACE8DBF1DAD0E6800E80F11 /* PWPhotosController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWPhotosController.h; sourceTree = "<group>"; };
+		CACE8DC01DAD0E6800E80F11 /* PWPhotosController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWPhotosController.m; sourceTree = "<group>"; };
 		CAF090FD1D4D3938005FAEF4 /* PocketWaiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketWaiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAF0911A1D4D3A4C005FAEF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -696,6 +699,8 @@
 				CACE8DBA1DABB40D00E80F11 /* PWImageCollectionCell.h */,
 				CACE8DBB1DABB40D00E80F11 /* PWImageCollectionCell.m */,
 				CACE8DBC1DABB40D00E80F11 /* PWImageCollectionCell.xib */,
+				CACE8DBF1DAD0E6800E80F11 /* PWPhotosController.h */,
+				CACE8DC01DAD0E6800E80F11 /* PWPhotosController.m */,
 			);
 			name = AboutUs;
 			sourceTree = "<group>";
@@ -1408,6 +1413,7 @@
 				CAF092D51D63A770005FAEF4 /* PWActivityIndicator.m in Sources */,
 				CAF0913A1D4D4062005FAEF4 /* PWIndicator.m in Sources */,
 				CAF092591D607B69005FAEF4 /* PWMainMenuItemViewController.m in Sources */,
+				CACE8DC11DAD0E6800E80F11 /* PWPhotosController.m in Sources */,
 				CAF0916E1D4E9054005FAEF4 /* PWRestaurant.m in Sources */,
 				CA46E7CD1DAAAD480044F96F /* PWThankForReviewViewController.m in Sources */,
 				CAF092C11D627C3C005FAEF4 /* PWDetailesPresentsViewController.m in Sources */,

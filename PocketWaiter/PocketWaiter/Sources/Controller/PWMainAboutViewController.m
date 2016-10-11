@@ -10,6 +10,7 @@
 #import "PWIndicator.h"
 #import "PWImageCollectionCell.h"
 #import "PWSlidesLayout.h"
+#import "PWPhotosController.h"
 
 #import "UIColorAdditions.h"
 
@@ -105,6 +106,20 @@
 	float currentPage = scrollView.contentOffset.x / pageWidth + 0.5;
 	
 	[self handleScrollToPage:currentPage];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView
+			didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	PWPhotosController *photosController = [[PWPhotosController alloc]
+				initWithAboutInfo:self.aboutInfo];
+	photosController.contentWidth = self.contentSize.width;
+	[self.transiter performForwardTransition:photosController];
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	return YES;
 }
 
 - (void)handleScrollToPage:(NSUInteger)aPageNumber
