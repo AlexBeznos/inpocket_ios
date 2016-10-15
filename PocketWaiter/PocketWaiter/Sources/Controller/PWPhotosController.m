@@ -8,6 +8,7 @@
 
 #import "PWPhotosController.h"
 #import "PWImageCollectionCell.h"
+#import "PWPhotoController.h"
 
 @interface PWPhotosController ()
 
@@ -105,6 +106,13 @@ static NSString * const reuseIdentifier = @"Cell";
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	return YES;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	PWPhotoController *controller = [[PWPhotoController alloc]
+				initWithImage:self.items[indexPath.item] index:indexPath.item count:self.items.count];
+	[self.transiter performForwardTransition:controller];
 }
 
 @end

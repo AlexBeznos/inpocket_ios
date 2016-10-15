@@ -50,6 +50,8 @@
 		CACE8DBD1DABB40D00E80F11 /* PWImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DBB1DABB40D00E80F11 /* PWImageCollectionCell.m */; };
 		CACE8DBE1DABB40D00E80F11 /* PWImageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACE8DBC1DABB40D00E80F11 /* PWImageCollectionCell.xib */; };
 		CACE8DC11DAD0E6800E80F11 /* PWPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DC01DAD0E6800E80F11 /* PWPhotosController.m */; };
+		CACE8DC81DAD231400E80F11 /* PWPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DC61DAD231400E80F11 /* PWPhotoController.m */; };
+		CACE8DC91DAD231400E80F11 /* PWPhotoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACE8DC71DAD231400E80F11 /* PWPhotoController.xib */; };
 		CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */; };
 		CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */; };
 		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
@@ -315,6 +317,9 @@
 		CACE8DBC1DABB40D00E80F11 /* PWImageCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWImageCollectionCell.xib; sourceTree = "<group>"; };
 		CACE8DBF1DAD0E6800E80F11 /* PWPhotosController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWPhotosController.h; sourceTree = "<group>"; };
 		CACE8DC01DAD0E6800E80F11 /* PWPhotosController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWPhotosController.m; sourceTree = "<group>"; };
+		CACE8DC51DAD231400E80F11 /* PWPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWPhotoController.h; sourceTree = "<group>"; };
+		CACE8DC61DAD231400E80F11 /* PWPhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWPhotoController.m; sourceTree = "<group>"; };
+		CACE8DC71DAD231400E80F11 /* PWPhotoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWPhotoController.xib; sourceTree = "<group>"; };
 		CAF090FD1D4D3938005FAEF4 /* PocketWaiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketWaiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAF0911A1D4D3A4C005FAEF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -701,6 +706,9 @@
 				CACE8DBC1DABB40D00E80F11 /* PWImageCollectionCell.xib */,
 				CACE8DBF1DAD0E6800E80F11 /* PWPhotosController.h */,
 				CACE8DC01DAD0E6800E80F11 /* PWPhotosController.m */,
+				CACE8DC51DAD231400E80F11 /* PWPhotoController.h */,
+				CACE8DC61DAD231400E80F11 /* PWPhotoController.m */,
+				CACE8DC71DAD231400E80F11 /* PWPhotoController.xib */,
 			);
 			name = AboutUs;
 			sourceTree = "<group>";
@@ -1334,6 +1342,7 @@
 				CAFE600E1D7E0692003F5991 /* PWLoginController.xib in Resources */,
 				CAF091D81D5799DB005FAEF4 /* coffeetoria1.jpg in Resources */,
 				CAFE5FFD1D7C9D92003F5991 /* PWShareWithFriendsController.xib in Resources */,
+				CACE8DC91DAD231400E80F11 /* PWPhotoController.xib in Resources */,
 				CAFE61091D990D79003F5991 /* PWActiveRootController.xib in Resources */,
 				CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */,
 				CAFE61001D98FAFE003F5991 /* PWWelcomeViewController.xib in Resources */,
@@ -1430,6 +1439,7 @@
 				CAFE610C1D990DE6003F5991 /* PWTabBar.m in Sources */,
 				CA3CE6E81DA22EA400825A0A /* PWMenuTabController.m in Sources */,
 				CAFE5FE01D6DED05003F5991 /* PWCollectionView.m in Sources */,
+				CACE8DC81DAD231400E80F11 /* PWPhotoController.m in Sources */,
 				CAFE5FE91D6DFDAC003F5991 /* PWRestaurantPurchasesController.m in Sources */,
 				CAF0912F1D4D3A4C005FAEF4 /* PWAppDelegate.m in Sources */,
 				CA3CE6D21D9FF82900825A0A /* PWProductCell.m in Sources */,
