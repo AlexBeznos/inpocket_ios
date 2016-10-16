@@ -27,6 +27,14 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 @property (nonatomic, copy) void (^getRestaurantsCompletion)
 			(NSArray<PWRestaurant *> *, NSError *error);
 
+@property (nonatomic, strong) PWRequestHolder *getSharesHolder;
+@property (nonatomic, copy) void (^getSharesCompletion)
+			(NSArray<PWRestaurantShare *> *, NSError *error);
+
+@property (nonatomic, strong) PWRequestHolder *getPresentsHolder;
+@property (nonatomic, copy) void (^getPresentsCompletion)
+			(NSArray<PWPresentProduct *> *, NSError *error);
+
 @property (nonatomic, strong) NSArray<PWRequestHolder *> *getNearItemsHolders;
 @property (nonatomic, copy) void (^getNearItemsCompletion)(NSArray<PWRestaurant *> *nearRestaurant,
 			NSArray<PWRestaurantShare *> *nearShares,
@@ -103,27 +111,23 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 - (void)getSharesWithCount:(NSUInteger)count offset:(NSUInteger)offset
 			completion:(void (^)(NSArray<PWRestaurantShare *> *, NSError *error))completion
 {
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
-				(int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
-	^{
-		if (nil != completion)
-		{
-			completion(self.nearShares, nil);
-		}
-	});
+	self.getSharesCompletion = completion;
+	NSURLSessionDataTask *task = [self.session dataTaskWithRequest:
+				[PWRequestBuilder getPresentsRequestWithPage:offset count:count exceptionPlaceId:nil
+				latitude:nil longitude:nil]];
+	self.getSharesHolder = [[PWRequestHolder alloc] initWithTask:task];
+	[task resume];
 }
 
 - (void)getPresentsWithCount:(NSUInteger)count offset:(NSUInteger)offset
 			completion:(void (^)(NSArray<PWPresentProduct *> *, NSError *error))completion
 {
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
-				(int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
-	^{
-		if (nil != completion)
-		{
-			completion(self.nearPresents, nil);
-		}
-	});
+	self.getPresentsCompletion= completion;
+	NSURLSessionDataTask *task = [self.session dataTaskWithRequest:
+				[PWRequestBuilder getPresentsRequestWithPage:offset count:count exceptionPlaceId:nil
+				latitude:nil longitude:nil]];
+	self.getPresentsHolder = [[PWRequestHolder alloc] initWithTask:task];
+	[task resume];
 }
 
 - (void)getPurchasesRestaurantsForUser:(PWUser *)user withCount:(NSUInteger)count
@@ -337,6 +341,14 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	{
 		holder = self.getNearItemsHolders[2];
 	}
+	else if (dataTask == self.getPresentsHolder.task)
+	{
+		holder = self.getPresentsHolder;
+	}
+	else if (dataTask == self.getSharesHolder.task)
+	{
+		holder = self.getSharesHolder;
+	}
 	
 	[holder processData:data];
 }
@@ -365,6 +377,14 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	else if (dataTask == self.getNearItemsHolders[2].task)
 	{
 		holder = self.getNearItemsHolders[2];
+	}
+	else if (dataTask == self.getPresentsHolder.task)
+	{
+		holder = self.getPresentsHolder;
+	}
+	else if (dataTask == self.getSharesHolder.task)
+	{
+		holder = self.getSharesHolder;
 	}
 	
 	[holder processResponse:(NSHTTPURLResponse *)response];
@@ -475,6 +495,51 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 				self.getNearItemsCompletion(restaurantsFound, sharesFound, presentsFound, error);
 			});
 		}
+	}
+	else if (task == self.getPresentsHolder.task)
+	{
+		self.getPresentsHolder.completed = YES;
+		
+		NSArray *presentsFound = nil;
+		if (nil == error)
+		{
+			NSMutableArray *presents = [NSMutableArray array];
+			NSArray *jsonBody = [NSJSONSerialization
+						JSONObjectWithData:self.getPresentsHolder.data options:NSJSONReadingMutableContainers error:NULL];
+			for (id jsonObject in jsonBody)
+			{
+				[presents addObject:[[PWPresentProduct alloc] initWithJSONInfo:jsonObject]];
+			}
+			presentsFound = presents;
+		}
+		dispatch_async(dispatch_get_main_queue(),
+		^{
+			[self.cacher cachePresents:presentsFound];
+			self.getPresentsCompletion(presentsFound, error);
+		});
+	}
+	else if (task == self.getSharesHolder.task)
+	{
+		self.getSharesHolder.completed = YES;
+		
+		NSArray *sharesFound = nil;
+		if (nil == error)
+		{
+			NSMutableArray *shares = [NSMutableArray array];
+			NSArray *jsonBody = [NSJSONSerialization
+						JSONObjectWithData:self.getSharesHolder.data options:NSJSONReadingMutableContainers
+						error:NULL];
+			for (id jsonObject in jsonBody)
+			{
+				[shares addObject:[[PWRestaurantShare alloc] initWithJSONInfo:jsonObject]];
+			}
+			sharesFound = shares;
+		}
+		dispatch_async(dispatch_get_main_queue(),
+		^{
+			[self.cacher cacheShares:sharesFound];
+			self.getSharesCompletion(sharesFound, error);
+		});
 	}
 }
 
