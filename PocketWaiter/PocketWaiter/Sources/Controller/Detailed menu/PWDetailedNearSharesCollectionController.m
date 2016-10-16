@@ -10,6 +10,7 @@
 #import "PWNearItemCollectionViewCell.h"
 #import "PWRestaurantShare.h"
 #import "PWShareViewController.h"
+#import "PWImageView.h"
 
 @interface PWDetailedNearSharesCollectionController ()
 
@@ -39,9 +40,22 @@
 	
 	cell.placeName = share.restaurant.name;
 	cell.placeDistance = @"2 km";
-	cell.image = share.image;
 	cell.descriptionTitle = share.shareDescription;
 	cell.buttonTitle = @"Подробнее";
+	
+	if (nil == share.image)
+	{
+		NSURL *iconURL = [NSURL URLWithString:share.imagePath];
+		[cell.imageView downloadImageFromURL:iconURL completion:
+		^(NSURL *localURL)
+		{
+			share.downloadedImagePath = localURL.path;
+		}];
+	}
+	else
+	{
+		cell.imageView.image = share.image;
+	}
 }
 
 - (NSArray *)contentItems

@@ -9,6 +9,7 @@
 #import "PWDetailedNearPresentsCollectionController.h"
 #import "PWPresentProduct.h"
 #import "PWNearItemCollectionViewCell.h"
+#import "PWImageView.h"
 
 @interface PWDetailedNearPresentsCollectionController ()
 
@@ -38,9 +39,22 @@
 	
 	cell.placeName = present.restaurant.name;
 	cell.placeDistance = @"2 km";
-	cell.image = present.icon;
 	cell.descriptionTitle = present.name;
 	cell.buttonTitle = @"Получить";
+	
+	if (nil == present.icon)
+	{
+		NSURL *iconURL = [NSURL URLWithString:present.iconPath];
+		[cell.imageView downloadImageFromURL:iconURL completion:
+		^(NSURL *localURL)
+		{
+			present.downloadedIconPath = localURL.path;
+		}];
+	}
+	else
+	{
+		cell.imageView.image = present.icon;
+	}
 }
 
 - (NSArray *)contentItems

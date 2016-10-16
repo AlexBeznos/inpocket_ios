@@ -8,6 +8,7 @@
 
 #import "PWNearItemCollectionViewCell.h"
 #import "PWDropShadowView.h"
+#import "PWImageView.h"
 
 @interface PWNearItemCollectionViewCell ()
 
@@ -16,7 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (strong, nonatomic) IBOutlet UILabel *placeNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *placeDistanceLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet PWImageView *imageView;
 @property (strong, nonatomic) IBOutlet PWDropShadowView *shadowView;
 @property (strong, nonatomic) IBOutlet PWDropShadowView *shadowDescriptionView;
 
@@ -74,11 +75,6 @@
 - (void)setPlaceDistance:(NSString *)placeDistance
 {
 	self.placeDistanceLabel.text = placeDistance;
-}
-
-- (void)setImage:(UIImage *)image
-{
-	self.imageView.image = image;
 }
 
 - (IBAction)morePressed:(id)sender

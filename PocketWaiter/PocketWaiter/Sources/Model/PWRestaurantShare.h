@@ -15,6 +15,9 @@
 @property (nonatomic, readonly) NSString *shareDescription;
 @property (nonatomic, readonly) UIImage *image;
 
+@property (nonatomic, readonly) NSString *imagePath;
+@property (nonatomic, strong) NSString *downloadedImagePath;
+
 @property (nonatomic, weak) id<IPWRestaurant> restaurant;
 
 @end

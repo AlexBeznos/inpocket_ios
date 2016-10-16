@@ -17,9 +17,38 @@
 @property (nonatomic, strong) PWPrice *price;
 @property (nonatomic) NSUInteger bonusesValue;
 @property (nonatomic) PWProductType type;
+@property (nonatomic, strong) NSString *iconPath;
 
 @end
 
 @implementation PWProduct
+
+- (instancetype)initWithJSONInfo:(id)jsonInfo
+{
+	self = [super initWithJSONInfo:jsonInfo];
+	
+	if (nil != self && [jsonInfo isKindOfClass:[NSDictionary class]])
+	{
+		NSDictionary *info = (NSDictionary *)jsonInfo;
+		self.name = info[@"name"];
+		NSString *price = info[@"price"];
+		self.price = [[PWPrice alloc] initWithValue:price.integerValue
+					currency:kPWPriceCurrencyUAH];
+		self.iconPath = info[@"image"];
+		self.productDescription = info[@"description"];
+		self.type = kPWProductTypeRegular;
+	}
+	else
+	{
+		self = nil;
+	}
+	
+	return self;
+}
+
+- (UIImage *)icon
+{
+	return [UIImage imageWithContentsOfFile:self.downloadedIconPath];
+}
 
 @end

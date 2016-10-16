@@ -16,6 +16,7 @@
 @end
 
 @interface PWProduct ()
+
 @property (nonatomic, strong) NSString *category;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *productDescription;

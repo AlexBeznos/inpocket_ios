@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class PWImageView;
+
 @interface PWNearItemCollectionViewCell : UICollectionViewCell
 
 @property (strong, nonatomic) NSString *buttonTitle;
 @property (strong, nonatomic) NSString *descriptionTitle;
 @property (strong, nonatomic) NSString *placeName;
 @property (strong, nonatomic) NSString *placeDistance;
-@property (strong, nonatomic) UIImage *image;
+@property (readonly, nonatomic) PWImageView *imageView;
 @property (strong, nonatomic) UIColor *colorScheme;
 @property (nonatomic) BOOL deleteDescriptionView;
 

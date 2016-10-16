@@ -24,4 +24,7 @@
 
 @property (nonatomic, weak) id<IPWRestaurant> restaurant;
 
+@property (nonatomic, readonly) NSString *iconPath;
+@property (nonatomic, strong) NSString *downloadedIconPath;
+
 @end

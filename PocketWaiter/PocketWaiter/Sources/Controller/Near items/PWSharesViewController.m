@@ -12,6 +12,7 @@
 #import "PWDetailesSharesViewController.h"
 #import "PWShareViewController.h"
 #import "PWIndicator.h"
+#import "PWImageView.h"
 
 @interface PWNearItemsViewController (Protected)
 
@@ -68,11 +69,24 @@
 	
 	cell.placeName = share.restaurant.name;
 	cell.placeDistance = @"2 km";
-	cell.image = share.image;
 	cell.descriptionTitle = share.shareDescription;
 	cell.buttonTitle = @"Подробнее";
 	cell.colorScheme = self.colorScheme;
 	cell.deleteDescriptionView = [self.preferredTitle isEqualToString:@"Акции"];
+	
+	if (nil == share.image)
+	{
+		NSURL *iconURL = [NSURL URLWithString:share.imagePath];
+		[cell.imageView downloadImageFromURL:iconURL completion:
+		^(NSURL *localURL)
+		{
+			share.downloadedImagePath = localURL.path;
+		}];
+	}
+	else
+	{
+		cell.imageView.image = share.image;
+	}
 }
 
 - (PWDetailesItemsViewController *)allItemsController

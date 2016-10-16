@@ -11,6 +11,8 @@
 @interface PWModelCacher ()
 
 @property (nonatomic, strong) NSMutableArray *cachedRestaurants;
+@property (nonatomic, strong) NSMutableArray *cachedShares;
+@property (nonatomic, strong) NSMutableArray *cachedPresents;
 
 @end
 
@@ -23,6 +25,8 @@
 	if (nil != self)
 	{
 		self.cachedRestaurants = [NSMutableArray array];
+		self.cachedShares = [NSMutableArray array];
+		self.cachedPresents = [NSMutableArray array];
 	}
 	
 	return self;
@@ -50,6 +54,58 @@
 		if (restaurantIsNew)
 		{
 			[self.cachedRestaurants addObject:restaurant];
+		}
+	}
+}
+
+- (NSArray *)shares
+{
+	return self.cachedShares;
+}
+
+- (void)cacheShares:(NSArray *)shares
+{
+	for (PWRestaurantShare *share in shares)
+	{
+		BOOL shareIsNew = YES;
+		for (PWRestaurant *cachedShares in self.cachedShares)
+		{
+			if ([share.identifier isEqualToNumber:cachedShares.identifier])
+			{
+				shareIsNew = NO;
+				break;
+			}
+		}
+		
+		if (shareIsNew)
+		{
+			[self.cachedShares addObject:share];
+		}
+	}
+}
+
+- (NSArray *)presents
+{
+	return self.cachedPresents;
+}
+
+- (void)cachePresents:(NSArray *)presents
+{
+	for (PWRestaurantShare *present in presents)
+	{
+		BOOL presentIsNew = YES;
+		for (PWRestaurant *cachedPresent in self.cachedPresents)
+		{
+			if ([present.identifier isEqualToNumber:cachedPresent.identifier])
+			{
+				presentIsNew = NO;
+				break;
+			}
+		}
+		
+		if (presentIsNew)
+		{
+			[self.cachedPresents addObject:present];
 		}
 	}
 }
