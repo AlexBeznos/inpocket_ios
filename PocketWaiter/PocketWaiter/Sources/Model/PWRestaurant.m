@@ -23,6 +23,22 @@
 
 @synthesize thumbnail = _thumbnail;
 
+- (instancetype)initWithJSONInfo:(id)jsonInfo
+{
+	self = [super initWithJSONInfo:jsonInfo];
+	
+	if (nil != self && [jsonInfo isKindOfClass:[NSDictionary class]])
+	{
+		self.aboutInfo = [[PWRestaurantAboutInfo alloc] initWithJSONInfo:jsonInfo];
+	}
+	else
+	{
+		self = nil;
+	}
+	
+	return self;
+}
+
 - (NSArray<PWProduct *> *)firstPresents
 {
 	NSMutableArray *presents = [NSMutableArray new];
@@ -76,6 +92,21 @@
 - (NSString *)restaurantDescription
 {
 	return self.aboutInfo.restaurantDescription;
+}
+
+- (NSString *)logoPath
+{
+	return self.aboutInfo.logoPath;
+}
+
+- (NSString *)downloadedLogoURL
+{
+	return self.aboutInfo.downloadedLogoURL;
+}
+
+- (void)setDownloadedLogoURL:(NSString *)downloadedLogoURL
+{
+	self.aboutInfo.downloadedLogoURL = downloadedLogoURL;
 }
 
 - (UIImage *)thumbnail

@@ -10,6 +10,7 @@
 #import "PWModelManager.h"
 #import "PWNearRestaurantCollectionViewCell.h"
 #import "PWDetailedRestaurantsViewController.h"
+#import "PWImageView.h"
 
 @interface PWNearItemsViewController () <UICollectionViewDataSource,
 			UICollectionViewDelegate>
@@ -135,7 +136,19 @@
 	cell.title = restaurant.aboutInfo.name;
 	cell.descriptionText = restaurant.aboutInfo.restaurantDescription;
 	cell.place = restaurant.aboutInfo.address;
-	cell.image = restaurant.aboutInfo.restaurantImage;
+	if (nil == restaurant.restaurantImage)
+	{
+		NSURL *iconURL = [NSURL URLWithString:restaurant.logoPath];
+		[cell.imageView downloadImageFromURL:iconURL completion:
+		^(NSURL *localURL)
+		{
+			restaurant.downloadedLogoURL = localURL.path;
+		}];
+	}
+	else
+	{
+		cell.imageView.image = restaurant.restaurantImage;
+	}
 
 	return cell;
 }

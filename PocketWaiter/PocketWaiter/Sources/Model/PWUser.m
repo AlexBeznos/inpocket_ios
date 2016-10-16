@@ -10,6 +10,34 @@
 #import "PWUsersRestaurantInfo.h"
 #import "PWRestaurant.h"
 
+@interface PWSocialProfile ()
+
+@property (nonatomic, strong) NSString *uuid;
+@property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *gender;
+@property (nonatomic, strong) NSString *userName;
+
+@end
+
+@implementation PWSocialProfile
+
+- (instancetype)initWithUuid:(NSString *)uuid email:(NSString *)email gender:(NSString *)gender name:(NSString *)name
+{
+	self = [super init];
+	
+	if (nil != self)
+	{
+		self.uuid = uuid;
+		self.email = email;
+		self.gender = gender;
+		self.userName = name;
+	}
+	
+	return self;
+}
+
+@end
+
 @interface PWUser ()
 
 @property (nonatomic, strong) NSString *userName;

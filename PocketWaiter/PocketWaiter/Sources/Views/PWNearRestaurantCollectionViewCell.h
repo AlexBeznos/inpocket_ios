@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class PWImageView;
+
 @interface PWNearRestaurantCollectionViewCell : UICollectionViewCell
 
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *descriptionText;
 @property (strong, nonatomic) NSString *place;
-@property (strong, nonatomic) UIImage *image;
+@property (readonly, nonatomic) PWImageView *imageView;
 
 @end

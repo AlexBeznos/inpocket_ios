@@ -11,6 +11,8 @@
 @interface PWModelObject : NSObject <IPWJSONInfo>
 
 - (instancetype)initWithJSONData:(NSData *)jsonData;
-- (instancetype)initWithJSONInfo:(NSDictionary *)jsonInfo;
+- (instancetype)initWithJSONInfo:(id)jsonInfo;
+
+@property (nonatomic, readonly) NSNumber *identifier;
 
 @end

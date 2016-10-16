@@ -9,6 +9,7 @@
 #import "PWRestaurantMapController.h"
 #import "PWRestaurant.h"
 #import "PWNearRestaurantCollectionViewCell.h"
+#import "PWImageView.h"
 
 @interface PWMapController ()
 
@@ -60,7 +61,19 @@
 	cell.title = restaurant.name;
 	cell.descriptionText = restaurant.restaurantDescription;
 	cell.place = restaurant.address;
-	cell.image = restaurant.restaurantImage;
+	if (nil == restaurant.restaurantImage)
+	{
+		NSURL *iconURL = [NSURL URLWithString:restaurant.logoPath];
+		[cell.imageView downloadImageFromURL:iconURL completion:
+		^(NSURL *localURL)
+		{
+			restaurant.downloadedLogoURL = localURL.path;
+		}];
+	}
+	else
+	{
+		cell.imageView.image = restaurant.restaurantImage;
+	}
 }
 
 @end

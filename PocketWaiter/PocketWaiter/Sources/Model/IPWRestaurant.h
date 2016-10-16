@@ -26,4 +26,7 @@
 @property (nonatomic, readonly) NSArray<PWRestaurantReview *> *reviews;
 @property (nonatomic, readonly) NSArray<PWWorkingTime *> *workingPlan;
 
+@property (nonatomic, readonly) NSString *logoPath;
+@property (nonatomic, strong) NSString *downloadedLogoURL;
+
 @end

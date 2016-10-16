@@ -19,16 +19,20 @@
 #import "PWUsersRestaurantInfo.h"
 #import "PWRestaurantReview.h"
 
+extern NSString *const kPWTokenKey;
+
 @interface PWModelManager : NSObject
 
 + (PWModelManager *)sharedManager;
 
 - (PWUser *)registeredUser;
+- (NSString *)authToken;
 
 - (NSArray<PWRestaurant *> *)nearRestaurants;
 - (NSArray<PWRestaurantShare *> *)nearShares;
 - (NSArray<PWPresentProduct *> *)nearPresents;
 
+- (void)autentificateWithCompletion:(void (^)(NSString *token, NSError *error))completion;
 
 - (void)getNearItemsWithCount:(NSUInteger)count
 			completion:(void (^)(NSArray<PWRestaurant *> *nearRestaurant,

@@ -63,8 +63,35 @@
 
 - (void)showMainFlow
 {
-	self.blueToothManager = [PWBluetoothManager new];
 	[self startActivity];
+	
+	if (nil == [[PWModelManager sharedManager] authToken])
+	{
+		__weak __typeof(self) weakSelf = self;
+		[[PWModelManager sharedManager] autentificateWithCompletion:
+		^(NSString *token, NSError *error)
+		{
+			if (nil == error)
+			{
+				[[NSUserDefaults standardUserDefaults] setObject:token
+							forKey:kPWTokenKey];
+				[weakSelf startSearchBeacons];
+			}
+			else
+			{
+				[weakSelf showNoInternetDialog];
+			}
+		}];
+	}
+	else
+	{
+		[self startSearchBeacons];
+	}
+}
+
+- (void)startSearchBeacons
+{
+	self.blueToothManager = [PWBluetoothManager new];
 	__weak __typeof(self) weakSelf = self;
 	[self.blueToothManager startScanBeaconsForInterval:1.5 completion:
 	^(NSArray<NSString *> *beacons, NSError *error)
@@ -106,7 +133,7 @@
 		}
 		else if (nil == restaurant)
 		{
-			[weakSelf presentRootControllerWithRestaurant:restaurant];
+			[weakSelf presentRootControllerWithRestaurant:nil];
 		}
 		else
 		{

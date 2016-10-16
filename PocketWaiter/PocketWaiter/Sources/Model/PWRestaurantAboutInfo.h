@@ -15,6 +15,7 @@
 @interface PWRestaurantAboutInfo : PWModelObject
 
 @property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSString *category;
 @property (nonatomic, readonly) NSString *address;
 @property (nonatomic, readonly) UIColor *color;
 @property (nonatomic, readonly) NSString *phoneNumber;
@@ -25,5 +26,10 @@
 @property (nonatomic, readonly) NSArray<UIImage *> *photos;
 @property (nonatomic, readonly) NSArray<PWRestaurantReview *> *reviews;
 @property (nonatomic, readonly) NSArray<PWWorkingTime *> *workingPlan;
+
+@property (nonatomic, readonly) NSString *logoPath;
+@property (nonatomic, readonly) NSString *cardImagePath;
+@property (nonatomic, readonly) NSArray *imagesPaths;
+@property (nonatomic, strong) NSString *downloadedLogoURL;
 
 @end

@@ -130,6 +130,24 @@
 	{
 		NSMutableArray *sources = [NSMutableArray array];
 		__weak __typeof(self) theWeakSelf = self;
+		
+		if (nil != self.restaurant)
+		{
+			self.activeMenuSource = [[PWContentSource alloc]
+						initWithTitle:self.restaurant.name details:nil
+						icon:self.restaurant.thumbnail
+						contentViewController:[[PWActiveRootController alloc]
+						initWithRestaurant:self.restaurant transitionHandler:
+			^{
+				[theWeakSelf performBackTransition];
+			}
+						forwardTransitionHandler:
+			^{
+				[theWeakSelf performForwardTransition];
+			}]];
+			[sources addObject:self.activeMenuSource];
+		}
+		
 		[sources addObject:[[PWContentSource alloc]
 					initWithTitle:@"Главная" details:self.restaurant.aboutInfo.name
 					icon:[UIImage imageNamed:@"whiteBonus"]
@@ -155,23 +173,6 @@
 		^{
 			[theWeakSelf performForwardTransition];
 		}]]];
-		
-		if (nil != self.restaurant)
-		{
-			self.activeMenuSource = [[PWContentSource alloc]
-						initWithTitle:self.restaurant.name details:nil
-						icon:self.restaurant.thumbnail
-						contentViewController:[[PWActiveRootController alloc]
-						initWithRestaurant:self.restaurant transitionHandler:
-			^{
-				[theWeakSelf performBackTransition];
-			}
-						forwardTransitionHandler:
-			^{
-				[theWeakSelf performForwardTransition];
-			}]];
-			[sources addObject:self.activeMenuSource];
-		}
 		
 		[sources addObject:[[PWContentSource alloc]
 					initWithTitle:@"Поделиться" details:nil
@@ -201,7 +202,7 @@
 		
 		[sources addObject:[[PWContentSource alloc]
 					initWithTitle:@"Профиль" details:[[PWModelManager sharedManager]
-					registeredUser].humanReadableName
+					registeredUser].firstName
 					icon:[UIImage imageNamed:@"whiteProfile"]
 					contentViewController:[[PWRegisterController alloc]
 					initWithTransitionHandler:

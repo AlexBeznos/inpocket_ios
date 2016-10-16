@@ -52,6 +52,10 @@
 		CACE8DC11DAD0E6800E80F11 /* PWPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DC01DAD0E6800E80F11 /* PWPhotosController.m */; };
 		CACE8DC81DAD231400E80F11 /* PWPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DC61DAD231400E80F11 /* PWPhotoController.m */; };
 		CACE8DC91DAD231400E80F11 /* PWPhotoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACE8DC71DAD231400E80F11 /* PWPhotoController.xib */; };
+		CACE8DCD1DB263B600E80F11 /* PWRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DCC1DB263B600E80F11 /* PWRequestBuilder.m */; };
+		CACE8DD01DB26F5900E80F11 /* PWRequestHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DCF1DB26F5900E80F11 /* PWRequestHolder.m */; };
+		CACE8DD31DB378C700E80F11 /* PWModelCacher.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DD21DB378C700E80F11 /* PWModelCacher.m */; };
+		CACE8DD61DB385B100E80F11 /* PWImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DD51DB385B100E80F11 /* PWImageView.m */; };
 		CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */; };
 		CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */; };
 		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
@@ -320,6 +324,14 @@
 		CACE8DC51DAD231400E80F11 /* PWPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWPhotoController.h; sourceTree = "<group>"; };
 		CACE8DC61DAD231400E80F11 /* PWPhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWPhotoController.m; sourceTree = "<group>"; };
 		CACE8DC71DAD231400E80F11 /* PWPhotoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWPhotoController.xib; sourceTree = "<group>"; };
+		CACE8DCB1DB263B600E80F11 /* PWRequestBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWRequestBuilder.h; sourceTree = "<group>"; };
+		CACE8DCC1DB263B600E80F11 /* PWRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRequestBuilder.m; sourceTree = "<group>"; };
+		CACE8DCE1DB26F5900E80F11 /* PWRequestHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWRequestHolder.h; sourceTree = "<group>"; };
+		CACE8DCF1DB26F5900E80F11 /* PWRequestHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRequestHolder.m; sourceTree = "<group>"; };
+		CACE8DD11DB378C700E80F11 /* PWModelCacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWModelCacher.h; sourceTree = "<group>"; };
+		CACE8DD21DB378C700E80F11 /* PWModelCacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWModelCacher.m; sourceTree = "<group>"; };
+		CACE8DD41DB385B100E80F11 /* PWImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWImageView.h; sourceTree = "<group>"; };
+		CACE8DD51DB385B100E80F11 /* PWImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWImageView.m; sourceTree = "<group>"; };
 		CAF090FD1D4D3938005FAEF4 /* PocketWaiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketWaiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAF0911A1D4D3A4C005FAEF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -713,6 +725,19 @@
 			name = AboutUs;
 			sourceTree = "<group>";
 		};
+		CACE8DCA1DB2634A00E80F11 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				CACE8DCB1DB263B600E80F11 /* PWRequestBuilder.h */,
+				CACE8DCC1DB263B600E80F11 /* PWRequestBuilder.m */,
+				CACE8DCE1DB26F5900E80F11 /* PWRequestHolder.h */,
+				CACE8DCF1DB26F5900E80F11 /* PWRequestHolder.m */,
+				CACE8DD11DB378C700E80F11 /* PWModelCacher.h */,
+				CACE8DD21DB378C700E80F11 /* PWModelCacher.m */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		CAF090F41D4D3938005FAEF4 = {
 			isa = PBXGroup;
 			children = (
@@ -820,6 +845,7 @@
 		CAF091231D4D3A4C005FAEF4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CACE8DCA1DB2634A00E80F11 /* API */,
 				CAF091241D4D3A4C005FAEF4 /* PWRestaurant.h */,
 				CAF091251D4D3A4C005FAEF4 /* PWRestaurant.m */,
 				CAF091261D4D3A4C005FAEF4 /* PWRestaurantShare.h */,
@@ -901,6 +927,8 @@
 				CAFE61141D9945D0003F5991 /* PWFirstPresentCell.xib */,
 				CA46E7B71DAA41DD0044F96F /* PWRankView.h */,
 				CA46E7B81DAA41DD0044F96F /* PWRankView.m */,
+				CACE8DD41DB385B100E80F11 /* PWImageView.h */,
+				CACE8DD51DB385B100E80F11 /* PWImageView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1391,6 +1419,7 @@
 			files = (
 				CAF091941D56165C005FAEF4 /* PWMainViewController.m in Sources */,
 				CA46E7B91DAA41DD0044F96F /* PWRankView.m in Sources */,
+				CACE8DD61DB385B100E80F11 /* PWImageView.m in Sources */,
 				CACE8DBD1DABB40D00E80F11 /* PWImageCollectionCell.m in Sources */,
 				CACE8DAC1DAB983D00E80F11 /* PWUtilsAccessor.m in Sources */,
 				CAF092B31D627264005FAEF4 /* PWPresentsMapController.m in Sources */,
@@ -1421,6 +1450,7 @@
 				CAF0925B1D607B69005FAEF4 /* PWNearItemsViewController.m in Sources */,
 				CAF092D51D63A770005FAEF4 /* PWActivityIndicator.m in Sources */,
 				CAF0913A1D4D4062005FAEF4 /* PWIndicator.m in Sources */,
+				CACE8DD31DB378C700E80F11 /* PWModelCacher.m in Sources */,
 				CAF092591D607B69005FAEF4 /* PWMainMenuItemViewController.m in Sources */,
 				CACE8DC11DAD0E6800E80F11 /* PWPhotosController.m in Sources */,
 				CAF0916E1D4E9054005FAEF4 /* PWRestaurant.m in Sources */,
@@ -1441,6 +1471,7 @@
 				CAFE5FE01D6DED05003F5991 /* PWCollectionView.m in Sources */,
 				CACE8DC81DAD231400E80F11 /* PWPhotoController.m in Sources */,
 				CAFE5FE91D6DFDAC003F5991 /* PWRestaurantPurchasesController.m in Sources */,
+				CACE8DCD1DB263B600E80F11 /* PWRequestBuilder.m in Sources */,
 				CAF0912F1D4D3A4C005FAEF4 /* PWAppDelegate.m in Sources */,
 				CA3CE6D21D9FF82900825A0A /* PWProductCell.m in Sources */,
 				CA3CE6E31DA159C600825A0A /* PWMoreBonusesViewController.m in Sources */,
@@ -1464,6 +1495,7 @@
 				CAFE60FF1D98FAFE003F5991 /* PWWelcomeViewController.m in Sources */,
 				CAFE60121D7E06B5003F5991 /* PWRegisterController.m in Sources */,
 				CAF092F11D68E68A005FAEF4 /* PWModalController.m in Sources */,
+				CACE8DD01DB26F5900E80F11 /* PWRequestHolder.m in Sources */,
 				CAF092571D607B69005FAEF4 /* PWEnterPromoViewController.m in Sources */,
 				CAF092641D607BB2005FAEF4 /* PWRestaurantsViewController.m in Sources */,
 				CAF091871D4E94B0005FAEF4 /* PWUser.m in Sources */,

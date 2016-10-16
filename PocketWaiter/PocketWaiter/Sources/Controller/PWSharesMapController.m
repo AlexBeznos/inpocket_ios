@@ -10,6 +10,7 @@
 #import "PWRestaurantShare.h"
 #import "PWNearRestaurantCollectionViewCell.h"
 #import "PWShareViewController.h"
+#import "PWImageView.h"
 
 @interface PWMapController ()
 
@@ -61,7 +62,19 @@
 	cell.title = share.name;
 	cell.descriptionText = share.restaurant.name;
 	cell.place = share.restaurant.address;
-	cell.image = share.image;
+	if (nil == share.restaurant.restaurantImage)
+	{
+		NSURL *iconURL = [NSURL URLWithString:share.restaurant.logoPath];
+		[cell.imageView downloadImageFromURL:iconURL completion:
+		^(NSURL *localURL)
+		{
+			share.restaurant.downloadedLogoURL = localURL.path;
+		}];
+	}
+	else
+	{
+		cell.imageView.image = share.restaurant.restaurantImage;
+	}
 }
 
 - (void)processSelectAtIndex:(NSUInteger)index

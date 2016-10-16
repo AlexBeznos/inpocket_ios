@@ -8,11 +8,30 @@
 
 #import "PWModelManager.h"
 #import "PWStubModel.h"
+#import "PWRequestBuilder.h"
+#import "PWRequestHolder.h"
+#import "PWModelCacher.h"
 
-@interface PWModelManager ()
+NSString *const kPWTokenKey = @"PWTokenKey";
+
+@interface PWModelManager () <NSURLSessionDataDelegate>
 
 @property (nonatomic, strong) NSArray<PWRestaurant *> *cachedRestaurants;
 @property (nonatomic, strong) PWUser *user;
+@property (nonatomic, strong) NSURLSession *session;
+
+@property (nonatomic, strong) PWRequestHolder *authHolder;
+@property (nonatomic, copy) void (^authCompletion)(NSString *token, NSError *error);
+
+@property (nonatomic, strong) PWRequestHolder *getRestaurantsHolder;
+@property (nonatomic, copy) void (^getRestaurantsCompletion)
+			(NSArray<PWRestaurant *> *, NSError *error);
+
+//@property (nonatomic, strong) PWRequestHolder *getNearItemsHolder;
+//@property (nonatomic, copy) void (^getRestaurantsCompletion)
+//			(NSArray<PWRestaurant *> *, NSError *error);
+
+@property (nonatomic, strong) PWModelCacher *cacher;
 
 @end
 
@@ -26,12 +45,14 @@
 	dispatch_once(&onceToken,
 	^{
 		sharedManager = [PWModelManager new];
-#if 1
-		[sharedManager setupStubbedInfo];
-#endif
 	});
 	
 	return sharedManager;
+}
+
+- (NSString *)authToken
+{
+	return [[NSUserDefaults standardUserDefaults] stringForKey:kPWTokenKey];
 }
 
 - (PWUser *)registeredUser
@@ -39,17 +60,33 @@
 	return self.user;
 }
 
+- (NSURLSession *)session
+{
+	if (nil == _session)
+	{
+		_session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration
+					defaultSessionConfiguration] delegate:self delegateQueue:nil];
+	}
+	
+	return _session;
+}
+
+- (void)autentificateWithCompletion:(void (^)(NSString *token, NSError *error))completion
+{
+	self.authCompletion = completion;
+	NSURLSessionDataTask *task = [self.session dataTaskWithRequest:[PWRequestBuilder authRequest]];
+	self.authHolder = [[PWRequestHolder alloc] initWithTask:task];
+	[task resume];
+}
+
 - (void)getRestaurantsWithCount:(NSUInteger)count offset:(NSUInteger)offset
 			completion:(void (^)(NSArray<PWRestaurant *> *, NSError *error))completion
 {
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
-				(int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
-	^{
-		if (nil != completion)
-		{
-			completion(self.nearRestaurants, nil);
-		}
-	});
+	self.getRestaurantsCompletion = completion;
+	NSURLSessionDataTask *task = [self.session dataTaskWithRequest:
+				[PWRequestBuilder getPlacesRequestForCategory:nil exceptionPlaceId:nil]];
+	self.getRestaurantsHolder = [[PWRequestHolder alloc] initWithTask:task];
+	[task resume];
 }
 
 - (void)getSharesWithCount:(NSUInteger)count offset:(NSUInteger)offset
@@ -251,6 +288,84 @@
 	}
 	
 	return presents;
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
+{
+	PWRequestHolder *holder = nil;
+	if (dataTask == self.authHolder.task)
+	{
+		holder = self.authHolder;
+	}
+	else if (dataTask == self.getRestaurantsHolder.task)
+	{
+		holder = self.getRestaurantsHolder;
+	}
+	
+	[holder processData:data];
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+			didReceiveResponse:(NSURLResponse *)response
+			completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
+{
+	PWRequestHolder *holder = nil;
+	if (dataTask == self.authHolder.task)
+	{
+		holder = self.authHolder;
+	}
+	else if (dataTask == self.getRestaurantsHolder.task)
+	{
+		holder = self.getRestaurantsHolder;
+	}
+	
+	[holder processResponse:(NSHTTPURLResponse *)response];
+	
+	completionHandler(NSURLSessionResponseAllow);
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
+{
+	if (task == self.authHolder.task)
+	{
+		NSString *token = nil;
+		if (nil == error)
+		{
+			NSDictionary *jsonBody = [NSJSONSerialization
+						JSONObjectWithData:self.authHolder.data options:NSJSONReadingMutableContainers error:NULL];
+			if ([jsonBody[@"device"] isKindOfClass:[NSDictionary class]])
+			{
+				NSDictionary *deviceInfo = jsonBody[@"device"];
+				token = deviceInfo[@"access_token"];
+			}
+		}
+		self.authHolder.completed = YES;
+		dispatch_async(dispatch_get_main_queue(),
+		^{
+			self.authCompletion(token, error);
+		});
+	}
+	else if (task == self.getRestaurantsHolder.task)
+	{
+		NSArray *restaurantsFound = nil;
+		if (nil == error)
+		{
+			NSMutableArray *restaurants = [NSMutableArray array];
+			NSArray *jsonBody = [NSJSONSerialization
+						JSONObjectWithData:self.getRestaurantsHolder.data options:NSJSONReadingMutableContainers error:NULL];
+			for (id jsonObject in jsonBody)
+			{
+				[restaurants addObject:[[PWRestaurant alloc] initWithJSONInfo:jsonObject]];
+			}
+			restaurantsFound = restaurants;
+		}
+		
+		self.getRestaurantsHolder.completed = YES;
+		dispatch_async(dispatch_get_main_queue(),
+		^{
+			self.getRestaurantsCompletion(restaurantsFound, error);
+		});
+	}
 }
 
 - (void)setupStubbedInfo

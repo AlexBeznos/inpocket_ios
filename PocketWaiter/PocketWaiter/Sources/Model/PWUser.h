@@ -12,12 +12,27 @@
 @class PWUsersRestaurantInfo;
 @class PWRestaurant;
 
+@interface PWSocialProfile : NSObject
+
+- (instancetype)initWithUuid:(NSString *)uuid email:(NSString *)email
+			gender:(NSString *)gender name:(NSString *)name;
+
+@property (nonatomic, readonly) NSString *uuid;
+@property (nonatomic, readonly) NSString *email;
+@property (nonatomic, readonly) NSString *gender;
+@property (nonatomic, readonly) NSString *userName;
+
+@end
+
 @interface PWUser : PWModelObject
 
-@property (nonatomic, readonly) NSString *userName;
+@property (nonatomic, readonly) NSString *firstName;
+@property (nonatomic, readonly) NSString *lastName;
 @property (nonatomic, readonly) NSString *password;
+@property (nonatomic, readonly) NSString *email;
 @property (nonatomic, readonly) UIImage *avatarIcon;
-@property (nonatomic, readonly) NSString *humanReadableName;
+@property (nonatomic, readonly) PWSocialProfile *vkProfile;
+@property (nonatomic, readonly) PWSocialProfile *fbProfile;
 @property (nonatomic, readonly) NSArray<PWPurchase *> *purchases;
 @property (nonatomic, readonly) NSArray<PWUsersRestaurantInfo *> *restaurants;
 

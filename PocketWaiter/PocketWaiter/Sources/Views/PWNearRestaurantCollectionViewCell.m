@@ -9,10 +9,11 @@
 #import "PWNearRestaurantCollectionViewCell.h"
 #import "UIColorAdditions.h"
 #import "PWDropShadowView.h"
+#import "PWImageView.h"
 
 @interface PWNearRestaurantCollectionViewCell ()
 
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet PWImageView *imageView;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (strong, nonatomic) IBOutlet UILabel *placeLabel;
@@ -43,11 +44,6 @@
 - (void)setPlace:(NSString *)place
 {
 	self.placeLabel.text = place;
-}
-
-- (void)setImage:(UIImage *)image
-{
-	self.imageView.image = image;
 }
 
 @end

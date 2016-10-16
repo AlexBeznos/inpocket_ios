@@ -10,7 +10,8 @@
 
 @interface PWModelObject ()
 
-@property (nonatomic, strong) NSDictionary *jsonInfo;
+@property (nonatomic, strong) id jsonInfo;
+@property (nonatomic, strong) NSNumber *identifier;
 
 @end
 
@@ -20,31 +21,13 @@
 
 - (instancetype)initWithJSONData:(NSData *)jsonInfo
 {
-	self = [super init];
+	id data = [NSJSONSerialization JSONObjectWithData:jsonInfo
+				options:NSJSONReadingMutableContainers error:NULL];
 	
-	if (nil != self && [NSJSONSerialization isValidJSONObject:jsonInfo])
-	{
-		id data = [NSJSONSerialization JSONObjectWithData:jsonInfo
-					options:NSJSONReadingMutableContainers error:NULL];
-		
-		if (nil != data && [data isKindOfClass:[NSDictionary class]])
-		{
-			self.jsonInfo = data;
-		}
-		else
-		{
-			self = nil;
-		}
-	}
-	else
-	{
-		self = nil;
-	}
-	
-	return self;
+	return [self initWithJSONInfo:data];
 }
 
-- (instancetype)initWithJSONInfo:(NSDictionary *)jsonInfo
+- (instancetype)initWithJSONInfo:(id)jsonInfo
 {
 	self = [super init];
 	
@@ -52,6 +35,8 @@
 				[NSJSONSerialization isValidJSONObject:jsonInfo])
 	{
 		self.jsonInfo = jsonInfo;
+		NSDictionary *info = (NSDictionary *)jsonInfo;
+		self.identifier = info[@"id"];
 	}
 	else
 	{
