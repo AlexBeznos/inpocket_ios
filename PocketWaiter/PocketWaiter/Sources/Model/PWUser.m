@@ -16,13 +16,14 @@
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *gender;
 @property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) NSString *photoURLPath;
 
 @end
 
 @implementation PWSocialProfile
 
 - (instancetype)initWithUuid:(NSString *)uuid email:(NSString *)email
-			gender:(NSString *)gender name:(NSString *)name
+			gender:(NSString *)gender name:(NSString *)name photoURL:(NSString *)photoURLPath
 {
 	self = [super init];
 	
@@ -32,6 +33,7 @@
 		self.email = email;
 		self.gender = gender;
 		self.userName = name;
+		self.photoURLPath = photoURLPath;
 	}
 	
 	return self;
@@ -80,6 +82,11 @@
 	self.avatarIcon = nil != base64Icon && [NSNull null] != base64Icon &&
 				[base64Icon isKindOfClass:[NSString class]] ? [UIImage imageWithData:
 				[[NSData alloc] initWithBase64EncodedString:base64Icon options:0]] : nil;
+	
+	if (nil == self.avatarIcon)
+	{
+		self.avatarIcon = json[@"loadedImage"];
+	}
 	self.password = json[@"password"];
 	self.email = json[@"email"];
 	
@@ -96,6 +103,7 @@
 		vkProfileInfo.uuid = vkProfile[@"uid"];
 		vkProfileInfo.gender = vkProfile[@"gender"];
 		vkProfileInfo.email = vkProfile[@"email"];
+		vkProfileInfo.photoURLPath = vkProfile[@"remote_photo_url"];
 	}
 	
 	NSDictionary *fbProfile = [NSNull null] != json[@"facebook_profile"] ?
@@ -112,6 +120,7 @@
 		fbProfileInfo.uuid = fbProfile[@"uid"];
 		fbProfileInfo.gender = fbProfile[@"gender"];
 		fbProfileInfo.email = fbProfile[@"email"];
+		fbProfileInfo.photoURLPath = fbProfile[@"remote_photo_url"];
 	}
 }
 

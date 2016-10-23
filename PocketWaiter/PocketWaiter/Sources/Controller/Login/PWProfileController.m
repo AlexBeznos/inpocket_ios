@@ -7,31 +7,117 @@
 //
 
 #import "PWProfileController.h"
+#import "PWAvatarCell.h"
+#import "UIColorAdditions.h"
+#import "PWImageView.h"
 
 @interface PWProfileController ()
+
+@property (nonatomic, strong) NSMutableArray *sections;
 
 @end
 
 @implementation PWProfileController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+	
+	self.tableView.backgroundColor = [UIColor pwBackgroundColor];
+	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+	
+	self.sections = [NSMutableArray array];
+	
+	PWUser *user = USER;
+	
+	[self.tableView registerNib:[UINib nibWithNibName:@"PWAvatarCell"
+				bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"avatar"];
+	NSDictionary *avatarSection = @{@"title" : @"Фото профиля"};
+	
+	[self.sections addObject:avatarSection];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return 1;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+	return self.sections.count;
 }
-*/
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+	UIView *view = [UIView new];
+	view.backgroundColor = [UIColor clearColor];
+	
+	UILabel *label = [UILabel new];
+	label.backgroundColor = [UIColor clearColor];
+	label.translatesAutoresizingMaskIntoConstraints = NO;
+	
+	label.font = [UIFont systemFontOfSize:20];
+	label.textColor = [UIColor grayColor];
+	label.text = [self.sections[section] objectForKey:@"title"];
+	[label sizeToFit];
+	
+	[view addSubview:label];
+	
+	[view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:
+				@"H:|-10-[view]" options:0 metrics:nil views:@{@"view" : label}]];
+	
+	[view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:
+				@"V:[view]-10-|" options:0 metrics:nil views:@{@"view" : label}]];
+	
+	return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+	return 60;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	UITableViewCell *createdCell = nil;
+	if (0 == indexPath.section)
+	{
+		PWAvatarCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"avatar"];
+		cell.title.text = @"Загрузить новое фото";
+		PWUser *user = USER;
+		if (nil != user.avatarIcon)
+		{
+			cell.avatarView.image = user.avatarIcon;
+		}
+		else
+		{
+			[cell.avatarView downloadImageFromURL:user.avatarURL completion:
+			^(NSURL *localURL)
+			{
+				UIImage *avatar =  [UIImage imageWithContentsOfFile:localURL.path];
+				[user updateWithJsonInfo:@{@"loadedImage" : avatar}];
+				[[PWModelManager sharedManager] updateUserWithCompletion:
+				^(NSError *error)
+				{
+					NSLog(@"Avatar updated");
+				}];
+			}];
+		}
+		createdCell = cell;
+	}
+	
+	return createdCell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	NSUInteger height = 40;
+	if (0 == indexPath.section)
+	{
+		height = 80;
+	}
+	
+	return height;
+}
 
 @end

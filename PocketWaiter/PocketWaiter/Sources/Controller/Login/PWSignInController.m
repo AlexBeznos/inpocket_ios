@@ -80,7 +80,7 @@
 			[user updateWithJsonInfo:@{@"facebook_profile" : info}];
 			if (nil == user.avatarIcon)
 			{
-				user.avatarURL = info[@"iconURL"];
+				user.avatarURL = info[@"remote_photo_url"];
 			}
 			[[PWModelManager sharedManager] signUpWithProvider:@"facebook"
 						profile:user.fbProfile completion:
@@ -119,7 +119,7 @@
 			[user updateWithJsonInfo:@{@"vk_profile" : info}];
 			if (nil == user.avatarIcon)
 			{
-				user.avatarURL = info[@"iconURL"];
+				user.avatarURL = info[@"remote_photo_url"];
 			}
 			[[PWModelManager sharedManager] signUpWithProvider:@"vk"
 						profile:user.vkProfile completion:

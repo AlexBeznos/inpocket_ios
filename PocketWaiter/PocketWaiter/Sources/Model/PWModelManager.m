@@ -35,6 +35,9 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 @property (nonatomic, strong) PWRequestHolder *signInUserHolder;
 @property (nonatomic, copy) void (^signInUserCompletion)(NSError *error);
 
+@property (nonatomic, strong) PWRequestHolder *updateUserInfoHolder;
+@property (nonatomic, copy) void (^updateUserInfoCompletion)(NSError *error);
+
 @property (nonatomic, strong) PWRequestHolder *getRestaurantsHolder;
 @property (nonatomic, copy) void (^getRestaurantsCompletion)
 			(NSArray<PWRestaurant *> *, NSError *error);
@@ -172,6 +175,15 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 				[PWRequestBuilder signUpRequestWithProvider:provider email:nil
 				password:nil profile:profile]];
 	self.signUpSocialHolder = [[PWRequestHolder alloc] initWithTask:task];
+	[task resume];
+}
+
+- (void)updateUserWithCompletion:(void (^)(NSError *))completion
+{
+	self.updateUserInfoCompletion = completion;
+	NSURLSessionDataTask *task = [self.session dataTaskWithRequest:
+				[PWRequestBuilder putUserRequestWithUser:self.user]];
+	self.updateUserInfoHolder = [[PWRequestHolder alloc] initWithTask:task];
 	[task resume];
 }
 
@@ -431,6 +443,10 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	{
 		holder = self.signUpSocialHolder;
 	}
+	else if (dataTask == self.updateUserInfoHolder.task)
+	{
+		holder = self.updateUserInfoHolder;
+	}
 	
 	[holder processData:data];
 }
@@ -503,6 +519,10 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	else if (dataTask == self.signUpSocialHolder.task)
 	{
 		holder = self.signUpSocialHolder;
+	}
+	else if (dataTask == self.updateUserInfoHolder.task)
+	{
+		holder = self.updateUserInfoHolder;
 	}
 	
 	[holder processResponse:(NSHTTPURLResponse *)response];
@@ -805,6 +825,14 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 		dispatch_async(dispatch_get_main_queue(),
 		^{
 			self.signUpSocialCompletion(error);
+		});
+	}
+	else if (task == self.updateUserInfoHolder.task)
+	{
+		self.updateUserInfoHolder.completed = YES;
+		dispatch_async(dispatch_get_main_queue(),
+		^{
+			self.updateUserInfoCompletion(error);
 		});
 	}
 }

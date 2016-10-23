@@ -8,12 +8,15 @@
 
 #import "PWLoginController.h"
 #import "PWSignInController.h"
+#import "PWProfileController.h"
 
 @interface PWLoginController ()
 
 @end
 
 @implementation PWLoginController
+
+@synthesize name;
 
 - (void)viewDidLoad
 {
@@ -38,7 +41,7 @@
 				{
 					if (nil != user)
 					{
-						
+						[weakSelf showProfile];
 					}
 				} transiter:self];
 				
@@ -46,10 +49,19 @@
 			}
 			else
 			{
-			
+				[weakSelf showProfile];
 			}
 		}
 	}];
+}
+
+- (void)showProfile
+{
+	name = @"Настройки";
+	[self setupNavigation];
+	PWProfileController *profileController = [[PWProfileController alloc] initWithStyle:UITableViewStyleGrouped];
+	
+	[self setupChildController:profileController inView:self.view];
 }
 
 @end

@@ -172,7 +172,7 @@
 	
 	if (nil != url)
 	{
-		info[@"iconURL"] = url;
+		info[@"remote_photo_url"] = url.absoluteString;
 	}
 	
 	return info;

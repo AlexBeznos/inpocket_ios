@@ -6,8 +6,8 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import "PWScrollableViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface PWProfileController : PWScrollableViewController
+@interface PWProfileController : UITableViewController
 
 @end

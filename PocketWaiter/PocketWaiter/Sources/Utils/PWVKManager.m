@@ -138,7 +138,7 @@
 	
 	if (nil != user.photo_100)
 	{
-		info[@"iconURL"] = [NSURL URLWithString:user.photo_100];
+		info[@"remote_photo_url"] = user.photo_100;
 	}
 	
 	return info;

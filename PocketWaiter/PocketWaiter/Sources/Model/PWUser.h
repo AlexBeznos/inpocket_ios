@@ -15,12 +15,13 @@
 @interface PWSocialProfile : NSObject
 
 - (instancetype)initWithUuid:(NSString *)uuid email:(NSString *)email
-			gender:(NSString *)gender name:(NSString *)name;
+			gender:(NSString *)gender name:(NSString *)name photoURL:(NSString *)photoURLPath;
 
 @property (nonatomic, readonly) NSString *uuid;
 @property (nonatomic, readonly) NSString *email;
 @property (nonatomic, readonly) NSString *gender;
 @property (nonatomic, readonly) NSString *userName;
+@property (nonatomic, readonly) NSString *photoURLPath;
 
 @end
 

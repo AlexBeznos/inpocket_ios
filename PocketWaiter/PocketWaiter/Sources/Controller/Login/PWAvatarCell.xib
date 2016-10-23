@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="PWAvatarCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="320" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yWk-W0-rNo" customClass="PWDropShadowView">
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoG-5m-9mk">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="PoL-nI-FWj"/>
+                                    <constraint firstAttribute="height" constant="24" id="oz8-Nl-6by"/>
+                                </constraints>
+                                <state key="normal" title="Button" backgroundImage="getAvatar"/>
+                                <connections>
+                                    <action selector="changeAvatar:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Gg5-fG-nI0"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bc-1W-3On">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="BoG-5m-9mk" secondAttribute="trailing" constant="10" id="CjI-NG-zTJ"/>
+                            <constraint firstItem="3bc-1W-3On" firstAttribute="centerY" secondItem="yWk-W0-rNo" secondAttribute="centerY" id="Ytp-wH-cZX"/>
+                            <constraint firstItem="BoG-5m-9mk" firstAttribute="centerY" secondItem="yWk-W0-rNo" secondAttribute="centerY" id="bmF-eE-FLN"/>
+                            <constraint firstItem="BoG-5m-9mk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3bc-1W-3On" secondAttribute="trailing" constant="10" id="pD7-lm-xWu"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v0Z-6I-KrG" customClass="PWImageView">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="8sb-E5-Jx8"/>
+                            <constraint firstAttribute="height" constant="60" id="Xdf-ET-yok"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="yWk-W0-rNo" secondAttribute="trailing" constant="10" id="6ip-eS-orl"/>
+                    <constraint firstItem="yWk-W0-rNo" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.9" id="JS1-3d-I27"/>
+                    <constraint firstItem="v0Z-6I-KrG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-3" id="NTv-T6-BsF"/>
+                    <constraint firstItem="3bc-1W-3On" firstAttribute="leading" secondItem="v0Z-6I-KrG" secondAttribute="trailing" constant="24" id="TLS-nJ-0KS"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="yWk-W0-rNo" secondAttribute="bottom" id="j7s-WS-0lK"/>
+                    <constraint firstItem="yWk-W0-rNo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="mZQ-av-JFi"/>
+                    <constraint firstItem="v0Z-6I-KrG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-3" id="u9Y-RR-ybL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="avatarView" destination="v0Z-6I-KrG" id="gzZ-Zw-wnU"/>
+                <outlet property="title" destination="3bc-1W-3On" id="G1m-AE-3fc"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="getAvatar" width="24" height="24"/>
+    </resources>
+</document>

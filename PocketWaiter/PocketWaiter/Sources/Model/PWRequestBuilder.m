@@ -100,8 +100,9 @@ static NSString * const kPWHTTPScheme = @"http";
 		userBody[@"gender"] = profile.gender;
 		userBody[@"username"] = profile.userName;
 		userBody[@"email"] = profile.email;
+		userBody[@"remote_photo_url"] = profile.photoURLPath;
 	}
-	NSDictionary *body = @{ @"user" : userBody};
+	NSDictionary *body = @{@"user" : userBody};
 	NSData *jsonData = [NSJSONSerialization dataWithJSONObject:body
 				options:NSJSONWritingPrettyPrinted error:nil];
 	return [self requestWithURL:[self URLWithPath:[kPWVersion stringByAppendingPathComponent:
@@ -201,6 +202,10 @@ static NSString * const kPWHTTPScheme = @"http";
 		{
 			vkBody[@"username"] = user.vkProfile.userName;
 		}
+		if (nil != user.vkProfile.photoURLPath)
+		{
+			vkBody[@"remote_photo_url"] = user.vkProfile.photoURLPath;
+		}
 		
 		if (vkBody.allKeys.count > 0)
 		{
@@ -226,6 +231,11 @@ static NSString * const kPWHTTPScheme = @"http";
 		if (nil != user.fbProfile.userName)
 		{
 			fbBody[@"username"] = user.fbProfile.userName;
+		}
+		
+		if (nil != user.fbProfile.photoURLPath)
+		{
+			fbBody[@"remote_photo_url"] = user.fbProfile.photoURLPath;
 		}
 		
 		if (fbBody.allKeys.count > 0)
