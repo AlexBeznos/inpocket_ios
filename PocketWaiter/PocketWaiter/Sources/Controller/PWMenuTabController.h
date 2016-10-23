@@ -14,7 +14,7 @@
 @interface PWMenuTabController : PWScrollableViewController
 
 - (instancetype)initWithRestaurant:(PWRestaurant *)restaurant
-			transiter:(id<IPWTransiter>)transiter;
+			transiter:(id<IPWTransiter>)transiter defaultMode:(BOOL)defaultMode;
 
 @property (nonatomic) CGFloat contentWidth;
 

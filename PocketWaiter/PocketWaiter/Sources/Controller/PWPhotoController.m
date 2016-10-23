@@ -41,7 +41,7 @@
 	[super viewDidLoad];
 	
 	self.imageView.image = self.image;
-	self.label.text = [NSString stringWithFormat:@"%li/%li", self.index + 1, self.count];
+	self.label.text = [NSString stringWithFormat:@"%lu/%li", self.index + 1, self.count];
 }
 
 - (void)transitionBack

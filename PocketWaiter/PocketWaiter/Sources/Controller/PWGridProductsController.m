@@ -135,12 +135,12 @@
 	{
 		PWPresentProduct *present = (PWPresentProduct *)product;
 		[cell.bonusesLabel removeFromSuperview];
-		cell.priceLabel.text = [NSString stringWithFormat:@"%li бонусов", present.bonusesPrice];
+		cell.priceLabel.text = [NSString stringWithFormat:@"%li бонусов", (unsigned long)present.bonusesPrice];
 	}
 	else
 	{
 		cell.priceLabel.text = product.price.humanReadableValue;
-		cell.bonusesLabel.text = [NSString stringWithFormat:@"+%li", product.bonusesValue];
+		cell.bonusesLabel.text = [NSString stringWithFormat:@"+%li", (unsigned long)product.bonusesValue];
 	}
 	cell.productImageView.image = product.icon;
 	cell.getButton.backgroundColor = self.restaurant.color;

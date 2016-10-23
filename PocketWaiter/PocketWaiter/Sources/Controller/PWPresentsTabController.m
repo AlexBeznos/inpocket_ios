@@ -13,6 +13,7 @@
 #import "PWFirstPresentDetailsController.h"
 #import "PWSharesViewController.h"
 #import "PWProductViewController.h"
+#import "UIColorAdditions.h"
 
 @interface PWScrollableViewController ()
 
@@ -24,19 +25,21 @@
 
 @property (nonatomic, strong) PWRestaurant *restaurant;
 @property (nonatomic, weak) id<IPWTransiter> transiter;
+@property (nonatomic) BOOL defaultMode;
 
 @end
 
 @implementation PWPresentsTabController
 
 - (instancetype)initWithRestaurant:(PWRestaurant *)restaurant
-			transiter:(id<IPWTransiter>)transiter
+			transiter:(id<IPWTransiter>)transiter defaultMode:(BOOL)defaultMode
 {
 	self = [super init];
 	if (nil != self)
 	{
 		self.restaurant = restaurant;
 		self.transiter = transiter;
+		self.defaultMode = defaultMode;
 	}
 	
 	return self;
@@ -100,7 +103,8 @@
 				[weakSelf handleVelocity:velocity];
 			}
 						transiter:weakSelf.transiter];
-			sharesController.colorScheme = weakSelf.restaurant.color;
+			sharesController.colorScheme = weakSelf.defaultMode ?
+						[UIColor pwColorWithAlpha:1] : weakSelf.restaurant.color;
 			[weakSelf addChildViewController:sharesController];
 			[weakSelf.scrollView addSubview:sharesController.view];
 			

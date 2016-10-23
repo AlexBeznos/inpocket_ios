@@ -13,12 +13,14 @@
 
 @property (nonatomic, strong) PWRestaurant *restaurant;
 @property (nonatomic, weak) id<IPWTransiter> transiter;
+@property (nonatomic) BOOL defaultMode;
 
 @end
 
 @implementation PWAboutUsTabController
 
-- (instancetype)initWithRestaurant:(PWRestaurant *)restaurant transiter:(id<IPWTransiter>)transiter
+- (instancetype)initWithRestaurant:(PWRestaurant *)restaurant
+			transiter:(id<IPWTransiter>)transiter defaultMode:(BOOL)defaultMode
 {
 	self = [super init];
 	
@@ -26,6 +28,7 @@
 	{
 		self.restaurant = restaurant;
 		self.transiter = transiter;
+		self.defaultMode = defaultMode;
 	}
 	
 	return self;

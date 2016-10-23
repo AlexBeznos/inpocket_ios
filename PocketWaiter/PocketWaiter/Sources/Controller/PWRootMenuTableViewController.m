@@ -16,7 +16,7 @@
 #import "PWAboutController.h"
 #import "PWShareWithFriendsController.h"
 #import "PWLoginController.h"
-#import "PWActiveRootController.h"
+#import "PWRootRestaurantController.h"
 
 @interface PWRootMenuTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -136,8 +136,8 @@
 			self.activeMenuSource = [[PWContentSource alloc]
 						initWithTitle:self.restaurant.name details:nil
 						icon:self.restaurant.thumbnail
-						contentViewController:[[PWActiveRootController alloc]
-						initWithRestaurant:self.restaurant transitionHandler:
+						contentViewController:[[PWRootRestaurantController alloc]
+						initWithRestaurant:self.restaurant defaultMode:NO transitionHandler:
 			^{
 				[theWeakSelf performBackTransition];
 			}

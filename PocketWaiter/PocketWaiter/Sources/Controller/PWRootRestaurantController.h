@@ -9,9 +9,10 @@
 #import "PWMainMenuItemViewController.h"
 @class PWRestaurant;
 
-@interface PWActiveRootController : PWMainMenuItemViewController
+@interface PWRootRestaurantController : PWMainMenuItemViewController
 
 - (instancetype)initWithRestaurant:(PWRestaurant *)restaurant
+			defaultMode:(BOOL)defaultMode
 			transitionHandler:(PWContentTransitionHandler)aHandler
 			forwardTransitionHandler:(PWContentTransitionHandler)aFwdHandler;
 

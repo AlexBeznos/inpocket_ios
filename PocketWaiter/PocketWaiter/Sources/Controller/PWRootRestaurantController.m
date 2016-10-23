@@ -6,7 +6,7 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import "PWActiveRootController.h"
+#import "PWRootRestaurantController.h"
 #import "PWTabBar.h"
 #import "PWRestaurant.h"
 #import "PWPurchasesViewController.h"
@@ -15,6 +15,7 @@
 #import "PWMenuTabController.h"
 #import "PWReviewsTabController.h"
 #import "PWAboutUsTabController.h"
+#import "UIColorAdditions.h"
 
 @interface PWMainMenuItemViewController (Protected)
 
@@ -24,10 +25,10 @@
 
 @end
 
-@interface PWActiveRootController ()
+@interface PWRootRestaurantController ()
 
 @property (strong, nonatomic) IBOutlet PWTabBar *tabbar;
-@property (nonatomic, strong) PWRestaurant *restaurant;
+@property (strong, nonatomic) PWRestaurant *restaurant;
 @property (strong, nonatomic) IBOutlet UIView *bottomBar;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomBarConstraint;
@@ -39,11 +40,14 @@
 @property (nonatomic, strong) UIButton *callWaiterButton;
 @property (nonatomic, strong) UIButton *orderButton;
 
+@property (nonatomic) BOOL defaultMode;
+
 @end
 
-@implementation PWActiveRootController
+@implementation PWRootRestaurantController
 
 - (instancetype)initWithRestaurant:(PWRestaurant *)restaurant
+			defaultMode:(BOOL)defaultMode
 			transitionHandler:(PWContentTransitionHandler)aHandler
 			forwardTransitionHandler:(PWContentTransitionHandler)aFwdHandler
 {
@@ -52,6 +56,7 @@
 	if (nil != self)
 	{
 		self.restaurant = restaurant;
+		self.defaultMode = defaultMode;
 	}
 	
 	return self;
@@ -86,7 +91,8 @@
 	[self.tabbar addItem:menu];
 	[self.tabbar addItem:reviews];
 	[self.tabbar addItem:about];
-	self.tabbar.colorSchema = self.restaurant.color;
+	self.tabbar.colorSchema = self.defaultMode ?
+				[UIColor pwColorWithAlpha:1] : self.restaurant.color;
 	
 	[self.bottomBar addSubview:self.orderButton];
 	[self.bottomBar addConstraint:[NSLayoutConstraint
@@ -107,7 +113,8 @@
 				constraintWithItem:self.callWaiterButton attribute:NSLayoutAttributeCenterY
 				relatedBy:NSLayoutRelationEqual toItem:self.bottomBar
 				attribute:NSLayoutAttributeCenterY multiplier:1 constant:10]];
-	self.bottomBar.backgroundColor = self.restaurant.color;
+	self.bottomBar.backgroundColor = self.defaultMode ?
+				[UIColor pwColorWithAlpha:1] : self.restaurant.color;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -129,14 +136,16 @@
 		[theBonusesButton setImage:[[UIImage imageNamed:@"collectedBonus"]
 					imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
 					forState:UIControlStateNormal];
-		[theBonusesButton setTintColor:self.restaurant.color];
+		[theBonusesButton setTintColor:self.defaultMode ?
+				[UIColor pwColorWithAlpha:1] : self.restaurant.color];
 		[theBonusesButton addTarget:self action:@selector(showBonuses)
 					forControlEvents:UIControlEventTouchUpInside];
 		[theBonusesButton sizeToFit];
 		UILabel *bonussesLabel = [UILabel new];
 		bonussesLabel.font = [UIFont systemFontOfSize:15.];
 		bonussesLabel.text = [NSString stringWithFormat:@"%li", (unsigned long)info.collectedBonuses];
-		bonussesLabel.textColor = self.restaurant.color;
+		bonussesLabel.textColor = self.defaultMode ?
+				[UIColor pwColorWithAlpha:1] : self.restaurant.color;;
 		[bonussesLabel sizeToFit];
 		self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc]
 					initWithCustomView:theBonusesButton], [[UIBarButtonItem alloc]
@@ -146,7 +155,8 @@
 
 - (UIColor *)titleColor
 {
-	return self.restaurant.color;
+	return self.defaultMode ?
+				[UIColor pwColorWithAlpha:1] : self.restaurant.color;;
 }
 
 - (NSString *)name
@@ -182,7 +192,8 @@
 {
 	[self clearViews];
 	PWPresentsTabController *presentsController = [[PWPresentsTabController
-				alloc] initWithRestaurant:self.restaurant transiter:self];
+				alloc] initWithRestaurant:self.restaurant transiter:self
+				defaultMode:self.defaultMode];
 	CGFloat aspectRatio = CGRectGetWidth(self.parentViewController.view.frame) / 320.;
 	presentsController.contentWidth = 320 * aspectRatio;
 	[self addChildViewController:presentsController];
@@ -206,7 +217,8 @@
 {
 	[self clearViews];
 	PWMenuTabController *menuController = [[PWMenuTabController
-				alloc] initWithRestaurant:self.restaurant transiter:self];
+				alloc] initWithRestaurant:self.restaurant transiter:self
+				defaultMode:self.defaultMode];
 	CGFloat aspectRatio = CGRectGetWidth(self.parentViewController.view.frame) / 320.;
 	menuController.contentWidth = 320 * aspectRatio;
 	[self addChildViewController:menuController];
@@ -230,7 +242,8 @@
 {
 	[self clearViews];
 	PWReviewsTabController *reviewsControler = [[PWReviewsTabController
-				alloc] initWithRestaurant:self.restaurant isActive:YES transiter:self];
+				alloc] initWithRestaurant:self.restaurant transiter:self
+				defaultMode:self.defaultMode];
 	CGFloat aspectRatio = CGRectGetWidth(self.parentViewController.view.frame) / 320.;
 	reviewsControler.contentWidth = 320 * aspectRatio;
 	[self addChildViewController:reviewsControler];
@@ -254,7 +267,8 @@
 {
 	[self clearViews];
 	PWAboutUsTabController *aboutController = [[PWAboutUsTabController
-				alloc] initWithRestaurant:self.restaurant transiter:self];
+				alloc] initWithRestaurant:self.restaurant transiter:self
+				defaultMode:self.defaultMode];
 	CGFloat aspectRatio = CGRectGetWidth(self.parentViewController.view.frame) / 320.;
 	aboutController.contentWidth = 320 * aspectRatio;
 	[self addChildViewController:aboutController];

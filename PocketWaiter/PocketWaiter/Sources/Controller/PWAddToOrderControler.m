@@ -51,7 +51,7 @@
 	[super viewDidLoad];
 	
 	self.priceLabel.text = self.product.price.humanReadableValue;
-	self.bonusesLabel.text = [NSString stringWithFormat:@"+%li", self.product.bonusesValue];
+	self.bonusesLabel.text = [NSString stringWithFormat:@"+%li", (unsigned long)self.product.bonusesValue];
 	self.productImage.image = self.product.icon;
 	self.button.backgroundColor = self.restaurant.color;
 	self.titleLabel.text = self.product.name;

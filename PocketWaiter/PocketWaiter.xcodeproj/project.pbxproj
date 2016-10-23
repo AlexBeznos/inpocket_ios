@@ -66,6 +66,7 @@
 		CACE8DD01DB26F5900E80F11 /* PWRequestHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DCF1DB26F5900E80F11 /* PWRequestHolder.m */; };
 		CACE8DD31DB378C700E80F11 /* PWModelCacher.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DD21DB378C700E80F11 /* PWModelCacher.m */; };
 		CACE8DD61DB385B100E80F11 /* PWImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DD51DB385B100E80F11 /* PWImageView.m */; };
+		CAD37FD91DBD3A3C001FD692 /* PWRootRestaurantController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD37FD81DBD3A3C001FD692 /* PWRootRestaurantController.m */; };
 		CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */; };
 		CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */; };
 		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
@@ -203,8 +204,7 @@
 		CAFE60FF1D98FAFE003F5991 /* PWWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE60FD1D98FAFE003F5991 /* PWWelcomeViewController.m */; };
 		CAFE61001D98FAFE003F5991 /* PWWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE60FE1D98FAFE003F5991 /* PWWelcomeViewController.xib */; };
 		CAFE61031D98FBDD003F5991 /* PWButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE61021D98FBDD003F5991 /* PWButton.m */; };
-		CAFE61081D990D79003F5991 /* PWActiveRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE61061D990D79003F5991 /* PWActiveRootController.m */; };
-		CAFE61091D990D79003F5991 /* PWActiveRootController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE61071D990D79003F5991 /* PWActiveRootController.xib */; };
+		CAFE61091D990D79003F5991 /* PWRootRestaurantController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE61071D990D79003F5991 /* PWRootRestaurantController.xib */; };
 		CAFE610C1D990DE6003F5991 /* PWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE610B1D990DE6003F5991 /* PWTabBar.m */; };
 		CAFE61111D99459A003F5991 /* PWFirstPresentController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE61101D99459A003F5991 /* PWFirstPresentController.m */; };
 		CAFE61151D9945D0003F5991 /* PWFirstPresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE61131D9945D0003F5991 /* PWFirstPresentCell.m */; };
@@ -358,6 +358,8 @@
 		CACE8DD21DB378C700E80F11 /* PWModelCacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWModelCacher.m; sourceTree = "<group>"; };
 		CACE8DD41DB385B100E80F11 /* PWImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWImageView.h; sourceTree = "<group>"; };
 		CACE8DD51DB385B100E80F11 /* PWImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWImageView.m; sourceTree = "<group>"; };
+		CAD37FD71DBD3A3C001FD692 /* PWRootRestaurantController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWRootRestaurantController.h; sourceTree = "<group>"; };
+		CAD37FD81DBD3A3C001FD692 /* PWRootRestaurantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRootRestaurantController.m; sourceTree = "<group>"; };
 		CAF090FD1D4D3938005FAEF4 /* PocketWaiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketWaiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAF0911A1D4D3A4C005FAEF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -580,9 +582,7 @@
 		CAFE60FE1D98FAFE003F5991 /* PWWelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWWelcomeViewController.xib; sourceTree = "<group>"; };
 		CAFE61011D98FBDD003F5991 /* PWButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWButton.h; sourceTree = "<group>"; };
 		CAFE61021D98FBDD003F5991 /* PWButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWButton.m; sourceTree = "<group>"; };
-		CAFE61051D990D79003F5991 /* PWActiveRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWActiveRootController.h; sourceTree = "<group>"; };
-		CAFE61061D990D79003F5991 /* PWActiveRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWActiveRootController.m; sourceTree = "<group>"; };
-		CAFE61071D990D79003F5991 /* PWActiveRootController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWActiveRootController.xib; sourceTree = "<group>"; };
+		CAFE61071D990D79003F5991 /* PWRootRestaurantController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWRootRestaurantController.xib; sourceTree = "<group>"; };
 		CAFE610A1D990DE6003F5991 /* PWTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWTabBar.h; sourceTree = "<group>"; };
 		CAFE610B1D990DE6003F5991 /* PWTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWTabBar.m; sourceTree = "<group>"; };
 		CAFE610F1D99459A003F5991 /* PWFirstPresentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWFirstPresentController.h; sourceTree = "<group>"; };
@@ -1228,9 +1228,9 @@
 		CAFE61041D990D47003F5991 /* ActiveRootController */ = {
 			isa = PBXGroup;
 			children = (
-				CAFE61051D990D79003F5991 /* PWActiveRootController.h */,
-				CAFE61061D990D79003F5991 /* PWActiveRootController.m */,
-				CAFE61071D990D79003F5991 /* PWActiveRootController.xib */,
+				CAD37FD71DBD3A3C001FD692 /* PWRootRestaurantController.h */,
+				CAD37FD81DBD3A3C001FD692 /* PWRootRestaurantController.m */,
+				CAFE61071D990D79003F5991 /* PWRootRestaurantController.xib */,
 			);
 			name = ActiveRootController;
 			sourceTree = "<group>";
@@ -1415,7 +1415,7 @@
 				CAF091D81D5799DB005FAEF4 /* coffeetoria1.jpg in Resources */,
 				CAFE5FFD1D7C9D92003F5991 /* PWShareWithFriendsController.xib in Resources */,
 				CACE8DC91DAD231400E80F11 /* PWPhotoController.xib in Resources */,
-				CAFE61091D990D79003F5991 /* PWActiveRootController.xib in Resources */,
+				CAFE61091D990D79003F5991 /* PWRootRestaurantController.xib in Resources */,
 				CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */,
 				CAFE61001D98FAFE003F5991 /* PWWelcomeViewController.xib in Resources */,
 				CAF091DF1D57A05F005FAEF4 /* hookah2.jpeg in Resources */,
@@ -1513,7 +1513,6 @@
 				CA3CE6F11DA236C300825A0A /* PWBestOfDayProductCell.m in Sources */,
 				CAF0916D1D4E904E005FAEF4 /* PWModelObject.m in Sources */,
 				CAFE5FF31D7BA3BF003F5991 /* PWPurchasesPlainController.m in Sources */,
-				CAFE61081D990D79003F5991 /* PWActiveRootController.m in Sources */,
 				CAF0925A1D607B69005FAEF4 /* PWMainMenuViewController.m in Sources */,
 				CAFE610C1D990DE6003F5991 /* PWTabBar.m in Sources */,
 				CA3CE6E81DA22EA400825A0A /* PWMenuTabController.m in Sources */,
@@ -1521,6 +1520,7 @@
 				CACE8DC81DAD231400E80F11 /* PWPhotoController.m in Sources */,
 				CAFE5FE91D6DFDAC003F5991 /* PWRestaurantPurchasesController.m in Sources */,
 				CACE8DCD1DB263B600E80F11 /* PWRequestBuilder.m in Sources */,
+				CAD37FD91DBD3A3C001FD692 /* PWRootRestaurantController.m in Sources */,
 				CAF0912F1D4D3A4C005FAEF4 /* PWAppDelegate.m in Sources */,
 				CA3CE6D21D9FF82900825A0A /* PWProductCell.m in Sources */,
 				CA3CE6E31DA159C600825A0A /* PWMoreBonusesViewController.m in Sources */,
