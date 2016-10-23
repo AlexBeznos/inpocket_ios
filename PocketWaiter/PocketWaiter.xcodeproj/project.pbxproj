@@ -47,6 +47,8 @@
 		CAB45A211DBCD80C00C79859 /* PWAvatarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAB45A1F1DBCD80C00C79859 /* PWAvatarCell.xib */; };
 		CAB45A251DBD088C00C79859 /* PWProfileDoubleInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB45A231DBD088C00C79859 /* PWProfileDoubleInfoCell.m */; };
 		CAB45A261DBD088C00C79859 /* PWProfileDoubleInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAB45A241DBD088C00C79859 /* PWProfileDoubleInfoCell.xib */; };
+		CAB45A2A1DBD344200C79859 /* PWSingleInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB45A281DBD344200C79859 /* PWSingleInfoCell.m */; };
+		CAB45A2B1DBD344200C79859 /* PWSingleInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAB45A291DBD344200C79859 /* PWSingleInfoCell.xib */; };
 		CACE8DA41DAABE0400E80F11 /* PWThanksForController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DA31DAABE0400E80F11 /* PWThanksForController.m */; };
 		CACE8DA81DAAC74600E80F11 /* PWShareCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DA61DAAC74600E80F11 /* PWShareCommentViewController.m */; };
 		CACE8DA91DAAC74600E80F11 /* PWShareCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACE8DA71DAAC74600E80F11 /* PWShareCommentViewController.xib */; };
@@ -324,6 +326,9 @@
 		CAB45A221DBD088C00C79859 /* PWProfileDoubleInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWProfileDoubleInfoCell.h; sourceTree = "<group>"; };
 		CAB45A231DBD088C00C79859 /* PWProfileDoubleInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWProfileDoubleInfoCell.m; sourceTree = "<group>"; };
 		CAB45A241DBD088C00C79859 /* PWProfileDoubleInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWProfileDoubleInfoCell.xib; sourceTree = "<group>"; };
+		CAB45A271DBD344200C79859 /* PWSingleInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWSingleInfoCell.h; sourceTree = "<group>"; };
+		CAB45A281DBD344200C79859 /* PWSingleInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWSingleInfoCell.m; sourceTree = "<group>"; };
+		CAB45A291DBD344200C79859 /* PWSingleInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWSingleInfoCell.xib; sourceTree = "<group>"; };
 		CACE8DA31DAABE0400E80F11 /* PWThanksForController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWThanksForController.m; sourceTree = "<group>"; };
 		CACE8DA51DAAC74600E80F11 /* PWShareCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWShareCommentViewController.h; sourceTree = "<group>"; };
 		CACE8DA61DAAC74600E80F11 /* PWShareCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWShareCommentViewController.m; sourceTree = "<group>"; };
@@ -1170,6 +1175,9 @@
 				CAB45A221DBD088C00C79859 /* PWProfileDoubleInfoCell.h */,
 				CAB45A231DBD088C00C79859 /* PWProfileDoubleInfoCell.m */,
 				CAB45A241DBD088C00C79859 /* PWProfileDoubleInfoCell.xib */,
+				CAB45A271DBD344200C79859 /* PWSingleInfoCell.h */,
+				CAB45A281DBD344200C79859 /* PWSingleInfoCell.m */,
+				CAB45A291DBD344200C79859 /* PWSingleInfoCell.xib */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1403,6 +1411,7 @@
 				CAF092021D5D1838005FAEF4 /* PWNearRestaurantsViewController.xib in Resources */,
 				CAFE60021D7CA831003F5991 /* PWSharePromoController.xib in Resources */,
 				CAFE600E1D7E0692003F5991 /* PWLoginController.xib in Resources */,
+				CAB45A2B1DBD344200C79859 /* PWSingleInfoCell.xib in Resources */,
 				CAF091D81D5799DB005FAEF4 /* coffeetoria1.jpg in Resources */,
 				CAFE5FFD1D7C9D92003F5991 /* PWShareWithFriendsController.xib in Resources */,
 				CACE8DC91DAD231400E80F11 /* PWPhotoController.xib in Resources */,
@@ -1519,6 +1528,7 @@
 				CAF092681D608E77005FAEF4 /* PWMapController.m in Sources */,
 				CACE8DA81DAAC74600E80F11 /* PWShareCommentViewController.m in Sources */,
 				CAF092EC1D6894ED005FAEF4 /* PWLocationManager.m in Sources */,
+				CAB45A2A1DBD344200C79859 /* PWSingleInfoCell.m in Sources */,
 				CAFE61151D9945D0003F5991 /* PWFirstPresentCell.m in Sources */,
 				CAFE61111D99459A003F5991 /* PWFirstPresentController.m in Sources */,
 				CAFE5FF71D7C5EFB003F5991 /* PWShareViewController.m in Sources */,

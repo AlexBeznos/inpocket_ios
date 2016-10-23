@@ -15,8 +15,10 @@
 #import "PWVKManager.h"
 #import "PWUtilsAccessor.h"
 #import "PWNoAccesViewController.h"
+#import "PWSingleInfoCell.h"
 
-@interface PWProfileController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface PWProfileController ()
+			<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *sections;
 @property (nonatomic, strong) UIImagePickerController *picker;
@@ -40,7 +42,8 @@
 				bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"avatar"];
 	[self.tableView registerNib:[UINib nibWithNibName:@"PWProfileDoubleInfoCell"
 				bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"personal"];
-	
+	[self.tableView registerNib:[UINib nibWithNibName:@"PWSingleInfoCell"
+				bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"single"];
 	NSDictionary *avatarSection = @{@"title" : @"Фото профиля", @"height" : @(80)};
 	[self.sections addObject:avatarSection];
 	if (nil != user.userName)
@@ -48,9 +51,18 @@
 		NSDictionary *personalSection = @{@"title" : @"Персональные данные", @"height" : @(130)};
 		[self.sections addObject:personalSection];
 	}
+	if (nil != user.email && nil != user.password)
+	{
+		NSDictionary *passwordSection = @{@"title" : @"Пароль", @"height" : @(80)};
+		[self.sections addObject:passwordSection];
+	}
 	NSDictionary *socialSection = @{@"title" : @"Соц. сети", @"height" : @(130)};
 	
 	[self.sections addObject:socialSection];
+	
+	NSDictionary *exitSection = @{@"title" : @"Выход с приложения", @"height" : @(80)};
+	
+	[self.sections addObject:exitSection];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -142,7 +154,7 @@
 		};
 		createdCell = cell;
 	}
-	else if (1 == indexPath.section)
+	else if ([[self.sections[indexPath.section] objectForKey:@"title"] isEqualToString:@"Персональные данные"])
 	{
 		PWProfileDoubleInfoCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"personal"];
 		NSArray *names = [USER.userName componentsSeparatedByString:@" "];
@@ -152,7 +164,7 @@
 		cell.secondDetails.text = names.lastObject;
 		createdCell = cell;
 	}
-	else if (2 == indexPath.section)
+	else if ([[self.sections[indexPath.section] objectForKey:@"title"] isEqualToString:@"Соц. сети"])
 	{
 		PWProfileDoubleInfoCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"personal"];
 		PWUser *user = USER;
@@ -178,10 +190,38 @@
 			[cell.secondButton addTarget:self action:@selector(loginFB)
 						forControlEvents:UIControlEventTouchUpInside];
 		}
+		
+		createdCell = cell;
+	}
+	else if ([[self.sections[indexPath.section] objectForKey:@"title"] isEqualToString:@"Пароль"])
+	{
+		PWSingleInfoCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"single"];
+		cell.label.text = @"Изменить пароль";
+		cell.indicator.hidden = NO;
+		[cell.button addTarget:self action:@selector(changePassword)
+					forControlEvents:UIControlEventTouchUpInside];
+		createdCell = cell;
+	}
+	else if ([[self.sections[indexPath.section] objectForKey:@"title"] isEqualToString:@"Выход с приложения"])
+	{
+		PWSingleInfoCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"single"];
+		cell.label.text = @"Выйти";
+		cell.indicator.hidden = YES;
+		[cell.button addTarget:self action:@selector(logOut)
+					forControlEvents:UIControlEventTouchUpInside];
 		createdCell = cell;
 	}
 	
 	return createdCell;
+}
+
+- (void)changePassword
+{
+}
+
+- (void)logOut
+{
+
 }
 
 - (void)loginVK
