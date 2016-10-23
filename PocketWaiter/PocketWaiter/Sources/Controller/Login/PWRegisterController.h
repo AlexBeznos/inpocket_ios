@@ -7,9 +7,10 @@
 //
 
 #import "PWScrollableViewController.h"
+#import "UIViewControllerAdditions.h"
 
-@interface PWRegisterController : PWScrollableViewController
+@interface PWRegisterController : PWScrollableViewController <IPWTransitableController>
 
-- (instancetype)initWithCompletion:(void (^)(PWUser *user))completion;
+- (instancetype)initWithCompletion:(void (^)())completion;
 
 @end

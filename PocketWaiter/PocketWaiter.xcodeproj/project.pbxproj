@@ -40,6 +40,10 @@
 		CA46E7C91DAA89D60044F96F /* PWNoAccesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA46E7C71DAA89D60044F96F /* PWNoAccesViewController.xib */; };
 		CA46E7CD1DAAAD480044F96F /* PWThankForReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA46E7CB1DAAAD480044F96F /* PWThankForReviewViewController.m */; };
 		CAB45A101DBC93D700C79859 /* PWVKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB45A0F1DBC93D700C79859 /* PWVKManager.m */; };
+		CAB45A161DBCAF2500C79859 /* PWProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB45A141DBCAF2500C79859 /* PWProfileController.m */; };
+		CAB45A171DBCAF2500C79859 /* PWProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAB45A151DBCAF2500C79859 /* PWProfileController.xib */; };
+		CAB45A1B1DBCBA2700C79859 /* PWSignInController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB45A191DBCBA2700C79859 /* PWSignInController.m */; };
+		CAB45A1C1DBCBA2700C79859 /* PWSignInController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAB45A1A1DBCBA2700C79859 /* PWSignInController.xib */; };
 		CACE8DA41DAABE0400E80F11 /* PWThanksForController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DA31DAABE0400E80F11 /* PWThanksForController.m */; };
 		CACE8DA81DAAC74600E80F11 /* PWShareCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DA61DAAC74600E80F11 /* PWShareCommentViewController.m */; };
 		CACE8DA91DAAC74600E80F11 /* PWShareCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACE8DA71DAAC74600E80F11 /* PWShareCommentViewController.xib */; };
@@ -306,6 +310,12 @@
 		CA46E7CB1DAAAD480044F96F /* PWThankForReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWThankForReviewViewController.m; sourceTree = "<group>"; };
 		CAB45A0E1DBC93D700C79859 /* PWVKManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWVKManager.h; sourceTree = "<group>"; };
 		CAB45A0F1DBC93D700C79859 /* PWVKManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWVKManager.m; sourceTree = "<group>"; };
+		CAB45A131DBCAF2500C79859 /* PWProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWProfileController.h; sourceTree = "<group>"; };
+		CAB45A141DBCAF2500C79859 /* PWProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWProfileController.m; sourceTree = "<group>"; };
+		CAB45A151DBCAF2500C79859 /* PWProfileController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWProfileController.xib; sourceTree = "<group>"; };
+		CAB45A181DBCBA2700C79859 /* PWSignInController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWSignInController.h; sourceTree = "<group>"; };
+		CAB45A191DBCBA2700C79859 /* PWSignInController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWSignInController.m; sourceTree = "<group>"; };
+		CAB45A1A1DBCBA2700C79859 /* PWSignInController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWSignInController.xib; sourceTree = "<group>"; };
 		CACE8DA31DAABE0400E80F11 /* PWThanksForController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWThanksForController.m; sourceTree = "<group>"; };
 		CACE8DA51DAAC74600E80F11 /* PWShareCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWShareCommentViewController.h; sourceTree = "<group>"; };
 		CACE8DA61DAAC74600E80F11 /* PWShareCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWShareCommentViewController.m; sourceTree = "<group>"; };
@@ -1135,12 +1145,18 @@
 		CAFE60091D7E027E003F5991 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				CAB45A181DBCBA2700C79859 /* PWSignInController.h */,
+				CAB45A191DBCBA2700C79859 /* PWSignInController.m */,
+				CAB45A1A1DBCBA2700C79859 /* PWSignInController.xib */,
 				CAFE600A1D7E0692003F5991 /* PWLoginController.h */,
 				CAFE600B1D7E0692003F5991 /* PWLoginController.m */,
 				CAFE600C1D7E0692003F5991 /* PWLoginController.xib */,
 				CAFE600F1D7E06B5003F5991 /* PWRegisterController.h */,
 				CAFE60101D7E06B5003F5991 /* PWRegisterController.m */,
 				CAFE60111D7E06B5003F5991 /* PWRegisterController.xib */,
+				CAB45A131DBCAF2500C79859 /* PWProfileController.h */,
+				CAB45A141DBCAF2500C79859 /* PWProfileController.m */,
+				CAB45A151DBCAF2500C79859 /* PWProfileController.xib */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1352,6 +1368,7 @@
 				CAFE5FF01D7B8237003F5991 /* PWPurchaseTableViewCell.xib in Resources */,
 				CA3CE6F81DA2428800825A0A /* PWAddToOrderControler.xib in Resources */,
 				CA3CE6DF1DA1139700825A0A /* PWThanksForController.xib in Resources */,
+				CAB45A171DBCAF2500C79859 /* PWProfileController.xib in Resources */,
 				CAF091DA1D5799DB005FAEF4 /* coffeetoria3.jpg in Resources */,
 				CAF092C51D628006005FAEF4 /* PWDetailesItemsViewController.xib in Resources */,
 				CA3CE6D31D9FF82900825A0A /* PWProductCell.xib in Resources */,
@@ -1411,6 +1428,7 @@
 				CAF091D51D5799DB005FAEF4 /* vapiano_1.jpg in Resources */,
 				CAF091CE1D579967005FAEF4 /* coffeetoria.jpg in Resources */,
 				CAF091D91D5799DB005FAEF4 /* coffeetoria2.jpg in Resources */,
+				CAB45A1C1DBCBA2700C79859 /* PWSignInController.xib in Resources */,
 				CAFE611F1D997E0E003F5991 /* PWFirstPresentDetailsController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1422,6 +1440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAB45A161DBCAF2500C79859 /* PWProfileController.m in Sources */,
 				CAF091941D56165C005FAEF4 /* PWMainViewController.m in Sources */,
 				CA46E7B91DAA41DD0044F96F /* PWRankView.m in Sources */,
 				CACE8DD61DB385B100E80F11 /* PWImageView.m in Sources */,
@@ -1511,6 +1530,7 @@
 				CAF091861D4E94AE005FAEF4 /* PWPurchase.m in Sources */,
 				CA46E7BD1DAA5A520044F96F /* PWReviewsListViewController.m in Sources */,
 				CAF0918A1D4E94B8005FAEF4 /* PWRestaurantAboutInfo.m in Sources */,
+				CAB45A1B1DBCBA2700C79859 /* PWSignInController.m in Sources */,
 				CA3CE6CD1D9FE7A300825A0A /* PWProductViewController.m in Sources */,
 				CAFE5FDC1D6DECA2003F5991 /* PWPurchaseRestaurantCell.m in Sources */,
 				CAF091841D4E949C005FAEF4 /* PWOrder.m in Sources */,

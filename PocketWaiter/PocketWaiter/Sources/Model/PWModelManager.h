@@ -25,6 +25,12 @@ extern NSString *const kPWTokenKey;
 
 + (PWModelManager *)sharedManager;
 
+- (void)getUserInfoWithCompletion:(void (^)(PWUser *user, NSError *error))completion;
+- (void)registerUserWithEmail:(NSString *)email password:(NSString *)password
+			completion:(void (^)(NSError *))completion;
+- (void)signInWithEmail:(NSString *)email password:(NSString *)password
+			completion:(void (^)(NSError *))completion;
+
 - (PWUser *)registeredUser;
 - (NSString *)authToken;
 

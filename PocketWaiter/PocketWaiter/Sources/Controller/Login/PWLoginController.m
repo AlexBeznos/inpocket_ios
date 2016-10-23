@@ -7,7 +7,7 @@
 //
 
 #import "PWLoginController.h"
-#import "PWRegisterController.h"
+#import "PWSignInController.h"
 
 @interface PWLoginController ()
 
@@ -19,25 +19,37 @@
 {
 	[super viewDidLoad];
 	
-	PWUser *user = USER;
+	[self startActivity];
 	
-	if (nil == user.vkProfile && nil == user.fbProfile && nil == user.userName)
+	__weak __typeof(self) weakSelf = self;
+	[[PWModelManager sharedManager] getUserInfoWithCompletion:^(PWUser *user, NSError *error)
 	{
-		PWRegisterController *registerController = [[PWRegisterController alloc]
-					initWithCompletion:^(PWUser *user)
+		[weakSelf stopActivity];
+		if (nil != error)
 		{
-			if (nil != user)
+			[weakSelf showNoInternetDialog];
+		}
+		else
+		{
+			if (nil == user.vkProfile && nil == user.fbProfile && nil == user.email)
 			{
+				PWSignInController *signInController = [[PWSignInController alloc]
+							initWithCompletion:^(PWUser *user)
+				{
+					if (nil != user)
+					{
+						
+					}
+				} transiter:self];
 				
+				[self setupChildController:signInController inView:self.view];
 			}
-		}];
-		
-		[self setupChildController:registerController inView:self.view];
-	}
-	else
-	{
-	
-	}
+			else
+			{
+			
+			}
+		}
+	}];
 }
 
 @end

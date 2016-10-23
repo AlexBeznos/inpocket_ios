@@ -21,7 +21,8 @@
 
 @implementation PWSocialProfile
 
-- (instancetype)initWithUuid:(NSString *)uuid email:(NSString *)email gender:(NSString *)gender name:(NSString *)name
+- (instancetype)initWithUuid:(NSString *)uuid email:(NSString *)email
+			gender:(NSString *)gender name:(NSString *)name
 {
 	self = [super init];
 	
@@ -46,6 +47,8 @@
 @property (nonatomic, strong) NSString *humanReadableName;
 @property (nonatomic, strong) NSArray<PWPurchase *> *purchases;
 @property (nonatomic, strong) NSArray<PWUsersRestaurantInfo *> *restaurants;
+@property (nonatomic, strong) NSString *referalId;
+@property (nonatomic, strong) NSString *email;
 
 @end
 
@@ -62,6 +65,54 @@
 	}
 	
 	return nil;
+}
+
+- (void)updateWithJsonInfo:(NSDictionary *)json
+{
+	NSString *firstName = json[@"first_name"];
+	NSString *lastName = json[@"last_name"];
+	self.userName = nil != firstName && nil != lastName ?
+				[NSString stringWithFormat:@"%@ %@", firstName, lastName] : nil;
+	self.referalId = json[@"referal_number"];
+	
+	id base64Icon = json[@"photo"];
+	
+	self.avatarIcon = nil != base64Icon && [NSNull null] != base64Icon &&
+				[base64Icon isKindOfClass:[NSString class]] ? [UIImage imageWithData:
+				[[NSData alloc] initWithBase64EncodedString:base64Icon options:0]] : nil;
+	self.password = json[@"password"];
+	self.email = json[@"email"];
+	
+	NSDictionary *vkProfile = [NSNull null] != json[@"vk_profile"] ? json[@"vk_profile"] : nil;
+	
+	if (nil != vkProfile)
+	{
+		if (nil == self.vkProfile)
+		{
+			self.vkProfile = [PWSocialProfile new];
+		}
+		PWSocialProfile *vkProfileInfo = self.vkProfile;
+		vkProfileInfo.userName = vkProfile[@"username"];
+		vkProfileInfo.uuid = vkProfile[@"uid"];
+		vkProfileInfo.gender = vkProfile[@"gender"];
+		vkProfileInfo.email = vkProfile[@"email"];
+	}
+	
+	NSDictionary *fbProfile = [NSNull null] != json[@"facebook_profile"] ?
+				json[@"facebook_profile"] : nil;
+	
+	if (nil != fbProfile)
+	{
+		if (nil == self.fbProfile)
+		{
+			self.fbProfile = [PWSocialProfile new];
+		}
+		PWSocialProfile *fbProfileInfo = self.fbProfile;
+		fbProfileInfo.userName = fbProfile[@"username"];
+		fbProfileInfo.uuid = fbProfile[@"uid"];
+		fbProfileInfo.gender = fbProfile[@"gender"];
+		fbProfileInfo.email = fbProfile[@"email"];
+	}
 }
 
 @end

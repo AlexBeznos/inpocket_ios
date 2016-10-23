@@ -7,8 +7,6 @@
 //
 
 #import "PWRegisterController.h"
-#import "PWFacebookManager.h"
-#import "PWVKManager.h"
 #import "UIColorAdditions.h"
 
 @interface PWRegisterController () <UITextFieldDelegate>
@@ -16,15 +14,16 @@
 @property (strong, nonatomic) IBOutlet UITextField *loginField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;
 @property (strong, nonatomic) IBOutlet UILabel *registerLabel;
-@property (strong, nonatomic) IBOutlet UIButton *signInButton;
 
-@property (nonatomic, copy) void (^completion)(PWUser *user);
+@property (nonatomic, copy) void (^completion)();
 
 @end
 
 @implementation PWRegisterController
 
-- (instancetype)initWithCompletion:(void (^)(PWUser *user))completion
+@synthesize transiter;
+
+- (instancetype)initWithCompletion:(void (^)())completion
 {
 	self = [super init];
 	
@@ -34,6 +33,18 @@
 	}
 	
 	return self;
+}
+
+- (void)transitionBack
+{
+	[self.transiter performBackTransition];
+}
+
+- (void)setupWithNavigationItem:(UINavigationItem *)item
+{
+	[self setupBackItemWithTarget:self action:@selector(transitionBack)
+				navigationItem:item];
+	item.rightBarButtonItems = nil;
 }
 
 - (void)viewDidLoad
@@ -47,7 +58,6 @@
 	self.registerLabel.text = @"Зарегистрироваться";
 	self.loginField.placeholder = @"Email";
 	self.passwordField.placeholder = @"Пароль";
-	[self.signInButton setTitle:@"Есть аккаунт? Войдите в систему" forState:UIControlStateNormal];
 	self.passwordField.secureTextEntry = YES;
 }
 
@@ -56,59 +66,74 @@
 	self.passwordField.secureTextEntry = !self.passwordField.secureTextEntry;
 }
 
-- (IBAction)connectFB:(id)sender
+- (IBAction)signUp:(id)sender
 {
-	__weak __typeof(self) weakSelf = self;
-	[[PWFacebookManager sharedManager] getProfileInfoWithCompletion:
-	^(NSDictionary *info, NSError *error)
+	NSString *email = self.loginField.text;
+	
+	NSArray *parts = [email componentsSeparatedByString:@"@"];
+	if (parts.count != 2)
 	{
-		if (nil != error)
-		{
-			[weakSelf showNoInternetDialog];
-		}
-		else if (nil != weakSelf.completion)
-		{
-			PWUser *user = USER;
-			user.fbProfile = [[PWSocialProfile alloc] initWithUuid:info[@"userID"]
-						email:info[@"email"] gender:info[@"gender"]
-						name:info[@"userName"]];
-			if (nil == user.avatarIcon)
-			{
-				user.avatarURL = info[@"iconURL"];
-			}
-			weakSelf.completion(user);
-		}
-	}];
-}
-
-- (IBAction)connectVK:(id)sender
-{
-	__weak __typeof(self) weakSelf = self;
-	[[PWVKManager sharedManager] getProfileInfoWithCompletion:
-	^(NSDictionary *info, NSError *error)
+		UIAlertController *alert = [UIAlertController
+					alertControllerWithTitle:@"Не удалось зарегистрировать пользователя"
+					message:@"Неверный формат емеил адресса"
+					preferredStyle:UIAlertControllerStyleAlert];
+		[alert addAction:[UIAlertAction actionWithTitle:@"Хорошо" style:UIAlertActionStyleDefault handler:nil]];
+		self.view.userInteractionEnabled = NO;
+		[self presentViewController:alert animated:YES completion:
+		^{
+			self.view.userInteractionEnabled = YES;
+		}];
+	}
+	else if (self.loginField.text.length > 0 && self.passwordField.text.length > 0)
 	{
-		if (nil != error)
+		[self startActivity];
+		
+		__weak __typeof(self) weakSelf = self;
+		[[PWModelManager sharedManager] registerUserWithEmail:self.loginField.text
+					password:self.passwordField.text completion:
+		^(NSError *error)
 		{
-			[weakSelf showNoInternetDialog];
-		}
-		else if (nil != weakSelf.completion)
-		{
-			PWUser *user = USER;
-			user.vkProfile = [[PWSocialProfile alloc] initWithUuid:info[@"userID"]
-						email:info[@"email"] gender:info[@"gender"]
-						name:info[@"userName"]];
-			if (nil == user.avatarIcon)
+			if (nil != error)
 			{
-				user.avatarURL = info[@"iconURL"];
+				[weakSelf showNoInternetDialog];
 			}
-			weakSelf.completion(user);
-		}
-	}];
-}
-
-- (IBAction)signIn:(id)sender {
-}
-- (IBAction)signUp:(id)sender {
+			else
+			{
+				UIAlertController *alert = [UIAlertController
+							alertControllerWithTitle:@"Спасибо за регистрацию"
+							message:@"Теперь войдите в систему"
+							preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction actionWithTitle:@"Хорошо"
+							style:UIAlertActionStyleDefault handler:
+				^(UIAlertAction *action)
+				{
+					if (nil != weakSelf.completion)
+					{
+						weakSelf.completion();
+					}
+				}]];
+				self.view.userInteractionEnabled = NO;
+				[self presentViewController:alert animated:YES completion:
+				^{
+					self.view.userInteractionEnabled = YES;
+				}];
+			}
+		}];
+	}
+	else
+	{
+		UIAlertController *alert = [UIAlertController
+					alertControllerWithTitle:@"Не удалось зарегистрировать пользователя"
+					message:@"Пароль не может быть пустыми"
+					preferredStyle:UIAlertControllerStyleAlert];
+		[alert addAction:[UIAlertAction actionWithTitle:@"Хорошо"
+					style:UIAlertActionStyleDefault handler:nil]];
+		self.view.userInteractionEnabled = NO;
+		[self presentViewController:alert animated:YES completion:
+		^{
+			self.view.userInteractionEnabled = YES;
+		}];
+	}
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

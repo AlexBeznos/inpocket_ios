@@ -85,7 +85,7 @@ static NSString * const kPWHTTPScheme = @"http";
 				body:jsonData headers:@{@"Content-Type" : @"application/json"}];
 }
 
-+ (NSURLRequest *)signInRequestWithProvider:(NSString *)provider email:(NSString *)email password:(NSString *)password profile:(PWSocialProfile *)profile
++ (NSURLRequest *)signUpRequestWithProvider:(NSString *)provider email:(NSString *)email password:(NSString *)password profile:(PWSocialProfile *)profile
 {
 	NSMutableDictionary *userBody = [NSMutableDictionary dictionaryWithObject:provider forKey:@"provider"];
 	
@@ -109,7 +109,7 @@ static NSString * const kPWHTTPScheme = @"http";
 				body:jsonData headers:@{@"Content-Type" : @"application/json"}];
 }
 
-+ (NSURLRequest *)signUpRequestWithProvider:(NSString *)provider email:(NSString *)email password:(NSString *)password profile:(PWSocialProfile *)profile;
++ (NSURLRequest *)signInRequestWithProvider:(NSString *)provider email:(NSString *)email password:(NSString *)password profile:(PWSocialProfile *)profile;
 {
 	NSMutableDictionary *userBody = [NSMutableDictionary dictionaryWithObject:provider forKey:@"provider"];
 	
