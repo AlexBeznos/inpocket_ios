@@ -11,6 +11,8 @@
 #import "UIColorAdditions.h"
 #import "PWImageView.h"
 #import "PWProfileDoubleInfoCell.h"
+#import "PWFacebookManager.h"
+#import "PWVKManager.h"
 
 @interface PWProfileController ()
 
@@ -131,13 +133,102 @@
 		PWProfileDoubleInfoCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"personal"];
 		PWUser *user = USER;
 		cell.firstTitle.text = @"Vkontakte";
-		cell.firstDetails.text = nil != user.vkProfile.userName ? user.vkProfile.userName : @"Войти";
+		if (nil != user.vkProfile.userName)
+		{
+			cell.firstDetails.text = user.vkProfile.userName;
+		}
+		else
+		{
+			cell.firstDetails.text = @"Войти";
+			[cell.firstButton addTarget:self action:@selector(loginVK)
+						forControlEvents:UIControlEventTouchUpInside];
+		}
 		cell.secondTitle.text = @"Facebook";
-		cell.secondDetails.text = nil != user.fbProfile.userName ? user.fbProfile.userName : @"Войти";
+		if (nil != user.fbProfile.userName)
+		{
+			cell.secondDetails.text = user.fbProfile.userName;
+		}
+		else
+		{
+			cell.secondDetails.text = @"Войти";
+			[cell.secondButton addTarget:self action:@selector(loginFB)
+						forControlEvents:UIControlEventTouchUpInside];
+		}
 		createdCell = cell;
 	}
 	
 	return createdCell;
+}
+
+- (void)loginVK
+{
+	__weak __typeof(self) weakSelf = self;
+	[[PWVKManager sharedManager] getProfileInfoWithCompletion:
+	^(NSDictionary *info, NSError *error)
+	{
+		if (nil != error)
+		{
+
+		}
+		else
+		{
+			PWUser *user = USER;
+			[user updateWithJsonInfo:@{@"vk_profile" : info}];
+			if (nil == user.avatarIcon)
+			{
+				user.avatarURL = [NSURL URLWithString:info[@"remote_photo_url"]];
+			}
+			[[PWModelManager sharedManager] signUpWithProvider:@"vk"
+						profile:user.vkProfile completion:
+			^(NSError *error)
+			{
+				if (nil != error)
+				{
+					user.vkProfile = nil;
+				}
+				else
+				{
+					[weakSelf.tableView reloadData];
+				}
+			}];
+		}
+	}];
+
+}
+
+- (void)loginFB
+{
+	__weak __typeof(self) weakSelf = self;
+	[[PWFacebookManager sharedManager] getProfileInfoWithCompletion:
+	^(NSDictionary *info, NSError *error)
+	{
+		if (nil != error)
+		{
+//			[weakSelf showNoInternetDialog];
+		}
+		else
+		{
+			PWUser *user = USER;
+			[user updateWithJsonInfo:@{@"facebook_profile" : info}];
+			if (nil == user.avatarIcon)
+			{
+				user.avatarURL = [NSURL URLWithString:info[@"remote_photo_url"]];
+			}
+			[[PWModelManager sharedManager] signUpWithProvider:@"facebook"
+						profile:user.fbProfile completion:
+			^(NSError *error)
+			{
+				if (nil != error)
+				{
+					user.fbProfile = nil;
+				}
+				else
+				{
+					[weakSelf.tableView reloadData];
+				}
+			}];
+		}
+	}];
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath

@@ -13,6 +13,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *firstDetails;
 @property (strong, nonatomic) IBOutlet UILabel *secondTitle;
 @property (strong, nonatomic) IBOutlet UILabel *secondDetails;
+@property (strong, nonatomic) IBOutlet UIButton *firstButton;
+@property (strong, nonatomic) IBOutlet UIButton *secondButton;
 
 @end
 

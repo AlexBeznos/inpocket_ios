@@ -19,7 +19,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AL0-pR-2fK" customClass="PWDropShadowView">
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYx-Bq-LPl">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYx-Bq-LPl" customClass="UIButton">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3d-b9-6wq">
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -41,7 +41,7 @@
                                     <constraint firstAttribute="trailing" secondItem="fjl-GK-gNx" secondAttribute="trailing" constant="10" id="ul2-be-03p"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0IC-fR-i2y">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0IC-fR-i2y" customClass="UIButton">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uhw-yq-1Zm">
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -97,8 +97,10 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="firstButton" destination="oYx-Bq-LPl" id="GNC-vR-7vN"/>
                 <outlet property="firstDetails" destination="fjl-GK-gNx" id="cLr-Yk-bVW"/>
                 <outlet property="firstTitle" destination="G3d-b9-6wq" id="e0E-jd-Cmn"/>
+                <outlet property="secondButton" destination="0IC-fR-i2y" id="0iT-td-Erd"/>
                 <outlet property="secondDetails" destination="Uhw-yq-1Zm" id="M35-CK-2H0"/>
                 <outlet property="secondTitle" destination="GFz-I5-D7l" id="rYi-O3-opk"/>
             </connections>

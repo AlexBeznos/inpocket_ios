@@ -14,5 +14,7 @@
 @property (readonly, nonatomic) UILabel *firstDetails;
 @property (readonly, nonatomic) UILabel *secondTitle;
 @property (readonly, nonatomic) UILabel *secondDetails;
+@property (readonly, nonatomic) UIButton *firstButton;
+@property (readonly, nonatomic) UIButton *secondButton;
 
 @end
