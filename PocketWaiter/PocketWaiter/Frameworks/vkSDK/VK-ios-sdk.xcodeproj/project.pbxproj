@@ -66,7 +66,6 @@
 		8F99D63A1C42C61A0006DB03 /* VKDocs.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F99D6381C42C61A0006DB03 /* VKDocs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F99D63B1C42C61A0006DB03 /* VKDocs.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F99D6391C42C61A0006DB03 /* VKDocs.m */; };
 		8F99D63C1C42C61A0006DB03 /* VKDocs.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F99D6391C42C61A0006DB03 /* VKDocs.m */; };
-		CAFE60FA1D8ECEE1003F5991 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F34670341B8B7C5A003EF74B /* Info.plist */; };
 		F3007C5D1AEE50B5007CCA9D /* VKApiConst.m in Sources */ = {isa = PBXBuildFile; fileRef = F3007C5C1AEE50B5007CCA9D /* VKApiConst.m */; };
 		F3050D211C49123C0092FE76 /* VKDocs.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F99D6381C42C61A0006DB03 /* VKDocs.h */; };
 		F3050D221C4912420092FE76 /* VKApiDocs.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F99D6331C42C6010006DB03 /* VKApiDocs.h */; };
@@ -905,7 +904,6 @@
 			files = (
 				F34670681B8B7C8E003EF74B /* Localizable.strings in Resources */,
 				F34DECF61D2171E3005495E5 /* SdkAssetCatalog.xcassets in Resources */,
-				CAFE60FA1D8ECEE1003F5991 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

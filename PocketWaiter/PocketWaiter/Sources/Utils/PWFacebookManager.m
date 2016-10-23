@@ -113,6 +113,7 @@
 
 - (void)loadProfileWithCompletion:(void (^)(NSDictionary *info, NSError *error))completion
 {
+	__weak __typeof(self) weakSelf = self;
 	[FBSDKProfile loadCurrentProfileWithCompletion:
 	^(FBSDKProfile *profile, NSError *error)
 	{
@@ -122,26 +123,59 @@
 		}
 		else
 		{
-			NSURL *iconURL = [profile
-						imageURLForPictureMode:FBSDKProfilePictureModeSquare
-						size:CGSizeMake(100, 100)];
-			[[[NSURLSession sharedSession] downloadTaskWithURL:iconURL completionHandler:
-			^(NSURL * _Nullable location, NSURLResponse * _Nullable response,
-						NSError * _Nullable error)
+			NSMutableDictionary *currentInfo = [weakSelf infoFromProfile:profile];
+			
+			NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+			[parameters setValue:@"id,name,email,gender" forKey:@"fields"];
+
+			[[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:parameters]
+						startWithCompletionHandler:
+			^(FBSDKGraphRequestConnection *connection, id result, NSError *error)
 			{
-				NSString *tempPath = [NSTemporaryDirectory() stringByAppendingString:iconURL.lastPathComponent];
-				[[NSFileManager defaultManager] moveItemAtPath:location.path toPath:tempPath error:NULL];
+				if (nil == error)
+				{
+					NSDictionary *resultInfo = (NSDictionary *)result;
+					if (nil != resultInfo[@"gender"])
+					{
+						currentInfo[@"gender"] = resultInfo[@"gender"];
+					}
+					
+					if (nil != resultInfo[@"email"])
+					{
+						currentInfo[@"email"] = resultInfo[@"email"];
+					}
+				}
 				
-				completion(
-						@{
-							@"firstName" : profile.firstName,
-							@"lastName" : profile.lastName,
-							@"userID" : profile.userID,
-							@"image" : [UIImage imageWithContentsOfFile:tempPath]
-						}, nil);
-			}] resume];
+				completion(currentInfo, nil);
+			}];
 		}
 	}];
+}
+
+- (NSMutableDictionary *)infoFromProfile:(FBSDKProfile *)profile
+{
+	NSMutableDictionary *info = [NSMutableDictionary dictionary];
+	
+	if (nil != profile.firstName && nil != profile.lastName)
+	{
+		info[@"userName"] = [NSString stringWithFormat:@"%@ %@",
+					profile.firstName, profile.lastName];
+	}
+	
+	if (nil != profile.userID)
+	{
+		info[@"userID"] = profile.userID;
+	}
+	
+	NSURL *url = [profile imageURLForPictureMode:FBSDKProfilePictureModeSquare
+				size:CGSizeMake(100, 100)];
+	
+	if (nil != url)
+	{
+		info[@"iconURL"] = url;
+	}
+	
+	return info;
 }
 
 @end

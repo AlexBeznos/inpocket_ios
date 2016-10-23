@@ -8,6 +8,7 @@
 
 #import "PWRegisterController.h"
 #import "PWFacebookManager.h"
+#import "PWVKManager.h"
 
 @interface PWRegisterController ()
 
@@ -44,7 +45,13 @@
 	}];
 }
 
-- (IBAction)connectVK:(id)sender {
+- (IBAction)connectVK:(id)sender
+{
+	[[PWVKManager sharedManager] getProfileInfoWithCompletion:
+	^(NSDictionary *info, NSError *error)
+	{
+		
+	}];
 }
 
 - (IBAction)signIn:(id)sender {

@@ -9,6 +9,7 @@
 #import "PWAppDelegate.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <VKSdkFramework/VKSdkFramework.h>
 
 @interface PWAppDelegate ()
 
@@ -35,6 +36,7 @@
 - (BOOL)application:(UIApplication *)application  openURL:(NSURL *)url
 			sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
+	[VKSdk processOpenURL:url fromApplication:sourceApplication];
 	return [[FBSDKApplicationDelegate sharedInstance] application:application
 				openURL:url sourceApplication:sourceApplication annotation:annotation];
 }
