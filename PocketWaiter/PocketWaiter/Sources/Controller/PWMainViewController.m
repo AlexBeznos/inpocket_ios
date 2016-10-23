@@ -143,7 +143,7 @@
 			^{
 				[weakSelf.welcomeDialog hideWithCompletion:
 				^{
-					[weakSelf presentRootControllerWithRestaurant:restaurant];
+					[weakSelf presentRootControllerWithRestaurant:restaurant]; 
 				}];
 			}];
 			weakSelf.welcomeDialog = [[PWModalController alloc]

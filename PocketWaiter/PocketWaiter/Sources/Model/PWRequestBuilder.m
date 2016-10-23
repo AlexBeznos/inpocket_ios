@@ -300,6 +300,13 @@ static NSString * const kPWHTTPScheme = @"http";
 				query:query] method:kPWGetMethod body:nil headers:nil];
 }
 
++ (NSURLRequest *)getFirstPresentRequestForPlace:(NSUInteger)placeId
+{
+	return [self requestWithURL:[self URLWithPath:[kPWVersion stringByAppendingPathComponent:
+				[NSString stringWithFormat:@"places/%li/presents/debut", placeId]]
+				query:nil] method:kPWGetMethod body:nil headers:nil];
+}
+
 + (NSURLRequest *)getPresentsRequestWithPage:(NSUInteger)page
 			count:(NSUInteger)count exceptionPlaceId:(NSNumber *)exceptionId
 			latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude

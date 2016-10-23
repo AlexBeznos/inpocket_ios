@@ -27,6 +27,7 @@
 			count:(NSUInteger)count exceptionPlaceId:(NSNumber *)exceptionId
 			latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude;
 
++ (NSURLRequest *)getFirstPresentRequestForPlace:(NSUInteger)placeId;
 + (NSURLRequest *)getPresentsRequestWithPage:(NSUInteger)page
 			count:(NSUInteger)count exceptionPlaceId:(NSNumber *)exceptionId
 			latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude;

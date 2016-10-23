@@ -89,7 +89,7 @@
 	[[PWModelManager sharedManager] getRecomendedProductsInfoForUser:
 				[[PWModelManager sharedManager] registeredUser]
 				restaurant:self.restaurant completion:
-	^(NSArray<PWProduct *> *products, BOOL allowShare, BOOL allowComment, NSError *error)
+	^(NSArray<PWProduct *> *products, NSError *error)
 	{
 		if (nil == error)
 		{
@@ -138,42 +138,39 @@
 				previousView = productController.view;
 			}
 			
-			if (allowShare || allowComment)
+			PWMoreBonusesViewController *moreBonuses = [[PWMoreBonusesViewController alloc]
+						initWithRestaurant:weakSelf.restaurant shareEnabled:YES shareBonuses:20
+						commentEnabled:YES commentBonuses:20 transiter:self.transiter];
+			[weakSelf addChildViewController:moreBonuses];
+			[weakSelf.scrollView addSubview:moreBonuses.view];
+			
+			[moreBonuses didMoveToParentViewController:self];
+			moreBonuses.view.translatesAutoresizingMaskIntoConstraints = NO;
+			
+			if (nil != previousView)
 			{
-				PWMoreBonusesViewController *moreBonuses = [[PWMoreBonusesViewController alloc]
-							initWithRestaurant:weakSelf.restaurant shareEnabled:allowShare shareBonuses:20
-							commentEnabled:allowComment commentBonuses:20 transiter:self.transiter];
-				[weakSelf addChildViewController:moreBonuses];
-				[weakSelf.scrollView addSubview:moreBonuses.view];
-				
-				[moreBonuses didMoveToParentViewController:self];
-				moreBonuses.view.translatesAutoresizingMaskIntoConstraints = NO;
-				
-				if (nil != previousView)
-				{
-					[weakSelf.scrollView addConstraint:[NSLayoutConstraint
-								constraintWithItem:moreBonuses.view
-								attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual
-								toItem:previousView
-								attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
-				}
-				else
-				{
-					[weakSelf.scrollView addConstraints:[NSLayoutConstraint
-								constraintsWithVisualFormat:@"V:|[view]"
-								options:0 metrics:nil
-								views:@{@"view" : moreBonuses.view}]];
-				}
-				
+				[weakSelf.scrollView addConstraint:[NSLayoutConstraint
+							constraintWithItem:moreBonuses.view
+							attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual
+							toItem:previousView
+							attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+			}
+			else
+			{
 				[weakSelf.scrollView addConstraints:[NSLayoutConstraint
-							constraintsWithVisualFormat:@"H:|[view]"
+							constraintsWithVisualFormat:@"V:|[view]"
 							options:0 metrics:nil
 							views:@{@"view" : moreBonuses.view}]];
-				
-				moreBonuses.contentSize = CGSizeMake(weakSelf.contentWidth,
-							320 * weakSelf.contentWidth / 320.);
-				newEstimatedHeight += moreBonuses.contentSize.height;
 			}
+			
+			[weakSelf.scrollView addConstraints:[NSLayoutConstraint
+						constraintsWithVisualFormat:@"H:|[view]"
+						options:0 metrics:nil
+						views:@{@"view" : moreBonuses.view}]];
+			
+			moreBonuses.contentSize = CGSizeMake(weakSelf.contentWidth,
+						320 * weakSelf.contentWidth / 320.);
+			newEstimatedHeight += moreBonuses.contentSize.height;
 			
 			weakSelf.scrollView.contentSize = CGSizeMake(weakSelf.contentWidth, newEstimatedHeight);
 

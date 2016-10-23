@@ -36,6 +36,7 @@
 					currency:kPWPriceCurrencyUAH];
 		self.iconPath = info[@"image"];
 		self.productDescription = info[@"description"];
+		self.bonusesValue = [info[@"bonus"] integerValue];
 		self.type = kPWProductTypeRegular;
 	}
 	else

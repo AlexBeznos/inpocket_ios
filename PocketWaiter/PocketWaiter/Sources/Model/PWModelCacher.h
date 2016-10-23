@@ -13,10 +13,23 @@
 @property (nonatomic, readonly) NSArray *restaurants;
 - (void)cacheRestaurants:(NSArray *)restaurants;
 
-@property (nonatomic, readonly) NSArray *shares;
+@property (nonatomic, readonly) NSArray *nearShares;
 - (void)cacheShares:(NSArray *)shares;
 
-@property (nonatomic, readonly) NSArray *presents;
+@property (nonatomic, readonly) NSArray *nearPresents;
 - (void)cachePresents:(NSArray *)presents;
+
+@property (nonatomic, readonly) NSArray *purchaseRestaurants;
+- (void)cachePurchaseRestaurants:(NSArray *)restaurants;
+
+@property (nonatomic, readonly) NSDictionary *purchases;
+- (void)cachePurchases:(NSArray *)purchases forRestaurant:(PWRestaurant *)restaurant;
+
+@property (nonatomic, readonly) NSDictionary *firstPresents;
+- (void)cacheFirstPresent:(PWPresentProduct *)purchases forRestaurant:(PWRestaurant *)restaurant;
+@property (nonatomic, readonly) NSDictionary *restaurantShares;
+- (void)cacheShares:(NSArray *)shares forRestaurant:(PWRestaurant *)restaurant;
+@property (nonatomic, readonly) NSDictionary *restaurantPresents;
+- (void)cachePresents:(NSArray *)presents forRestaurant:(PWRestaurant *)restaurant;
 
 @end

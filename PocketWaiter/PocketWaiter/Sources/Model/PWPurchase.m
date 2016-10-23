@@ -39,6 +39,31 @@
 	return self;
 }
 
+- (instancetype)initWithJSONInfo:(id)jsonInfo
+{
+	self = [super initWithJSONInfo:jsonInfo];
+	
+	if (nil != self && [jsonInfo isKindOfClass:[NSDictionary class]])
+	{
+		NSDictionary *info = (NSDictionary *)jsonInfo;
+		self.date = [NSDate dateWithTimeIntervalSince1970:
+					[info[@"created_at"] integerValue]];
+		NSArray *items = info[@"menu_items"];
+		
+		NSMutableArray *orders = [NSMutableArray array];
+		for (id value in items)
+		{
+			[orders addObject:[[PWOrder alloc] initWithJSONInfo:value]];
+		}
+	}
+	else
+	{
+		self = nil;
+	}
+	
+	return self;
+}
+
 - (NSUInteger)bonusesCount
 {
 	NSUInteger count = 0;
