@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketWaiter/Sources/Controller/PWRootMenuTableViewController.m"
-            timestampString = "498303642.374725"
+            timestampString = "498943149.157267"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -148,11 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PocketWaiter/Sources/Model/PWModelManager.m"
-            timestampString = "498917348.318455"
+            timestampString = "498942676.158669"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "507"
-            endingLineNumber = "507"
+            startingLineNumber = "511"
+            endingLineNumber = "511"
             landmarkName = "-URLSession:dataTask:didReceiveResponse:completionHandler:"
             landmarkType = "7">
          </BreakpointContent>

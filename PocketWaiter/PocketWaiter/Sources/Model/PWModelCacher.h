@@ -10,6 +10,8 @@
 
 @interface PWModelCacher : NSObject
 
+@property (nonatomic, strong) PWRestaurant *currentRestaurant;
+
 @property (nonatomic, readonly) NSArray *restaurants;
 - (void)cacheRestaurants:(NSArray *)restaurants;
 

@@ -14,6 +14,7 @@
 @interface PWRootMenuTableViewController : UIViewController
 
 - (instancetype)initWithRestaurant:(PWRestaurant *)restaurant;
+- (void)presentRestaurant:(PWRestaurant *)restaurant;
 @property (nonatomic, strong) PWRestaurant *restaurant;
 
 @end

@@ -15,7 +15,8 @@ extern NSInteger const kBluetoothIsNotAvailable;
 @property (nonatomic, readonly) CBCentralManagerState state;
 
 - (void)startScanBeaconsForInterval:(NSTimeInterval)interval
-			completion:(void (^)(NSArray<NSString *> *beacons, NSError *error))completion;
+			beaconsHandler:(void (^)(NSArray<NSString *> *beacons))beaconsHandler
+			errorHandler:(void (^)(NSError *error))errorHandler;
 
 - (void)stop;
 

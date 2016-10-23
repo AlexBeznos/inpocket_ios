@@ -252,7 +252,11 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	^{
 		if (nil != completion)
 		{
-			completion(self.cacher.restaurants.firstObject, nil);
+			if (self.cacher.currentRestaurant != self.cacher.restaurants.firstObject)
+			{
+				self.cacher.currentRestaurant = self.cacher.restaurants.firstObject;
+				completion(self.cacher.currentRestaurant, nil);
+			}
 		}
 	});
 }

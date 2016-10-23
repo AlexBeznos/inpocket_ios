@@ -20,7 +20,7 @@
 
 @interface PWRootMenuTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) NSArray<PWContentSource *> *sources;
+@property (nonatomic, strong) NSMutableArray<PWContentSource *> *sources;
 @property (nonatomic, strong) UIView *headerView;
 @property (nonatomic, strong) NSLayoutConstraint *transitionConstrain;
 @property (nonatomic, strong) UIViewController *selectedController;
@@ -87,9 +87,15 @@
 				attribute:NSLayoutAttributeLeft multiplier:1
 				constant:0]];
 	
-	self.selectedSource = nil != self.restaurant &&
-				[self.sources containsObject:self.activeMenuSource] ?
-				self.activeMenuSource : self.sources.firstObject;
+	[self setupCurrentSource];
+}
+
+- (void)setupCurrentSource
+{
+	[self.selectedController.view removeFromSuperview];
+	[self.selectedController removeFromParentViewController];
+	
+	self.selectedSource = self.sources.firstObject;
 	
 	UINavigationController *navigation = [[UINavigationController alloc]
 				initWithRootViewController:self.selectedSource.contentViewController];
@@ -122,9 +128,10 @@
 				attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
 	
 	[self.view addConstraint:self.transitionConstrain];
+
 }
 
-- (NSArray<PWContentSource *> *)sources
+- (NSMutableArray<PWContentSource *> *)sources
 {
 	if (nil == _sources)
 	{
@@ -218,6 +225,13 @@
 	}
 	
 	return _sources;
+}
+
+- (void)presentRestaurant:(PWRestaurant *)restaurant
+{
+	self.restaurant = restaurant;
+	
+	[self setupCurrentSource];
 }
 
 - (void)setRestaurant:(PWRestaurant *)restaurant
@@ -388,7 +402,6 @@
 			UINavigationController *navigation = [[UINavigationController alloc]
 						initWithRootViewController:contentController];
 			navigation.navigationBar.translucent = NO;
-			// TODO customize navigarion bar
 			self.selectedController = navigation;
 			self.transitionConstrain = [self navigateViewController:navigation];
 		}

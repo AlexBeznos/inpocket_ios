@@ -76,6 +76,7 @@
 				[[NSUserDefaults standardUserDefaults] setObject:token
 							forKey:kPWTokenKey];
 				[weakSelf startSearchBeacons];
+				[weakSelf presentRootControllerWithRestaurant:nil];
 			}
 			else
 			{
@@ -86,6 +87,7 @@
 	else
 	{
 		[self startSearchBeacons];
+		[self presentRootControllerWithRestaurant:nil];
 	}
 }
 
@@ -93,30 +95,27 @@
 {
 	self.blueToothManager = [PWBluetoothManager new];
 	__weak __typeof(self) weakSelf = self;
-	[self.blueToothManager startScanBeaconsForInterval:1.5 completion:
-	^(NSArray<NSString *> *beacons, NSError *error)
+	[self.blueToothManager startScanBeaconsForInterval:5 beaconsHandler:
+	^(NSArray<NSString *> *beacons)
 	{
-		if (nil == error)
-		{
-			weakSelf.beacons = beacons;
-			[weakSelf validateBeacons];
-		}
-		else
-		{
-			PWNoConnectionAlertController *alert = [[PWNoConnectionAlertController alloc]
-						initWithType:kPWConnectionTypeBluetooth retryAction:
+		weakSelf.beacons = beacons;
+		[weakSelf validateBeacons];
+	}
+				errorHandler:
+	^(NSError *error)
+	{
+		PWNoConnectionAlertController *alert = [[PWNoConnectionAlertController alloc]
+					initWithType:kPWConnectionTypeBluetooth retryAction:
+		^{
+			[weakSelf.bluetoothDialog hideWithCompletion:
 			^{
-				[weakSelf.bluetoothDialog hideWithCompletion:
-				^{
-					[weakSelf showMainFlow];
-				}];
+				[weakSelf showMainFlow];
 			}];
-			weakSelf.bluetoothDialog = [[PWModalController alloc]
-						initWithContentController:alert autoDismiss:NO];
-			[weakSelf.bluetoothDialog showWithCompletion:nil];
-			[weakSelf stopActivity];
-		}
-		NSLog(@"Found uuids: %@\n\nError: %@", [beacons description], error);
+		}];
+		weakSelf.bluetoothDialog = [[PWModalController alloc]
+					initWithContentController:alert autoDismiss:NO];
+		[weakSelf.bluetoothDialog showWithCompletion:nil];
+		[weakSelf stopActivity];
 	}];
 }
 
@@ -130,10 +129,6 @@
 		if (nil != error)
 		{
 			[weakSelf showNoInternetDialog];
-		}
-		else if (nil == restaurant)
-		{
-			[weakSelf presentRootControllerWithRestaurant:nil];
 		}
 		else
 		{
@@ -156,9 +151,16 @@
 
 - (void)presentRootControllerWithRestaurant:(PWRestaurant *)restaurant
 {
-	self.rootMenuController = [[PWRootMenuTableViewController alloc]
-				initWithRestaurant:restaurant];
-	[self navigateViewController:self.rootMenuController];
+	if (nil == self.rootMenuController)
+	{
+		self.rootMenuController = [[PWRootMenuTableViewController alloc]
+					initWithRestaurant:restaurant];
+		[self navigateViewController:self.rootMenuController];
+	}
+	else
+	{
+		[self.rootMenuController presentRestaurant:restaurant];
+	}
 }
 
 - (void)resumeActivity

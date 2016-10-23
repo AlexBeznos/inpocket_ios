@@ -13,8 +13,9 @@ NSInteger const kBluetoothIsNotAvailable = -1;
 @interface PWBluetoothManager () <CBCentralManagerDelegate>
 
 @property (strong, nonatomic) CBCentralManager *bluetoothManager;
-@property (nonatomic, copy) void (^completion)(NSArray<NSString *> *beacons, NSError *error);
-@property (nonatomic) NSTimeInterval intervalToStop;
+@property (nonatomic, copy) void (^beaconsHandler)(NSArray<NSString *> *beacons);
+@property (nonatomic, copy) void (^errorHandler)(NSError *error);
+@property (nonatomic) NSTimeInterval intervalToNotify;
 
 @property (nonatomic, strong) NSMutableSet *beacons;
 
@@ -50,20 +51,22 @@ NSInteger const kBluetoothIsNotAvailable = -1;
 }
 
 - (void)startScanBeaconsForInterval:(NSTimeInterval)interval
-			completion:(void (^)(NSArray<NSString *> *beacons, NSError *error))completion
+			beaconsHandler:(void (^)(NSArray<NSString *> *beacons))beaconsHandler
+			errorHandler:(void (^)(NSError *error))errorHandler
 {
 	if (!(self.state == CBCentralManagerStatePoweredOn || self.state == CBCentralManagerStateUnknown))
 	{
-		if (nil != completion)
+		if (nil != errorHandler)
 		{
-			completion(nil, [NSError errorWithDomain:@"bluetooth"
+			errorHandler([NSError errorWithDomain:@"bluetooth"
 						code:kBluetoothIsNotAvailable userInfo:nil]);
 		}
 	}
 	else if (!self.bluetoothManager.isScanning)
 	{
-		self.completion = completion;
-		self.intervalToStop = interval;
+		self.beaconsHandler = beaconsHandler;
+		self.errorHandler = errorHandler;
+		self.intervalToNotify = interval;
 		
 		[self.bluetoothManager scanForPeripheralsWithServices:nil options:
 					@{CBCentralManagerScanOptionAllowDuplicatesKey : @(NO)}];
@@ -77,19 +80,18 @@ NSInteger const kBluetoothIsNotAvailable = -1;
 		[self.beacons removeAllObjects];
 	}
 	
-	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(finish) object:nil];
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(pullBeacons) object:nil];
 	[self.bluetoothManager stopScan];
 }
 
-- (void)finish
+- (void)pullBeacons
 {
 	[self.bluetoothManager stopScan];
-	if (nil != self.completion)
+	if (nil != self.beaconsHandler)
 	{
 		dispatch_async(dispatch_get_main_queue(),
 		^{
-			self.completion([self.beacons allObjects], nil);
-			self.completion = nil;
+			self.beaconsHandler([self.beacons allObjects]);
 		});
 	}
 	
@@ -104,13 +106,12 @@ NSInteger const kBluetoothIsNotAvailable = -1;
 	if (self.state != CBCentralManagerStatePoweredOn)
 	{
 		[self.bluetoothManager stopScan];
-		if (nil != self.completion)
+		if (nil != self.errorHandler)
 		{
 			dispatch_async(dispatch_get_main_queue(),
 			^{
-				self.completion(nil, [NSError errorWithDomain:@"bluetooth"
+				self.errorHandler([NSError errorWithDomain:@"bluetooth"
 						code:kBluetoothIsNotAvailable userInfo:nil]);
-				self.completion = nil;
 			});
 		}
 	}
@@ -118,7 +119,7 @@ NSInteger const kBluetoothIsNotAvailable = -1;
 	{
 		[self.bluetoothManager scanForPeripheralsWithServices:nil options:
 					@{CBCentralManagerScanOptionAllowDuplicatesKey : @(NO)}];
-		[self performSelector:@selector(finish) withObject:nil afterDelay:self.intervalToStop];
+		[self performSelector:@selector(pullBeacons) withObject:nil afterDelay:self.intervalToNotify];
 	}
 }
 
