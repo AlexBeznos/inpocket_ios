@@ -30,6 +30,8 @@ extern NSString *const kPWTokenKey;
 			completion:(void (^)(NSError *))completion;
 - (void)signInWithEmail:(NSString *)email password:(NSString *)password
 			completion:(void (^)(NSError *))completion;
+- (void)signUpWithProvider:(NSString *)provider profile:(PWSocialProfile *)profile
+			completion:(void (^)(NSError *))completion;
 
 - (PWUser *)registeredUser;
 - (NSString *)authToken;

@@ -122,13 +122,13 @@
 	
 	if (nil != user.first_name && nil != user.last_name)
 	{
-		info[@"userName"] = [NSString stringWithFormat:@"%@ %@",
+		info[@"username"] = [NSString stringWithFormat:@"%@ %@",
 					user.first_name, user.last_name];
 	}
 	
 	if (nil != user.id)
 	{
-		info[@"userID"] = [user.id stringValue];
+		info[@"uid"] = [user.id stringValue];
 	}
 	
 	if (nil != user.sex)

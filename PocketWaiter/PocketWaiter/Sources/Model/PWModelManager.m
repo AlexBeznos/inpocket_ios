@@ -29,6 +29,9 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 @property (nonatomic, strong) PWRequestHolder *signUpUserHolder;
 @property (nonatomic, copy) void (^signUpUserCompletion)(NSError *error);
 
+@property (nonatomic, strong) PWRequestHolder *signUpSocialHolder;
+@property (nonatomic, copy) void (^signUpSocialCompletion)(NSError *error);
+
 @property (nonatomic, strong) PWRequestHolder *signInUserHolder;
 @property (nonatomic, copy) void (^signInUserCompletion)(NSError *error);
 
@@ -158,6 +161,17 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 				[PWRequestBuilder signInRequestWithProvider:@"email" email:email
 				password:password profile:nil]];
 	self.signInUserHolder = [[PWRequestHolder alloc] initWithTask:task];
+	[task resume];
+}
+
+- (void)signUpWithProvider:(NSString *)provider profile:(PWSocialProfile *)profile
+			completion:(void (^)(NSError *))completion
+{
+	self.signUpSocialCompletion = completion;
+	NSURLSessionDataTask *task = [self.session dataTaskWithRequest:
+				[PWRequestBuilder signUpRequestWithProvider:provider email:nil
+				password:nil profile:profile]];
+	self.signUpSocialHolder = [[PWRequestHolder alloc] initWithTask:task];
 	[task resume];
 }
 
@@ -413,6 +427,10 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	{
 		holder = self.signInUserHolder;
 	}
+	else if (dataTask == self.signUpSocialHolder.task)
+	{
+		holder = self.signUpSocialHolder;
+	}
 	
 	[holder processData:data];
 }
@@ -481,6 +499,10 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	else if (dataTask == self.signInUserHolder.task)
 	{
 		holder = self.signInUserHolder;
+	}
+	else if (dataTask == self.signUpSocialHolder.task)
+	{
+		holder = self.signUpSocialHolder;
 	}
 	
 	[holder processResponse:(NSHTTPURLResponse *)response];
@@ -775,6 +797,14 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 		dispatch_async(dispatch_get_main_queue(),
 		^{
 			self.signInUserCompletion(error);
+		});
+	}
+	else if (task == self.signUpSocialHolder.task)
+	{
+		self.signUpSocialHolder.completed = YES;
+		dispatch_async(dispatch_get_main_queue(),
+		^{
+			self.signUpSocialCompletion(error);
 		});
 	}
 }

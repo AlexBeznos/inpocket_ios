@@ -82,7 +82,21 @@
 			{
 				user.avatarURL = info[@"iconURL"];
 			}
-			weakSelf.completion(user);
+			[[PWModelManager sharedManager] signUpWithProvider:@"facebook"
+						profile:user.fbProfile completion:
+			^(NSError *error)
+			{
+				[weakSelf stopActivity];
+				if (nil != error)
+				{
+					user.fbProfile = nil;
+					[weakSelf showNoInternetDialog];
+				}
+				else
+				{
+					weakSelf.completion(user);
+				}
+			}];
 		}
 	}];
 }
@@ -107,7 +121,21 @@
 			{
 				user.avatarURL = info[@"iconURL"];
 			}
-			weakSelf.completion(user);
+			[[PWModelManager sharedManager] signUpWithProvider:@"vk"
+						profile:user.vkProfile completion:
+			^(NSError *error)
+			{
+				[weakSelf stopActivity];
+				if (nil != error)
+				{
+					user.vkProfile = nil;
+					[weakSelf showNoInternetDialog];
+				}
+				else
+				{
+					weakSelf.completion(user);
+				}
+			}];
 		}
 	}];
 }

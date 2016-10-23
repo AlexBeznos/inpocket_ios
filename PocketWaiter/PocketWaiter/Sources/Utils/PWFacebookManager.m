@@ -158,13 +158,13 @@
 	
 	if (nil != profile.firstName && nil != profile.lastName)
 	{
-		info[@"userName"] = [NSString stringWithFormat:@"%@ %@",
+		info[@"username"] = [NSString stringWithFormat:@"%@ %@",
 					profile.firstName, profile.lastName];
 	}
 	
 	if (nil != profile.userID)
 	{
-		info[@"userID"] = profile.userID;
+		info[@"uid"] = profile.userID;
 	}
 	
 	NSURL *url = [profile imageURLForPictureMode:FBSDKProfilePictureModeSquare
