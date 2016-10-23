@@ -10,6 +10,7 @@
 #import "PWAvatarCell.h"
 #import "UIColorAdditions.h"
 #import "PWImageView.h"
+#import "PWProfileDoubleInfoCell.h"
 
 @interface PWProfileController ()
 
@@ -32,9 +33,19 @@
 	
 	[self.tableView registerNib:[UINib nibWithNibName:@"PWAvatarCell"
 				bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"avatar"];
-	NSDictionary *avatarSection = @{@"title" : @"Фото профиля"};
+	[self.tableView registerNib:[UINib nibWithNibName:@"PWProfileDoubleInfoCell"
+				bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"personal"];
 	
+	NSDictionary *avatarSection = @{@"title" : @"Фото профиля", @"height" : @(80)};
 	[self.sections addObject:avatarSection];
+	if (nil != user.userName)
+	{
+		NSDictionary *personalSection = @{@"title" : @"Персональные данные", @"height" : @(130)};
+		[self.sections addObject:personalSection];
+	}
+	NSDictionary *socialSection = @{@"title" : @"Соц. сети", @"height" : @(130)};
+	
+	[self.sections addObject:socialSection];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -64,7 +75,7 @@
 	[view addSubview:label];
 	
 	[view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:
-				@"H:|-10-[view]" options:0 metrics:nil views:@{@"view" : label}]];
+				@"H:|-20-[view]" options:0 metrics:nil views:@{@"view" : label}]];
 	
 	[view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:
 				@"V:[view]-10-|" options:0 metrics:nil views:@{@"view" : label}]];
@@ -74,7 +85,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-	return 60;
+	return 40;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -105,19 +116,38 @@
 		}
 		createdCell = cell;
 	}
+	else if (1 == indexPath.section)
+	{
+		PWProfileDoubleInfoCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"personal"];
+		NSArray *names = [USER.userName componentsSeparatedByString:@" "];
+		cell.firstTitle.text = @"Имя";
+		cell.firstDetails.text = names.firstObject;
+		cell.secondTitle.text = @"Фамилия";
+		cell.secondDetails.text = names.lastObject;
+		createdCell = cell;
+	}
+	else if (2 == indexPath.section)
+	{
+		PWProfileDoubleInfoCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"personal"];
+		PWUser *user = USER;
+		cell.firstTitle.text = @"Vkontakte";
+		cell.firstDetails.text = nil != user.vkProfile.userName ? user.vkProfile.userName : @"Войти";
+		cell.secondTitle.text = @"Facebook";
+		cell.secondDetails.text = nil != user.fbProfile.userName ? user.fbProfile.userName : @"Войти";
+		createdCell = cell;
+	}
 	
 	return createdCell;
 }
 
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return NO;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSUInteger height = 40;
-	if (0 == indexPath.section)
-	{
-		height = 80;
-	}
-	
-	return height;
+	return [[self.sections[indexPath.section] objectForKey:@"height"] integerValue];
 }
 
 @end
