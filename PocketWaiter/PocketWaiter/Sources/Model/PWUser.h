@@ -26,15 +26,15 @@
 
 @interface PWUser : PWModelObject
 
-@property (nonatomic, readonly) NSString *firstName;
-@property (nonatomic, readonly) NSString *lastName;
+@property (nonatomic, readonly) NSString *userName;
 @property (nonatomic, readonly) NSString *password;
 @property (nonatomic, readonly) NSString *email;
 @property (nonatomic, readonly) UIImage *avatarIcon;
-@property (nonatomic, readonly) PWSocialProfile *vkProfile;
-@property (nonatomic, readonly) PWSocialProfile *fbProfile;
+@property (nonatomic, strong) PWSocialProfile *vkProfile;
+@property (nonatomic, strong) PWSocialProfile *fbProfile;
 @property (nonatomic, readonly) NSArray<PWPurchase *> *purchases;
 @property (nonatomic, readonly) NSArray<PWUsersRestaurantInfo *> *restaurants;
+@property (nonatomic, strong) NSURL *avatarURL;
 
 @property (nonatomic, readonly) NSDictionary<NSString *, PWPurchase *> *currentPurchases;
 

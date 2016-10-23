@@ -6,8 +6,10 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import "PWMainMenuItemViewController.h"
+#import "PWScrollableViewController.h"
 
-@interface PWRegisterController : PWMainMenuItemViewController
+@interface PWRegisterController : PWScrollableViewController
+
+- (instancetype)initWithCompletion:(void (^)(PWUser *user))completion;
 
 @end

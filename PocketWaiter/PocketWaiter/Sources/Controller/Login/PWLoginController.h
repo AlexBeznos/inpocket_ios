@@ -6,8 +6,8 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PWMainMenuItemViewController.h"
 
-@interface PWLoginController : UIViewController
+@interface PWLoginController : PWMainMenuItemViewController
 
 @end

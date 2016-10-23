@@ -15,7 +15,7 @@
 #import "PWRestaurantsViewController.h"
 #import "PWAboutController.h"
 #import "PWShareWithFriendsController.h"
-#import "PWRegisterController.h"
+#import "PWLoginController.h"
 #import "PWActiveRootController.h"
 
 @interface PWRootMenuTableViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -202,9 +202,9 @@
 		
 		[sources addObject:[[PWContentSource alloc]
 					initWithTitle:@"Профиль" details:[[PWModelManager sharedManager]
-					registeredUser].firstName
+					registeredUser].userName
 					icon:[UIImage imageNamed:@"whiteProfile"]
-					contentViewController:[[PWRegisterController alloc]
+					contentViewController:[[PWLoginController alloc]
 					initWithTransitionHandler:
 		^{
 			[theWeakSelf performBackTransition];

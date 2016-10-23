@@ -153,27 +153,24 @@ static NSString * const kPWHTTPScheme = @"http";
 	
 	NSMutableDictionary *userBody = [NSMutableDictionary new];
 	
-	if (nil != user.firstName)
+	if (nil != user.userName)
 	{
-		userBody[@"first_name"] = user.firstName;
+		NSArray<NSString *> *names = [user.userName componentsSeparatedByString:@" "];
+		userBody[@"first_name"] = names.firstObject;
+		userBody[@"last_name"] = names.lastObject;
 	}
 	
-	if (nil != user.firstName)
-	{
-		userBody[@"last_name"] = user.lastName;
-	}
-	
-	if (nil != user.firstName)
+	if (nil != user.password)
 	{
 		userBody[@"password"] = user.password;
 	}
 	
-	if (nil != user.firstName)
+	if (nil != user.password)
 	{
 		userBody[@"current_password"] = user.password;
 	}
 	
-	if (nil != user.firstName)
+	if (nil != user.email)
 	{
 		userBody[@"email"] = user.email;
 	}

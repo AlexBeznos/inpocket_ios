@@ -46,7 +46,7 @@ NSInteger const kBluetoothIsNotAvailable = -1;
 
 - (CBCentralManagerState)state
 {
-	return [self.bluetoothManager state];
+	return (CBCentralManagerState)[self.bluetoothManager state];
 }
 
 - (void)startScanBeaconsForInterval:(NSTimeInterval)interval
