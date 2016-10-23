@@ -13,10 +13,13 @@
 #import "PWProfileDoubleInfoCell.h"
 #import "PWFacebookManager.h"
 #import "PWVKManager.h"
+#import "PWUtilsAccessor.h"
+#import "PWNoAccesViewController.h"
 
-@interface PWProfileController ()
+@interface PWProfileController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *sections;
+@property (nonatomic, strong) UIImagePickerController *picker;
 
 @end
 
@@ -116,6 +119,27 @@
 				}];
 			}];
 		}
+		
+		__weak __typeof(self) weakSelf = self;
+		cell.handler =
+		^{
+			[PWUtilsAccessor checkAuthStatusForUtilType:kPWAccessUtilTypePhotos completion:^(PWUtilsAccess status)
+			{
+				if (status == kPWUtilsAccessAccepted)
+				{
+					weakSelf.picker = [UIImagePickerController new];
+					weakSelf.picker.delegate = weakSelf;
+					weakSelf.picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+					[weakSelf presentViewController:weakSelf.picker animated:YES completion:nil];
+				}
+				else
+				{
+					PWNoAccesViewController *noAccess = [[PWNoAccesViewController alloc]
+								initWithType:kPWUtilTypePhotos];
+					[noAccess showWithCompletion:nil];
+				}
+			}];
+		};
 		createdCell = cell;
 	}
 	else if (1 == indexPath.section)
@@ -239,6 +263,30 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	return [[self.sections[indexPath.section] objectForKey:@"height"] integerValue];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker
+			didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+	__weak __typeof(self) weakSelf = self;
+	UIImage *image = info[UIImagePickerControllerOriginalImage];
+	if (nil != image)
+	{
+		CGFloat maxResolution = MAX(image.size.width, image.size.height);
+		UIImage *scaledImage =  [UIImage imageWithCGImage:[image CGImage]
+					scale:maxResolution / 100.f orientation:image.imageOrientation];
+		[USER updateWithJsonInfo:@{@"loadedImage" : scaledImage}];
+		[[PWModelManager sharedManager] updateUserWithCompletion:
+		^(NSError *error)
+		{
+			if (nil == error)
+			{
+				[weakSelf.tableView reloadData];
+			}
+		}];
+	}
+	
+	[picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

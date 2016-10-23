@@ -73,22 +73,38 @@
 {
 	NSString *firstName = json[@"first_name"];
 	NSString *lastName = json[@"last_name"];
-	self.userName = nil != firstName && nil != lastName ?
-				[NSString stringWithFormat:@"%@ %@", firstName, lastName] : nil;
-	self.referalId = json[@"referal_number"];
+	if (nil != firstName && nil != lastName)
+	{
+		self.userName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+	}
+	if (nil != json[@"referal_number"])
+	{
+		self.referalId = json[@"referal_number"];
+	}
 	
-	id base64Icon = json[@"photo"];
+	if (nil != json[@"photo"])
+	{
+		id base64Icon = json[@"photo"];
 	
-	self.avatarIcon = nil != base64Icon && [NSNull null] != base64Icon &&
-				[base64Icon isKindOfClass:[NSString class]] ? [UIImage imageWithData:
-				[[NSData alloc] initWithBase64EncodedString:base64Icon options:0]] : nil;
+		self.avatarIcon = nil != base64Icon && [NSNull null] != base64Icon &&
+					[base64Icon isKindOfClass:[NSString class]] ? [UIImage imageWithData:
+					[[NSData alloc] initWithBase64EncodedString:base64Icon options:0]] : nil;
+	}
 	
-	if (nil == self.avatarIcon)
+	if (nil != json[@"loadedImage"])
 	{
 		self.avatarIcon = json[@"loadedImage"];
 	}
-	self.password = json[@"password"];
-	self.email = json[@"email"];
+	
+	if (nil != json[@"password"])
+	{
+		self.password = json[@"password"];
+	}
+	
+	if (nil != json[@"email"])
+	{
+		self.email = json[@"email"];
+	}
 	
 	NSDictionary *vkProfile = [NSNull null] != json[@"vk_profile"] ? json[@"vk_profile"] : nil;
 	
@@ -99,11 +115,26 @@
 			self.vkProfile = [PWSocialProfile new];
 		}
 		PWSocialProfile *vkProfileInfo = self.vkProfile;
-		vkProfileInfo.userName = vkProfile[@"username"];
-		vkProfileInfo.uuid = vkProfile[@"uid"];
-		vkProfileInfo.gender = vkProfile[@"gender"];
-		vkProfileInfo.email = vkProfile[@"email"];
-		vkProfileInfo.photoURLPath = vkProfile[@"remote_photo_url"];
+		if (nil != vkProfile[@"username"])
+		{
+			vkProfileInfo.userName = vkProfile[@"username"];
+		}
+		if (nil != vkProfile[@"uid"])
+		{
+			vkProfileInfo.uuid = vkProfile[@"uid"];
+		}
+		if (nil != vkProfile[@"gender"])
+		{
+			vkProfileInfo.gender = vkProfile[@"gender"];
+		}
+		if (nil != vkProfile[@"email"])
+		{
+			vkProfileInfo.email = vkProfile[@"email"];
+		}
+		if (nil != vkProfile[@"remote_photo_url"])
+		{
+			vkProfileInfo.photoURLPath = vkProfile[@"remote_photo_url"];
+		}
 	}
 	
 	NSDictionary *fbProfile = [NSNull null] != json[@"facebook_profile"] ?
@@ -116,11 +147,27 @@
 			self.fbProfile = [PWSocialProfile new];
 		}
 		PWSocialProfile *fbProfileInfo = self.fbProfile;
-		fbProfileInfo.userName = fbProfile[@"username"];
-		fbProfileInfo.uuid = fbProfile[@"uid"];
-		fbProfileInfo.gender = fbProfile[@"gender"];
-		fbProfileInfo.email = fbProfile[@"email"];
-		fbProfileInfo.photoURLPath = fbProfile[@"remote_photo_url"];
+		
+		if (nil != fbProfile[@"username"])
+		{
+			fbProfileInfo.userName = fbProfile[@"username"];
+		}
+		if (nil != fbProfile[@"uid"])
+		{
+			fbProfileInfo.uuid = fbProfile[@"uid"];
+		}
+		if (nil != fbProfile[@"gender"])
+		{
+			fbProfileInfo.gender = fbProfile[@"gender"];
+		}
+		if (nil != fbProfile[@"email"])
+		{
+			fbProfileInfo.email = fbProfile[@"email"];
+		}
+		if (nil != fbProfile[@"remote_photo_url"])
+		{
+			fbProfileInfo.photoURLPath = fbProfile[@"remote_photo_url"];
+		}
 	}
 }
 
