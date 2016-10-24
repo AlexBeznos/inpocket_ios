@@ -28,5 +28,6 @@
 
 @property (nonatomic, readonly) NSString *logoPath;
 @property (nonatomic, strong) NSString *downloadedLogoURL;
+@property (nonatomic, readonly) NSUInteger collectedBonuses;
 
 @end

@@ -31,5 +31,6 @@
 @property (nonatomic, readonly) NSString *cardImagePath;
 @property (nonatomic, readonly) NSArray *imagesPaths;
 @property (nonatomic, strong) NSString *downloadedLogoURL;
+@property (nonatomic, readonly) NSUInteger collectedBonuses;
 
 @end

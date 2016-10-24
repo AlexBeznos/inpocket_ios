@@ -9,7 +9,6 @@
 #import "PWModelObject.h"
 
 @class PWPurchase;
-@class PWUsersRestaurantInfo;
 @class PWRestaurant;
 
 @interface PWSocialProfile : NSObject
@@ -34,13 +33,10 @@
 @property (nonatomic, strong) PWSocialProfile *vkProfile;
 @property (nonatomic, strong) PWSocialProfile *fbProfile;
 @property (nonatomic, readonly) NSArray<PWPurchase *> *purchases;
-@property (nonatomic, readonly) NSArray<PWUsersRestaurantInfo *> *restaurants;
 @property (nonatomic, strong) NSURL *avatarURL;
 @property (nonatomic, readonly) NSString *referalId;
 
 @property (nonatomic, readonly) NSDictionary<NSString *, PWPurchase *> *currentPurchases;
-
-- (PWUsersRestaurantInfo *)infoForRestaurant:(PWRestaurant *)restaurant;
 
 - (void)updateWithJsonInfo:(NSDictionary *)json;
 

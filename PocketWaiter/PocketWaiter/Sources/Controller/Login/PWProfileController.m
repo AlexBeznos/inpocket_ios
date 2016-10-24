@@ -123,11 +123,13 @@
 			^(NSURL *localURL)
 			{
 				UIImage *avatar =  [UIImage imageWithContentsOfFile:localURL.path];
-				[user updateWithJsonInfo:@{@"loadedImage" : avatar}];
-				[[PWModelManager sharedManager] updateUserWithCompletion:
+				[[PWModelManager sharedManager] updateUserAvatar:avatar completion:
 				^(NSError *error)
 				{
-					NSLog(@"Avatar updated");
+					if (nil == error)
+					{
+						[user updateWithJsonInfo:@{@"loadedImage" : avatar}];
+					}
 				}];
 			}];
 		}
@@ -315,12 +317,12 @@
 		CGFloat maxResolution = MAX(image.size.width, image.size.height);
 		UIImage *scaledImage =  [UIImage imageWithCGImage:[image CGImage]
 					scale:maxResolution / 100.f orientation:image.imageOrientation];
-		[USER updateWithJsonInfo:@{@"loadedImage" : scaledImage}];
-		[[PWModelManager sharedManager] updateUserWithCompletion:
+		[[PWModelManager sharedManager] updateUserAvatar:scaledImage completion:
 		^(NSError *error)
 		{
 			if (nil == error)
 			{
+				[USER updateWithJsonInfo:@{@"loadedImage" : scaledImage}];
 				[weakSelf.tableView reloadData];
 			}
 		}];

@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSString *logoPath;
 @property (nonatomic, strong) NSString *cardImagePath;
 @property (nonatomic, strong) NSArray *imagesPaths;
+@property (nonatomic) NSUInteger collectedBonuses;
 
 @end
 
@@ -48,6 +49,7 @@
 		self.color = [UIColor colorWithRed:[rgb[0] floatValue] / 255. green:[rgb[1] floatValue]  / 255. blue:[rgb[2] floatValue]  / 255. alpha:1];
 		self.category = info[@"category"];
 		self.address = info[@"address"];
+		self.collectedBonuses = [info[@"score"] integerValue];
 	}
 	else
 	{

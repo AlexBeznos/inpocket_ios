@@ -38,11 +38,11 @@
 	return [CLLocationManager authorizationStatus];
 }
 
-- (void)getAuthorizationstatusWithCompletion:(void (^)(CLAuthorizationStatus status, NSError *error))completion
+- (void)getAuthorizationStatusWithCompletion:(void (^)(CLAuthorizationStatus status, NSError *error))completion
 {
 	if (self.authStatus != kCLAuthorizationStatusNotDetermined)
 	{
-		if (nil == completion)
+		if (nil != completion)
 		{
 			completion(self.authStatus, nil);
 		}
@@ -56,7 +56,7 @@
 	}
 	else
 	{
-		if (nil == completion)
+		if (nil != completion)
 		{
 			completion(kCLAuthorizationStatusNotDetermined,
 						[NSError errorWithDomain:@"locationAuth" code:-1 userInfo:nil]);
@@ -66,7 +66,7 @@
 
 - (void)getCurrentLocationWithCompletion:(void (^)(CLLocation *location, NSError *error))completion
 {
-	[self getAuthorizationstatusWithCompletion:^(CLAuthorizationStatus status, NSError *error) {
+	[self getAuthorizationStatusWithCompletion:^(CLAuthorizationStatus status, NSError *error) {
 		if (nil == error && status == kCLAuthorizationStatusAuthorizedWhenInUse)
 		{
 			if (!self.locationTracking)
@@ -78,7 +78,7 @@
 			}
 			else
 			{
-				if (nil == completion)
+				if (nil != completion)
 				{
 					completion(nil, [NSError errorWithDomain:@"locationTracking"
 								code:-1 userInfo:nil]);

@@ -7,7 +7,6 @@
 //
 
 #import "PWUser.h"
-#import "PWUsersRestaurantInfo.h"
 #import "PWRestaurant.h"
 
 @interface PWSocialProfile ()
@@ -48,7 +47,6 @@
 @property (nonatomic, strong) UIImage *avatarIcon;
 @property (nonatomic, strong) NSString *humanReadableName;
 @property (nonatomic, strong) NSArray<PWPurchase *> *purchases;
-@property (nonatomic, strong) NSArray<PWUsersRestaurantInfo *> *restaurants;
 @property (nonatomic, strong) NSString *referalId;
 @property (nonatomic, strong) NSString *email;
 
@@ -56,52 +54,33 @@
 
 @implementation PWUser
 
-- (PWUsersRestaurantInfo *)infoForRestaurant:(PWRestaurant *)restaurant
-{
-	for (PWUsersRestaurantInfo *info in self.restaurants)
-	{
-		if ([info.restaurantId isEqualToString:restaurant.name])
-		{
-			return info;
-		}
-	}
-	
-	return nil;
-}
-
 - (void)updateWithJsonInfo:(NSDictionary *)json
 {
-	NSString *firstName = json[@"first_name"];
-	NSString *lastName = json[@"last_name"];
-	if (nil != firstName && nil != lastName)
+	if (NOT_NULL(json[@"first_name"]) && NOT_NULL(json[@"last_name"]))
 	{
-		self.userName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+		self.userName = [NSString stringWithFormat:@"%@ %@", json[@"first_name"], json[@"last_name"]];
 	}
-	if (nil != json[@"referal_number"])
+	if (NOT_NULL(json[@"referal_number"]))
 	{
 		self.referalId = json[@"referal_number"];
 	}
 	
-	if (nil != json[@"photo"])
+	if (NOT_NULL(json[@"photo"]))
 	{
-		id base64Icon = json[@"photo"];
-	
-		self.avatarIcon = NOT_NULL(base64Icon) && [base64Icon isKindOfClass:[NSString class]] ?
-					[UIImage imageWithData:[[NSData alloc]
-					initWithBase64EncodedString:base64Icon options:0]] : nil;
+		self.avatarURL = [NSURL URLWithString:json[@"photo"]];
 	}
 	
-	if (nil != json[@"loadedImage"])
+	if (NOT_NULL(json[@"loadedImage"]))
 	{
 		self.avatarIcon = json[@"loadedImage"];
 	}
 	
-	if (nil != json[@"password"])
+	if (NOT_NULL(json[@"password"]))
 	{
 		self.password = json[@"password"];
 	}
 	
-	if (nil != json[@"email"])
+	if (NOT_NULL(json[@"email"]))
 	{
 		self.email = json[@"email"];
 	}
@@ -115,23 +94,23 @@
 			self.vkProfile = [PWSocialProfile new];
 		}
 		PWSocialProfile *vkProfileInfo = self.vkProfile;
-		if (nil != vkProfile[@"username"])
+		if (NOT_NULL(vkProfile[@"username"]))
 		{
 			vkProfileInfo.userName = vkProfile[@"username"];
 		}
-		if (nil != vkProfile[@"uid"])
+		if (NOT_NULL(vkProfile[@"uid"]))
 		{
 			vkProfileInfo.uuid = vkProfile[@"uid"];
 		}
-		if (nil != vkProfile[@"gender"])
+		if (NOT_NULL(vkProfile[@"gender"]))
 		{
 			vkProfileInfo.gender = vkProfile[@"gender"];
 		}
-		if (nil != vkProfile[@"email"])
+		if (NOT_NULL(vkProfile[@"email"]))
 		{
 			vkProfileInfo.email = vkProfile[@"email"];
 		}
-		if (nil != vkProfile[@"remote_photo_url"])
+		if (NOT_NULL(vkProfile[@"remote_photo_url"]))
 		{
 			vkProfileInfo.photoURLPath = vkProfile[@"remote_photo_url"];
 		}
@@ -148,23 +127,23 @@
 		}
 		PWSocialProfile *fbProfileInfo = self.fbProfile;
 		
-		if (nil != fbProfile[@"username"])
+		if (NOT_NULL(fbProfile[@"username"]))
 		{
 			fbProfileInfo.userName = fbProfile[@"username"];
 		}
-		if (nil != fbProfile[@"uid"])
+		if (NOT_NULL(fbProfile[@"uid"]))
 		{
 			fbProfileInfo.uuid = fbProfile[@"uid"];
 		}
-		if (nil != fbProfile[@"gender"])
+		if (NOT_NULL(fbProfile[@"gender"]))
 		{
 			fbProfileInfo.gender = fbProfile[@"gender"];
 		}
-		if (nil != fbProfile[@"email"])
+		if (NOT_NULL(fbProfile[@"email"]))
 		{
 			fbProfileInfo.email = fbProfile[@"email"];
 		}
-		if (nil != fbProfile[@"remote_photo_url"])
+		if (NOT_NULL(fbProfile[@"remote_photo_url"]))
 		{
 			fbProfileInfo.photoURLPath = fbProfile[@"remote_photo_url"];
 		}

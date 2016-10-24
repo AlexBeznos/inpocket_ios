@@ -16,7 +16,6 @@
 #import "PWUser.h"
 #import "PWOrder.h"
 #import "PWPrice.h"
-#import "PWUsersRestaurantInfo.h"
 #import "PWRestaurantReview.h"
 
 extern NSString *const kPWTokenKey;
@@ -32,7 +31,8 @@ extern NSString *const kPWTokenKey;
 			completion:(void (^)(NSError *))completion;
 - (void)signUpWithProvider:(NSString *)provider profile:(PWSocialProfile *)profile
 			completion:(void (^)(NSError *))completion;
-- (void)updateUserWithCompletion:(void (^)(NSError *))completion;
+- (void)updateUserAvatar:(UIImage *)avatar completion:(void (^)(NSError *))completion;
+- (void)updateUserPassword:(NSString *)password completion:(void (^)(NSError *))completion;
 
 - (PWUser *)registeredUser;
 - (NSString *)authToken;
@@ -40,6 +40,7 @@ extern NSString *const kPWTokenKey;
 - (void)autentificateWithCompletion:(void (^)(NSString *token, NSError *error))completion;
 
 - (void)getNearItemsWithCount:(NSUInteger)count
+			location:(CLLocation *)location
 			completion:(void (^)(NSArray<PWRestaurant *> *nearRestaurant,
 			NSArray<PWRestaurantShare *> *nearShares,
 			NSArray<PWPresentProduct *> *nearPresents, NSError *error))completion;

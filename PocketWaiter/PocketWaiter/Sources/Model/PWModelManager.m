@@ -251,11 +251,22 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	[task resume];
 }
 
-- (void)updateUserWithCompletion:(void (^)(NSError *))completion
+- (void)updateUserAvatar:(UIImage *)avatar completion:(void (^)(NSError *))completion
 {
 	self.updateUserInfoCompletion = completion;
 	NSURLSessionDataTask *task = [self.session dataTaskWithRequest:
-				[PWRequestBuilder putUserRequestWithUser:self.user]];
+				[PWRequestBuilder putUserRequestWithUserName:nil password:nil
+				currentPassword:nil email:nil avatar:avatar vkInfo:nil fbInfo:nil]];
+	self.updateUserInfoHolder = [[PWRequestHolder alloc] initWithTask:task];
+	[task resume];
+}
+
+- (void)updateUserPassword:(NSString *)password completion:(void (^)(NSError *))completion
+{
+	self.updateUserInfoCompletion = completion;
+	NSURLSessionDataTask *task = [self.session dataTaskWithRequest:
+				[PWRequestBuilder putUserRequestWithUserName:nil password:password
+				currentPassword:USER.password email:nil avatar:nil vkInfo:nil fbInfo:nil]];
 	self.updateUserInfoHolder = [[PWRequestHolder alloc] initWithTask:task];
 	[task resume];
 }
@@ -362,20 +373,30 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 }
 
 - (void)getNearItemsWithCount:(NSUInteger)count
+			location:(CLLocation *)location
 			completion:(void (^)(NSArray<PWRestaurant *> *nearRestaurant,
 			NSArray<PWRestaurantShare *> *nearShares,
 			NSArray<PWPresentProduct *> *nearPresents, NSError *error))completion
 {
 	self.getNearItemsCompletion = completion;
 	
+	NSNumber *latitude = nil;
+	NSNumber *longitude = nil;
+	
+	if (nil != location)
+	{
+		latitude = @(location.coordinate.latitude);
+		longitude = @(location.coordinate.longitude);
+	}
+	
 	NSURLSessionDataTask *presentsTask = [self.session dataTaskWithRequest:
 				[PWRequestBuilder getPresentsRequestWithPage:0 count:6
-				exceptionPlaceId:nil latitude:nil longitude:nil]];
+				exceptionPlaceId:nil latitude:latitude longitude:longitude]];
 	PWRequestHolder *presentsHolder = [[PWRequestHolder alloc] initWithTask:presentsTask];
 	
 	NSURLSessionDataTask *sharesTask = [self.session dataTaskWithRequest:
 				[PWRequestBuilder getSharesRequestWithPage:0 count:6 exceptionPlaceId:nil
-				latitude:nil longitude:nil]];
+				latitude:latitude longitude:longitude]];
 	PWRequestHolder *sharesHolder = [[PWRequestHolder alloc] initWithTask:sharesTask];
 	
 	NSURLSessionDataTask *restaurantsTask = [self.session dataTaskWithRequest:

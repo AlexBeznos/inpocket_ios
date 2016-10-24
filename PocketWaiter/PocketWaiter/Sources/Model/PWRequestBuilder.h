@@ -19,7 +19,10 @@
 			profile:(PWSocialProfile *)profile;
 + (NSURLRequest *)restaurantRequestWithId:(NSUInteger)identifier;
 + (NSURLRequest *)getUserRequest;
-+ (NSURLRequest *)putUserRequestWithUser:(PWUser *)user;
++ (NSURLRequest *)putUserRequestWithUserName:(NSString *)userName
+			password:(NSString *)password currentPassword:(NSString *)currentPassword
+			email:(NSString *)email avatar:(UIImage *)avatar
+			vkInfo:(NSDictionary *)vkInfo fbInfo:(NSDictionary *)fbInfo;
 + (NSURLRequest *)getPlacesRequestForCategory:(NSNumber *)category exceptionPlaceId:(NSNumber *)exceptionId;
 + (NSURLRequest *)getPlaceCategoriesRequest;
 + (NSURLRequest *)getBeaconsRequestForPlace:(NSUInteger)placeId;

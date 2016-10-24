@@ -128,9 +128,7 @@
 {
 	[super setupNavigation];
 	
-	PWUser *currentUser = [[PWModelManager sharedManager] registeredUser];
-	PWUsersRestaurantInfo *info = [currentUser infoForRestaurant:self.restaurant];
-	if (info.collectedBonuses > 0)
+	if (self.restaurant.collectedBonuses > 0)
 	{
 		UIButton *theBonusesButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		[theBonusesButton setImage:[[UIImage imageNamed:@"collectedBonus"]
@@ -143,7 +141,7 @@
 		[theBonusesButton sizeToFit];
 		UILabel *bonussesLabel = [UILabel new];
 		bonussesLabel.font = [UIFont systemFontOfSize:15.];
-		bonussesLabel.text = [NSString stringWithFormat:@"%li", (unsigned long)info.collectedBonuses];
+		bonussesLabel.text = [NSString stringWithFormat:@"%li", (unsigned long)self.restaurant.collectedBonuses];
 		bonussesLabel.textColor = self.defaultMode ?
 				[UIColor pwColorWithAlpha:1] : self.restaurant.color;;
 		[bonussesLabel sizeToFit];

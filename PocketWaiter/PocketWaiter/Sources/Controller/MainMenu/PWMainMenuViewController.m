@@ -13,10 +13,20 @@
 #import "PWNearRestaurantsViewController.h"
 #import "PWPurchasesViewController.h"
 #import "PWModelManager.h"
+#import "PWLocationManager.h"
+#import "PWModalController.h"
+#import "PWNoConnectionAlertController.h"
 
 @interface PWScrollableViewController ()
 
 - (void)handleVelocity:(CGPoint)velocity;
+
+@end
+
+@interface PWMainMenuViewController ()
+
+@property (nonatomic, strong) PWLocationManager *locationManager;
+@property (nonatomic, strong) PWModalController *locationDialog;
 
 @end
 
@@ -28,23 +38,50 @@
 	
 	__weak __typeof(self) weakSelf = self;
 	
+	self.locationManager = [PWLocationManager new];
 	[self startActivity];
-	
-	[[PWModelManager sharedManager] getNearItemsWithCount:5 completion:
-	^(NSArray<PWRestaurant *> *nearRestaurant,
-				NSArray<PWRestaurantShare *> *nearShares,
-				NSArray<PWPresentProduct *> *nearPresents, NSError *error)
+	[self.locationManager getCurrentLocationWithCompletion:
+	^(CLLocation *location, NSError *error)
 	{
-		if (nil == error)
+		if (nil != error)
 		{
-			[weakSelf showNearRestaurants:nearRestaurant shares:nearShares
-						presents:nearPresents];
+			[weakSelf stopActivity];
+			[weakSelf showNoAccessLocation];
 		}
 		else
 		{
-			[weakSelf showNoInternetDialog];
+			[[PWModelManager sharedManager] getNearItemsWithCount:6
+						location:location completion:
+			^(NSArray<PWRestaurant *> *nearRestaurant,
+						NSArray<PWRestaurantShare *> *nearShares,
+						NSArray<PWPresentProduct *> *nearPresents, NSError *error)
+			{
+				[weakSelf stopActivity];
+				if (nil == error)
+				{
+					[weakSelf showNearRestaurants:nearRestaurant shares:nearShares
+								presents:nearPresents];
+				}
+				else
+				{
+					[weakSelf showNoInternetDialog];
+				}
+			}];
 		}
 	}];
+}
+
+- (void)showNoAccessLocation
+{
+	__weak __typeof(self) weakSelf = self;
+	PWNoConnectionAlertController *alert = [[PWNoConnectionAlertController alloc]
+				initWithType:kPWConnectionTypeLocation retryAction:
+	^{
+		[weakSelf resumeActivity];
+	}];
+	self.locationDialog = [[PWModalController alloc]
+				initWithContentController:alert autoDismiss:NO];
+	[self.locationDialog showWithCompletion:nil];
 }
 
 - (void)showNearRestaurants:(NSArray<PWRestaurant *> *)restaurants
@@ -177,7 +214,6 @@
 	}
 	
 	self.scrollView.contentSize = CGSizeMake(320 * aspectRatio, estimatedHeight);
-	[self stopActivity];
 }
 
 - (NSString *)name

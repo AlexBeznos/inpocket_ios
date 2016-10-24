@@ -148,100 +148,53 @@ static NSString * const kPWHTTPScheme = @"http";
 				method:kPWGetMethod body:nil headers:nil];
 }
 
-+ (NSURLRequest *)putUserRequestWithUser:(PWUser *)user
++ (NSURLRequest *)putUserRequestWithUserName:(NSString *)userName
+			password:(NSString *)password currentPassword:(NSString *)currentPassword
+			email:(NSString *)email avatar:(UIImage *)avatar
+			vkInfo:(NSDictionary *)vkInfo fbInfo:(NSDictionary *)fbInfo
 {
 	NSDictionary *headers = @{@"Content-Type" : @"application/json"};
 	
 	NSMutableDictionary *userBody = [NSMutableDictionary new];
 	
-	if (nil != user.userName)
+	if (nil != userName)
 	{
-		NSArray<NSString *> *names = [user.userName componentsSeparatedByString:@" "];
+		NSArray<NSString *> *names = [userName componentsSeparatedByString:@" "];
 		userBody[@"first_name"] = names.firstObject;
 		userBody[@"last_name"] = names.lastObject;
 	}
 	
-	if (nil != user.password)
+	if (nil != password)
 	{
-		userBody[@"password"] = user.password;
+		userBody[@"password"] = password;
 	}
 	
-	if (nil != user.password)
+	if (nil != currentPassword)
 	{
-		userBody[@"current_password"] = user.password;
+		userBody[@"current_password"] = currentPassword;
 	}
 	
-	if (nil != user.email)
+	if (nil != email)
 	{
-		userBody[@"email"] = user.email;
+		userBody[@"email"] = email;
 	}
 	
-	if (nil != user.avatarIcon)
+	if (nil != avatar)
 	{
-		NSString *photo = [UIImagePNGRepresentation(user.avatarIcon)
-					base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+		NSString *photo = [NSString stringWithFormat:@"data:image/jpeg;base64,%@",
+					[UIImageJPEGRepresentation(avatar, 1)
+					base64EncodedStringWithOptions:0]];
 		userBody[@"photo"] = photo;
 	}
 	
-	if (nil != user.vkProfile)
+	if (vkInfo.allKeys.count > 0)
 	{
-		NSMutableDictionary *vkBody = [NSMutableDictionary new];
-		if (nil != user.vkProfile.uuid)
-		{
-			vkBody[@"uid"] = user.vkProfile.uuid;
-		}
-		if (nil != user.vkProfile.email)
-		{
-			vkBody[@"email"] = user.vkProfile.email;
-		}
-		if (nil != user.vkProfile.gender)
-		{
-			vkBody[@"gender"] = user.vkProfile.gender;
-		}
-		if (nil != user.vkProfile.userName)
-		{
-			vkBody[@"username"] = user.vkProfile.userName;
-		}
-		if (nil != user.vkProfile.photoURLPath)
-		{
-			vkBody[@"remote_photo_url"] = user.vkProfile.photoURLPath;
-		}
-		
-		if (vkBody.allKeys.count > 0)
-		{
-			userBody[@"vk_profile"] = vkBody;
-		}
+		userBody[@"vk_profile"] = vkInfo;
 	}
 	
-	if (nil != user.fbProfile)
+	if (fbInfo.allKeys.count > 0)
 	{
-		NSMutableDictionary *fbBody = [NSMutableDictionary new];
-		if (nil != user.fbProfile.uuid)
-		{
-			fbBody[@"uid"] = user.fbProfile.uuid;
-		}
-		if (nil != user.fbProfile.email)
-		{
-			fbBody[@"email"] = user.fbProfile.email;
-		}
-		if (nil != user.fbProfile.gender)
-		{
-			fbBody[@"gender"] = user.fbProfile.gender;
-		}
-		if (nil != user.fbProfile.userName)
-		{
-			fbBody[@"username"] = user.fbProfile.userName;
-		}
-		
-		if (nil != user.fbProfile.photoURLPath)
-		{
-			fbBody[@"remote_photo_url"] = user.fbProfile.photoURLPath;
-		}
-		
-		if (fbBody.allKeys.count > 0)
-		{
-			userBody[@"facebook_profile"] = fbBody;
-		}
+		userBody[@"facebook_profile"] = fbInfo;
 	}
 	
 	NSDictionary *body = userBody.allKeys.count > 0 ? @{@"user" : userBody} : nil;
@@ -296,11 +249,11 @@ static NSString * const kPWHTTPScheme = @"http";
 	}
 	if (nil != longitude)
 	{
-		query[@"lng"] = longitude;
+		query[@"lng"] = [longitude stringValue];
 	}
 	if (nil != latitude)
 	{
-		query[@"lat"] = latitude;
+		query[@"lat"] = [latitude stringValue];
 	}
 	return [self requestWithURL:[self URLWithPath:[kPWVersion stringByAppendingPathComponent:
 				[NSString stringWithFormat:@"places/%li/presents", placeId]]
@@ -326,11 +279,11 @@ static NSString * const kPWHTTPScheme = @"http";
 	}
 	if (nil != longitude)
 	{
-		query[@"lng"] = longitude;
+		query[@"lng"] = [longitude stringValue];
 	}
 	if (nil != latitude)
 	{
-		query[@"lat"] = latitude;
+		query[@"lat"] = [latitude stringValue];
 	}
 	return [self requestWithURL:[self URLWithPath:[kPWVersion stringByAppendingPathComponent:@"presents"]
 				query:query] method:kPWGetMethod body:nil headers:nil];
@@ -356,11 +309,11 @@ static NSString * const kPWHTTPScheme = @"http";
 	}
 	if (nil != longitude)
 	{
-		query[@"lng"] = longitude;
+		query[@"lng"] = [longitude stringValue];
 	}
 	if (nil != latitude)
 	{
-		query[@"lat"] = latitude;
+		query[@"lat"] = [latitude stringValue];
 	}
 	return [self requestWithURL:[self URLWithPath:[kPWVersion stringByAppendingPathComponent:
 				[NSString stringWithFormat:@"places/%li/shares", placeId]]
@@ -379,11 +332,11 @@ static NSString * const kPWHTTPScheme = @"http";
 	}
 	if (nil != longitude)
 	{
-		query[@"lng"] = longitude;
+		query[@"lng"] = [longitude stringValue];
 	}
 	if (nil != latitude)
 	{
-		query[@"lat"] = latitude;
+		query[@"lat"] = [latitude stringValue];
 	}
 	return [self requestWithURL:[self URLWithPath:[kPWVersion stringByAppendingPathComponent:@"shares"]
 				query:query] method:kPWGetMethod body:nil headers:nil];
@@ -458,7 +411,7 @@ static NSString * const kPWHTTPScheme = @"http";
 	
 	if (nil != review.reviewDescription)
 	{
-		NSString *photo = [UIImagePNGRepresentation(review.photo)
+		NSString *photo = [UIImageJPEGRepresentation(review.photo, 1)
 					base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
 		feedbackBody[@"image"] = photo;
 	}

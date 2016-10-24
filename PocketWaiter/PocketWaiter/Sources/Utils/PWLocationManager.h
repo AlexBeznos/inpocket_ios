@@ -12,7 +12,7 @@
 
 @property (nonatomic, readonly) CLAuthorizationStatus authStatus;
 
-- (void)getAuthorizationstatusWithCompletion:(void (^)(CLAuthorizationStatus status, NSError *error))completion;
+- (void)getAuthorizationStatusWithCompletion:(void (^)(CLAuthorizationStatus status, NSError *error))completion;
 - (void)getCurrentLocationWithCompletion:(void (^)(CLLocation *location, NSError *error))completion;
 
 @end

@@ -99,6 +99,11 @@
 	return self.aboutInfo.logoPath;
 }
 
+- (NSUInteger)collectedBonuses
+{
+	return [self.aboutInfo collectedBonuses];
+}
+
 - (NSString *)downloadedLogoURL
 {
 	return self.aboutInfo.downloadedLogoURL;
