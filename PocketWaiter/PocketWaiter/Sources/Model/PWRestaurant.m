@@ -69,7 +69,7 @@
 	return presents;
 }
 
-- (NSString *)name
+- (NSString *)restaurantName
 {
 	return self.aboutInfo.name;
 }

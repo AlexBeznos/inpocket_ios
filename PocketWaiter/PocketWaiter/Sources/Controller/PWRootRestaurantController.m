@@ -159,7 +159,7 @@
 
 - (NSString *)name
 {
-	return self.restaurant.name;
+	return self.restaurant.restaurantName;
 }
 
 - (void)performForwardTransition:
@@ -329,7 +329,7 @@
 		[_orderButton addTarget:self action:@selector(showOrder)
 					forControlEvents:UIControlEventTouchUpInside];
 		PWUser *currentUser = [[PWModelManager sharedManager] registeredUser];
-		PWPurchase *currentPurchase = currentUser.currentPurchases[self.restaurant.name];
+		PWPurchase *currentPurchase = currentUser.currentPurchases[self.restaurant.restaurantName];
 		
 		[_orderButton setTitle:[NSString stringWithFormat:@"Ваш заказ %@",
 					currentPurchase.totalPrice.humanReadableValue] forState:UIControlStateNormal];

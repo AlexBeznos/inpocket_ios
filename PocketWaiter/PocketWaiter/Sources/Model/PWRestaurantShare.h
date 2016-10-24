@@ -6,10 +6,9 @@
 //  Copyright © 2016 Www Www. All rights reserved.
 //
 
-#import "PWModelObject.h"
-#import "IPWRestaurant.h"
+#import "PWOwnedObject.h"
 
-@interface PWRestaurantShare : PWModelObject
+@interface PWRestaurantShare : PWOwnedObject
 
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) NSString *shareDescription;
@@ -17,7 +16,5 @@
 
 @property (nonatomic, readonly) NSString *imagePath;
 @property (nonatomic, strong) NSString *downloadedImagePath;
-
-@property (nonatomic, weak) id<IPWRestaurant> restaurant;
 
 @end

@@ -14,7 +14,7 @@
 
 @protocol IPWRestaurant <NSObject>
 
-@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSString *restaurantName;
 @property (nonatomic, readonly) NSString *address;
 @property (nonatomic, readonly) NSString *phoneNumber;
 @property (nonatomic, readonly) CLLocation *location;

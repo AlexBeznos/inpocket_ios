@@ -59,11 +59,11 @@
 	^(PWPresentProduct *firstPresent, NSArray<PWRestaurantShare *> *shares,
 				NSArray *presentsByBonuses, NSError *error)
 	{
+		[weakSelf stopActivity];
 		NSInteger estimatedHeight = 0;
 		UIView *previousView = nil;
 		if (nil != firstPresent)
 		{
-			[weakSelf stopActivity];
 			PWFirstPresentController *firstPresentController =
 						[[PWFirstPresentController alloc] initWithPresent:firstPresent
 						restaurant:weakSelf.restaurant getPresentHandler:
@@ -94,7 +94,7 @@
 			estimatedHeight += weakSelf.contentWidth;
 		}
 		
-		if (nil != shares)
+		if (0 != shares.count)
 		{
 			PWSharesViewController *sharesController =
 						[[PWSharesViewController alloc] initWithShares:shares title:@"Акции"
@@ -136,7 +136,7 @@
 			estimatedHeight += sharesController.contentSize.height;
 			previousView = sharesController.view;
 		}
-		if (nil != presentsByBonuses)
+		if (0 != presentsByBonuses.count)
 		{
 			PWProductViewController *presentsController =
 						[[PWProductViewController alloc]

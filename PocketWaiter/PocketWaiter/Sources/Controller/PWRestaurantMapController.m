@@ -58,7 +58,7 @@
 			forItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	PWRestaurant *restaurant = self.restaurants[indexPath.row];
-	cell.title = restaurant.name;
+	cell.title = restaurant.restaurantName;
 	cell.descriptionText = restaurant.restaurantDescription;
 	cell.place = restaurant.address;
 	if (nil == restaurant.restaurantImage)

@@ -45,11 +45,11 @@
 {
 	[super viewDidLoad];
 	
-	self.titleLabel.text = [NSString stringWithFormat:@"Добро пожаловать в %@", self.restaurant.name];
+	self.titleLabel.text = [NSString stringWithFormat:@"Добро пожаловать в %@", self.restaurant.restaurantName];
 	self.titleLabel.textColor = self.restaurant.color;
 	self.makeOrderLabel.text = @"Делайте заказ прямо из приложения";
 	self.getPercentLabel.text = @"Накапливайте % от чека";
-	self.getPresentLabel.text = [NSString stringWithFormat:@"Получайте подарки от %@", self.restaurant.name];
+	self.getPresentLabel.text = [NSString stringWithFormat:@"Получайте подарки от %@", self.restaurant.restaurantName];
 	self.shareWithFriendsLabel.text = @"Пользуйтесь вместе с друзьями";
 	self.continueButton.title = @"Продолжить";
 	self.continueButton.colorScheme = [UIColor whiteColor];

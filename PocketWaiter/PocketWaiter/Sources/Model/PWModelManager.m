@@ -336,9 +336,9 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	^{
 		if (nil != completion)
 		{
-			if (self.cacher.currentRestaurant != self.cacher.restaurants.firstObject)
+			if (self.cacher.currentRestaurant != self.cacher.restaurants.lastObject)
 			{
-				self.cacher.currentRestaurant = self.cacher.restaurants.firstObject;
+				self.cacher.currentRestaurant = self.cacher.restaurants.lastObject;
 				completion(self.cacher.currentRestaurant, nil);
 			}
 		}
@@ -391,11 +391,11 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	
 	NSURLSessionDataTask *presentsTask = [self.session dataTaskWithRequest:
 				[PWRequestBuilder getPresentsRequestWithPage:0 count:6
-				exceptionPlaceId:nil latitude:latitude longitude:longitude]];
+				exceptionPlaceId:self.currentRestaurant.identifier latitude:latitude longitude:longitude]];
 	PWRequestHolder *presentsHolder = [[PWRequestHolder alloc] initWithTask:presentsTask];
 	
 	NSURLSessionDataTask *sharesTask = [self.session dataTaskWithRequest:
-				[PWRequestBuilder getSharesRequestWithPage:0 count:6 exceptionPlaceId:nil
+				[PWRequestBuilder getSharesRequestWithPage:0 count:6 exceptionPlaceId:self.currentRestaurant.identifier
 				latitude:latitude longitude:longitude]];
 	PWRequestHolder *sharesHolder = [[PWRequestHolder alloc] initWithTask:sharesTask];
 	

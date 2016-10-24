@@ -275,7 +275,7 @@ static NSString * const kPWHTTPScheme = @"http";
 	query[@"per_page"] = [@(count) stringValue];
 	if (nil != exceptionId)
 	{
-		query[@"places_exclusion"] = exceptionId;
+		query[@"places_exclusion"] = [exceptionId stringValue];
 	}
 	if (nil != longitude)
 	{
@@ -305,7 +305,7 @@ static NSString * const kPWHTTPScheme = @"http";
 	query[@"place_id"] = [@(placeId) stringValue];
 	if (nil != exceptionId)
 	{
-		query[@"places_exclusion"] = exceptionId;
+		query[@"places_exclusion"] = [exceptionId stringValue];
 	}
 	if (nil != longitude)
 	{
@@ -328,7 +328,7 @@ static NSString * const kPWHTTPScheme = @"http";
 	query[@"per_page"] = [@(count) stringValue];
 	if (nil != exceptionId)
 	{
-		query[@"places_exclusion"] = exceptionId;
+		query[@"places_exclusion"] = [exceptionId stringValue];
 	}
 	if (nil != longitude)
 	{

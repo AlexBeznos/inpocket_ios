@@ -38,8 +38,8 @@
 {
 	PWRestaurantShare *share = self.shares[indexPath.row];
 	
-	cell.placeName = share.restaurant.name;
-	cell.placeDistance = @"2 km";
+	cell.placeName = share.ownerName;
+	cell.placeDistance = share.distance;
 	cell.descriptionTitle = share.shareDescription;
 	cell.buttonTitle = @"Подробнее";
 	

@@ -60,20 +60,20 @@
 {
 	PWRestaurantShare *share = self.shares[indexPath.row];
 	cell.title = share.name;
-	cell.descriptionText = share.restaurant.name;
-	cell.place = share.restaurant.address;
-	if (nil == share.restaurant.restaurantImage)
+//	cell.descriptionText = share.restaurant.name;
+//	cell.place = share.restaurant.address;
+	if (nil == share.image)
 	{
-		NSURL *iconURL = [NSURL URLWithString:share.restaurant.logoPath];
+		NSURL *iconURL = [NSURL URLWithString:share.imagePath];
 		[cell.imageView downloadImageFromURL:iconURL completion:
 		^(NSURL *localURL)
 		{
-			share.restaurant.downloadedLogoURL = localURL.path;
+			share.downloadedImagePath = localURL.path;
 		}];
 	}
 	else
 	{
-		cell.imageView.image = share.restaurant.restaurantImage;
+		cell.imageView.image = share.image;
 	}
 }
 

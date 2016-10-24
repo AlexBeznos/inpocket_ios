@@ -32,7 +32,8 @@
 	self = [super init];
 	
 	if (nil != self && nil != jsonInfo &&
-				[NSJSONSerialization isValidJSONObject:jsonInfo])
+				[NSJSONSerialization isValidJSONObject:jsonInfo] &&
+				[jsonInfo isKindOfClass:[NSDictionary class]])
 	{
 		self.jsonInfo = jsonInfo;
 		NSDictionary *info = (NSDictionary *)jsonInfo;

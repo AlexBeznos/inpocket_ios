@@ -58,7 +58,7 @@
 		[weakSelf stopActivity];
 		NSInteger estimatedHeight = 0;
 		UIView *previousView = nil;
-		if (nil != bestOfDay)
+		if (0 != bestOfDay.count)
 		{
 			PWBestOfDayViewController *productOfDay =
 						[[PWBestOfDayViewController alloc] initWithProducts:bestOfDay restaurant:weakSelf.restaurant

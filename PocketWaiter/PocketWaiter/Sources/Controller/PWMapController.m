@@ -90,7 +90,7 @@
 	{
 		GMSMarker *marker = [GMSMarker new];
 		marker.position = restaurant.location.coordinate;
-		marker.title = restaurant.name;
+		marker.title = restaurant.restaurantName;
 		marker.icon = [UIImage markerImageWithState:NO scheme:restaurant.color
 					logo:restaurant.restaurantImage];
 		marker.map = self.mapView;

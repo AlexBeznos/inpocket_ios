@@ -67,6 +67,7 @@
 		CACE8DD31DB378C700E80F11 /* PWModelCacher.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DD21DB378C700E80F11 /* PWModelCacher.m */; };
 		CACE8DD61DB385B100E80F11 /* PWImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DD51DB385B100E80F11 /* PWImageView.m */; };
 		CAD37FD91DBD3A3C001FD692 /* PWRootRestaurantController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD37FD81DBD3A3C001FD692 /* PWRootRestaurantController.m */; };
+		CAD37FDC1DBE6E2A001FD692 /* PWOwnedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD37FDB1DBE6E2A001FD692 /* PWOwnedObject.m */; };
 		CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */; };
 		CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */; };
 		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
@@ -359,6 +360,8 @@
 		CACE8DD51DB385B100E80F11 /* PWImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWImageView.m; sourceTree = "<group>"; };
 		CAD37FD71DBD3A3C001FD692 /* PWRootRestaurantController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWRootRestaurantController.h; sourceTree = "<group>"; };
 		CAD37FD81DBD3A3C001FD692 /* PWRootRestaurantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRootRestaurantController.m; sourceTree = "<group>"; };
+		CAD37FDA1DBE6E2A001FD692 /* PWOwnedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWOwnedObject.h; sourceTree = "<group>"; };
+		CAD37FDB1DBE6E2A001FD692 /* PWOwnedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWOwnedObject.m; sourceTree = "<group>"; };
 		CAF090FD1D4D3938005FAEF4 /* PocketWaiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketWaiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAF0911A1D4D3A4C005FAEF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -898,6 +901,8 @@
 				CAF091C31D577286005FAEF4 /* PWModelManager.h */,
 				CAF091C41D577286005FAEF4 /* PWModelManager.m */,
 				CAF092A81D618A5C005FAEF4 /* IPWRestaurant.h */,
+				CAD37FDA1DBE6E2A001FD692 /* PWOwnedObject.h */,
+				CAD37FDB1DBE6E2A001FD692 /* PWOwnedObject.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1465,6 +1470,7 @@
 				CAF092B31D627264005FAEF4 /* PWPresentsMapController.m in Sources */,
 				CA3CE6D61DA020EB00825A0A /* PWGridProductsController.m in Sources */,
 				CAFE611E1D997E0E003F5991 /* PWFirstPresentDetailsController.m in Sources */,
+				CAD37FDC1DBE6E2A001FD692 /* PWOwnedObject.m in Sources */,
 				CA3CE6BE1D9BD38D00825A0A /* PWSharesViewController.m in Sources */,
 				CAF092541D607B69005FAEF4 /* PWDetailedNearItemsCollectionController.m in Sources */,
 				CAF092061D5D1FF7005FAEF4 /* PWNearRestaurantCollectionViewCell.m in Sources */,

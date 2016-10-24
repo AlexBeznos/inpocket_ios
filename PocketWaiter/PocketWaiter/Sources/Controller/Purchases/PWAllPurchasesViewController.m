@@ -329,8 +329,8 @@
 	cell.color = restaurant.color;
 	cell.image = restaurant.restaurantImage;
 	// TODO: hardcoded value
-	cell.bonusesCount = 100;
-	cell.name = restaurant.name;
+	cell.bonusesCount = restaurant.aboutInfo.collectedBonuses;
+	cell.name = restaurant.restaurantName;
 	cell.descriptionText = restaurant.restaurantDescription;
 	
 	return cell;

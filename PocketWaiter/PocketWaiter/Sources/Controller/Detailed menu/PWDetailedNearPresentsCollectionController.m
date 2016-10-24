@@ -37,8 +37,8 @@
 {
 	PWPresentProduct *present = self.presents[indexPath.row];
 	
-	cell.placeName = present.restaurant.name;
-	cell.placeDistance = @"2 km";
+	cell.placeName = present.ownerName;
+	cell.placeDistance = present.distance;
 	cell.descriptionTitle = present.name;
 	cell.buttonTitle = @"Получить";
 	

@@ -59,20 +59,20 @@
 {
 	PWPresentProduct *present = self.presents[indexPath.row];
 	cell.title = present.name;
-	cell.descriptionText = present.restaurant.name;
-	cell.place = present.restaurant.address;
-	if (nil == present.restaurant.restaurantImage)
+	cell.descriptionText = present.ownerName;
+//	cell.place = present.restaurant.address;
+	if (nil == present.icon)
 	{
-		NSURL *iconURL = [NSURL URLWithString:present.restaurant.logoPath];
+		NSURL *iconURL = [NSURL URLWithString:present.iconPath];
 		[cell.imageView downloadImageFromURL:iconURL completion:
 		^(NSURL *localURL)
 		{
-			present.restaurant.downloadedLogoURL = localURL.path;
+			present.downloadedIconPath = localURL.path;
 		}];
 	}
 	else
 	{
-		cell.imageView.image = present.restaurant.restaurantImage;
+		cell.imageView.image =present.icon;
 	}
 }
 

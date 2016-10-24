@@ -53,9 +53,9 @@
 	self.shareDescription.translatesAutoresizingMaskIntoConstraints = NO;
 	self.shareImageView.image = self.share.image;
 	self.shareDescription.text = self.share.shareDescription;
-	self.restaurantImageView.image = self.share.restaurant.restaurantImage;
-	self.restaurantName.text = self.share.restaurant.name;
-	self.restaurantDescription.text =  self.share.restaurant.restaurantDescription;
+	self.restaurantImageView.image = self.share.image;
+	self.restaurantName.text = self.share.ownerName;
+//	self.restaurantDescription.text =  self.share.restaurant.restaurantDescription;
 	self.getRestaurantLabel.text = @"ПОСЕТИТЬ";
 	
 	self.imageHeight.constant *=

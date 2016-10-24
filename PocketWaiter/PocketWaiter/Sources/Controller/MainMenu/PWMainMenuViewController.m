@@ -95,7 +95,7 @@
 	
 	UIView *previousView = nil;
 	
-	if (nil != presents)
+	if (0 != presents.count)
 	{
 		PWNearPresentsViewController *nearPresentsController =
 					[[PWNearPresentsViewController alloc] initWithPresents:presents
@@ -126,7 +126,7 @@
 		previousView = nearPresentsController.view;
 	}
 	
-	if (nil != shares)
+	if (0 != shares.count)
 	{
 		PWSharesViewController *nearSharesController =
 					[[PWSharesViewController alloc] initWithShares:shares title:nil
@@ -169,7 +169,7 @@
 		previousView = nearSharesController.view;
 	}
 	
-	if (nil != restaurants)
+	if (0 != restaurants.count)
 	{
 		PWNearRestaurantsViewController *nearRestaurantsController =
 					[[PWNearRestaurantsViewController alloc] initWithRestaurants:restaurants

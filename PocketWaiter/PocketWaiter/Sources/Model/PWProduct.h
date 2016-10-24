@@ -6,13 +6,12 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import "PWModelObject.h"
+#import "PWOwnedObject.h"
 #import "PWEnums.h"
-#import "IPWRestaurant.h"
 
 @class PWPrice;
 
-@interface PWProduct : PWModelObject
+@interface PWProduct : PWOwnedObject
 
 @property (nonatomic, readonly) NSString *category;
 @property (nonatomic, readonly) NSString *name;
@@ -21,8 +20,6 @@
 @property (nonatomic, readonly) PWPrice *price;
 @property (nonatomic, readonly) NSUInteger bonusesValue;
 @property (nonatomic, readonly) PWProductType type;
-
-@property (nonatomic, weak) id<IPWRestaurant> restaurant;
 
 @property (nonatomic, readonly) NSString *iconPath;
 @property (nonatomic, strong) NSString *downloadedIconPath;

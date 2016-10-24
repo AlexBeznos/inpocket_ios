@@ -94,7 +94,7 @@
 		if (nil == error)
 		{
 			NSInteger newEstimatedHeight = estimatedHeight;
-			if (nil != products)
+			if (0 != products.count)
 			{
 				PWProductViewController *productController =
 							[[PWProductViewController alloc]

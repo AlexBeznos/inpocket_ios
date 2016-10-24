@@ -112,7 +112,7 @@ static NSString * const reuseIdentifier = @"Cell";
 	cell.image = restaurant.restaurantImage;
 	// TODO: hardcoded value
 	cell.bonusesCount = 100;
-	cell.name = restaurant.name;
+	cell.name = restaurant.restaurantName;
 	cell.descriptionText = restaurant.restaurantDescription;
 	
 	return cell;

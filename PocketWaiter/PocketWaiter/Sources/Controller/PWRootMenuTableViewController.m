@@ -141,7 +141,7 @@
 		if (nil != self.restaurant)
 		{
 			self.activeMenuSource = [[PWContentSource alloc]
-						initWithTitle:self.restaurant.name details:nil
+						initWithTitle:self.restaurant.restaurantName details:nil
 						icon:self.restaurant.thumbnail
 						contentViewController:[[PWRootRestaurantController alloc]
 						initWithRestaurant:self.restaurant defaultMode:NO transitionHandler:
