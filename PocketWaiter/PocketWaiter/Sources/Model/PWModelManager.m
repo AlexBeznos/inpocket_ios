@@ -134,6 +134,14 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 @property (nonatomic, copy) void (^getMenuInfoCompletion)(NSArray<PWProduct *> *bestOfDay,
 			NSDictionary<NSString *, NSArray<PWProduct *> *> *, NSError *error);
 
+@property (nonatomic, strong) PWRequestHolder *getRecomendedHolder;
+@property (nonatomic, copy) void (^getRecomendedCompletion)
+			(NSArray<PWProduct *> *recomended, NSError *error);
+
+@property (nonatomic, strong) PWRequestHolder *getReviewesHolder;
+@property (nonatomic, copy) void (^getReviewesCompletion)
+			(NSArray<PWRestaurantReview *> *, NSError *error);
+
 @property (nonatomic, strong) PWModelCacher *cacher;
 
 @end
@@ -383,37 +391,36 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 - (void)getRecomendedProductsInfoForUser:(PWUser *)user restaurant:(PWRestaurant *)restaurant
 			completion:(void (^)(NSArray<PWProduct *> *products, NSError *error))completion
 {
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
-				(int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
-	^{
-		if (nil != completion)
-		{
-			completion(restaurant.products, nil);
-		}
-	});
+	self.getRecomendedCompletion = completion;
+	self.currentRestaurant = restaurant;
+	NSURLSessionDataTask *getRecomendedTask = [self.session dataTaskWithRequest:
+				[PWRequestBuilder getProductsRequestForPlace:self.currentRestaurant.identifier.integerValue
+				dayItem:nil recomended:@(YES) page:0 count:6]];
+	self.getRecomendedHolder = [[PWRequestHolder alloc] initWithTask:getRecomendedTask];
+	[getRecomendedTask resume];
 }
 
 - (void)getRootMenuInfoForUser:(PWUser *)user restaurant:(PWRestaurant *)restaurant
 			completion:(void (^)(NSArray<PWProduct *> *bestOfDay, NSDictionary<NSString *, NSArray<PWProduct *> *> *, NSError *error))completion
 {
 	self.getMenuInfoCompletion = completion;
+	self.currentRestaurant = restaurant;
 	NSURLSessionDataTask *getCategoriesTask = [self.session dataTaskWithRequest:
 				[PWRequestBuilder getMenuCategoriesRequestForPlace:restaurant.identifier.integerValue]];
 	self.getCategoriesHolder = [[PWRequestHolder alloc] initWithTask:getCategoriesTask];
 	[getCategoriesTask resume];
 }
 
-- (void)getCommentsInfoForRestaurant:(PWRestaurant *)restaurant completion:(void (^)
-			(BOOL allowComment, NSArray<PWRestaurantReview *> *, NSError *error))completion
+- (void)getCommentsInfoForRestaurant:(PWRestaurant *)restaurant page:(NSUInteger)page completion:(void (^)
+			(NSArray<PWRestaurantReview *> *, NSError *error))completion
 {
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
-				(int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
-	^{
-		if (nil != completion)
-		{
-			completion(YES, [self.cachedRestaurants.firstObject reviews], nil);
-		}
-	});
+	self.currentRestaurant = restaurant;
+	self.getReviewesCompletion = completion;
+	NSURLSessionDataTask *task = [self.session dataTaskWithRequest:
+				[PWRequestBuilder getReviewsRequestForPlace:restaurant.identifier.
+				integerValue page:page count:10]];
+	self.getReviewesHolder = [[PWRequestHolder alloc] initWithTask:task];
+	[task resume];
 }
 
 - (void)sendReview:(PWRestaurantReview *)review completion:(void (^)(NSError *error))completion
@@ -452,17 +459,9 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	{
 		holder = self.getRestaurantsHolder;
 	}
-	else if (dataTask == self.getNearItemsHolders.firstObject.task)
+	else if ([self.getNearItemsHolders containsTask:dataTask])
 	{
-		holder = self.getNearItemsHolders.firstObject;
-	}
-	else if (dataTask == self.getNearItemsHolders[1].task)
-	{
-		holder = self.getNearItemsHolders[1];
-	}
-	else if (dataTask == self.getNearItemsHolders[2].task)
-	{
-		holder = self.getNearItemsHolders[2];
+		holder = [self.getNearItemsHolders holderForTask:dataTask];
 	}
 	else if (dataTask == self.getPresentsHolder.task)
 	{
@@ -480,17 +479,9 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	{
 		holder = self.getPurchasesHolder;
 	}
-	else if (dataTask == self.getActiveSharesHolders.firstObject.task)
+	else if ([self.getActiveSharesHolders containsTask:dataTask])
 	{
-		holder = self.getActiveSharesHolders.firstObject;
-	}
-	else if (dataTask == self.getActiveSharesHolders[1].task)
-	{
-		holder = self.getActiveSharesHolders[1];
-	}
-	else if (dataTask == self.getActiveSharesHolders[2].task)
-	{
-		holder = self.getActiveSharesHolders[2];
+		holder = [self.getActiveSharesHolders holderForTask:dataTask];
 	}
 	else if (dataTask == self.getUserHolder.task)
 	{
@@ -519,6 +510,14 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	else if (dataTask == self.getCategoriesHolder.task)
 	{
 		holder = self.getCategoriesHolder;
+	}
+	else if (dataTask == self.getRecomendedHolder.task)
+	{
+		holder = self.getRecomendedHolder;
+	}
+	else if (dataTask == self.getReviewesHolder.task)
+	{
+		holder = self.getReviewesHolder;
 	}
 	else if ([self.getMenuInfoHolders containsTask:dataTask])
 	{
@@ -541,17 +540,9 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	{
 		holder = self.getRestaurantsHolder;
 	}
-	else if (dataTask == self.getNearItemsHolders.firstObject.task)
+	else if ([self.getNearItemsHolders containsTask:dataTask])
 	{
-		holder = self.getNearItemsHolders.firstObject;
-	}
-	else if (dataTask == self.getNearItemsHolders[1].task)
-	{
-		holder = self.getNearItemsHolders[1];
-	}
-	else if (dataTask == self.getNearItemsHolders[2].task)
-	{
-		holder = self.getNearItemsHolders[2];
+		holder = [self.getNearItemsHolders holderForTask:dataTask];
 	}
 	else if (dataTask == self.getPresentsHolder.task)
 	{
@@ -569,17 +560,9 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	{
 		holder = self.getPurchasesHolder;
 	}
-	else if (dataTask == self.getActiveSharesHolders.firstObject.task)
+	else if ([self.getActiveSharesHolders containsTask:dataTask])
 	{
-		holder = self.getActiveSharesHolders.firstObject;
-	}
-	else if (dataTask == self.getActiveSharesHolders[1].task)
-	{
-		holder = self.getActiveSharesHolders[1];
-	}
-	else if (dataTask == self.getActiveSharesHolders[2].task)
-	{
-		holder = self.getActiveSharesHolders[2];
+		holder = [self.getActiveSharesHolders holderForTask:dataTask];
 	}
 	else if (dataTask == self.getUserHolder.task)
 	{
@@ -608,6 +591,14 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	else if (dataTask == self.getCategoriesHolder.task)
 	{
 		holder = self.getCategoriesHolder;
+	}
+	else if (dataTask == self.getRecomendedHolder.task)
+	{
+		holder = self.getRecomendedHolder;
+	}
+	else if (dataTask == self.getReviewesHolder.task)
+	{
+		holder = self.getReviewesHolder;
 	}
 	else if ([self.getMenuInfoHolders containsTask:dataTask])
 	{
@@ -667,26 +658,11 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 			self.getRestaurantsCompletion(restaurantsFound, error);
 		});
 	}
-	else if (task == self.getNearItemsHolders.firstObject.task ||
-				task == self.getNearItemsHolders[1].task ||
-				task == self.getNearItemsHolders[2].task)
+	else if ([self.getNearItemsHolders containsTask:task])
 	{
-		if (task == self.getNearItemsHolders.firstObject.task)
-		{
-			self.getNearItemsHolders.firstObject.completed = YES;
-		}
-		if (task == self.getNearItemsHolders[1].task)
-		{
-			self.getNearItemsHolders[1].completed = YES;
-		}
-		if (task == self.getNearItemsHolders[2].task)
-		{
-			self.getNearItemsHolders[2].completed = YES;
-		}
+		[self.getNearItemsHolders holderForTask:task].completed = YES;
 		
-		if (self.getNearItemsHolders.firstObject.completed &&
-					self.getNearItemsHolders[1].completed &&
-					self.getNearItemsHolders[2].completed)
+		if ([self.getNearItemsHolders allTasksCompleted])
 		{
 			NSArray *restaurantsFound = nil;
 			NSArray *presentsFound = nil;
@@ -820,26 +796,10 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 			self.getPurchasesCompletion(purchasesFound, error);
 		});
 	}
-	else if (task == self.getActiveSharesHolders.firstObject.task ||
-				task == self.getActiveSharesHolders[1].task ||
-				task == self.getActiveSharesHolders[2].task)
+	else if ([self.getActiveSharesHolders containsTask:task])
 	{
-		if (task == self.getActiveSharesHolders.firstObject.task)
-		{
-			self.getActiveSharesHolders.firstObject.completed = YES;
-		}
-		if (task == self.getActiveSharesHolders[1].task)
-		{
-			self.getActiveSharesHolders[1].completed = YES;
-		}
-		if (task == self.getActiveSharesHolders[2].task)
-		{
-			self.getActiveSharesHolders[2].completed = YES;
-		}
-		
-		if (self.getActiveSharesHolders.firstObject.completed &&
-					self.getActiveSharesHolders[1].completed &&
-					self.getActiveSharesHolders[2].completed)
+		[self.getActiveSharesHolders holderForTask:task].completed = YES;
+		if ([self.getActiveSharesHolders allTasksCompleted])
 		{
 			PWPresentProduct *firstPresent = nil;
 			NSArray *bonusesFound = nil;
@@ -924,6 +884,49 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 			self.updateUserInfoCompletion(error);
 		});
 	}
+	else if (task == self.getRecomendedHolder.task)
+	{
+		self.getRecomendedHolder.completed = YES;
+		NSMutableArray *recomendedProducts = nil;
+		if (nil == error)
+		{
+			NSArray *jsonBody = [NSJSONSerialization
+						JSONObjectWithData:self.getRecomendedHolder.data
+						options:NSJSONReadingMutableContainers error:NULL];
+			recomendedProducts = [NSMutableArray array];
+			for (NSDictionary *json in jsonBody)
+			{
+				[recomendedProducts addObject:[[PWProduct alloc] initWithJSONInfo:json]];
+			}
+		}
+		
+		dispatch_async(dispatch_get_main_queue(),
+		^{
+			self.getRecomendedCompletion(recomendedProducts, error);
+		});
+	}
+	else if (task == self.getReviewesHolder.task)
+	{
+		self.getReviewesHolder.completed = YES;
+		
+		NSMutableArray *reviews = nil;
+		if (nil == error)
+		{
+			NSArray *jsonBody = [NSJSONSerialization
+						JSONObjectWithData:self.getReviewesHolder.data
+						options:NSJSONReadingMutableContainers error:NULL];
+			reviews = [NSMutableArray array];
+			for (NSDictionary *json in jsonBody)
+			{
+				[reviews addObject:[[PWRestaurantReview alloc] initWithJSONInfo:json]];
+			}
+		}
+		
+		dispatch_async(dispatch_get_main_queue(),
+		^{
+			self.getReviewesCompletion(reviews, error);
+		});
+	}
 	else if (task == self.getCategoriesHolder.task)
 	{
 		self.getCategoriesHolder.completed = YES;
@@ -947,7 +950,7 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 		
 		NSURLSessionDataTask *getBestOfDayTask = [self.session dataTaskWithRequest:
 					[PWRequestBuilder getProductsRequestForPlace:self.currentRestaurant.identifier.integerValue
-					dayItem:@(YES) page:0 count:6]];
+					dayItem:@(YES) recomended:nil page:0 count:6]];
 		self.getBestOfDayHolder = [[PWRequestHolder alloc] initWithTask:getBestOfDayTask];
 		[getBestOfDayTask resume];
 	}
@@ -959,17 +962,18 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 		}
 		else
 		{
-			PWRequestHolder *holder = [self.getMenuInfoHolders holderForTask:task];
-			holder.completed = YES;
+			[self.getMenuInfoHolders holderForTask:task].completed = YES;
 		}
 		
 		if (self.getBestOfDayHolder.completed && [self.getMenuInfoHolders allTasksCompleted])
 		{
-			NSMutableArray *bestOfDayProducts = [NSMutableArray array];
-			NSMutableDictionary *categoryProductsInfo = [NSMutableDictionary dictionary];
+			NSMutableArray *bestOfDayProducts = nil;
+			NSMutableDictionary *categoryProductsInfo = nil;
 			
 			if (nil == error)
 			{
+				bestOfDayProducts = [NSMutableArray array];
+				categoryProductsInfo = [NSMutableDictionary dictionary];
 				NSArray *bestOfDayJsonBody = [NSJSONSerialization
 							JSONObjectWithData:self.getBestOfDayHolder.data
 							options:NSJSONReadingMutableContainers error:NULL];

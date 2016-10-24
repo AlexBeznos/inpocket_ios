@@ -40,7 +40,8 @@
 			latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude;
 + (NSURLRequest *)getMenuCategoriesRequestForPlace:(NSUInteger)placeId;
 + (NSURLRequest *)getProductsRequestForPlace:(NSUInteger)placeId
-			dayItem:(NSNumber *)dayItemFlag page:(NSUInteger)page count:(NSUInteger)count;
+			dayItem:(NSNumber *)dayItemFlag recomended:(NSNumber *)recomendedFlag
+			page:(NSUInteger)page count:(NSUInteger)count;
 + (NSURLRequest *)getProductsRequestForCategoryId:(NSUInteger)categoryId
 			page:(NSUInteger)page count:(NSUInteger)count;
 + (NSURLRequest *)getProductWithID:(NSUInteger)productId;

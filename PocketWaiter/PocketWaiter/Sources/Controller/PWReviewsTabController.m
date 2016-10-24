@@ -43,45 +43,40 @@
 	
 	[self startActivity];
 	__weak __typeof(self) weakSelf = self;
-	[[PWModelManager sharedManager] getCommentsInfoForRestaurant:self.restaurant
-				completion:^(BOOL allowComment, NSArray<PWRestaurantReview *> *reviews, NSError *error)
+	[[PWModelManager sharedManager] getCommentsInfoForRestaurant:self.restaurant page:0 completion:
+				^(NSArray<PWRestaurantReview *> *reviews, NSError *error)
 	{
 		[weakSelf stopActivity];
 		
 		if (nil == error)
 		{
-			NSInteger estimatedHeight = 0;
-			UIView *previousView = nil;
-			if (allowComment)
-			{
-				PWWriteNewReviewController *writeComment =
-							[[PWWriteNewReviewController alloc]
-							initWithRestaurant:weakSelf.restaurant
-							newReviewHandler:
-				^{
-					PWNewReviewViewController *newReview =
-								[[PWNewReviewViewController alloc] initWithType:kPWReviewTypeComment];
-					[weakSelf.transiter performForwardTransition:newReview];
-				}];
-				[weakSelf addChildViewController:writeComment];
-				[weakSelf.scrollView addSubview:writeComment.view];
-				
-				[writeComment didMoveToParentViewController:weakSelf];
-				writeComment.view.translatesAutoresizingMaskIntoConstraints = NO;
-				
-				[weakSelf.scrollView addConstraints:[NSLayoutConstraint
-							constraintsWithVisualFormat:@"V:|[view]"
-							options:0 metrics:nil
-							views:@{@"view" : writeComment.view}]];
-				[weakSelf.scrollView addConstraints:[NSLayoutConstraint
-							constraintsWithVisualFormat:@"H:|[view]"
-							options:0 metrics:nil
-							views:@{@"view" : writeComment.view}]];
-				
-				writeComment.contentSize = CGSizeMake(weakSelf.contentWidth, 0.6 * weakSelf.contentWidth);
-				previousView = writeComment.view;
-				estimatedHeight += writeComment.contentSize.height;
-			}
+			PWWriteNewReviewController *writeComment =
+						[[PWWriteNewReviewController alloc]
+						initWithRestaurant:weakSelf.restaurant
+						newReviewHandler:
+			^{
+				PWNewReviewViewController *newReview =
+							[[PWNewReviewViewController alloc] initWithType:kPWReviewTypeComment];
+				[weakSelf.transiter performForwardTransition:newReview];
+			}];
+			[weakSelf addChildViewController:writeComment];
+			[weakSelf.scrollView addSubview:writeComment.view];
+			
+			[writeComment didMoveToParentViewController:weakSelf];
+			writeComment.view.translatesAutoresizingMaskIntoConstraints = NO;
+			
+			[weakSelf.scrollView addConstraints:[NSLayoutConstraint
+						constraintsWithVisualFormat:@"V:|[view]"
+						options:0 metrics:nil
+						views:@{@"view" : writeComment.view}]];
+			[weakSelf.scrollView addConstraints:[NSLayoutConstraint
+						constraintsWithVisualFormat:@"H:|[view]"
+						options:0 metrics:nil
+						views:@{@"view" : writeComment.view}]];
+			
+			writeComment.contentSize = CGSizeMake(weakSelf.contentWidth, 0.6 * weakSelf.contentWidth);
+			UIView *previousView = writeComment.view;
+			NSInteger estimatedHeight = writeComment.contentSize.height;
 			
 			if (reviews.count > 0)
 			{

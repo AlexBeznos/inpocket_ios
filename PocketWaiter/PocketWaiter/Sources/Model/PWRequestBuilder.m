@@ -408,12 +408,17 @@ static NSString * const kPWHTTPScheme = @"http";
 }
 
 + (NSURLRequest *)getProductsRequestForPlace:(NSUInteger)placeId
-			dayItem:(NSNumber *)dayItemFlag page:(NSUInteger)page count:(NSUInteger)count
+			dayItem:(NSNumber *)dayItemFlag recomended:(NSNumber *)recomendedFlag
+			page:(NSUInteger)page count:(NSUInteger)count
 {
 	NSMutableDictionary *query = [NSMutableDictionary dictionary];
 	if (nil != dayItemFlag)
 	{
 		query[@"day_item"] = [dayItemFlag stringValue];
+	}
+	if (nil != recomendedFlag)
+	{
+		query[@"up_sale"] = [recomendedFlag stringValue];
 	}
 	query[@"page"] = [@(page) stringValue];
 	query[@"per_page"] = [@(count) stringValue];

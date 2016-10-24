@@ -86,9 +86,9 @@
 	{
 		id base64Icon = json[@"photo"];
 	
-		self.avatarIcon = nil != base64Icon && [NSNull null] != base64Icon &&
-					[base64Icon isKindOfClass:[NSString class]] ? [UIImage imageWithData:
-					[[NSData alloc] initWithBase64EncodedString:base64Icon options:0]] : nil;
+		self.avatarIcon = NOT_NULL(base64Icon) && [base64Icon isKindOfClass:[NSString class]] ?
+					[UIImage imageWithData:[[NSData alloc]
+					initWithBase64EncodedString:base64Icon options:0]] : nil;
 	}
 	
 	if (nil != json[@"loadedImage"])
@@ -106,7 +106,7 @@
 		self.email = json[@"email"];
 	}
 	
-	NSDictionary *vkProfile = [NSNull null] != json[@"vk_profile"] ? json[@"vk_profile"] : nil;
+	NSDictionary *vkProfile = NOT_NULL(json[@"vk_profile"]) ? json[@"vk_profile"] : nil;
 	
 	if (nil != vkProfile)
 	{
@@ -137,7 +137,7 @@
 		}
 	}
 	
-	NSDictionary *fbProfile = [NSNull null] != json[@"facebook_profile"] ?
+	NSDictionary *fbProfile = NOT_NULL(json[@"facebook_profile"]) ?
 				json[@"facebook_profile"] : nil;
 	
 	if (nil != fbProfile)
