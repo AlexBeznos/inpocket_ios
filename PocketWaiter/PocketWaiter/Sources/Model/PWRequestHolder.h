@@ -20,3 +20,11 @@
 @property (nonatomic) BOOL completed;
 
 @end
+
+@interface PWGetCategoryRequestHolder : PWRequestHolder
+
+@property (nonatomic, readonly) NSString *title;
+
+- (instancetype)initWithTask:(NSURLSessionDataTask *)taks title:(NSString *)title;
+
+@end

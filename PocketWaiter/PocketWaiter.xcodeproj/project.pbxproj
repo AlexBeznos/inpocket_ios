@@ -425,7 +425,6 @@
 		CAF091C11D576B83005FAEF4 /* mohito.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mohito.jpg; sourceTree = "<group>"; };
 		CAF091C31D577286005FAEF4 /* PWModelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWModelManager.h; sourceTree = "<group>"; };
 		CAF091C41D577286005FAEF4 /* PWModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWModelManager.m; sourceTree = "<group>"; };
-		CAF091C61D57739E005FAEF4 /* PWStubModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWStubModel.h; sourceTree = "<group>"; };
 		CAF091C91D57962B005FAEF4 /* burger.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = burger.jpg; sourceTree = "<group>"; };
 		CAF091CB1D57994D005FAEF4 /* vapiano.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vapiano.jpeg; sourceTree = "<group>"; };
 		CAF091CD1D579967005FAEF4 /* coffeetoria.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = coffeetoria.jpg; sourceTree = "<group>"; };
@@ -1010,7 +1009,6 @@
 				CAF091CB1D57994D005FAEF4 /* vapiano.jpeg */,
 				CAF091C91D57962B005FAEF4 /* burger.jpg */,
 				CAF091C11D576B83005FAEF4 /* mohito.jpg */,
-				CAF091C61D57739E005FAEF4 /* PWStubModel.h */,
 			);
 			path = "Temp resources";
 			sourceTree = "<group>";

@@ -336,7 +336,7 @@ static NSString * const kPWHTTPScheme = @"http";
 				query:query] method:kPWGetMethod body:nil headers:nil];
 }
 
-+ (NSURLRequest *)getPresentsRequestForPlace:(NSUInteger)placeId id:(NSUInteger)presentId
++ (NSURLRequest *)getPresentRequestForPlace:(NSUInteger)placeId id:(NSUInteger)presentId
 {
 	return [self requestWithURL:[self URLWithPath:[kPWVersion stringByAppendingPathComponent:
 				[NSString stringWithFormat:@"places/%li/presents/%li", placeId, presentId]]
@@ -367,6 +367,28 @@ static NSString * const kPWHTTPScheme = @"http";
 				query:query] method:kPWGetMethod body:nil headers:nil];
 }
 
++ (NSURLRequest *)getSharesRequestWithPage:(NSUInteger)page
+			count:(NSUInteger)count exceptionPlaceId:(NSNumber *)exceptionId
+			latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude
+{
+	NSMutableDictionary *query = [NSMutableDictionary dictionaryWithObject:@"page" forKey:[@(page) stringValue]];
+	query[@"per_page"] = [@(count) stringValue];
+	if (nil != exceptionId)
+	{
+		query[@"places_exclusion"] = exceptionId;
+	}
+	if (nil != longitude)
+	{
+		query[@"lng"] = longitude;
+	}
+	if (nil != latitude)
+	{
+		query[@"lat"] = latitude;
+	}
+	return [self requestWithURL:[self URLWithPath:[kPWVersion stringByAppendingPathComponent:@"shares"]
+				query:query] method:kPWGetMethod body:nil headers:nil];
+}
+
 + (NSURLRequest *)getMenuCategoriesRequestForPlace:(NSUInteger)placeId
 {
 	return [self requestWithURL:[self URLWithPath:[kPWVersion stringByAppendingPathComponent:
@@ -374,20 +396,19 @@ static NSString * const kPWHTTPScheme = @"http";
 				query:nil] method:kPWGetMethod body:nil headers:nil];
 }
 
-+ (NSURLRequest *)getProductsRequestForPlace:(NSUInteger)placeId
-			categoryId:(NSUInteger)categoryId page:(NSUInteger)page count:(NSUInteger)count
++ (NSURLRequest *)getProductsRequestForCategoryId:(NSUInteger)categoryId
+			page:(NSUInteger)page count:(NSUInteger)count
 {
 	NSMutableDictionary *query = [NSMutableDictionary dictionaryWithObject:@"page" forKey:[@(page) stringValue]];
 	query[@"per_page"] = [@(count) stringValue];
 	
 	return [self requestWithURL:[self URLWithPath:[kPWVersion stringByAppendingPathComponent:
-				[NSString stringWithFormat:@"menu_category_id/%li/menu_items", categoryId]]
+				[NSString stringWithFormat:@"menu_categories/%li/menu_items", categoryId]]
 				query:query] method:kPWGetMethod body:nil headers:nil];
 }
 
 + (NSURLRequest *)getProductsRequestForPlace:(NSUInteger)placeId
-			categoryId:(NSUInteger)categoryId dayItem:(NSNumber *)dayItemFlag
-			page:(NSUInteger)page count:(NSUInteger)count
+			dayItem:(NSNumber *)dayItemFlag page:(NSUInteger)page count:(NSUInteger)count
 {
 	NSMutableDictionary *query = [NSMutableDictionary dictionary];
 	if (nil != dayItemFlag)

@@ -46,3 +46,25 @@
 }
 
 @end
+
+@interface PWGetCategoryRequestHolder ()
+
+@property (nonatomic, strong) NSString *title;
+
+@end
+
+@implementation PWGetCategoryRequestHolder
+
+- (instancetype)initWithTask:(NSURLSessionDataTask *)task title:(NSString *)title
+{
+	self = [super initWithTask:task];
+	
+	if (nil != self)
+	{
+		self.title = title;
+	}
+	
+	return self;
+}
+
+@end

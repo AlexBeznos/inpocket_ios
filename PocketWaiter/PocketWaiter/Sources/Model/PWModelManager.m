@@ -7,10 +7,69 @@
 //
 
 #import "PWModelManager.h"
-#import "PWStubModel.h"
 #import "PWRequestBuilder.h"
 #import "PWRequestHolder.h"
 #import "PWModelCacher.h"
+
+@interface NSArray (Extension)
+
+- (BOOL)containsTask:(NSURLSessionTask *)task;
+- (PWRequestHolder *)holderForTask:(NSURLSessionTask *)task;
+- (BOOL)allTasksCompleted;
+
+@end
+
+@implementation NSArray (Extension)
+
+- (BOOL)containsTask:(NSURLSessionTask *)task
+{
+	BOOL result = NO;
+	
+	for (PWRequestHolder *holder in self)
+	{
+		if (holder.task == task)
+		{
+			result = YES;
+			break;
+		}
+	}
+	
+	return result;
+}
+
+- (PWRequestHolder *)holderForTask:(NSURLSessionTask *)task
+{
+	PWRequestHolder *result = nil;
+	
+	for (PWRequestHolder *holder in self)
+	{
+		if (holder.task == task)
+		{
+			result = holder;
+			break;
+		}
+	}
+	
+	return result;
+}
+
+- (BOOL)allTasksCompleted
+{
+	BOOL result = YES;
+	
+	for (PWRequestHolder *holder in self)
+	{
+		if (!holder.completed)
+		{
+			result = NO;
+			break;
+		}
+	}
+	
+	return result;
+}
+
+@end
 
 NSString *const kPWTokenKey = @"PWTokenKey";
 
@@ -68,6 +127,12 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 @property (nonatomic, copy) void (^getActiveSharesCompletion)
 			(PWPresentProduct *firstPresent, NSArray *shares,
 			NSArray *presentByBonuses, NSError *error);
+
+@property (nonatomic, strong) PWRequestHolder *getCategoriesHolder;
+@property (nonatomic, strong) PWRequestHolder *getBestOfDayHolder;
+@property (nonatomic, strong) NSMutableArray<PWRequestHolder *> *getMenuInfoHolders;
+@property (nonatomic, copy) void (^getMenuInfoCompletion)(NSArray<PWProduct *> *bestOfDay,
+			NSDictionary<NSString *, NSArray<PWProduct *> *> *, NSError *error);
 
 @property (nonatomic, strong) PWModelCacher *cacher;
 
@@ -202,7 +267,7 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 {
 	self.getSharesCompletion = completion;
 	NSURLSessionDataTask *task = [self.session dataTaskWithRequest:
-				[PWRequestBuilder getPresentsRequestWithPage:offset count:count exceptionPlaceId:nil
+				[PWRequestBuilder getSharesRequestWithPage:offset count:count exceptionPlaceId:nil
 				latitude:nil longitude:nil]];
 	self.getSharesHolder = [[PWRequestHolder alloc] initWithTask:task];
 	[task resume];
@@ -301,7 +366,7 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	PWRequestHolder *presentsHolder = [[PWRequestHolder alloc] initWithTask:presentsTask];
 	
 	NSURLSessionDataTask *sharesTask = [self.session dataTaskWithRequest:
-				[PWRequestBuilder getPresentsRequestWithPage:0 count:6 exceptionPlaceId:nil
+				[PWRequestBuilder getSharesRequestWithPage:0 count:6 exceptionPlaceId:nil
 				latitude:nil longitude:nil]];
 	PWRequestHolder *sharesHolder = [[PWRequestHolder alloc] initWithTask:sharesTask];
 	
@@ -331,19 +396,15 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 - (void)getRootMenuInfoForUser:(PWUser *)user restaurant:(PWRestaurant *)restaurant
 			completion:(void (^)(NSArray<PWProduct *> *bestOfDay, NSDictionary<NSString *, NSArray<PWProduct *> *> *, NSError *error))completion
 {
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
-				(int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
-	^{
-		if (nil != completion)
-		{
-			completion(restaurant.products, @{@"Паста" : restaurant.products,
-						@"Кальян" : restaurant.products, @"Напитки" : restaurant.products,
-						@"Первое" : restaurant.products}, nil);
-		}
-	});
+	self.getMenuInfoCompletion = completion;
+	NSURLSessionDataTask *getCategoriesTask = [self.session dataTaskWithRequest:
+				[PWRequestBuilder getMenuCategoriesRequestForPlace:restaurant.identifier.integerValue]];
+	self.getCategoriesHolder = [[PWRequestHolder alloc] initWithTask:getCategoriesTask];
+	[getCategoriesTask resume];
 }
 
-- (void)getCommentsInfoForRestaurant:(PWRestaurant *)restaurant completion:(void (^)(BOOL allowComment, NSArray<PWRestaurantReview *> *, NSError *error))completion
+- (void)getCommentsInfoForRestaurant:(PWRestaurant *)restaurant completion:(void (^)
+			(BOOL allowComment, NSArray<PWRestaurantReview *> *, NSError *error))completion
 {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
 				(int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),
@@ -451,6 +512,18 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	{
 		holder = self.updateUserInfoHolder;
 	}
+	else if (dataTask == self.getBestOfDayHolder.task)
+	{
+		holder = self.getBestOfDayHolder;
+	}
+	else if (dataTask == self.getCategoriesHolder.task)
+	{
+		holder = self.getCategoriesHolder;
+	}
+	else if ([self.getMenuInfoHolders containsTask:dataTask])
+	{
+		holder = [self.getMenuInfoHolders holderForTask:dataTask];
+	}
 	
 	[holder processData:data];
 }
@@ -527,6 +600,18 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 	else if (dataTask == self.updateUserInfoHolder.task)
 	{
 		holder = self.updateUserInfoHolder;
+	}
+	else if (dataTask == self.getBestOfDayHolder.task)
+	{
+		holder = self.getBestOfDayHolder;
+	}
+	else if (dataTask == self.getCategoriesHolder.task)
+	{
+		holder = self.getCategoriesHolder;
+	}
+	else if ([self.getMenuInfoHolders containsTask:dataTask])
+	{
+		holder = [self.getMenuInfoHolders holderForTask:dataTask];
 	}
 	
 	[holder processResponse:(NSHTTPURLResponse *)response];
@@ -838,6 +923,82 @@ NSString *const kPWTokenKey = @"PWTokenKey";
 		^{
 			self.updateUserInfoCompletion(error);
 		});
+	}
+	else if (task == self.getCategoriesHolder.task)
+	{
+		self.getCategoriesHolder.completed = YES;
+		
+		NSArray *jsonBody = [NSJSONSerialization
+					JSONObjectWithData:self.getCategoriesHolder.data
+					options:NSJSONReadingMutableContainers error:NULL];
+		
+		self.getMenuInfoHolders = [NSMutableArray array];
+		for (NSDictionary *categoryInfo in jsonBody)
+		{
+			NSURLSessionDataTask *task = [self.session dataTaskWithRequest:
+						[PWRequestBuilder getProductsRequestForCategoryId:
+						[categoryInfo[@"id"] integerValue] page:0 count:6]];
+			PWGetCategoryRequestHolder *holder = [[PWGetCategoryRequestHolder alloc]
+						initWithTask:task title:categoryInfo[@"name"]];
+			
+			[self.getMenuInfoHolders addObject:holder];
+			[task resume];
+		}
+		
+		NSURLSessionDataTask *getBestOfDayTask = [self.session dataTaskWithRequest:
+					[PWRequestBuilder getProductsRequestForPlace:self.currentRestaurant.identifier.integerValue
+					dayItem:@(YES) page:0 count:6]];
+		self.getBestOfDayHolder = [[PWRequestHolder alloc] initWithTask:getBestOfDayTask];
+		[getBestOfDayTask resume];
+	}
+	else if (task == self.getBestOfDayHolder.task || [self.getMenuInfoHolders containsTask:task])
+	{
+		if (task == self.getBestOfDayHolder.task)
+		{
+			self.getBestOfDayHolder.completed = YES;
+		}
+		else
+		{
+			PWRequestHolder *holder = [self.getMenuInfoHolders holderForTask:task];
+			holder.completed = YES;
+		}
+		
+		if (self.getBestOfDayHolder.completed && [self.getMenuInfoHolders allTasksCompleted])
+		{
+			NSMutableArray *bestOfDayProducts = [NSMutableArray array];
+			NSMutableDictionary *categoryProductsInfo = [NSMutableDictionary dictionary];
+			
+			if (nil == error)
+			{
+				NSArray *bestOfDayJsonBody = [NSJSONSerialization
+							JSONObjectWithData:self.getBestOfDayHolder.data
+							options:NSJSONReadingMutableContainers error:NULL];
+				
+				for (NSDictionary *json in bestOfDayJsonBody)
+				{
+					[bestOfDayProducts addObject:[[PWProduct alloc] initWithJSONInfo:json]];
+				}
+				
+				for (PWGetCategoryRequestHolder *holder in self.getMenuInfoHolders)
+				{
+					NSArray *categoryJsonBody = [NSJSONSerialization
+								JSONObjectWithData:holder.data
+								options:NSJSONReadingMutableContainers error:NULL];
+					NSMutableArray *categoryProducts = [NSMutableArray array];
+					
+					for (NSDictionary *json in categoryJsonBody)
+					{
+						[categoryProducts addObject:[[PWProduct alloc] initWithJSONInfo:json]];
+					}
+					categoryProductsInfo[holder.title] = categoryProducts;
+				}
+			}
+			
+			dispatch_async(dispatch_get_main_queue(),
+			^{
+				self.getMenuInfoCompletion(bestOfDayProducts, categoryProductsInfo, error);
+			});
+		}
 	}
 }
 

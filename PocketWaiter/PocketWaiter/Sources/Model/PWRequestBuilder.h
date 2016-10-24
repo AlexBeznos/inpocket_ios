@@ -31,13 +31,17 @@
 + (NSURLRequest *)getPresentsRequestWithPage:(NSUInteger)page
 			count:(NSUInteger)count exceptionPlaceId:(NSNumber *)exceptionId
 			latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude;
-+ (NSURLRequest *)getPresentsRequestForPlace:(NSUInteger)placeId id:(NSUInteger)presentId;
++ (NSURLRequest *)getPresentRequestForPlace:(NSUInteger)placeId id:(NSUInteger)presentId;
 + (NSURLRequest *)getSharesRequestForPlace:(NSUInteger)placeId page:(NSUInteger)page
+			count:(NSUInteger)count exceptionPlaceId:(NSNumber *)exceptionId
+			latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude;
++ (NSURLRequest *)getSharesRequestWithPage:(NSUInteger)page
 			count:(NSUInteger)count exceptionPlaceId:(NSNumber *)exceptionId
 			latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude;
 + (NSURLRequest *)getMenuCategoriesRequestForPlace:(NSUInteger)placeId;
 + (NSURLRequest *)getProductsRequestForPlace:(NSUInteger)placeId
-			categoryId:(NSUInteger)categoryId dayItem:(NSNumber *)dayItemFlag
+			dayItem:(NSNumber *)dayItemFlag page:(NSUInteger)page count:(NSUInteger)count;
++ (NSURLRequest *)getProductsRequestForCategoryId:(NSUInteger)categoryId
 			page:(NSUInteger)page count:(NSUInteger)count;
 + (NSURLRequest *)getProductWithID:(NSUInteger)productId;
 + (NSURLRequest *)getReviewsRequestForPlace:(NSUInteger)placeId page:(NSUInteger)page
