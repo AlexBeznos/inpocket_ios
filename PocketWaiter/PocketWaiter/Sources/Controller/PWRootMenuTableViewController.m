@@ -239,7 +239,26 @@
 	if (_restaurant != restaurant)
 	{
 		_restaurant = restaurant;
-		self.sources = nil;
+		
+		[self.sources removeObject:self.activeMenuSource];
+		
+		if (nil != restaurant)
+		{
+			__weak __typeof(self) weakSelf = self;
+			self.activeMenuSource = [[PWContentSource alloc]
+						initWithTitle:self.restaurant.restaurantName details:nil
+						icon:self.restaurant.thumbnail
+						contentViewController:[[PWRootRestaurantController alloc]
+						initWithRestaurant:self.restaurant defaultMode:NO transitionHandler:
+			^{
+				[weakSelf performBackTransition];
+			}
+						forwardTransitionHandler:
+			^{
+				[weakSelf performForwardTransition];
+			}]];
+			[self.sources insertObject:self.activeMenuSource atIndex:0];
+		}
 		[self.tableView reloadData];
 	}
 }

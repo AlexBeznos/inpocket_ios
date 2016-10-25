@@ -10,13 +10,12 @@
 #import <CoreLocation/CoreLocation.h>
 
 @class PWRestaurantReview;
-@class PWWorkingTime;
 
 @protocol IPWRestaurant <NSObject>
 
 @property (nonatomic, readonly) NSString *restaurantName;
 @property (nonatomic, readonly) NSString *address;
-@property (nonatomic, readonly) NSString *phoneNumber;
+@property (nonatomic, readonly) NSArray<NSString *> *phoneNumbers;
 @property (nonatomic, readonly) CLLocation *location;
 @property (nonatomic, readonly) NSString *restaurantDescription;
 @property (nonatomic, readonly) UIImage *restaurantImage;
@@ -24,7 +23,7 @@
 @property (nonatomic, readonly) UIColor *color;
 @property (nonatomic, readonly) NSArray<UIImage *> *photos;
 @property (nonatomic, readonly) NSArray<PWRestaurantReview *> *reviews;
-@property (nonatomic, readonly) NSArray<PWWorkingTime *> *workingPlan;
+@property (nonatomic, readonly) NSArray<NSString *> *workingPlan;
 
 @property (nonatomic, readonly) NSString *logoPath;
 @property (nonatomic, strong) NSString *downloadedLogoURL;

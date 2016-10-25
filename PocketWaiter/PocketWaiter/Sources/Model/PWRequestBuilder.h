@@ -23,7 +23,10 @@
 			password:(NSString *)password currentPassword:(NSString *)currentPassword
 			email:(NSString *)email avatar:(UIImage *)avatar
 			vkInfo:(NSDictionary *)vkInfo fbInfo:(NSDictionary *)fbInfo;
-+ (NSURLRequest *)getPlacesRequestForCategory:(NSNumber *)category exceptionPlaceId:(NSNumber *)exceptionId;
++ (NSURLRequest *)getPlacesRequestForCategory:(NSNumber *)category
+			uuids:(NSArray *)uuids
+			exceptionPlaceId:(NSNumber *)exceptionId page:(NSUInteger)page
+			count:(NSUInteger)count;
 + (NSURLRequest *)getPlaceCategoriesRequest;
 + (NSURLRequest *)getBeaconsRequestForPlace:(NSUInteger)placeId;
 + (NSURLRequest *)getPresentsRequestForPlace:(NSUInteger)placeId page:(NSUInteger)page

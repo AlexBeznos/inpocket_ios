@@ -79,9 +79,9 @@
 	return self.aboutInfo.address;
 }
 
-- (NSString *)phoneNumber
+- (NSArray<NSString *> *)phoneNumbers
 {
-	return self.aboutInfo.phoneNumber;
+	return self.aboutInfo.phoneNumbers;
 }
 
 - (CLLocation *)location
@@ -143,7 +143,7 @@
 	return self.aboutInfo.reviews;
 }
 
-- (NSArray<PWWorkingTime *> *)workingPlan
+- (NSArray<NSString *> *)workingPlan
 {
 	return self.aboutInfo.workingPlan;
 }

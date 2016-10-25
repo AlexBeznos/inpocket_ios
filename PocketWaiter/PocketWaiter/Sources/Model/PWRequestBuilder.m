@@ -206,9 +206,29 @@ static NSString * const kPWHTTPScheme = @"http";
 				method:kPWPutMethod body:jsonData headers:headers];
 }
 
-+ (NSURLRequest *)getPlacesRequestForCategory:(NSNumber *)category exceptionPlaceId:(NSNumber *)exceptionId
++ (NSURLRequest *)getPlacesRequestForCategory:(NSNumber *)category
+			uuids:(NSArray *)uuids
+			exceptionPlaceId:(NSNumber *)exceptionId page:(NSUInteger)page
+			count:(NSUInteger)count
 {
 	NSMutableDictionary *query = [NSMutableDictionary dictionary];
+	if (0 != uuids.count)
+	{
+		NSMutableString *uuidsString = [NSMutableString string];
+		
+		for (NSString *uuid in uuids)
+		{
+			[uuidsString appendFormat:@"%@", uuid];
+			if (uuid != uuids.lastObject)
+			{
+				[uuidsString appendString:@","];
+			}
+		}
+		
+		query[@"uuid"] = uuidsString;
+	}
+	query[@"per_page"] = [@(count) stringValue];
+	query[@"page"] = [@(page) stringValue];
 	if (nil != category)
 	{
 		query[@"category_id"] = [category stringValue];
@@ -217,6 +237,7 @@ static NSString * const kPWHTTPScheme = @"http";
 	{
 		query[@"places_exclusion"] = [exceptionId stringValue];
 	}
+	
 	return [self requestWithURL:[self URLWithPath:[kPWVersion stringByAppendingPathComponent:@"places"]
 				query:query] method:kPWGetMethod body:nil headers:nil];
 }

@@ -18,7 +18,7 @@
 
 @implementation PWOwnedObject
 
-@synthesize address, phoneNumber, location, restaurantDescription, restaurantImage, thumbnail, color, photos, reviews, workingPlan, logoPath, downloadedLogoURL, collectedBonuses;
+@synthesize address, phoneNumbers, location, restaurantDescription, restaurantImage, thumbnail, color, photos, reviews, workingPlan, logoPath, downloadedLogoURL, collectedBonuses;
 
 - (instancetype)initWithJSONInfo:(id)jsonInfo
 {

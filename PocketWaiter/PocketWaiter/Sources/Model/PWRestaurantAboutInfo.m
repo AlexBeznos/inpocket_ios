@@ -14,17 +14,18 @@
 @property (nonatomic, strong) NSString *category;
 @property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) UIColor *color;
-@property (nonatomic, strong) NSString *phoneNumber;
+@property (nonatomic, strong) NSArray<NSString *> *phoneNumbers;
 @property (nonatomic, strong) CLLocation *location;
 @property (nonatomic, strong) NSString *restaurantDescription;
 @property (nonatomic, strong) UIImage *restaurantImage;
 @property (nonatomic, strong) NSArray<UIImage *> *photos;
 @property (nonatomic, strong) NSArray<PWRestaurantReview *> *reviews;
-@property (nonatomic, strong) NSArray<PWWorkingTime *> *workingPlan;
+@property (nonatomic, strong) NSArray<NSString *> *workingPlan;
 @property (nonatomic, strong) NSString *logoPath;
 @property (nonatomic, strong) NSString *cardImagePath;
 @property (nonatomic, strong) NSArray *imagesPaths;
 @property (nonatomic) NSUInteger collectedBonuses;
+@property (nonatomic, strong) NSString *webLink;
 
 @end
 
@@ -38,6 +39,9 @@
 	{
 		NSDictionary *info = (NSDictionary *)jsonInfo;
 		self.name = info[@"name"];
+		self.phoneNumbers = NOT_NULL(info[@"phones"]) ? info[@"phones"] : nil;
+		self.workingPlan = NOT_NULL(info[@"working_hours_decorated"]) ? info[@"working_hours_decorated"] : nil;
+		self.webLink = info[@"site"];
 		self.restaurantDescription = info[@"description"];
 		self.logoPath = info[@"logo"];
 		self.cardImagePath = info[@"card_image"];

@@ -60,7 +60,12 @@
 	self.restaurantNameLabel.text = self.aboutInfo.name;
 	self.restaurantTypeLabel.text = self.aboutInfo.restaurantDescription;
 	self.locationView.text = self.aboutInfo.address;
-	self.numberView.text = self.aboutInfo.phoneNumber;
+	NSMutableString *phoneNumbers = [NSMutableString string];
+	for (NSString *number in self.aboutInfo.phoneNumbers)
+	{
+		[phoneNumbers appendFormat:@"%@\n", number];
+	}
+	self.numberView.text = phoneNumbers;
 	self.linkView.text = self.aboutInfo.webLink;
 	
 	self.indicator.backgroundColor = [UIColor clearColor];

@@ -123,30 +123,37 @@
 {
 	__weak __typeof(self) weakSelf = self;
 	[self startActivity];
-	[[PWModelManager sharedManager] getRestaurantForBeacons:self.beacons
-				completion:^(PWRestaurant *restaurant, NSError *error)
+	if (0 != self.beacons.count)
 	{
-		if (nil != error)
+		[[PWModelManager sharedManager] getRestaurantForBeacons:self.beacons
+					completion:^(PWRestaurant *restaurant, NSError *error)
 		{
-			[weakSelf showNoInternetDialog];
-		}
-		else
-		{
-			PWWelcomeViewController *welcomeController =
-			[[PWWelcomeViewController alloc] initWithRestaurant:restaurant
-						continueHandler:
-			^{
-				[weakSelf.welcomeDialog hideWithCompletion:
+			if (nil != error)
+			{
+				[weakSelf showNoInternetDialog];
+			}
+			else
+			{
+				PWWelcomeViewController *welcomeController =
+				[[PWWelcomeViewController alloc] initWithRestaurant:restaurant
+							continueHandler:
 				^{
-					[weakSelf presentRootControllerWithRestaurant:restaurant]; 
+					[weakSelf.welcomeDialog hideWithCompletion:
+					^{
+						[weakSelf presentRootControllerWithRestaurant:restaurant]; 
+					}];
 				}];
-			}];
-			weakSelf.welcomeDialog = [[PWModalController alloc]
-						initWithContentController:welcomeController autoDismiss:NO];
-			[weakSelf.welcomeDialog showWithCompletion:nil];
-		}
-		[weakSelf stopActivity];
-	}];
+				weakSelf.welcomeDialog = [[PWModalController alloc]
+							initWithContentController:welcomeController autoDismiss:NO];
+				[weakSelf.welcomeDialog showWithCompletion:nil];
+			}
+			[weakSelf stopActivity];
+		}];
+	}
+	else
+	{
+		[self presentRootControllerWithRestaurant:nil];
+	}
 }
 
 - (void)presentRootControllerWithRestaurant:(PWRestaurant *)restaurant
