@@ -21,8 +21,8 @@
 {
     CABasicAnimation *rotation = [CABasicAnimation
 				animationWithKeyPath:@"transform.rotation"];
-    rotation.fromValue = [NSNumber numberWithFloat:0];
-    rotation.toValue = [NSNumber numberWithFloat:(2 * M_PI)];
+    rotation.fromValue = @0;
+    rotation.toValue = @(2 * M_PI);
     rotation.duration = 0.7f; // Speed
     rotation.repeatCount = HUGE_VALF; // Repeat forever. Can be a finite number.
     [layer removeAllAnimations];
@@ -52,7 +52,7 @@
 	if (nil == _imageView)
 	{
 		_imageView = [[UIImageView alloc] initWithImage:
-					[UIImage imageNamed:@"activity"]];
+					[UIImage imageNamed:@"loading"]];
 		[_imageView sizeToFit];
 		_imageView.translatesAutoresizingMaskIntoConstraints = NO;
 		

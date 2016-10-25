@@ -6,8 +6,8 @@
 //  Copyright © 2016 inPocket. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PWTableViewController.h"
 
-@interface PWProfileController : UITableViewController
+@interface PWProfileController : PWTableViewController
 
 @end

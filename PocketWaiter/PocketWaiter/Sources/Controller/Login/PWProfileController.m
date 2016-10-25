@@ -228,13 +228,15 @@
 
 - (void)loginVK
 {
+	[self startActivity];
 	__weak __typeof(self) weakSelf = self;
 	[[PWVKManager sharedManager] getProfileInfoWithCompletion:
 	^(NSDictionary *info, NSError *error)
 	{
 		if (nil != error)
 		{
-
+			[weakSelf stopActivity];
+			[weakSelf showNoInternetDialog];
 		}
 		else
 		{
@@ -248,6 +250,7 @@
 						profile:user.vkProfile completion:
 			^(NSError *error)
 			{
+				[weakSelf stopActivity];
 				if (nil != error)
 				{
 					user.vkProfile = nil;
@@ -264,13 +267,15 @@
 
 - (void)loginFB
 {
+	[self startActivity];
 	__weak __typeof(self) weakSelf = self;
 	[[PWFacebookManager sharedManager] getProfileInfoWithCompletion:
 	^(NSDictionary *info, NSError *error)
 	{
 		if (nil != error)
 		{
-//			[weakSelf showNoInternetDialog];
+			[weakSelf stopActivity];
+			[weakSelf showNoInternetDialog];
 		}
 		else
 		{
@@ -284,6 +289,7 @@
 						profile:user.fbProfile completion:
 			^(NSError *error)
 			{
+				[weakSelf stopActivity];
 				if (nil != error)
 				{
 					user.fbProfile = nil;
@@ -310,25 +316,31 @@
 - (void)imagePickerController:(UIImagePickerController *)picker
 			didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
-	__weak __typeof(self) weakSelf = self;
-	UIImage *image = info[UIImagePickerControllerOriginalImage];
-	if (nil != image)
-	{
-		CGFloat maxResolution = MAX(image.size.width, image.size.height);
-		UIImage *scaledImage =  [UIImage imageWithCGImage:[image CGImage]
-					scale:maxResolution / 100.f orientation:image.imageOrientation];
-		[[PWModelManager sharedManager] updateUserAvatar:scaledImage completion:
-		^(NSError *error)
+	[picker dismissViewControllerAnimated:YES completion:
+	^{
+			__weak __typeof(self) weakSelf = self;
+		UIImage *image = info[UIImagePickerControllerOriginalImage];
+		if (nil != image)
 		{
-			if (nil == error)
-			{
-				[USER updateWithJsonInfo:@{@"loadedImage" : scaledImage}];
-				[weakSelf.tableView reloadData];
-			}
-		}];
-	}
-	
-	[picker dismissViewControllerAnimated:YES completion:nil];
+			[self startActivity];
+			dispatch_async(dispatch_get_global_queue(0, 0),
+			^{
+				CGFloat maxResolution = MAX(image.size.width, image.size.height);
+				UIImage *scaledImage =  [UIImage imageWithCGImage:[image CGImage]
+							scale:maxResolution / 100.f orientation:image.imageOrientation];
+				[[PWModelManager sharedManager] updateUserAvatar:scaledImage completion:
+				^(NSError *error)
+				{
+					[weakSelf stopActivity];
+					if (nil == error)
+					{
+						[USER updateWithJsonInfo:@{@"loadedImage" : scaledImage}];
+						[weakSelf.tableView reloadData];
+					}
+				}];
+			});
+		}
+	}];
 }
 
 @end

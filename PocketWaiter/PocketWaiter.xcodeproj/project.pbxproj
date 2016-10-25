@@ -68,6 +68,7 @@
 		CACE8DD61DB385B100E80F11 /* PWImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CACE8DD51DB385B100E80F11 /* PWImageView.m */; };
 		CAD37FD91DBD3A3C001FD692 /* PWRootRestaurantController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD37FD81DBD3A3C001FD692 /* PWRootRestaurantController.m */; };
 		CAD37FDC1DBE6E2A001FD692 /* PWOwnedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD37FDB1DBE6E2A001FD692 /* PWOwnedObject.m */; };
+		CAD37FDF1DBF603C001FD692 /* PWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD37FDE1DBF603C001FD692 /* PWTableViewController.m */; };
 		CAF0912B1D4D3A4C005FAEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */; };
 		CAF0912D1D4D3A4C005FAEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911B1D4D3A4C005FAEF4 /* LaunchScreen.storyboard */; };
 		CAF0912E1D4D3A4C005FAEF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0911C1D4D3A4C005FAEF4 /* Main.storyboard */; };
@@ -361,6 +362,8 @@
 		CAD37FD81DBD3A3C001FD692 /* PWRootRestaurantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRootRestaurantController.m; sourceTree = "<group>"; };
 		CAD37FDA1DBE6E2A001FD692 /* PWOwnedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWOwnedObject.h; sourceTree = "<group>"; };
 		CAD37FDB1DBE6E2A001FD692 /* PWOwnedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWOwnedObject.m; sourceTree = "<group>"; };
+		CAD37FDD1DBF603C001FD692 /* PWTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWTableViewController.h; sourceTree = "<group>"; };
+		CAD37FDE1DBF603C001FD692 /* PWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWTableViewController.m; sourceTree = "<group>"; };
 		CAF090FD1D4D3938005FAEF4 /* PocketWaiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketWaiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF091191D4D3A4C005FAEF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAF0911A1D4D3A4C005FAEF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -622,6 +625,8 @@
 		CA3CE6BF1D9FDD9C00825A0A /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				CAD37FDD1DBF603C001FD692 /* PWTableViewController.h */,
+				CAD37FDE1DBF603C001FD692 /* PWTableViewController.m */,
 				CA3CE6C01D9FDDBB00825A0A /* PWScrollableViewController.h */,
 				CA3CE6C11D9FDDBB00825A0A /* PWScrollableViewController.m */,
 				CA3CE6C61D9FE3A000825A0A /* PWScrollHandlerController.h */,
@@ -1526,6 +1531,7 @@
 				CAFE61111D99459A003F5991 /* PWFirstPresentController.m in Sources */,
 				CAFE5FF71D7C5EFB003F5991 /* PWShareViewController.m in Sources */,
 				CAFE60161D842C3E003F5991 /* PWFacebookManager.m in Sources */,
+				CAD37FDF1DBF603C001FD692 /* PWTableViewController.m in Sources */,
 				CAF092631D607BB2005FAEF4 /* PWRestaurantsCollectionController.m in Sources */,
 				CAF091BF1D576703005FAEF4 /* PWDropShadowView.m in Sources */,
 				CAF092381D5FED1F005FAEF4 /* PWRestaurantFilterCell.m in Sources */,
