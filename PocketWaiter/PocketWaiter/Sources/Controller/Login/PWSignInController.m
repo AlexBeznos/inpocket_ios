@@ -56,13 +56,10 @@
 				forState:UIControlStateNormal];
 	self.passwordField.secureTextEntry = YES;
     
-//    for (UIView *view in self.view.subviews) {
-//        for (UIView *subview in view.subviews){
-//            for (NSLayoutConstraint *constraint in subview.constraints){
-//                double coef = 320 / self.view.frame.size.width;
-//                constraint.constant = constraint.constant / coef;
-//                NSLog(@"%f", constraint.constant);
-//            }
+//    for (UIView *subview in self.view.subviews){
+//        for (NSLayoutConstraint *constraint in subview.constraints){
+//            double coef = 320 / self.view.frame.size.width;
+//            constraint.constant = constraint.constant / coef;
 //        }
 //    }
 }
@@ -193,7 +190,17 @@
 			[weakSelf stopActivity];
 			if (nil != error)
 			{
-				[weakSelf showNoInternetDialog];
+                UIAlertController *alert = [UIAlertController
+                                            alertControllerWithTitle:@"Не удалось войти"
+                                            message:@"Логин или пароль не верный"
+                                            preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:@"Хорошо"
+                                                          style:UIAlertActionStyleDefault handler:nil]];
+                self.view.userInteractionEnabled = NO;
+                [self presentViewController:alert animated:YES completion:
+                 ^{
+                     self.view.userInteractionEnabled = YES;
+                 }];
 			}
 			else
 			{
