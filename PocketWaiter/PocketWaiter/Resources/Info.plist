@@ -84,5 +84,9 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo library will be used for picking images for your businesses</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera is needed to scan QR codes</string>
 </dict>
 </plist>

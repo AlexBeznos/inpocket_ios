@@ -106,8 +106,8 @@
 	self.rightConstrailt.constant = 0 * aspectRatio;
 	self.viewOffset.constant = -266 * aspectRatio;
 	self.heightConstraint.constant = 502 * aspectRatio;
-	self.topInfoLabelConstraint.constant = 20 * aspectRatio;
-	self.topPromoButtonConstraint.constant = 24 * aspectRatio;
+	self.topInfoLabelConstraint.constant = 33 * aspectRatio;
+	self.topPromoButtonConstraint.constant = 33 * aspectRatio;
 }
 
 - (IBAction)enterPromo:(id)sender

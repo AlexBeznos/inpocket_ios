@@ -1253,8 +1253,8 @@
 				CAF091ED1D57B271005FAEF4 /* PWNearItemsViewController.xib */,
 				CAF091EB1D57B239005FAEF4 /* PWNearItemCollectionViewCell.xib */,
 				CAF091A81D564E61005FAEF4 /* PWEnterPromoViewController.xib */,
-				CAF0919F1D562471005FAEF4 /* PWIntroSecondPageCell.xib */,
 				CAF091A01D562471005FAEF4 /* PWIntroThirdPageCell.xib */,
+				CAF0919F1D562471005FAEF4 /* PWIntroSecondPageCell.xib */,
 				CAF0919A1D561B1E005FAEF4 /* PWIntroFirstPageCell.xib */,
 				CAF091901D560B80005FAEF4 /* PWIntroViewController.xib */,
 			);
@@ -1320,12 +1320,12 @@
 		CAF090F51D4D3938005FAEF4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = inPocket;
 				TargetAttributes = {
 					CAF090FC1D4D3938005FAEF4 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 9N2TNZL54L;
+						DevelopmentTeam = RD5PE7W7YK;
 					};
 				};
 			};
@@ -1601,6 +1601,7 @@
 			baseConfigurationReference = CAF091341D4D3A9F005FAEF4 /* PWConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1611,8 +1612,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1646,6 +1649,7 @@
 			baseConfigurationReference = CAF091341D4D3A9F005FAEF4 /* PWConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1656,8 +1660,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1688,6 +1694,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = RD5PE7W7YK;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1711,6 +1718,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = RD5PE7W7YK;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

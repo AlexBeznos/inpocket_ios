@@ -55,6 +55,16 @@
 	[self.signInButton setTitle:@"Нет аккаунта? Зарегистрируйтесь"
 				forState:UIControlStateNormal];
 	self.passwordField.secureTextEntry = YES;
+    
+//    for (UIView *view in self.view.subviews) {
+//        for (UIView *subview in view.subviews){
+//            for (NSLayoutConstraint *constraint in subview.constraints){
+//                double coef = 320 / self.view.frame.size.width;
+//                constraint.constant = constraint.constant / coef;
+//                NSLog(@"%f", constraint.constant);
+//            }
+//        }
+//    }
 }
 
 - (IBAction)showHidePassword:(id)sender
