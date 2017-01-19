@@ -93,7 +93,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xl-s5-fpD">
-                    <rect key="frame" x="36" y="382" width="42" height="21"/>
+                    <rect key="frame" x="46" y="382" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -114,7 +114,7 @@
                 <constraint firstItem="62o-iV-Ejy" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="1:2.7" id="78H-oi-fwa"/>
                 <constraint firstItem="T66-BR-avL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="MsS-q2-eJV"/>
                 <constraint firstItem="62o-iV-Ejy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Qej-6X-aMG"/>
-                <constraint firstItem="6Xl-s5-fpD" firstAttribute="leading" secondItem="J86-hQ-UBX" secondAttribute="leading" constant="10" id="RMX-XE-vqA"/>
+                <constraint firstItem="6Xl-s5-fpD" firstAttribute="leading" secondItem="J86-hQ-UBX" secondAttribute="leading" constant="20" id="RMX-XE-vqA"/>
                 <constraint firstItem="T66-BR-avL" firstAttribute="top" secondItem="62o-iV-Ejy" secondAttribute="bottom" constant="67" id="aGd-WJ-pLS"/>
                 <constraint firstItem="6Xl-s5-fpD" firstAttribute="centerY" secondItem="J86-hQ-UBX" secondAttribute="centerY" id="f2S-VD-gJL"/>
                 <constraint firstAttribute="trailing" secondItem="J86-hQ-UBX" secondAttribute="trailing" constant="27" id="gbc-Qc-Uwj"/>

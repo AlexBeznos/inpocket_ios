@@ -22,7 +22,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="360"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tux-jl-fFM">
@@ -56,7 +56,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iau-8G-wjy" customClass="PWButton">
-                    <rect key="frame" x="20" y="260" width="280" height="40"/>
+                    <rect key="frame" x="20" y="300" width="280" height="40"/>
                     <color key="backgroundColor" red="0.32577179579999999" green="1" blue="0.3050190968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Ywl-52-Unh"/>
@@ -135,6 +135,7 @@
                 <constraint firstItem="DG4-2M-v0W" firstAttribute="top" secondItem="KvW-V6-X58" secondAttribute="bottom" constant="20" id="yi5-MG-0Nr"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="26" y="37"/>
         </view>
     </objects>
     <resources>

@@ -30,23 +30,21 @@
                                     <constraint firstAttribute="height" constant="24" id="oz8-Nl-6by"/>
                                 </constraints>
                                 <state key="normal" title="Button" backgroundImage="getAvatar"/>
-                                <connections>
-                                    <action selector="changeAvatar:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Gg5-fG-nI0"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bc-1W-3On">
-                                <rect key="frame" x="75" y="20.5" width="42" height="20.5"/>
+                                <rect key="frame" x="71" y="20.5" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="BoG-5m-9mk" secondAttribute="trailing" constant="10" id="CjI-NG-zTJ"/>
                             <constraint firstItem="3bc-1W-3On" firstAttribute="centerY" secondItem="yWk-W0-rNo" secondAttribute="centerY" id="Ytp-wH-cZX"/>
                             <constraint firstItem="BoG-5m-9mk" firstAttribute="centerY" secondItem="yWk-W0-rNo" secondAttribute="centerY" id="bmF-eE-FLN"/>
-                            <constraint firstItem="BoG-5m-9mk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3bc-1W-3On" secondAttribute="trailing" constant="10" id="pD7-lm-xWu"/>
+                            <constraint firstItem="BoG-5m-9mk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3bc-1W-3On" secondAttribute="trailing" constant="5" id="pD7-lm-xWu"/>
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v0Z-6I-KrG" customClass="PWImageView">
@@ -62,7 +60,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="yWk-W0-rNo" secondAttribute="trailing" constant="10" id="6ip-eS-orl"/>
                     <constraint firstItem="yWk-W0-rNo" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.9" id="JS1-3d-I27"/>
                     <constraint firstItem="v0Z-6I-KrG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-3" id="NTv-T6-BsF"/>
-                    <constraint firstItem="3bc-1W-3On" firstAttribute="leading" secondItem="v0Z-6I-KrG" secondAttribute="trailing" constant="24" id="TLS-nJ-0KS"/>
+                    <constraint firstItem="3bc-1W-3On" firstAttribute="leading" secondItem="v0Z-6I-KrG" secondAttribute="trailing" constant="20" id="TLS-nJ-0KS"/>
                     <constraint firstAttribute="bottomMargin" secondItem="yWk-W0-rNo" secondAttribute="bottom" id="j7s-WS-0lK"/>
                     <constraint firstItem="yWk-W0-rNo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="mZQ-av-JFi"/>
                     <constraint firstItem="v0Z-6I-KrG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-3" id="u9Y-RR-ybL"/>
@@ -71,6 +69,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="avatarView" destination="v0Z-6I-KrG" id="gzZ-Zw-wnU"/>
+                <outlet property="cellView" destination="yWk-W0-rNo" id="oGU-sP-Vjj"/>
                 <outlet property="title" destination="3bc-1W-3On" id="G1m-AE-3fc"/>
             </connections>
         </tableViewCell>
