@@ -68,10 +68,12 @@
 	
 	self.holders = [NSMutableArray array];
 	
-	id<IPWRestaurant> restaurant = self.points[self.selectedIndex];
-	
-	self.camera = [[GMSMutableCameraPosition alloc]
-				initWithTarget:restaurant.location.coordinate zoom:12 bearing:0 viewingAngle:0];
+    if (self.selectedIndex > 0) {
+        id<IPWRestaurant> restaurant = self.points[self.selectedIndex];
+        
+        self.camera = [[GMSMutableCameraPosition alloc]
+                    initWithTarget:restaurant.location.coordinate zoom:12 bearing:0 viewingAngle:0];
+    }
 				
 	self.mapView = [GMSMapView mapWithFrame:CGRectZero camera:self.camera];
 	self.mapView.delegate = self;
@@ -89,7 +91,7 @@
 	for (id<IPWRestaurant> restaurant in self.points)
 	{
 		GMSMarker *marker = [GMSMarker new];
-		marker.position = restaurant.location.coordinate;
+        marker.position = restaurant.location.coordinate;
 		marker.title = restaurant.restaurantName;
 		marker.icon = [UIImage markerImageWithState:NO scheme:restaurant.color
 					logo:restaurant.restaurantImage];

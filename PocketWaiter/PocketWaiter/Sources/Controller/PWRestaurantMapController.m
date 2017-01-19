@@ -45,8 +45,10 @@
 {
 	[super viewDidLoad];
 	
-	[self setSelectedIndex:[self.restaurants
-				indexOfObject:self.selectedRestaurant] updateCamera:YES];
+    if (self.selectedRestaurant != nil){
+        [self setSelectedIndex:[self.restaurants
+                                indexOfObject:self.selectedRestaurant] updateCamera:YES];
+    }
 }
 
 - (NSArray<id<IPWRestaurant>> *)points
