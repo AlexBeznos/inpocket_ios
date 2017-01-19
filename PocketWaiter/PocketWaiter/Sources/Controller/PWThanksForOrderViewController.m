@@ -81,7 +81,7 @@
 				options:0 metrics:nil
 				views:@{@"view" : controller.view}]];
 	
-	controller.contentSize = CGSizeMake(self.contentWidth, self.contentWidth * 0.7);
+	controller.contentSize = CGSizeMake(self.contentWidth, 280);
 	previousView = controller.view;
 	estimatedHeight +=controller.contentSize.height;
 	self.scrollView.contentSize = CGSizeMake(weakSelf.contentWidth, estimatedHeight);

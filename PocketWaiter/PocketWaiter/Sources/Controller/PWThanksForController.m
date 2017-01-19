@@ -91,6 +91,9 @@
 	
 	if (self.type == kPWItemTypePresent)
 	{
+        self.imageView.image = [[UIImage imageNamed:@"collectedBonus"]
+                                     imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.imageView.tintColor = self.scheme;
 		[self.collectedBonusesHolder removeFromSuperview];
 	}
 	else

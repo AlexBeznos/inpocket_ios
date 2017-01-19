@@ -55,9 +55,10 @@
 				imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 	[self.bonusView setTintColor:self.restaurant.color];
 	self.nameLabel.text = self.present.name;
-	self.button.title = @"Получить";
+	self.button.title = @"Получить подарок";
 	self.button.bgColor = self.restaurant.color;
 	self.button.colorScheme = [UIColor whiteColor];
+    [self.button changeImageWithImage:@"collectedBonus"];
 	self.descriptionLabel.text = self.present.productDescription;
 }
 

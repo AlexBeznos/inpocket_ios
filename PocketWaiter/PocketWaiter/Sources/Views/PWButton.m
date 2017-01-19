@@ -113,4 +113,10 @@
 	return self.infoLabel.text;
 }
 
+- (void)changeImageWithImage:(NSString *)imageName
+{
+    self.arrowView.image = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.arrowView setTintColor: [UIColor whiteColor]];
+}
+
 @end

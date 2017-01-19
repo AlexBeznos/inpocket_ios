@@ -14,4 +14,6 @@
 @property (nonatomic) UIColor *bgColor;
 @property (nonatomic) NSString *title;
 
+- (void)changeImageWithImage: (NSString *)imageName;
+
 @end
