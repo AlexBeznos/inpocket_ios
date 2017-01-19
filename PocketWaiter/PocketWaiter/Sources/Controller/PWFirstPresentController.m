@@ -61,7 +61,7 @@ static NSString * const reuseIdentifier = @"Cell";
 	self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.view
 				attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual
 				toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1
-				constant:320];
+				constant:420];
 	self.widthConstraint = [NSLayoutConstraint constraintWithItem:self.view
 				attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual
 				toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1
@@ -75,7 +75,7 @@ static NSString * const reuseIdentifier = @"Cell";
 {
 	self.widthConstraint.constant = contentSize.width;
 	self.heightConstraint.constant = contentSize.height;
-	self.layout.itemSize = CGSizeMake(contentSize.width - 40, contentSize.height - 40);
+	self.layout.itemSize = CGSizeMake(contentSize.width - 40, contentSize.height - 20);
 	[self.view setNeedsLayout];
 	[self.view layoutIfNeeded];
 }
@@ -90,9 +90,9 @@ static NSString * const reuseIdentifier = @"Cell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
  {
     PWFirstPresentCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-	 cell.colorScheme = self.restaurant.color;
+    cell.colorScheme = self.restaurant.color;
     cell.descriptionLabel.text = self.present.productDescription;
-	 cell.presentImageView.image = self.present.icon;
+    cell.presentImageView.image = self.present.icon;
     cell.getPresentHandler = self.getPresentHandler;
 	 
     return cell;

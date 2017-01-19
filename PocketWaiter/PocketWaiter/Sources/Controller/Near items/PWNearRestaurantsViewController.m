@@ -67,7 +67,7 @@
 	self.layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
 	self.layout.minimumInteritemSpacing = 0;
 	 
-	self.layout.itemSize = CGSizeMake(320, 95);
+	self.layout.itemSize = CGSizeMake(320, 100);
 	self.layout.scrollDirection = UICollectionViewScrollDirectionVertical;
 }
 
@@ -80,7 +80,7 @@
 
 - (NSString *)titleDescription
 {
-	return @"Zavedeniya ryadom";
+	return @"Заведения рядом";
 }
 
 - (NSArray *)contentItems

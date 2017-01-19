@@ -121,8 +121,8 @@
 					views:@{@"view" : nearPresentsController.view}]];
 		
 		nearPresentsController.contentSize =
-					CGSizeMake(320 * aspectRatio, 375 * aspectRatio);
-		estimatedHeight +=  375 * aspectRatio;
+					CGSizeMake(320 * aspectRatio, 420 * aspectRatio);
+		estimatedHeight +=  420 * aspectRatio;
 		previousView = nearPresentsController.view;
 	}
 	
@@ -164,8 +164,8 @@
 					views:@{@"view" : nearSharesController.view}]];
 		
 		nearSharesController.contentSize =
-					CGSizeMake(320 * aspectRatio, 375 * aspectRatio);
-		estimatedHeight += 375 * aspectRatio;
+					CGSizeMake(320 * aspectRatio, 420 * aspectRatio);
+		estimatedHeight += 420 * aspectRatio;
 		previousView = nearSharesController.view;
 	}
 	
@@ -207,7 +207,7 @@
 					views:@{@"view" : nearRestaurantsController.view}]];
 		
 		CGFloat estimatedRestaurantsHeight = nearRestaurantsController.fixedContentSpace +
-					aspectRatio * nearRestaurantsController.resizableContentSpace;
+					aspectRatio * nearRestaurantsController.resizableContentSpace + 20;
 		nearRestaurantsController.contentSize =
 					CGSizeMake(320 * aspectRatio, estimatedRestaurantsHeight);
 		estimatedHeight += estimatedRestaurantsHeight;

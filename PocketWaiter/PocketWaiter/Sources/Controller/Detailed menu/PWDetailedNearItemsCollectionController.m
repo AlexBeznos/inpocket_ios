@@ -53,7 +53,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (CGFloat)initialCellHeight
 {
-	return 320;
+	return 420;
 }
 
 - (void)registerCell
@@ -67,7 +67,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)setContentSize:(CGSize)contentSize
 {
 	((UICollectionViewFlowLayout *)self.collectionViewLayout).
-				itemSize = CGSizeMake(contentSize.width - 40, contentSize.width - 40);
+				itemSize = CGSizeMake(contentSize.width - 40, contentSize.width - 20);
 	[self.view setNeedsLayout];
 	[self.view layoutIfNeeded];
 }

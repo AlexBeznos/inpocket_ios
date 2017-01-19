@@ -103,7 +103,7 @@
 						constant:6]];
 			[self addSubview:indicatorView];
 			
-			NSInteger offset = 5 + i * 16;
+			NSInteger offset = 5 + i * 11;
 			[self addConstraints:[NSLayoutConstraint
 						constraintsWithVisualFormat:@"H:|-(offset)-[indicatorView]"
 						options:0 metrics:@{@"offset" : @(offset)}

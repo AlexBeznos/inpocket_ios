@@ -91,7 +91,8 @@
 			titleLabel.backgroundColor = [UIColor clearColor];
 			titleLabel.text = storedItem.title;
 			titleLabel.textColor = [UIColor grayColor];
-			[titleLabel sizeToFit];
+            titleLabel.font = [UIFont systemFontOfSize:15];
+			//[titleLabel sizeToFit];
 			titleLabel.textAlignment = NSTextAlignmentCenter;
 			[holder addSubview:titleLabel];
 			[holder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:

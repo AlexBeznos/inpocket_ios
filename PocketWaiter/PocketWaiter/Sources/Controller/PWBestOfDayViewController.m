@@ -76,6 +76,7 @@
 - (void)setupIndicator
 {
 	self.indicator.itemsCount = self.products.count;
+    self.indicator.colorSchema = [UIColor redColor];
 	self.indicator.selectedItemIndex = 0;
 	self.indicatorWidthConstraint.constant = 16 * self.products.count;
 }
@@ -164,6 +165,7 @@
 	
 	cell.priceLabel.text = product.price.humanReadableValue;
 	cell.bonusesLabel.text = [NSString stringWithFormat:@"+%li", product.bonusesValue];
+    cell.bonusesLabel.textColor = [UIColor redColor];
 	cell.productImageView.image = product.icon;
 	cell.button.backgroundColor = self.restaurant.color;
 	cell.nameLabel.text = product.name;

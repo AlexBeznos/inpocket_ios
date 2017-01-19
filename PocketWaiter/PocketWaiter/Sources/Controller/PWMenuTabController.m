@@ -94,7 +94,7 @@
 						options:0 metrics:nil
 						views:@{@"view" : productOfDay.view}]];
 			productOfDay.contentSize = CGSizeMake(weakSelf.contentWidth,
-						375 * weakSelf.contentWidth / 320.);
+						375 * weakSelf.contentWidth / 290.);
 			estimatedHeight += productOfDay.contentSize.height;
 			previousView = productOfDay.view;
 		}

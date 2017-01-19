@@ -35,7 +35,7 @@
 	{
 		self.restaurant = aRestaurant;
 		self.continueHandler = aHandler;
-		self.contentSize = CGSizeMake(300, 350);
+		self.contentSize = CGSizeMake(300, 380);
 	}
 	
 	return self;
@@ -45,7 +45,7 @@
 {
 	[super viewDidLoad];
 	
-	self.titleLabel.text = [NSString stringWithFormat:@"Добро пожаловать в %@", self.restaurant.restaurantName];
+	self.titleLabel.text = [NSString stringWithFormat:@"Добро пожаловать в %@!", self.restaurant.restaurantName];
 	self.titleLabel.textColor = self.restaurant.color;
 	self.makeOrderLabel.text = @"Делайте заказ прямо из приложения";
 	self.getPercentLabel.text = @"Накапливайте % от чека";
