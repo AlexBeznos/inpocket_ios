@@ -92,13 +92,14 @@ NSInteger const kBluetoothIsNotAvailable = -1;
 		dispatch_async(dispatch_get_main_queue(),
 		^{
 			self.beaconsHandler([self.beacons allObjects]);
+            @synchronized (self)
+            {
+                [self.beacons removeAllObjects];
+            }
+
 		});
 	}
-	
-	@synchronized (self)
-	{
-		[self.beacons removeAllObjects];
-	}
+	// Removes beacons before callback, I don't know why it's placed here
 }
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
